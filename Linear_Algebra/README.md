@@ -28,7 +28,7 @@ Linear_Algebra/
 ├── AI_Applications/     线性代数在 AI 各方向的应用笔记
 ├── Resources/           课程、书籍、视频等资料索引
 ├── Projects/            数学概念 → Python 实验 → 项目记录
-└── Glossary/            重要术语中英文对照
+└── Glossary.md            术语表（单文件，中英文对照）
 ```
 
 ## 各目录用途
@@ -41,7 +41,7 @@ Linear_Algebra/
 | AI_Applications/ | 把抽象概念映射到具体 AI 场景（ML、DL、CV、语音），例如"SVD 用在哪里" |
 | Resources/ | 汇总课程、书籍、视频、博客，标注难度与推荐理由；可下载文档存于 Downloads/ |
 | Projects/ | 数学概念 → Python 实验 → 可视化 / 实际应用 → 项目记录 |
-| Glossary/ | 重要数学术语中英文对照，并链接相关笔记 |
+| Glossary.md | 术语表单文件：重要数学术语中英文对照，并链接相关笔记 |
 
 ## 使用建议
 
