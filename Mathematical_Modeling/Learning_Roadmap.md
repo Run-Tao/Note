@@ -35,7 +35,7 @@ tags:
 
 - 按顺序学习；每一级的"达标标准"通过后再进入下一级；
 - 每级同时配套 Python 练习，代码服务于建模，不做普通编程教程；
-- 疑问记入 `Questions/`，练习与错误记入 `Exercises/`，综合项目记入 `Projects/`。
+- 疑问在相关笔记中用 `> [!question]` 标记（MOC 汇总），练习与错误记入 `Exercises/`，综合项目记入 `Projects/`。
 
 ---
 

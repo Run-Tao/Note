@@ -545,7 +545,7 @@ $$
 - **可视化资源：GeoGebra 的矩阵变换页面 / 3Blue1Brown 官网互动**——难度：零基础。理由：亲手拖动矩阵参数，观察空间如何变形。适合：第 13–15 节。
 - **NumPy 资料：官方 Quickstart + 《Python for Data Analysis》第 4–5 章**——难度：入门。理由：向量化思维与数组操作讲得清楚。适合：第七部分实践。
 
-> 若遇到解决不了的疑问，请记录到 `../Questions/` 目录，按 config.md 的规范跟踪解决。
+> 若遇到解决不了的疑问，请在笔记中用 `> [!question]` 标记，按 config.md 的规范跟踪解决。
 
 ## Related Notes
 

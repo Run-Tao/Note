@@ -6,7 +6,7 @@
 ## 1. 仓库组织方式
 
 - 根目录是一个 Obsidian Vault，含**两个独立知识库** + **个人层** + `.obsidian/` 配置；
-- 每个知识库 = README（介绍）+ Learning_Roadmap（学习路线）+ 00 - MOC/（总览页）+ 按主题编号的子目录（Notes / Exercises / Questions / Projects / Resources 等）；
+- 每个知识库 = README（介绍）+ Learning_Roadmap（学习路线）+ 00 - MOC/（总览页）+ 按主题编号的子目录（Notes / Exercises / Projects / Resources 等）；
 - 每个知识库含 `Inbox/`：原始笔记（每天一个文件 `YYYY-MM-DD.md`，内容随意碎片化，永不删除）；Agent 提取内容归入正式笔记后，整个文件移入 `Inbox/Processed/` 归档；
 - 知识工作流（学习 → Inbox → Agent 整理 → 正式知识库）见根目录 [[Knowledge_Workflow]]；
 - 两个知识库之间通过 Wiki Links 互相引用；
@@ -50,8 +50,8 @@
 ## 6. 不随意修改无关文件
 
 - 每次任务只触碰与任务直接相关的文件；
-- 不清理、不重排、不"顺手优化"无关目录（含根目录其他文件，如 `组会旁听.md`）；
-- 归属不明确的内容先记录到 Questions/ 或询问，不擅自移动或删除。
+- 不清理、不重排、不"顺手优化"无关目录（含 `00 - Personal/组会旁听.md` 等非任务文件）；
+- 归属不明确的内容先记录到 Inbox/ 或询问，不擅自移动或删除。
 
 ## 6.5 参考阅读资料的下载
 

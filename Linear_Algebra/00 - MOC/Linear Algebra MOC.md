@@ -48,4 +48,4 @@ tags:
 - [[README]] —— 知识库介绍
 - [[Learning_Roadmap]] —— 学习路线（Level 0–8）
 - [[config]] —— 知识库规范（长期目标 + 写作规范）
-- 子目录：Notes / Exercises / AI_Applications / Resources / Questions / Projects / Learning Log / Glossary
+- 子目录：Notes / Exercises / AI_Applications / Resources / Projects / Glossary；学习日志见个人层 [[Learning Log/README|Learning Log]]

@@ -27,9 +27,7 @@ Linear_Algebra/
 ├── Exercises/           练习题与错题本
 ├── AI_Applications/     线性代数在 AI 各方向的应用笔记
 ├── Resources/           课程、书籍、视频等资料索引
-├── Questions/           疑难问题记录与待解答问题
 ├── Projects/            数学概念 → Python 实验 → 项目记录
-├── Learning Log/        学习日志（理解状态、遗留问题、下一步）
 └── Glossary/            重要术语中英文对照
 ```
 
@@ -38,13 +36,11 @@ Linear_Algebra/
 | 目录 | 用途 |
 | --- | --- |
 | Inbox/ | 原始笔记：随手记的碎片化想法，每天一个 YYYY-MM-DD.md，无格式要求，永不删除；Agent 提取内容整理后，整个文件移入 Inbox/Processed/ 归档 |
-| Notes/ | 按 Level 和主题记录笔记，一主题一文件，用自己的话重写定义与直觉 |
+| Notes/ | 按 Level 和主题记录笔记，一主题一文件，用自己的话重写定义与直觉；未解决疑问用 `> [!question]` 标记 |
 | Exercises/ | 概念题、计算题、Python/NumPy 验证题，并记录错题 |
 | AI_Applications/ | 把抽象概念映射到具体 AI 场景（ML、DL、CV、语音），例如"SVD 用在哪里" |
-| Resources/ | 汇总课程、书籍、视频、博客，标注难度与推荐理由 |
-| Questions/ | 记录学习中的疑问，定期复习解决后归档 |
+| Resources/ | 汇总课程、书籍、视频、博客，标注难度与推荐理由；可下载文档存于 Downloads/ |
 | Projects/ | 数学概念 → Python 实验 → 可视化 / 实际应用 → 项目记录 |
-| Learning Log/ | 记录学习内容、已理解 / 未理解、新问题与下一步计划 |
 | Glossary/ | 重要数学术语中英文对照，并链接相关笔记 |
 
 ## 使用建议
@@ -52,8 +48,8 @@ Linear_Algebra/
 0. **维护知识库时默认遵守 [config.md](config.md)**：新建任何笔记、练习或应用笔记前，先读一遍规范；
 1. 先打开总览页 [[Linear Algebra MOC]] 或 [Learning_Roadmap.md](Learning_Roadmap.md)，确定自己当前所处的 Level；
 2. 学完一个主题后按循环走一遍：**写笔记 → 做练习 → 找 AI 应用案例 → 解决遗留疑问**；
-3. 每周回顾一次 Questions 和错题，把"没懂"变成"懂"；
-4. 每次学习结束时在 Learning Log/ 记录当次进度与遗留问题。
+3. 每周回顾一次笔记中的未解决问题和错题，把"没懂"变成"懂"；
+4. 每次学习结束时在个人层学习日志（[[Learning Log/README|00 - Personal/Learning Log]]）记录当次进度与遗留问题。
 
 ## 学习路线概览
 

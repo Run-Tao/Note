@@ -37,7 +37,6 @@ Mathematical_Modeling/
 ├── 11 - Paper Writing/          论文写作体系
 ├── Inbox/                       原始笔记（每天一个 YYYY-MM-DD.md，无格式要求；整理后归档 Processed/）
 ├── Exercises/                   练习与错题（记录错误原因）
-├── Questions/                   疑问记录（解决后沉淀回笔记）
 ├── Projects/                    综合项目（模型 → 实现 → 验证 → 论文）
 └── Resources/                   资料索引
 ```

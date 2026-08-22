@@ -22,7 +22,7 @@
 
 - 按 Level 顺序学习；基础扎实可跳过 Level 0，但建议至少浏览一遍；
 - 每个 Level 的完成标准：能用一两句话讲清核心概念，完成配套练习，并在 AI 应用栏中找到至少一个真实例子；
-- 学完一个 Level 后更新文末的进度表，并同步在 Notes / Exercises / Questions 中留下记录。
+- 学完一个 Level 后更新文末的进度表，并同步在 Notes / Exercises 中留下记录；遗留疑问用 `> [!question]` 标记。
 
 ---
 
