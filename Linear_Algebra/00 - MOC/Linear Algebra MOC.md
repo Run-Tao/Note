@@ -1,0 +1,51 @@
+---
+title: Linear Algebra MOC
+type: moc
+subject: linear-algebra
+level: overview
+tags:
+  - mathematics
+  - linear-algebra
+---
+
+# Linear Algebra MOC
+
+> 线性代数知识库总览。目标：面向 AI / 计算机方向，长期维护、相互连接、可扩展的数学知识体系。
+
+## Learning Roadmap
+
+[[Level0_Mathematical_Foundation|Level 0 - Mathematical Foundation]]
+↓
+[[Level1_Vectors_and_Matrices|Level 1 - Vectors and Matrices]]
+↓
+[[Level2_Linear_Systems|Level 2 - Linear Systems]]
+↓
+[[Level3_Vector_Spaces|Level 3 - Vector Spaces]]
+↓
+[[Level4_Orthogonality_and_Projection|Level 4 - Orthogonality and Projection]]
+↓
+[[Level5_Eigenvalues_and_Eigenvectors|Level 5 - Eigenvalues and Eigenvectors]]
+↓
+[[Level6_Matrix_Decomposition|Level 6 - Matrix Decomposition]]
+↓
+[[Level7_Linear_Algebra_in_ML|Level 7 - Linear Algebra in Machine Learning]]
+↓
+[[Level8_Linear_Algebra_in_DL|Level 8 - Linear Algebra in Deep Learning]]
+
+> 后续 Level 文件将随学习进度创建；未创建前链接暂时未解析，属于规划占位。
+
+## 核心概念（随知识库发展补充）
+
+- [[线性变换|Linear Transformation]] —— 独立笔记候选
+- [[点积|Dot Product]]
+- [[线性组合|Linear Combination]]
+- [[特征值|Eigenvalues]] —— Level 5
+- [[SVD]] —— Level 6
+- [[PCA]] —— Level 6 / 7
+
+## 入口与规范
+
+- [[README]] —— 知识库介绍
+- [[Learning_Roadmap]] —— 学习路线（Level 0–8）
+- [[config]] —— 知识库规范（长期目标 + 写作规范）
+- 子目录：Notes / Exercises / AI_Applications / Resources / Questions / Projects / Learning Log / Glossary

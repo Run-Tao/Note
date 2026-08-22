@@ -1,0 +1,33 @@
+---
+title: Personal Hub 个人知识库总览
+type: moc
+subject: personal
+level: overview
+tags:
+  - personal
+created: 2026-08-18
+---
+
+# Personal Hub 个人知识库总览
+
+> 这是一个**持续性个人知识库**：按"学科知识库 + 个人层"组织，随时间持续生长——而不是一份暑假计划。
+> 更新节奏：每周学习日志 → 每学期更新计划 → 每学期复盘能力地图。
+
+## 学科知识库
+
+- [[Linear Algebra MOC|线性代数]] —— Level 0–8，概念 → AI 应用
+- [[Mathematical Modeling MOC|数学建模]] —— Level 0–12，现实问题 → 建模 → 论文
+
+## 计划
+
+- [[Summer_Plan|Summer Plan 2026 暑假]] —— 当前执行中；开学后按学期新增计划，旧计划保留为历史存档
+- 能力地图初始版见 Summer Plan §11，每学期更新
+
+## 日志
+
+- [[Learning Log/README|学习日志]] —— 每周一篇（学了什么 / 真正懂了什么 / 卡住什么 / 下一步），月尾复盘
+
+## 其他
+
+- [[组会旁听]] —— AI Agent / 化学方向组会记录（持续）
+- [[AGENTS]] —— Vault 维护规范（含个人层的定位与维护规则）
