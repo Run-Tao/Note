@@ -73,3 +73,14 @@
 - 回复简洁：说清"做了什么、改了哪些文件、下一步是什么"即可；
 - 写入文件的内容同样克制：只写必要信息，不堆砌已有内容；
 - 需要长内容时写入文件，不在对话里展开。
+
+## 9. 执行环境与常见报错规避（2026-08-22 增补）
+
+本会话在 DSH 沙箱中运行，以下规则避免重复踩坑：
+
+- **编辑/覆盖文件前必须先 read**（含覆盖 write）；同一文件的多个修改**串行**执行，勿并发编辑同一文件（会报 `ReplaceFileW EIO`）；
+- **建目录**：不要用 PowerShell `New-Item`（沙箱拒绝），改用 write 工具写入占位文件（`.gitkeep` / `README.md`）隐式创建目录；
+- **git 全局配置**被沙箱锁定（`--global` 报 Permission denied），一律用 `--local`（仓库级 `.git/config`）；
+- **网络**：直连 GitHub 不通，必须走本地代理；git 代理与 `http.sslBackend=openssl` 已配置于 `.git/config`（沙箱 schannel 证书不可用，勿改回）；不要用 `Test-NetConnection`（慢且易超时），用 curl 快速探测；
+- **认证**：沙箱禁交互进程，git 登录弹窗/askpass 不可用（`sh.exe signal pipe` 报错）；用便携版 gh CLI（`%LOCALAPPDATA%\gh-cli\bin\gh.exe`）设备码流程 `gh auth login --web`；
+- **git 退出码误报**：PowerShell 将 git 的 stderr 输出当错误显示且 exit code=1，但**实际可能成功**；判断成功看输出关键词（`[new branch]`、`main -> main`、`Authentication complete`），而非 exit code。
