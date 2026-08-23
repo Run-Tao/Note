@@ -59,22 +59,22 @@ tags:
 
 ## 线性方程组（Level 2）
 
-| 中文 | English | 一句话 | 相关笔记 |
-| --- | --- | --- | --- |
-| 线性方程组 | linear system | $A\mathbf{x}=\mathbf{b}$ | [[Level2_Linear_Systems]] |
-| 系数矩阵 | coefficient matrix | 未知量系数组成的矩阵 $A$ | [[Level2_Linear_Systems]] |
-| 增广矩阵 | augmented matrix | $[A\mid b]$，消元同时作用于两边 | [[Level2_Linear_Systems]] |
-| 初等行变换 | elementary row operation | 换行 / 行乘非零数 / 行加另一行倍数 | [[Level2_Linear_Systems]] |
-| 高斯消元 | Gaussian elimination | 消元到行阶梯形后回代 | [[Level2_Linear_Systems]] |
-| 高斯-约旦消元 | Gauss-Jordan elimination | 消元到 RREF，解直接读出 | [[Level2_Linear_Systems]] |
-| 行阶梯形 | row echelon form (REF) | 主元逐行右移的阶梯形 | [[Level2_Linear_Systems]] |
-| 最简行阶梯形 | reduced row echelon form (RREF) | 主元为 1 且所在列其余为 0 | [[Level2_Linear_Systems]] |
-| 主元 | pivot | 每行第一个非零元 | [[Level2_Linear_Systems]] |
-| 自由变量 | free variable | 非主元列变量，取值自由 | [[Level2_Linear_Systems]] |
-| 秩 | rank | 主元个数 = 独立信息量 | [[Level2_Linear_Systems]] |
-| 齐次方程组 | homogeneous system | $A\mathbf{x}=\mathbf{0}$，解集过原点 | [[Level2_Linear_Systems]] |
-| 特解 / 通解 | particular solution / general solution | 一个具体解 / 全部解 = 特解 + 齐次通解 | [[Level2_Linear_Systems]] |
-| 超定 / 欠定 | overdetermined / underdetermined | 方程多 / 未知数多 | [[Level2_Linear_Systems]] |
+| 中文      | English                                | 一句话                            | 相关笔记                      |
+| ------- | -------------------------------------- | ------------------------------ | ------------------------- |
+| 线性方程组   | linear system                          | $A\mathbf{x}=\mathbf{b}$       | [[Level2_Linear_Systems]] |
+| 系数矩阵    | coefficient matrix                     | 未知量系数组成的矩阵 $A$                 | [[Level2_Linear_Systems]] |
+| 增广矩阵    | augmented matrix                       | $[A\mid b]$，消元同时作用于两边          | [[Level2_Linear_Systems]] |
+| 初等行变换   | elementary row operation               | 换行 / 行乘非零数 / 行加另一行倍数           | [[Level2_Linear_Systems]] |
+| 高斯消元    | Gaussian elimination                   | 消元到行阶梯形后回代                     | [[Level2_Linear_Systems]] |
+| 高斯-约旦消元 | Gauss-Jordan elimination               | 消元到 RREF，解直接读出                 | [[Level2_Linear_Systems]] |
+| 行阶梯形    | row echelon form (REF)                 | 主元逐行右移的阶梯形                     | [[Level2_Linear_Systems]] |
+| 最简行阶梯形  | reduced row echelon form (RREF)        | 主元为 1 且所在列其余为 0                | [[Level2_Linear_Systems]] |
+| 主元      | pivot                                  | 每行第一个非零元                       | [[Level2_Linear_Systems]] |
+| 自由变量    | free variable                          | 非主元列变量，取值自由                    | [[Level2_Linear_Systems]] |
+| 秩       | rank                                   | 主元个数 = 独立信息量                   | [[Level2_Linear_Systems]] |
+| 齐次方程组   | homogeneous system                     | $A\mathbf{x}=\mathbf{0}$，解集过原点 | [[Level2_Linear_Systems]] |
+| 特解 / 通解 | particular solution / general solution | 一个具体解 / 全部解 = 特解 + 齐次通解        | [[Level2_Linear_Systems]] |
+| 超定 / 欠定 | overdetermined / underdetermined       | 方程多 / 未知数多                     | [[Level2_Linear_Systems]] |
 
 ## 预告（后续 Level 展开）
 
