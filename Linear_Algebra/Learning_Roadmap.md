@@ -327,11 +327,11 @@
 
 | Level | 主题 | 状态（未开始 / 学习中 / 完成） | 笔记 | 练习 |
 | --- | --- | --- | --- | --- |
-| Level 0 | 数学基础 | ☐ | | |
-| Level 1 | 向量与矩阵 | ☐ | | |
-| Level 2 | 线性方程组 | ☐ | | |
-| Level 3 | 向量空间 | ☐ | | |
-| Level 4 | 正交与投影 | ☐ | | |
+| Level 0 | 数学基础 | 完成 | [[Level0_Mathematical_Foundation]] | |
+| Level 1 | 向量与矩阵 | 完成 | [[Level1_Vectors_and_Matrices]] | |
+| Level 2 | 线性方程组 | 完成 | [[Level2_Linear_Systems]] | |
+| Level 3 | 向量空间 | 完成 | [[Level3_Vector_Spaces]] | |
+| Level 4 | 正交与投影 | 未开始 | | |
 | Level 5 | 特征值与特征向量 | ☐ | | |
 | Level 6 | 矩阵分解 | ☐ | | |
 | Level 7 | 机器学习中的线性代数 | ☐ | | |

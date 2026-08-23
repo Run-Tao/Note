@@ -9,6 +9,7 @@
 | [[Level0_Mathematical_Foundation\|Level0_Mathematical_Foundation]] | Level 0 数学基础（数学语言 / 集合 / 映射 / 函数 / 空间维度 / 证明） | 完成 |
 | [[Level1_Vectors_and_Matrices\|Level1_Vectors_and_Matrices]] | Level 1 向量与矩阵（向量 / 线性组合 / 矩阵运算 / 线性变换 / NumPy） | 完成 |
 | [[Level2_Linear_Systems\|Level2_Linear_Systems]] | Level 2 线性方程组（Ax=b / 消元 / 秩 / 解的结构 / NumPy） | 完成 |
+| [[Level3_Vector_Spaces\|Level3_Vector_Spaces]] | Level 3 向量空间（向量空间 / 子空间 / 基与维数 / 线性变换 / 核与像 / 行列式） | 完成 |
 
 ## 写作规范
 
