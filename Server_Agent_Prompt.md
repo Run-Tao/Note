@@ -10,16 +10,17 @@
 
 ### 1. 仓库信息
 
-- 仓库地址：`https://github.com/Run-Tao/Note`（**PRIVATE 私有**）
+- 仓库地址：`git@github.com:Run-Tao/Note.git`（**SSH 访问，PRIVATE 私有**）
 - 默认分支：`main`
-- 访问认证：HTTPS + Personal Access Token（权限需含 `repo`），或 gh CLI 登录；凭据只用于 git 操作
+- 访问认证：**SSH key**（非 HTTPS/PAT），服务器上已配置私钥、公钥已添加到 GitHub 账号
 
 ### 2. 首次接入步骤
 
-1. 认证：`git config credential.helper` 已配置则直接用；否则提供 PAT；
-2. 进入本地工作副本 `D:\Run_Tao\Note`（不存在则 `git clone https://github.com/Run-Tao/Note.git`）；
-3. `git pull origin main` 同步最新；
-4. **必读两份规范（最高优先级）**：
+1. 验证 SSH 连通：`ssh -T git@github.com`（应返回 `Hi Run-Tao! ...`）；
+2. 进入本地工作副本 `D:\Run_Tao\Note`（不存在则 `git clone git@github.com:Run-Tao/Note.git`）；
+3. 确认 remote 为 SSH：`git remote -v`（应为 `git@github.com:Run-Tao/Note.git`；若为 HTTPS 则 `git remote set-url origin git@github.com:Run-Tao/Note.git`）；
+4. `git pull origin main` 同步最新；
+5. **必读两份规范（最高优先级）**：
    - `AGENTS.md` —— 项目执行规范（组织方式、写作规则、报错规避）
    - `Knowledge_Workflow.md` —— 知识工作流（Inbox → 整理 → 正式知识库）
 
@@ -62,6 +63,6 @@
 - 建目录用 write 工具写占位文件，不用 `New-Item`；
 - git 配置用 `--local`；网络走代理（`127.0.0.1:7890`），`http.sslBackend=openssl`；
 - git 的 stderr 输出不一定是错误：判断成功看关键词（`main -> main` 等），别只看 exit code；
-- 认证用 gh 设备码流程（`gh auth login --web`），git 交互弹窗不可用。
+- **SSH 访问**：git 操作走 SSH（`git@github.com`），无交互认证需求；首次验证 `ssh -T git@github.com`，确保服务器私钥可用（`~/.ssh/id_*` 权限正确、known_hosts 已收录）。
 
 ---
