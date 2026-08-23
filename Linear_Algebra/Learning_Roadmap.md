@@ -331,10 +331,10 @@
 | Level 1 | 向量与矩阵 | 完成 | [[Level1_Vectors_and_Matrices]] | |
 | Level 2 | 线性方程组 | 完成 | [[Level2_Linear_Systems]] | |
 | Level 3 | 向量空间 | 完成 | [[Level3_Vector_Spaces]] | |
-| Level 4 | 正交与投影 | 未开始 | | |
-| Level 5 | 特征值与特征向量 | ☐ | | |
-| Level 6 | 矩阵分解 | ☐ | | |
-| Level 7 | 机器学习中的线性代数 | ☐ | | |
-| Level 8 | 深度学习中的线性代数 | ☐ | | |
+| Level 4 | 正交与投影 | 完成 | [[Level4_Orthogonality_and_Projection]] | |
+| Level 5 | 特征值与特征向量 | 完成 | [[Level5_Eigenvalues_and_Eigenvectors]] | |
+| Level 6 | 矩阵分解 | 完成 | [[Level6_Matrix_Decomposition]] | |
+| Level 7 | 机器学习中的线性代数 | 完成 | [[Level7_Linear_Algebra_in_ML]] | |
+| Level 8 | 深度学习中的线性代数 | 完成 | [[Level8_Linear_Algebra_in_DL]] | |
 
 > 提示：完成一个 Level 后，在对应目录创建笔记与练习文件，并把链接填进上表。

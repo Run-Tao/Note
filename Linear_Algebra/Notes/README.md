@@ -10,6 +10,11 @@
 | [[Level1_Vectors_and_Matrices\|Level1_Vectors_and_Matrices]] | Level 1 向量与矩阵（向量 / 线性组合 / 矩阵运算 / 线性变换 / NumPy） | 完成 |
 | [[Level2_Linear_Systems\|Level2_Linear_Systems]] | Level 2 线性方程组（Ax=b / 消元 / 秩 / 解的结构 / NumPy） | 完成 |
 | [[Level3_Vector_Spaces\|Level3_Vector_Spaces]] | Level 3 向量空间（向量空间 / 子空间 / 基与维数 / 线性变换 / 核与像 / 行列式） | 完成 |
+| [[Level4_Orthogonality_and_Projection\|Level4_Orthogonality_and_Projection]] | Level 4 正交与投影（内积空间 / 投影 / 最小二乘 / Gram-Schmidt / QR） | 完成 |
+| [[Level5_Eigenvalues_and_Eigenvectors\|Level5_Eigenvalues_and_Eigenvectors]] | Level 5 特征值与特征向量（特征分解 / 对角化 / 谱定理 / 正定矩阵） | 完成 |
+| [[Level6_Matrix_Decomposition\|Level6_Matrix_Decomposition]] | Level 6 矩阵分解（LU / QR / SVD / 伪逆 / 条件数） | 完成 |
+| [[Level7_Linear_Algebra_in_ML\|Level7_Linear_Algebra_in_ML]] | Level 7 机器学习中的线性代数（回归 / 正则化 / PCA / SVM / 协方差） | 完成 |
+| [[Level8_Linear_Algebra_in_DL\|Level8_Linear_Algebra_in_DL]] | Level 8 深度学习中的线性代数（张量 / 反向传播 / 注意力 / 卷积 / LoRA） | 完成 |
 
 ## 写作规范
 

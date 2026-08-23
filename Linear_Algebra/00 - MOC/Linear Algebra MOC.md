@@ -32,7 +32,7 @@ tags:
 ↓
 [[Level8_Linear_Algebra_in_DL|Level 8 - Linear Algebra in Deep Learning]]
 
-> Level 0–3 已创建；Level 4 起为规划占位，随学习进度创建。
+> Level 0–8 全部完成（2026-08-23）。
 
 ## 核心概念（随知识库发展补充）
 
