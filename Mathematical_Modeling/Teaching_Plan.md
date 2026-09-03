@@ -53,7 +53,14 @@ created: 2026-09-02
 
 ## 进度日志
 
-### 2026-09-02（Day 0 — 立项）
+### 2026-09-03（Day 2 — NumPy 数组与向量化快速过关）
+- 备课主题：Roadmap Level 2 前置 / Level 8 底座 ——「NumPy 数组与向量化快速过关」（axis/广播/ufunc+掩码 三构件 + 循环版 vs 向量化速度对比）。
+- 教案：`Mathematical_Modeling/08 - Python/daily/2026-09-03/README.md`（含 frontmatter，按 README 10 问精简成文）。
+- 代码：`08 - Python/daily/2026-09-03/numpy_vectorization.py`，已用仓库 `.venv` 实际跑通：n=20 万向量化比 for 循环快约 26×；最小二乘闭式解一次算完，系数逼近真值 [2,3]，RMSE≈1.45（与噪声 1.5 同量级），全部断言通过。
+- 要点：打通"数组心智"——能整段一次算完就不逐元素写循环，为 Day3+ pandas/sklearn/scipy 打好速度与可读性底座。
+- 推送：已 git commit + push 到 Run-Tao/Note。
+
+### 2026-09-02（Day 0/1 — 立项 + 首个 NumPy 线性方程组闭环）
 - 建立 `.venv` 科学计算环境并跑通依赖导入；
 - `.gitignore` 补 `.venv/`、`__pycache__/`、`*.pyc`；
 - 新建本教案；确认 Note 仓库 git remote 为 `Run-Tao/Note`（SSH 认证 OK）。
