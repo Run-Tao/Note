@@ -53,6 +53,15 @@ created: 2026-09-02
 
 ## 进度日志
 
+### 2026-09-04（Day 3 — 切换模型课第 1 篇：线性规划 LP 标准建模闭环）
+- 选题调整：应学习者要求，从"工具链地基"(pandas/可视化) **直接切换到模型/算法类课程**，并改为**每日自动定时**推送。今天开优化模型口子(Level 6 第一课)：线性规划。
+- 教案：`Mathematical_Modeling/08 - Python/daily/2026-09-04/README.md`（LP 三要素 + scipy 标准形式 + 10 问成文）。
+- 代码：`08 - Python/daily/2026-09-04/lp_production.py`，仓库 `.venv` 实际跑通：最优解 (A,B)=(36,28)、利润 2200 元、机器1 影子价 ≈10 元/h，断言全过；
+- 图：`lp_feasible_region.png`（可行域 + 最优顶点），已注册系统 Noto Sans CJK 字体解决中文乱码；
+- 环境注记：PuLP 本机未装，本轮用 scipy.optimize.linprog(HiGHS) 求解，无需额外依赖；
+- 推送：已 commit + push 到 Run-Tao/Note。
+- ⚠️ 下一步：配置 cron 每日自动执行备课动作（待接线自动化）。
+
 ### 2026-09-03（Day 2 — NumPy 数组与向量化快速过关）
 - 备课主题：Roadmap Level 2 前置 / Level 8 底座 ——「NumPy 数组与向量化快速过关」（axis/广播/ufunc+掩码 三构件 + 循环版 vs 向量化速度对比）。
 - 教案：`Mathematical_Modeling/08 - Python/daily/2026-09-03/README.md`（含 frontmatter，按 README 10 问精简成文）。
