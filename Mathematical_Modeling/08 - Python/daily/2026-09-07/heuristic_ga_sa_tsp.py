@@ -4,15 +4,15 @@ subject: mathematical-modeling
 level: Level 6 - Optimization / 启发式与元启发式
 roadmap: Level 6 / 优化模型
 title: 启发式与元启发式：遗传算法(GA)+模拟退火(SA)求解 TSP 城市巡回路线
-date: 2026-09-06
-day: 6
+date: 2026-09-07
+day: 7
 goal:
     1) 用真实"多城市巡回送货/巡检"决策切入 NP-hard 的组合优化(TSP)；
     2) 说明为何精确求解器(LP/ILP/穷举)高维会炸——n=25 穷举 25!≈1.55e25；
     3) 手写遗传算法(GA)：编码+适应度+锦标赛选择+顺序交叉(OX)+变异+精英保留；
     4) 手写模拟退火(SA)：2-opt 邻域 O(1) 增量 + Metropolis 接受 + 指数降温；
     5) GA/SA 近似最优与"最近邻贪心"对比，讲清 速度↔质量(最优间隙)权衡。
-配套教案见 04 - Optimization/Day6 笔记。
+配套教案见 05 - Algorithms/Day6 笔记。
 """
 import numpy as np
 import matplotlib
@@ -252,6 +252,8 @@ ax2.set_title("元启发式收敛：遗传 GA vs 模拟退火 SA")
 ax2.legend(); ax2.grid(alpha=0.3)
 
 fig.tight_layout(); fig2.tight_layout()
-fig.savefig("routes_ga_sa.png", dpi=130)
-fig2.savefig("convergence_ga_sa.png", dpi=130)
-print("[图] 已保存 routes_ga_sa.png 与 convergence_ga_sa.png")
+import os
+_save_dir = os.path.dirname(os.path.abspath(__file__))
+fig.savefig(os.path.join(_save_dir, "routes_ga_sa.png"), dpi=130)
+fig2.savefig(os.path.join(_save_dir, "convergence_ga_sa.png"), dpi=130)
+print(f"[图] 已保存至 {_save_dir}: routes_ga_sa.png 与 convergence_ga_sa.png")
