@@ -1,0 +1,112 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "type": "shell",
+      "label": "C++: 生成活动文件 (Debug)",
+      "command": "g++",
+      "args": [
+        "-std=c++17",
+        "-Wall",
+        "-Wextra",
+        "-Wpedantic",
+        "-g",
+        "-fexec-charset=UTF-8",
+        "${file}",
+        "-o",
+        "${fileDirname}/${fileBasenameNoExtension}.exe"
+      ],
+      "options": {
+        "cwd": "${fileDirname}"
+      },
+      "problemMatcher": ["$gcc"],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "presentation": {
+        "echo": true,
+        "reveal": "silent",
+        "focus": false,
+        "panel": "shared",
+        "clear": false
+      },
+      "detail": "使用 g++ (C++17) 编译当前打开的 .cpp 文件，带调试信息与全部警告"
+    },
+    {
+      "type": "shell",
+      "label": "C++: 生成活动文件 (Release)",
+      "command": "g++",
+      "args": [
+        "-std=c++17",
+        "-Wall",
+        "-Wextra",
+        "-Wpedantic",
+        "-O2",
+        "-DNDEBUG",
+        "-fexec-charset=UTF-8",
+        "${file}",
+        "-o",
+        "${fileDirname}/${fileBasenameNoExtension}.exe"
+      ],
+      "options": {
+        "cwd": "${fileDirname}"
+      },
+      "problemMatcher": ["$gcc"],
+      "group": "build",
+      "presentation": {
+        "reveal": "silent",
+        "panel": "shared"
+      },
+      "detail": "优化构建（-O2），用于性能测试与最终程序"
+    },
+    {
+      "type": "shell",
+      "label": "C++: 生成并运行活动文件",
+      "dependsOrder": "sequence",
+      "dependsOn": ["C++: 生成活动文件 (Debug)"],
+      "command": "${fileDirname}/${fileBasenameNoExtension}.exe",
+      "options": {
+        "cwd": "${fileDirname}"
+      },
+      "problemMatcher": [],
+      "group": {
+        "kind": "build",
+        "isDefault": false
+      },
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": true,
+        "panel": "shared",
+        "clear": true
+      },
+      "detail": "编译后立即运行，输出显示在终端"
+    },
+    {
+      "type": "shell",
+      "label": "C++: 用 g++ 多文件编译（当前目录所有 .cpp）",
+      "command": "g++",
+      "args": [
+        "-std=c++17",
+        "-Wall",
+        "-Wextra",
+        "-g",
+        "-fexec-charset=UTF-8",
+        "${fileDirname}/*.cpp",
+        "-o",
+        "${fileDirname}/${fileBasenameNoExtension}.exe"
+      ],
+      "options": {
+        "cwd": "${fileDirname}"
+      },
+      "problemMatcher": ["$gcc"],
+      "group": "build",
+      "presentation": {
+        "reveal": "silent",
+        "panel": "shared"
+      },
+      "detail": "适用于一个目录下多个 .cpp 源文件的项目"
+    }
+  ]
+}
