@@ -43,6 +43,10 @@ tags:
 - [[SVD]] —— Level 6
 - [[PCA]] —— Level 6 / 7
 
+## 相关知识库
+
+- [[Advanced Mathematics MOC|高等数学]] —— 函数与映射、极限、微积分（本库 Level 0 的函数基础在此系统展开）
+
 ## 入口与规范
 
 - [[README]] —— 知识库介绍

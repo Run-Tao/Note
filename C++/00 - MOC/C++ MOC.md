@@ -34,7 +34,7 @@ tags:
 ↓
 [[Level9_Engineering_and_Practice|Level 9 - Engineering and Practice]]
 
-> 路线已建立（2026-08），笔记待逐步填充。
+> 路线已建立（2026-08）；Level 0 笔记已开始填充（2026-09）。
 
 ## 核心概念（随知识库发展补充）
 

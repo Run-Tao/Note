@@ -24,6 +24,9 @@ tags:
 | 头文件 / 源文件 | header / source file | 声明放头文件，实现放源文件 | [[Level0_Environment_and_Compilation]] |
 | 声明 / 定义 | declaration / definition | 告诉编译器存在 / 真正分配实体 | [[Level0_Environment_and_Compilation]] |
 | 未定义行为 | undefined behavior (UB) | 标准未规定结果，任何事都可能发生 | [[Level4_Memory_and_Pointers]] |
+| 冯诺依曼架构 | von Neumann architecture | 存储程序式计算机：输入 / 输出 / 存储器 / 运算器 / 控制器 | [[Level0_Environment_and_Compilation]] |
+| 流程图 | flowchart | 用图形符号描述程序控制流 | [[Level0_Environment_and_Compilation]] |
+| 盒图 / N-S 图 | Nassi–Shneiderman diagram | 用嵌套矩形表示顺序 / 选择 / 循环 | [[Level0_Environment_and_Compilation]] |
 
 ## 类型与表达式（Level 1–2）
 

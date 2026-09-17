@@ -222,6 +222,8 @@ $f(x) = y$ 有两层含义：
   - 读法错误：$g \circ f$ 是先 $f$ 后 $g$，不是先 $g$ 后 $f$；
   - 以为复合必须写出显式公式：神经网络就是这样"算不出显式公式"的复合函数。
 
+> 本站只保留线性代数所需的函数视角；**显函数 / 隐函数、反函数、奇偶 / 单调 / 有界 / 周期性**的系统梳理见高等数学库 [[Level0_Functions_and_Mappings|函数与映射]]。
+
 ## 5. 空间与维度
 
 ### 引入背景：为什么计算机科学需要高维空间
@@ -370,5 +372,6 @@ $f(x) = y$ 有两层含义：
 ## Related Notes
 
 - [[Level1_Vectors_and_Matrices|Level 1 向量与矩阵]] —— 下一章
+- [[Level0_Functions_and_Mappings|函数与映射]] —— 高等数学知识库（函数 / 反函数 / 性质）
 - [[Learning_Roadmap]] —— 学习路线
 - [[Linear Algebra MOC]] —— 知识库总览

@@ -62,6 +62,23 @@ $$
 > 解方程 = 寻找一组用量，恰好组合出 $\mathbf{b}$。
 > 这是 Level 1 中 "$A\mathbf{x}$ 是列的线性组合"的直接落地——组合系数就是解。
 
+> [!example] 系数矩阵的例子（MIT 18.06 / OCW，整理自 Inbox 2026-08-30）
+> 三元一次方程组
+> $$
+> \begin{cases}
+> 2x + 3y + 4z = 19 \\
+> 4x + 11y + 14z = 17 \\
+> 2x + 8y + 17z = 14
+> \end{cases}
+> $$
+> 可以用矩阵乘法写成 $A\mathbf{x}=\mathbf{b}$：
+> $$
+> A=\begin{pmatrix} 2 & 3 & 4 \\ 4 & 11 & 14 \\ 2 & 8 & 17 \end{pmatrix},
+> \quad \mathbf{x}=\begin{pmatrix} x \\ y \\ z \end{pmatrix},
+> \quad \mathbf{b}=\begin{pmatrix} 19 \\ 17 \\ 14 \end{pmatrix}
+> $$
+> 这里 $A$ 就是**系数矩阵**：每一行对应一个方程，每一列对应一个未知量的系数。这就是"用矩阵表示方程组"——把一整个线性方程组压缩成简洁的符号 $A\mathbf{x}=\mathbf{b}$。
+
 ### 增广矩阵 [A | b]
 
 **定义**：把系数矩阵 $A$ 与右端向量 $\mathbf{b}$ 拼成一个矩阵：

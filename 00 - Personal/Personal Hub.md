@@ -17,6 +17,7 @@ created: 2026-08-18
 
 - [[Linear Algebra MOC|线性代数]] —— Level 0–8，概念 → AI 应用
 - [[Mathematical Modeling MOC|数学建模]] —— Level 0–12，现实问题 → 建模 → 论文
+- [[Advanced Mathematics MOC|高等数学]] —— Level 0–6，函数 → 极限 → 微分 → 积分
 
 ## 计划
 
