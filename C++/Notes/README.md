@@ -15,4 +15,5 @@
 | 文件 | 内容 | 状态 |
 | --- | --- | --- |
 | [[Level0_Environment_and_Compilation]] | Level 0 环境与编译（计算机硬件与软件背景；编译链路待补充） | 学习中 |
-| （待填充） | Level 1–9 笔记 | 未开始 |
+| [[Level1_Types_and_Syntax]] | Level 1 类型与基础语法（变量 / 类型 / 初始化 / 码制 / 枚举） | 学习中 |
+| （待填充） | Level 2–9 笔记 | 未开始 |

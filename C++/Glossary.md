@@ -27,6 +27,9 @@ tags:
 | 冯诺依曼架构 | von Neumann architecture | 存储程序式计算机：输入 / 输出 / 存储器 / 运算器 / 控制器 | [[Level0_Environment_and_Compilation]] |
 | 流程图 | flowchart | 用图形符号描述程序控制流 | [[Level0_Environment_and_Compilation]] |
 | 盒图 / N-S 图 | Nassi–Shneiderman diagram | 用嵌套矩形表示顺序 / 选择 / 循环 | [[Level0_Environment_and_Compilation]] |
+| cout / cin | standard output / input stream | 标准输出 / 输入流，定义于 `<iostream>` | [[Level0_Environment_and_Compilation]] |
+| endl / flush / ends | stream manipulators | 分别插入换行 / 无 / `'\0'`，并刷新缓冲区 | [[Level0_Environment_and_Compilation]] |
+| 缓冲区 | buffer | 内存中的临时存储，刷新时写出 | [[Level0_Environment_and_Compilation]] |
 
 ## 类型与表达式（Level 1–2）
 
@@ -37,6 +40,12 @@ tags:
 | 常量表达式 | constexpr | 编译期即可求值的表达式 | [[Level5_Templates_and_Generics]] |
 | 类型推导 | type deduction | `auto` / 模板自动确定类型 | [[Level5_Templates_and_Generics]] |
 | 隐式转换 | implicit conversion | 编译器自动做的类型转换 | [[Level1_Types_and_Syntax]] |
+| 变量 | variable | 内存中被命名的存储空间 | [[Level1_Types_and_Syntax]] |
+| 数据类型 | data type | 决定大小 / 布局 / 取值范围 / 可参与的运算 | [[Level1_Types_and_Syntax]] |
+| 标识符 | identifier | 变量等的名字；字母 / 下划线开头，区分大小写 | [[Level1_Types_and_Syntax]] |
+| 直接初始化 / 列表初始化 | direct / list initialization | `int a(2)` / `int a{2}`；列表初始化禁止窄化转换 | [[Level1_Types_and_Syntax]] |
+| 原码 / 反码 / 补码 | sign-magnitude / ones' / two's complement | 整数的机器编码；现代计算机用补码 | [[Level1_Types_and_Syntax]] |
+| 枚举 / 枚举类 | enum / enum class | 一组具名整型常量；`enum class` 作用域受限 | [[Level1_Types_and_Syntax]] |
 | 引用 | reference | 变量的别名，必须绑定且不可重绑 | [[Level2_Functions_and_Scope]] |
 | 命名空间 | namespace | 避免名字冲突的作用域划分 | [[Level2_Functions_and_Scope]] |
 

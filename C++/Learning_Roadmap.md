@@ -339,8 +339,8 @@ tags:
 
 | Level | 主题 | 状态（未开始 / 学习中 / 完成） | 笔记 | 练习 |
 | --- | --- | --- | --- | --- |
-| Level 0 | 环境与编译 | 未开始 | | |
-| Level 1 | 类型与基础语法 | 未开始 | | |
+| Level 0 | 环境与编译 | 学习中 | [[Level0_Environment_and_Compilation]] | |
+| Level 1 | 类型与基础语法 | 学习中 | [[Level1_Types_and_Syntax]] | |
 | Level 2 | 函数与作用域 | 未开始 | | |
 | Level 3 | 面向对象 | 未开始 | | |
 | Level 4 | 内存与指针 | 未开始 | | |
