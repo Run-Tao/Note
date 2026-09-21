@@ -34,6 +34,16 @@ tags:
 | 有界性 | boundedness | 存在 $M$ 使 $|f(x)|\le M$ | [[Level0_Functions_and_Mappings]] |
 | 周期性 | periodicity | 存在 $T>0$ 使 $f(x+T)=f(x)$ | [[Level0_Functions_and_Mappings]] |
 
+## 极限与连续（Level 1）
+
+| 中文 | English | 一句话 | 相关笔记 |
+| --- | --- | --- | --- |
+| 数列 | sequence | 定义在正整数集上的函数 $x_n=f(n)$ | [[Level1_Limits_and_Continuity]] |
+| 数列极限 | limit of a sequence | 存在 $A$，$\forall\epsilon>0,\exists N$，$n>N$ 时 $|x_n-A|<\epsilon$ | [[Level1_Limits_and_Continuity]] |
+| 收敛 / 发散 | convergent / divergent | 极限存在 / 极限不存在 | [[Level1_Limits_and_Continuity]] |
+| ε-N 语言 | epsilon-N definition | 描述"无限接近"的严格语言 | [[Level1_Limits_and_Continuity]] |
+| 单调有界准则 | monotone convergence theorem | 单调有界数列必收敛 | [[Level1_Limits_and_Continuity]] |
+
 ## 预告（后续 Level 展开）
 
 | 中文 | English | 一句话 |

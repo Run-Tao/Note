@@ -127,7 +127,7 @@ tags:
 | Level | 主题 | 状态（未开始 / 学习中 / 完成） | 笔记 | 练习 |
 | --- | --- | --- | --- | --- |
 | Level 0 | 函数与映射基础 | 学习中 | [[Level0_Functions_and_Mappings]] | |
-| Level 1 | 极限与连续 | 未开始 | | |
+| Level 1 | 极限与连续 | 学习中 | [[Level1_Limits_and_Continuity]] | |
 | Level 2 | 导数与微分 | 未开始 | | |
 | Level 3 | 微分中值定理与导数应用 | 未开始 | | |
 | Level 4 | 不定积分与定积分 | 未开始 | | |

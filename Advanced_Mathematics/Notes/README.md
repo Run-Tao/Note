@@ -15,4 +15,5 @@
 | 文件 | 内容 | 状态 |
 | --- | --- | --- |
 | [[Level0_Functions_and_Mappings]] | Level 0 函数与映射基础（函数 / 显隐函数 / 图像 / 复合 / 映射 / 反函数 / 性质） | 学习中 |
-| （待填充） | Level 1–6 笔记 | 未开始 |
+| [[Level1_Limits_and_Continuity]] | Level 1 极限与连续（数列极限 / ε-N 定义 / 收敛性质） | 学习中 |
+| （待填充） | Level 2–6 笔记 | 未开始 |

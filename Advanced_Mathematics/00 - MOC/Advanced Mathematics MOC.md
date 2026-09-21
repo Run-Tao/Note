@@ -28,7 +28,7 @@ tags:
 ↓
 [[Level6_Series_and_ODEs|Level 6 - Series and ODEs]]
 
-> 路线已建立（2026-09）；Level 0 笔记已开始填充。
+> 路线已建立（2026-09）；Level 0–1 笔记已开始填充。
 
 ## 核心概念（随知识库发展补充）
 
@@ -42,6 +42,7 @@ tags:
 ## 未解决问题
 
 - [[Level0_Functions_and_Mappings]]：一般方程 $F(x,y)=0$ 何时能局部确定隐函数、如何求导？（待 Level 2 / Level 5）
+- [[Level1_Limits_and_Continuity|极限与连续]]：ε-N 定义下证明数列极限的例题待补。
 
 ## 入口与规范
 
