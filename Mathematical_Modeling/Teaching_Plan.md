@@ -209,6 +209,11 @@ created: 2026-09-02
 - ⚠️ 下一步：非线性规划 NLP / 启发式(遗传、模拟退火) / 聚类 等模型+算法选题陆续推进。
 
 ### 2026-09-04（Day 3 — 切换模型课第 1 篇：线性规划 LP 标准建模闭环）
+### 2026-09-21（Day 21 — TSP 精确求解：Held-Karp DP + 分支定界）
+- 交叉前作 Day6（GA/SA 近似解），本篇补"精确解"对照：NN/2-opt/Held-Karp/B&B/1-tree 五法实测。
+- 教案：`Mathematical_Modeling/05 - Algorithms/Day21 - TSP精确求解Held-Karp动态规划与分支定界.md`
+- 代码+图：`08 - Python/daily/2026-09-21/`，.venv 实跑断言全过（最优 121.146，n=8 穷举一致）。
+- 修复：cron 生成后未 push 的断点，已补提交推送。
 - 选题调整：应学习者要求，从"工具链地基"(pandas/可视化) **直接切换到模型/算法类课程**，并改为**每日自动定时**推送。今天开优化模型口子(Level 6 第一课)：线性规划。
 - 教案：`Mathematical_Modeling/08 - Python/daily/2026-09-04/README.md`（LP 三要素 + scipy 标准形式 + 10 问成文）。
 - 代码：`08 - Python/daily/2026-09-04/lp_production.py`，仓库 `.venv` 实际跑通：最优解 (A,B)=(36,28)、利润 2200 元、机器1 影子价 ≈10 元/h，断言全过；
