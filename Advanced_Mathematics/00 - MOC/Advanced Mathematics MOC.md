@@ -43,6 +43,7 @@ tags:
 
 - [[Level0_Functions_and_Mappings]]：一般方程 $F(x,y)=0$ 何时能局部确定隐函数、如何求导？（待 Level 2 / Level 5）
 - [[Level1_Limits_and_Continuity|极限与连续]]：ε-N 定义下证明数列极限的例题待补。
+- [[Level1_Limits_and_Continuity|极限与连续]]：子列与 Weierstrass 致密性定理（有界数列必有收敛子列）待补证明。
 
 ## 入口与规范
 

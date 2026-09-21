@@ -43,6 +43,11 @@ tags:
 | 收敛 / 发散 | convergent / divergent | 极限存在 / 极限不存在 | [[Level1_Limits_and_Continuity]] |
 | ε-N 语言 | epsilon-N definition | 描述"无限接近"的严格语言 | [[Level1_Limits_and_Continuity]] |
 | 单调有界准则 | monotone convergence theorem | 单调有界数列必收敛 | [[Level1_Limits_and_Continuity]] |
+| 唯一性 | uniqueness of limit | 收敛数列的极限唯一 | [[Level1_Limits_and_Continuity]] |
+| 有界性 | boundedness | 收敛 ⟹ 有界；无界 ⟹ 发散 | [[Level1_Limits_and_Continuity]] |
+| 保序性 | order preservation | A > B ⟹ 从某项起 x_n > y_n | [[Level1_Limits_and_Continuity]] |
+| 保号性 | sign preservation | A > 0 ⟹ 从某项起 x_n > 0 | [[Level1_Limits_and_Continuity]] |
+| 子列 | subsequence | 按递增下标选取；收敛数列的子列同极限 | [[Level1_Limits_and_Continuity]] |
 
 ## 预告（后续 Level 展开）
 
