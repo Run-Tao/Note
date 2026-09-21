@@ -400,3 +400,4 @@ print(rref(np.array([[1., 1., 1.], [2., 2., 3.]])))   # 最后一行 [0,0,1]：�
 - [[Level3_Vector_Spaces|Level 3 向量空间]] —— 下一章
 - [[Linear Algebra MOC]] —— 知识库总览
 - [[Learning_Roadmap]] —— 学习路线
+- [[作业1_数域与方程组]] —— 对应作业（数域判定 / 方程组解的情况）

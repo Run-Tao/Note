@@ -53,3 +53,6 @@ tags:
 - [[Learning_Roadmap]] —— 学习路线（Level 0–8）
 - [[config]] —— 知识库规范（长期目标 + 写作规范）
 - 子目录：Notes / Exercises / AI_Applications / Resources / Projects；术语表见 [[Glossary]]；学习日志见个人层 [[Learning Log/README|Learning Log]]
+## 练习与作业
+
+- [[作业1_数域与方程组]] —— 数域判定 / 线性方程组解的情况

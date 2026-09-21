@@ -53,3 +53,6 @@ tags:
 - [[Learning_Roadmap]] —— 学习路线（Level 0–9）
 - [[config]] —— 知识库规范（长期目标 + 写作规范）
 - 子目录：Notes / Exercises / Projects / Code / Resources；术语表见 [[Glossary]]；学习日志见个人层 [[Learning Log/README|Learning Log]]
+## 练习与作业
+
+- [[作业1_四位数加密]] —— 十进制取位 / bug 修正（配套代码 [[C++/Code/Level1_EncryptDigits/README|Code/Level1_EncryptDigits]]）

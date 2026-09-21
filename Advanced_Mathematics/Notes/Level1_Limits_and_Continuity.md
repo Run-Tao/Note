@@ -147,3 +147,4 @@ source: 整理自 Inbox/2026-09-20（数列极限草稿）；按高等数学教�
 - [[Level2_Derivatives_and_Differentials|Level 2 导数与微分]] —— 下一章
 - [[Learning_Roadmap]] —— 学习路线
 - [[Advanced Mathematics MOC]] —— 知识库总览
+- [[作业3_数列极限]] —— 对应作业

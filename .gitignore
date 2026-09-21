@@ -20,3 +20,23 @@ desktop.ini
 .venv/
 __pycache__/
 *.pyc
+
+# 编译中间文件 / 构建产物（2026-09 增补）
+*.exe
+*.obj
+*.o
+*.out
+*.pdb
+*.dll
+*.lib
+*.aux
+*.log
+*.synctex.gz
+*.toc
+*.fls
+*.fdb_latexmk
+*.bbl
+*.blg
+*.nav
+*.snm
+*.vrb

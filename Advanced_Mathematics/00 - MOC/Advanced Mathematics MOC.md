@@ -56,3 +56,7 @@ tags:
 
 - [[Linear Algebra MOC|线性代数]] —— 向量 / 矩阵 / 线性变换（与本库互相引用）
 - [[Mathematical Modeling MOC|数学建模]] —— 建模、优化与 Python 实践
+## 练习与作业
+
+- [[作业1_实数与函数]]、[[作业2_反函数与曲线]] —— Level 0
+- [[作业3_数列极限]] —— Level 1

@@ -7,6 +7,7 @@
 ```
 Code/
 ├── Level0_HelloWorld/
+├── Level1_EncryptDigits/
 ├── ...
 └── README.md（本文件）
 ```

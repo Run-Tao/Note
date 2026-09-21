@@ -62,6 +62,16 @@
 - 无法下载 / 仅限在线浏览的（如视频、需登录的资源）才只记录链接，并标注"仅在线"；
 - 下载位置只限各知识库 `Resources/Downloads/`，不散落在其他目录。
 
+## 6.6 作业（Homework）与编译中间文件（2026-09 增补）
+
+- **作业来源**：`D:\Run_Tao\Homework\<课程>\`（在 Vault 之外），每个课程文件夹下的 `.tex` / `.cpp` 原稿是作业素材，按课程对应到知识库：
+  - `Homework\Advanced Mathematics\` → `Advanced_Mathematics/Exercises/`
+  - `Homework\Linear Algebra\` → `Linear_Algebra/Exercises/`
+  - `Homework\C++\` → `C++/Exercises/`（完整代码放 `C++/Code/`）
+- **整理要求**：每次整理笔记时一并处理 Homework 中新增 / 更新的作业——提炼题目、解答要点、易错点与收获，写成 `作业N_主题.md`，在对应 `Exercises/README.md` 建索引，并从相关 Notes / MOC 建立 Wiki Link；
+- **复核义务**：作业中的计算错误或笔误用 `> [!warning]` 标注并给出复核结论，不要直接照抄；原始 `.tex` / `.cpp` 原件留在 Homework 目录，不移动、不删除；
+- **清理编译中间文件**：整理时顺手删除编译产物 / 中间文件，例如 `*.aux`、`*.log`、`*.out`、`*.synctex.gz`、`*.toc`、`*.fls`、`*.bbl`、`*.blg`、`*.exe`、`*.obj`、`*.o`、`*.pdb`；**保留**源码（`.tex` / `.cpp`）与成品 PDF；Vault 内的构建产物（如 `Code/` 下的 `.exe`）一并删除，并由 `.gitignore` 兜底。
+
 ## 7. 数学知识 ↔ 建模 ↔ Python 的链接
 
 - **跨库链接**：建模库引用线代库的既有笔记（如 `[[Level1_Vectors_and_Matrices]]`）；线代库的 AI 应用笔记链接到建模 / ML 相关内容；

@@ -142,3 +142,4 @@ source: 整理自 Inbox/2026-09-16（#advanced-mathematics）；按高等数学�
 - [[Learning_Roadmap]] —— 学习路线
 - [[Advanced Mathematics MOC]] —— 知识库总览
 - [[Level0_Mathematical_Foundation|线性代数 · Level 0 数学基础]] —— 集合、映射与函数的基础视角（交叉引用）
+- [[作业1_实数与函数]] / [[作业2_反函数与曲线]] —— 对应作业
