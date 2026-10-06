@@ -1,0 +1,1203 @@
+<!DOCTYPE html>
+        <html>
+        <head>
+            <meta charset="UTF-8">
+            <title>A Robust Optomotor Assay for Assessing the Efficacy of Optogenetic Tools for Vision Restoration</title>
+            <style>
+/* From extension vscode.github */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+.vscode-dark img[src$=\#gh-light-mode-only],
+.vscode-light img[src$=\#gh-dark-mode-only],
+.vscode-high-contrast:not(.vscode-high-contrast-light) img[src$=\#gh-light-mode-only],
+.vscode-high-contrast-light img[src$=\#gh-dark-mode-only] {
+	display: none;
+}
+
+/* From extension zhuangtongfa.material-theme */
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body {
+  box-sizing: border-box;
+  min-width: 200px;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body blockquote, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body blockquote, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body blockquote, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body blockquote {
+  background-color: initial;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body pre, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body pre, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body pre, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body pre {
+  color: initial;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body code, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body code, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body code, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body code {
+  color: inherit;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body pre code, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body pre code, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body pre code, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body pre code {
+  color: initial;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body code > div, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body code > div, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body code > div, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body code > div {
+  background: none;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body table th, .vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body table td, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body table th, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body table td, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body table th, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body table td, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body table th, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body table td {
+  border: 1px solid rgba(171, 178, 191, 0.5) !important;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body.showEditorSelection .code-active-line:before, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body.showEditorSelection .code-active-line:before, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body.showEditorSelection .code-active-line:before, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body.showEditorSelection .code-active-line:before {
+  border-left: none;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body.showEditorSelection .code-line:hover:before, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body.showEditorSelection .code-line:hover:before, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body.showEditorSelection .code-line:hover:before, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body.showEditorSelection .code-line:hover:before {
+  border-left: none;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body.showEditorSelection .code-line .code-line:hover:before, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body.showEditorSelection .code-line .code-line:hover:before, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body.showEditorSelection .code-line .code-line:hover:before, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body.showEditorSelection .code-line .code-line:hover:before {
+  border-left: none;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body p, .vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body blockquote, .vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body ul, .vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body ol, .vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body dl, .vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body table, .vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body pre, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body p, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body blockquote, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body ul, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body ol, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body dl, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body table, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body pre, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body p, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body blockquote, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body ul, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body ol, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body dl, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body table, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body pre, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body p, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body blockquote, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body ul, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body ol, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body dl, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body table, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body pre {
+  margin-top: 16px;
+  margin-bottom: 16px;
+}
+
+/* Generated from 'node_modules/github-markdown-css/github-markdown.css' */
+@font-face {
+  font-family: octicons-link;
+  src: url(data:font/woff;charset=utf-8;base64,d09GRgABAAAAAAZwABAAAAAACFQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABEU0lHAAAGaAAAAAgAAAAIAAAAAUdTVUIAAAZcAAAACgAAAAoAAQAAT1MvMgAAAyQAAABJAAAAYFYEU3RjbWFwAAADcAAAAEUAAACAAJThvmN2dCAAAATkAAAABAAAAAQAAAAAZnBnbQAAA7gAAACyAAABCUM+8IhnYXNwAAAGTAAAABAAAAAQABoAI2dseWYAAAFsAAABPAAAAZwcEq9taGVhZAAAAsgAAAA0AAAANgh4a91oaGVhAAADCAAAABoAAAAkCA8DRGhtdHgAAAL8AAAADAAAAAwGAACfbG9jYQAAAsAAAAAIAAAACABiATBtYXhwAAACqAAAABgAAAAgAA8ASm5hbWUAAAToAAABQgAAAlXu73sOcG9zdAAABiwAAAAeAAAAME3QpOBwcmVwAAAEbAAAAHYAAAB/aFGpk3jaTY6xa8JAGMW/O62BDi0tJLYQincXEypYIiGJjSgHniQ6umTsUEyLm5BV6NDBP8Tpts6F0v+k/0an2i+itHDw3v2+9+DBKTzsJNnWJNTgHEy4BgG3EMI9DCEDOGEXzDADU5hBKMIgNPZqoD3SilVaXZCER3/I7AtxEJLtzzuZfI+VVkprxTlXShWKb3TBecG11rwoNlmmn1P2WYcJczl32etSpKnziC7lQyWe1smVPy/Lt7Kc+0vWY/gAgIIEqAN9we0pwKXreiMasxvabDQMM4riO+qxM2ogwDGOZTXxwxDiycQIcoYFBLj5K3EIaSctAq2kTYiw+ymhce7vwM9jSqO8JyVd5RH9gyTt2+J/yUmYlIR0s04n6+7Vm1ozezUeLEaUjhaDSuXHwVRgvLJn1tQ7xiuVv/ocTRF42mNgZGBgYGbwZOBiAAFGJBIMAAizAFoAAABiAGIAznjaY2BkYGAA4in8zwXi+W2+MjCzMIDApSwvXzC97Z4Ig8N/BxYGZgcgl52BCSQKAA3jCV8CAABfAAAAAAQAAEB42mNgZGBg4f3vACQZQABIMjKgAmYAKEgBXgAAeNpjYGY6wTiBgZWBg2kmUxoDA4MPhGZMYzBi1AHygVLYQUCaawqDA4PChxhmh/8ODDEsvAwHgMKMIDnGL0x7gJQCAwMAJd4MFwAAAHjaY2BgYGaA4DAGRgYQkAHyGMF8NgYrIM3JIAGVYYDT+AEjAwuDFpBmA9KMDEwMCh9i/v8H8sH0/4dQc1iAmAkALaUKLgAAAHjaTY9LDsIgEIbtgqHUPpDi3gPoBVyRTmTddOmqTXThEXqrob2gQ1FjwpDvfwCBdmdXC5AVKFu3e5MfNFJ29KTQT48Ob9/lqYwOGZxeUelN2U2R6+cArgtCJpauW7UQBqnFkUsjAY/kOU1cP+DAgvxwn1chZDwUbd6CFimGXwzwF6tPbFIcjEl+vvmM/byA48e6tWrKArm4ZJlCbdsrxksL1AwWn/yBSJKpYbq8AXaaTb8AAHja28jAwOC00ZrBeQNDQOWO//sdBBgYGRiYWYAEELEwMTE4uzo5Zzo5b2BxdnFOcALxNjA6b2ByTswC8jYwg0VlNuoCTWAMqNzMzsoK1rEhNqByEyerg5PMJlYuVueETKcd/89uBpnpvIEVomeHLoMsAAe1Id4AAAAAAAB42oWQT07CQBTGv0JBhagk7HQzKxca2sJCE1hDt4QF+9JOS0nbaaYDCQfwCJ7Au3AHj+LO13FMmm6cl7785vven0kBjHCBhfpYuNa5Ph1c0e2Xu3jEvWG7UdPDLZ4N92nOm+EBXuAbHmIMSRMs+4aUEd4Nd3CHD8NdvOLTsA2GL8M9PODbcL+hD7C1xoaHeLJSEao0FEW14ckxC+TU8TxvsY6X0eLPmRhry2WVioLpkrbp84LLQPGI7c6sOiUzpWIWS5GzlSgUzzLBSikOPFTOXqly7rqx0Z1Q5BAIoZBSFihQYQOOBEdkCOgXTOHA07HAGjGWiIjaPZNW13/+lm6S9FT7rLHFJ6fQbkATOG1j2OFMucKJJsxIVfQORl+9Jyda6Sl1dUYhSCm1dyClfoeDve4qMYdLEbfqHf3O/AdDumsjAAB42mNgYoAAZQYjBmyAGYQZmdhL8zLdDEydARfoAqIAAAABAAMABwAKABMAB///AA8AAQAAAAAAAAAAAAAAAAABAAAAAA==) format("woff");
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body {
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  line-height: 1.5;
+  color: rgb(171, 178, 191);
+  line-height: 1.5;
+  word-wrap: break-word;
+  background: #282c34;
+  padding-top: 20px;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body .pl-c, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body .pl-c, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body .pl-c, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-c {
+  color: #6a737d;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body .pl-c1, .vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body .pl-s .pl-v, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body .pl-c1, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body .pl-s .pl-v, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body .pl-c1, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body .pl-s .pl-v, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-c1, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-s .pl-v {
+  color: #005cc5;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body .pl-e, .vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body .pl-en, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body .pl-e, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body .pl-en, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body .pl-e, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body .pl-en, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-e, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-en {
+  color: #6f42c1;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body .pl-smi, .vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body .pl-s .pl-s1, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body .pl-smi, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body .pl-s .pl-s1, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body .pl-smi, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body .pl-s .pl-s1, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-smi, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-s .pl-s1 {
+  color: #24292e;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body .pl-ent, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body .pl-ent, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body .pl-ent, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-ent {
+  color: #22863a;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body .pl-k, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body .pl-k, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body .pl-k, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-k {
+  color: #d73a49;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body .pl-s, .vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body .pl-pds, .vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body .pl-s .pl-pse .pl-s1, .vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body .pl-sr, .vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body .pl-sr .pl-cce, .vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body .pl-sr .pl-sre, .vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body .pl-sr .pl-sra, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body .pl-s, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body .pl-pds, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body .pl-s .pl-pse .pl-s1, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body .pl-sr, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body .pl-sr .pl-cce, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body .pl-sr .pl-sre, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body .pl-sr .pl-sra, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body .pl-s, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body .pl-pds, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body .pl-s .pl-pse .pl-s1, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body .pl-sr, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body .pl-sr .pl-cce, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body .pl-sr .pl-sre, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body .pl-sr .pl-sra, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-s, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-pds, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-s .pl-pse .pl-s1, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-sr, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-sr .pl-cce, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-sr .pl-sre, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-sr .pl-sra {
+  color: #032f62;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body .pl-v, .vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body .pl-smw, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body .pl-v, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body .pl-smw, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body .pl-v, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body .pl-smw, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-v, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-smw {
+  color: #e36209;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body .pl-bu, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body .pl-bu, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body .pl-bu, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-bu {
+  color: #b31d28;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body .pl-ii, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body .pl-ii, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body .pl-ii, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-ii {
+  color: #fafbfc;
+  background-color: #b31d28;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body .pl-c2, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body .pl-c2, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body .pl-c2, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-c2 {
+  color: #fafbfc;
+  background-color: #d73a49;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body .pl-c2::before, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body .pl-c2::before, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body .pl-c2::before, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-c2::before {
+  content: "^M";
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body .pl-sr .pl-cce, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body .pl-sr .pl-cce, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body .pl-sr .pl-cce, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-sr .pl-cce {
+  font-weight: bold;
+  color: #22863a;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body .pl-ml, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body .pl-ml, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body .pl-ml, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-ml {
+  color: #735c0f;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body .pl-mh, .vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body .pl-mh .pl-en, .vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body .pl-ms, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body .pl-mh, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body .pl-mh .pl-en, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body .pl-ms, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body .pl-mh, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body .pl-mh .pl-en, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body .pl-ms, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-mh, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-mh .pl-en, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-ms {
+  font-weight: bold;
+  color: #005cc5;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body .pl-mi, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body .pl-mi, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body .pl-mi, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-mi {
+  font-style: italic;
+  color: #24292e;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body .pl-mb, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body .pl-mb, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body .pl-mb, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-mb {
+  font-weight: bold;
+  color: #24292e;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body .pl-md, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body .pl-md, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body .pl-md, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-md {
+  color: #b31d28;
+  background-color: #ffeef0;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body .pl-mi1, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body .pl-mi1, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body .pl-mi1, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-mi1 {
+  color: #22863a;
+  background-color: #f0fff4;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body .pl-mc, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body .pl-mc, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body .pl-mc, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-mc {
+  color: #e36209;
+  background-color: #ffebda;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body .pl-mi2, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body .pl-mi2, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body .pl-mi2, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-mi2 {
+  color: #f6f8fa;
+  background-color: #005cc5;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body .pl-mdr, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body .pl-mdr, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body .pl-mdr, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-mdr {
+  font-weight: bold;
+  color: #6f42c1;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body .pl-ba, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body .pl-ba, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body .pl-ba, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-ba {
+  color: #586069;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body .pl-sg, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body .pl-sg, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body .pl-sg, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-sg {
+  color: #959da5;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body .pl-corl, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body .pl-corl, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body .pl-corl, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-corl {
+  text-decoration: underline;
+  color: #032f62;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body .octicon, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body .octicon, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body .octicon, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .octicon {
+  display: inline-block;
+  vertical-align: text-top;
+  fill: currentColor;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body a, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body a, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body a, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body a {
+  background-color: transparent;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body a:active, .vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body a:hover, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body a:active, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body a:hover, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body a:active, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body a:hover, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body a:active, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body a:hover {
+  outline-width: 0;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body strong, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body strong, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body strong, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body strong {
+  font-weight: inherit;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body strong, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body strong, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body strong, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body strong {
+  font-weight: bolder;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body h1, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body h1, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body h1, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h1 {
+  margin: 0.67em 0;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body img, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body img, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body img, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body img {
+  border-style: none;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body hr, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body hr, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body hr, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body hr {
+  box-sizing: content-box;
+  height: 0;
+  overflow: visible;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body input, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body input, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body input, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body input {
+  font: inherit;
+  margin: 0;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body input, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body input, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body input, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body input {
+  overflow: visible;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body [type=checkbox], .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body [type=checkbox], .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body [type=checkbox], .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body [type=checkbox] {
+  box-sizing: border-box;
+  padding: 0;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body *, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body *, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body *, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body * {
+  box-sizing: border-box;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body input, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body input, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body input, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body input {
+  font-family: inherit;
+  line-height: inherit;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body a, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body a, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body a, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body a {
+  color: #528bff;
+  text-decoration: none;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body a:hover, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body a:hover, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body a:hover, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body a:hover {
+  text-decoration: underline;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body strong, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body strong, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body strong, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body strong {
+  font-weight: 600;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body hr, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body hr, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body hr, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body hr {
+  height: 0;
+  margin: 15px 0;
+  overflow: hidden;
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid #dfe2e5;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body hr::before, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body hr::before, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body hr::before, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body hr::before {
+  display: table;
+  content: "";
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body hr::after, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body hr::after, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body hr::after, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body hr::after {
+  display: table;
+  clear: both;
+  content: "";
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body table, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body table, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body table, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body table {
+  border-spacing: 0;
+  border-collapse: collapse;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body td, .vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body th, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body td, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body th, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body td, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body th, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body td, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body th {
+  padding: 0;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body h1, .vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body h2, .vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body h3, .vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body h4, .vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body h5, .vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body h6, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body h1, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body h2, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body h3, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body h4, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body h5, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body h6, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body h1, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body h2, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body h3, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body h4, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body h5, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body h6, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h1, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h2, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h3, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h4, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h5, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h6 {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body h1, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body h1, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body h1, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h1 {
+  font-weight: 600;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body h2, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body h2, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body h2, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h2 {
+  font-weight: 600;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body h3, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body h3, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body h3, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h3 {
+  font-weight: 600;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body h4, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body h4, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body h4, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h4 {
+  font-weight: 600;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body h5, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body h5, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body h5, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h5 {
+  font-weight: 600;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body h6, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body h6, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body h6, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h6 {
+  font-weight: 600;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body p, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body p, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body p, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body p {
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body blockquote, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body blockquote, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body blockquote, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body blockquote {
+  margin: 0;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body ul, .vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body ol, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body ul, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body ol, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body ul, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body ol, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body ul, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body ol {
+  padding-left: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body ol ol, .vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body ul ol, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body ol ol, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body ul ol, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body ol ol, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body ul ol, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body ol ol, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body ul ol {
+  list-style-type: lower-roman;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body ul ul ol, .vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body ul ol ol, .vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body ol ul ol, .vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body ol ol ol, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body ul ul ol, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body ul ol ol, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body ol ul ol, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body ol ol ol, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body ul ul ol, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body ul ol ol, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body ol ul ol, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body ol ol ol, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body ul ul ol, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body ul ol ol, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body ol ul ol, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body ol ol ol {
+  list-style-type: lower-alpha;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body dd, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body dd, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body dd, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body dd {
+  margin-left: 0;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body pre, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body pre, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body pre, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body pre {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body .octicon, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body .octicon, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body .octicon, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .octicon {
+  vertical-align: text-bottom;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body .pl-0, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body .pl-0, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body .pl-0, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-0 {
+  padding-left: 0 !important;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body .pl-1, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body .pl-1, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body .pl-1, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-1 {
+  padding-left: 4px !important;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body .pl-2, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body .pl-2, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body .pl-2, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-2 {
+  padding-left: 8px !important;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body .pl-3, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body .pl-3, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body .pl-3, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-3 {
+  padding-left: 16px !important;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body .pl-4, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body .pl-4, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body .pl-4, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-4 {
+  padding-left: 24px !important;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body .pl-5, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body .pl-5, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body .pl-5, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-5 {
+  padding-left: 32px !important;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body .pl-6, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body .pl-6, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body .pl-6, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-6 {
+  padding-left: 40px !important;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body::before, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body::before, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body::before, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body::before {
+  display: table;
+  content: "";
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body::after, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body::after, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body::after, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body::after {
+  display: table;
+  clear: both;
+  content: "";
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body > *:first-child, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body > *:first-child, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body > *:first-child, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body > *:first-child {
+  margin-top: 0 !important;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body > *:last-child, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body > *:last-child, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body > *:last-child, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body > *:last-child {
+  margin-bottom: 0 !important;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body a:not([href]), .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body a:not([href]), .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body a:not([href]), .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body a:not([href]) {
+  color: inherit;
+  text-decoration: none;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body .anchor, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body .anchor, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body .anchor, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .anchor {
+  float: left;
+  padding-right: 4px;
+  margin-left: -20px;
+  line-height: 1;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body .anchor:focus, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body .anchor:focus, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body .anchor:focus, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .anchor:focus {
+  outline: none;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body p, .vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body blockquote, .vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body ul, .vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body ol, .vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body dl, .vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body table, .vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body pre, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body p, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body blockquote, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body ul, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body ol, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body dl, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body table, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body pre, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body p, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body blockquote, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body ul, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body ol, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body dl, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body table, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body pre, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body p, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body blockquote, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body ul, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body ol, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body dl, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body table, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body pre {
+  margin-top: 0;
+  margin-bottom: 16px;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body hr, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body hr, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body hr, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body hr {
+  height: 0.25em;
+  padding: 0;
+  margin: 24px 0;
+  background-color: #e1e4e8;
+  border: 0;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body blockquote, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body blockquote, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body blockquote, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body blockquote {
+  /* padding: 0 1em;
+  color: #6a737d;
+  border-left: 0.25em solid #dfe2e5; */
+  padding: 8.5px 17px;
+  margin: 1.5em 0;
+  color: #7c879c;
+  border-color: #4b5362;
+  border-width: 4px;
+  border-left: 5px solid #4b5362;
+  background: transparent;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body blockquote > :first-child, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body blockquote > :first-child, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body blockquote > :first-child, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body blockquote > :first-child {
+  margin-top: 0;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body blockquote > :last-child, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body blockquote > :last-child, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body blockquote > :last-child, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body blockquote > :last-child {
+  margin-bottom: 0;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body kbd, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body kbd, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body kbd, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body kbd {
+  display: inline-block;
+  padding: 3px 5px;
+  line-height: 10px;
+  color: #444d56;
+  vertical-align: middle;
+  background-color: #fafbfc;
+  border: solid 1px #c6cbd1;
+  border-bottom-color: #959da5;
+  border-radius: 3px;
+  box-shadow: inset 0 -1px 0 #959da5;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body h1, .vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body h2, .vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body h3, .vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body h4, .vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body h5, .vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body h6, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body h1, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body h2, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body h3, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body h4, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body h5, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body h6, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body h1, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body h2, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body h3, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body h4, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body h5, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body h6, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h1, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h2, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h3, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h4, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h5, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h6 {
+  margin-top: 24px;
+  margin-bottom: 16px;
+  font-weight: 600;
+  line-height: 1.25;
+  color: rgb(240, 240, 240);
+  border-bottom: none;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body h1 .octicon-link, .vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body h2 .octicon-link, .vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body h3 .octicon-link, .vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body h4 .octicon-link, .vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body h5 .octicon-link, .vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body h6 .octicon-link, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body h1 .octicon-link, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body h2 .octicon-link, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body h3 .octicon-link, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body h4 .octicon-link, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body h5 .octicon-link, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body h6 .octicon-link, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body h1 .octicon-link, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body h2 .octicon-link, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body h3 .octicon-link, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body h4 .octicon-link, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body h5 .octicon-link, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body h6 .octicon-link, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h1 .octicon-link, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h2 .octicon-link, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h3 .octicon-link, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h4 .octicon-link, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h5 .octicon-link, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h6 .octicon-link {
+  color: #1b1f23;
+  vertical-align: middle;
+  visibility: hidden;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body h1:hover .anchor, .vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body h2:hover .anchor, .vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body h3:hover .anchor, .vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body h4:hover .anchor, .vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body h5:hover .anchor, .vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body h6:hover .anchor, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body h1:hover .anchor, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body h2:hover .anchor, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body h3:hover .anchor, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body h4:hover .anchor, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body h5:hover .anchor, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body h6:hover .anchor, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body h1:hover .anchor, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body h2:hover .anchor, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body h3:hover .anchor, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body h4:hover .anchor, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body h5:hover .anchor, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body h6:hover .anchor, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h1:hover .anchor, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h2:hover .anchor, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h3:hover .anchor, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h4:hover .anchor, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h5:hover .anchor, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h6:hover .anchor {
+  text-decoration: none;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body h1:hover .anchor .octicon-link, .vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body h2:hover .anchor .octicon-link, .vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body h3:hover .anchor .octicon-link, .vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body h4:hover .anchor .octicon-link, .vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body h5:hover .anchor .octicon-link, .vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body h6:hover .anchor .octicon-link, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body h1:hover .anchor .octicon-link, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body h2:hover .anchor .octicon-link, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body h3:hover .anchor .octicon-link, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body h4:hover .anchor .octicon-link, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body h5:hover .anchor .octicon-link, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body h6:hover .anchor .octicon-link, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body h1:hover .anchor .octicon-link, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body h2:hover .anchor .octicon-link, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body h3:hover .anchor .octicon-link, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body h4:hover .anchor .octicon-link, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body h5:hover .anchor .octicon-link, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body h6:hover .anchor .octicon-link, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h1:hover .anchor .octicon-link, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h2:hover .anchor .octicon-link, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h3:hover .anchor .octicon-link, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h4:hover .anchor .octicon-link, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h5:hover .anchor .octicon-link, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h6:hover .anchor .octicon-link {
+  visibility: visible;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body h1, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body h1, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body h1, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h1 {
+  padding-bottom: 0.3em;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body h2, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body h2, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body h2, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h2 {
+  padding-bottom: 0.3em;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body h6, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body h6, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body h6, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h6 {
+  color: #6a737d;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body ul, .vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body ol, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body ul, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body ol, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body ul, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body ol, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body ul, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body ol {
+  padding-left: 2em;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body ul ul, .vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body ul ol, .vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body ol ol, .vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body ol ul, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body ul ul, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body ul ol, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body ol ol, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body ol ul, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body ul ul, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body ul ol, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body ol ol, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body ol ul, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body ul ul, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body ul ol, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body ol ol, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body ol ul {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body li, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body li, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body li, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body li {
+  word-wrap: break-all;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body li > p, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body li > p, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body li > p, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body li > p {
+  margin-top: 16px;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body li + li, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body li + li, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body li + li, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body li + li {
+  margin-top: 0.25em;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body dl, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body dl, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body dl, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body dl {
+  padding: 0;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body dl dt, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body dl dt, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body dl dt, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body dl dt {
+  padding: 0;
+  margin-top: 16px;
+  font-style: italic;
+  font-weight: 600;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body dl dd, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body dl dd, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body dl dd, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body dl dd {
+  padding: 0 16px;
+  margin-bottom: 16px;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body table, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body table, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body table, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body table {
+  display: block;
+  width: 100%;
+  overflow: auto;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body table th, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body table th, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body table th, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body table th {
+  font-weight: 700;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body table th, .vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body table td, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body table th, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body table td, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body table th, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body table td, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body table th, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body table td {
+  padding: 6px 13px;
+  /* border: 1px solid #dfe2e5; */
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body img, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body img, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body img, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body img {
+  max-width: 100%;
+  box-sizing: content-box;
+  display: inline-block;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body img[align=right], .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body img[align=right], .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body img[align=right], .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body img[align=right] {
+  padding-left: 20px;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body img[align=left], .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body img[align=left], .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body img[align=left], .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body img[align=left] {
+  padding-right: 20px;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body code, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body code, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body code, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body code {
+  padding: 0.2em 0.4em;
+  margin: 0;
+  background-color: #3a3f4b;
+  border-radius: 3px;
+  color: white;
+  margin: 0 1px;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body pre, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body pre, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body pre, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body pre {
+  word-wrap: normal;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body pre > code, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body pre > code, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body pre > code, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body pre > code {
+  padding: 0;
+  margin: 0;
+  word-break: normal;
+  white-space: pre;
+  background: transparent;
+  border: 0;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body .highlight, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body .highlight, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body .highlight, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .highlight {
+  margin-bottom: 16px;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body .highlight pre, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body .highlight pre, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body .highlight pre, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .highlight pre {
+  margin-bottom: 0;
+  word-break: normal;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body .highlight pre, .vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body pre, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body .highlight pre, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body pre, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body .highlight pre, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body pre, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .highlight pre, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body pre {
+  padding: 16px;
+  overflow: auto;
+  line-height: 1.45;
+  /* background-color: #f6f8fa; */
+  border-radius: 3px;
+  background-color: #31363f;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body pre code, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body pre code, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body pre code, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body pre code {
+  display: inline;
+  max-width: auto;
+  padding: 0;
+  margin: 0;
+  overflow: visible;
+  line-height: inherit;
+  word-wrap: normal;
+  background-color: transparent;
+  border: 0;
+  color: rgb(171, 178, 191);
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body .full-commit .btn-outline:not(:disabled):hover, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body .full-commit .btn-outline:not(:disabled):hover, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body .full-commit .btn-outline:not(:disabled):hover, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .full-commit .btn-outline:not(:disabled):hover {
+  color: #005cc5;
+  border-color: #005cc5;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body kbd, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body kbd, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body kbd, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body kbd {
+  display: inline-block;
+  padding: 3px 5px;
+  line-height: 10px;
+  color: #444d56;
+  vertical-align: middle;
+  background-color: #fafbfc;
+  border: solid 1px #d1d5da;
+  border-bottom-color: #c6cbd1;
+  border-radius: 3px;
+  box-shadow: inset 0 -1px 0 #c6cbd1;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body :checked + .radio-label, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body :checked + .radio-label, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body :checked + .radio-label, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body :checked + .radio-label {
+  position: relative;
+  z-index: 1;
+  border-color: #0366d6;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body .task-list-item, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body .task-list-item, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body .task-list-item, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .task-list-item {
+  list-style-type: none;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body .task-list-item + .task-list-item, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body .task-list-item + .task-list-item, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body .task-list-item + .task-list-item, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .task-list-item + .task-list-item {
+  margin-top: 3px;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body .task-list-item input, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body .task-list-item input, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body .task-list-item input, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .task-list-item input {
+  margin: 0 0.2em 0.25em -1.6em;
+  vertical-align: middle;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body hr, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body hr, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body hr, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body hr {
+  border-bottom-color: #eee;
+}
+
+/*
+
+Atom One Dark by Daniel Gamage
+Original One Dark Syntax theme from https://github.com/atom/one-dark-syntax
+
+base:    #282c34
+mono-1:  #abb2bf
+mono-2:  #818896
+mono-3:  #5c6370
+hue-1:   #56b6c2
+hue-2:   #61aeee
+hue-3:   #c678dd
+hue-4:   #98c379
+hue-5:   #e06c75
+hue-5-2: #be5046
+hue-6:   #d19a66
+hue-6-2: #e6c07b
+
+*/
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"] .hljs, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"] .hljs, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"] .hljs, .vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs {
+  display: block;
+  overflow-x: auto;
+  padding: 0.5em;
+  color: #abb2bf;
+  background: #282c34;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"] .hljs-comment,
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"] .hljs-quote, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"] .hljs-comment,
+.vscode-dark[data-vscode-theme-name="One Dark Pro Flat"] .hljs-quote, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"] .hljs-comment,
+.vscode-dark[data-vscode-theme-name="One Dark Pro Darker"] .hljs-quote, .vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-comment,
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-quote {
+  color: #5c6370;
+  font-style: italic;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"] .hljs-doctag,
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"] .hljs-keyword,
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"] .hljs-formula, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"] .hljs-doctag,
+.vscode-dark[data-vscode-theme-name="One Dark Pro Flat"] .hljs-keyword,
+.vscode-dark[data-vscode-theme-name="One Dark Pro Flat"] .hljs-formula, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"] .hljs-doctag,
+.vscode-dark[data-vscode-theme-name="One Dark Pro Darker"] .hljs-keyword,
+.vscode-dark[data-vscode-theme-name="One Dark Pro Darker"] .hljs-formula, .vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-doctag,
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-keyword,
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-formula {
+  color: #c678dd;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"] .hljs-section,
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"] .hljs-name,
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"] .hljs-selector-tag,
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"] .hljs-deletion,
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"] .hljs-subst, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"] .hljs-section,
+.vscode-dark[data-vscode-theme-name="One Dark Pro Flat"] .hljs-name,
+.vscode-dark[data-vscode-theme-name="One Dark Pro Flat"] .hljs-selector-tag,
+.vscode-dark[data-vscode-theme-name="One Dark Pro Flat"] .hljs-deletion,
+.vscode-dark[data-vscode-theme-name="One Dark Pro Flat"] .hljs-subst, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"] .hljs-section,
+.vscode-dark[data-vscode-theme-name="One Dark Pro Darker"] .hljs-name,
+.vscode-dark[data-vscode-theme-name="One Dark Pro Darker"] .hljs-selector-tag,
+.vscode-dark[data-vscode-theme-name="One Dark Pro Darker"] .hljs-deletion,
+.vscode-dark[data-vscode-theme-name="One Dark Pro Darker"] .hljs-subst, .vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-section,
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-name,
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-selector-tag,
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-deletion,
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-subst {
+  color: #e06c75;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"] .hljs-literal, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"] .hljs-literal, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"] .hljs-literal, .vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-literal {
+  color: #56b6c2;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"] .hljs-string,
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"] .hljs-regexp,
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"] .hljs-addition,
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"] .hljs-attribute,
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"] .hljs-meta-string, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"] .hljs-string,
+.vscode-dark[data-vscode-theme-name="One Dark Pro Flat"] .hljs-regexp,
+.vscode-dark[data-vscode-theme-name="One Dark Pro Flat"] .hljs-addition,
+.vscode-dark[data-vscode-theme-name="One Dark Pro Flat"] .hljs-attribute,
+.vscode-dark[data-vscode-theme-name="One Dark Pro Flat"] .hljs-meta-string, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"] .hljs-string,
+.vscode-dark[data-vscode-theme-name="One Dark Pro Darker"] .hljs-regexp,
+.vscode-dark[data-vscode-theme-name="One Dark Pro Darker"] .hljs-addition,
+.vscode-dark[data-vscode-theme-name="One Dark Pro Darker"] .hljs-attribute,
+.vscode-dark[data-vscode-theme-name="One Dark Pro Darker"] .hljs-meta-string, .vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-string,
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-regexp,
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-addition,
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-attribute,
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-meta-string {
+  color: #98c379;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"] .hljs-built_in,
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"] .hljs-class .hljs-title, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"] .hljs-built_in,
+.vscode-dark[data-vscode-theme-name="One Dark Pro Flat"] .hljs-class .hljs-title, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"] .hljs-built_in,
+.vscode-dark[data-vscode-theme-name="One Dark Pro Darker"] .hljs-class .hljs-title, .vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-built_in,
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-class .hljs-title {
+  color: #e6c07b;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"] .hljs-attr,
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"] .hljs-variable,
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"] .hljs-template-variable,
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"] .hljs-type,
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"] .hljs-selector-class,
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"] .hljs-selector-attr,
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"] .hljs-selector-pseudo,
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"] .hljs-number, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"] .hljs-attr,
+.vscode-dark[data-vscode-theme-name="One Dark Pro Flat"] .hljs-variable,
+.vscode-dark[data-vscode-theme-name="One Dark Pro Flat"] .hljs-template-variable,
+.vscode-dark[data-vscode-theme-name="One Dark Pro Flat"] .hljs-type,
+.vscode-dark[data-vscode-theme-name="One Dark Pro Flat"] .hljs-selector-class,
+.vscode-dark[data-vscode-theme-name="One Dark Pro Flat"] .hljs-selector-attr,
+.vscode-dark[data-vscode-theme-name="One Dark Pro Flat"] .hljs-selector-pseudo,
+.vscode-dark[data-vscode-theme-name="One Dark Pro Flat"] .hljs-number, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"] .hljs-attr,
+.vscode-dark[data-vscode-theme-name="One Dark Pro Darker"] .hljs-variable,
+.vscode-dark[data-vscode-theme-name="One Dark Pro Darker"] .hljs-template-variable,
+.vscode-dark[data-vscode-theme-name="One Dark Pro Darker"] .hljs-type,
+.vscode-dark[data-vscode-theme-name="One Dark Pro Darker"] .hljs-selector-class,
+.vscode-dark[data-vscode-theme-name="One Dark Pro Darker"] .hljs-selector-attr,
+.vscode-dark[data-vscode-theme-name="One Dark Pro Darker"] .hljs-selector-pseudo,
+.vscode-dark[data-vscode-theme-name="One Dark Pro Darker"] .hljs-number, .vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-attr,
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-variable,
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-template-variable,
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-type,
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-selector-class,
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-selector-attr,
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-selector-pseudo,
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-number {
+  color: #d19a66;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"] .hljs-symbol,
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"] .hljs-bullet,
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"] .hljs-link,
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"] .hljs-meta,
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"] .hljs-selector-id,
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"] .hljs-title, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"] .hljs-symbol,
+.vscode-dark[data-vscode-theme-name="One Dark Pro Flat"] .hljs-bullet,
+.vscode-dark[data-vscode-theme-name="One Dark Pro Flat"] .hljs-link,
+.vscode-dark[data-vscode-theme-name="One Dark Pro Flat"] .hljs-meta,
+.vscode-dark[data-vscode-theme-name="One Dark Pro Flat"] .hljs-selector-id,
+.vscode-dark[data-vscode-theme-name="One Dark Pro Flat"] .hljs-title, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"] .hljs-symbol,
+.vscode-dark[data-vscode-theme-name="One Dark Pro Darker"] .hljs-bullet,
+.vscode-dark[data-vscode-theme-name="One Dark Pro Darker"] .hljs-link,
+.vscode-dark[data-vscode-theme-name="One Dark Pro Darker"] .hljs-meta,
+.vscode-dark[data-vscode-theme-name="One Dark Pro Darker"] .hljs-selector-id,
+.vscode-dark[data-vscode-theme-name="One Dark Pro Darker"] .hljs-title, .vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-symbol,
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-bullet,
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-link,
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-meta,
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-selector-id,
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-title {
+  color: #61aeee;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"] .hljs-emphasis, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"] .hljs-emphasis, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"] .hljs-emphasis, .vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-emphasis {
+  font-style: italic;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"] .hljs-strong, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"] .hljs-strong, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"] .hljs-strong, .vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-strong {
+  font-weight: bold;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"] .hljs-link, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"] .hljs-link, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"] .hljs-link, .vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-link {
+  text-decoration: underline;
+}
+
+</style>
+            
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/markdown.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/highlight.css">
+<style>
+            body {
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', system-ui, 'Ubuntu', 'Droid Sans', sans-serif;
+                font-size: 14px;
+                line-height: 1.6;
+            }
+        </style>
+        <style>
+.task-list-item {
+    list-style-type: none;
+}
+
+.task-list-item-checkbox {
+    margin-left: -20px;
+    vertical-align: middle;
+    pointer-events: none;
+}
+</style>
+<style>
+:root {
+  --color-note: #0969da;
+  --color-tip: #1a7f37;
+  --color-warning: #9a6700;
+  --color-severe: #bc4c00;
+  --color-caution: #d1242f;
+  --color-important: #8250df;
+}
+
+</style>
+<style>
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-note: #2f81f7;
+    --color-tip: #3fb950;
+    --color-warning: #d29922;
+    --color-severe: #db6d28;
+    --color-caution: #f85149;
+    --color-important: #a371f7;
+  }
+}
+
+</style>
+<style>
+.markdown-alert {
+  padding: 0.5rem 1rem;
+  margin-bottom: 16px;
+  color: inherit;
+  border-left: .25em solid #888;
+}
+
+.markdown-alert>:first-child {
+  margin-top: 0
+}
+
+.markdown-alert>:last-child {
+  margin-bottom: 0
+}
+
+.markdown-alert .markdown-alert-title {
+  display: flex;
+  font-weight: 500;
+  align-items: center;
+  line-height: 1
+}
+
+.markdown-alert .markdown-alert-title .octicon {
+  margin-right: 0.5rem;
+  display: inline-block;
+  overflow: visible !important;
+  vertical-align: text-bottom;
+  fill: currentColor;
+}
+
+.markdown-alert.markdown-alert-note {
+  border-left-color: var(--color-note);
+}
+
+.markdown-alert.markdown-alert-note .markdown-alert-title {
+  color: var(--color-note);
+}
+
+.markdown-alert.markdown-alert-important {
+  border-left-color: var(--color-important);
+}
+
+.markdown-alert.markdown-alert-important .markdown-alert-title {
+  color: var(--color-important);
+}
+
+.markdown-alert.markdown-alert-warning {
+  border-left-color: var(--color-warning);
+}
+
+.markdown-alert.markdown-alert-warning .markdown-alert-title {
+  color: var(--color-warning);
+}
+
+.markdown-alert.markdown-alert-tip {
+  border-left-color: var(--color-tip);
+}
+
+.markdown-alert.markdown-alert-tip .markdown-alert-title {
+  color: var(--color-tip);
+}
+
+.markdown-alert.markdown-alert-caution {
+  border-left-color: var(--color-caution);
+}
+
+.markdown-alert.markdown-alert-caution .markdown-alert-title {
+  color: var(--color-caution);
+}
+
+</style>
+        
+        </head>
+        <body class="vscode-body vscode-light">
+            <span id="markdown-mermaid" aria-hidden="true" data-config="{&quot;darkModeTheme&quot;:&quot;vscode&quot;,&quot;lightModeTheme&quot;:&quot;vscode&quot;,&quot;maxTextSize&quot;:50000,&quot;clickDrag&quot;:&quot;alt&quot;,&quot;showControls&quot;:&quot;onHoverOrFocus&quot;,&quot;resizable&quot;:true,&quot;maxHeight&quot;:&quot;&quot;}"></span>
+				<p>::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: {#main-content .usa-layout-docs__main .usa-layout-docs .grid-col-12 .pmc-layout .pmc-prose .padding-0 role=&quot;main&quot;}
+::: {.section .pmc-journal-banner .text-center .line-height-none aria-label=&quot;Journal banner&quot;}
+<img src="https://cdn.ncbi.nlm.nih.gov/pmc/banners/logo-iovs.gif" alt="Investigative Ophthalmology &amp; Visual Science logo">{usemap=&quot;#pmc-banner-imagemap&quot; width=&quot;500&quot; height=&quot;75&quot;}
+:::</p>
+<p>::::::::::::::::::::::::::::::::::::::::: {.section aria-label=&quot;Article citation and metadata&quot;}
+::::: {.section .pmc-layout__citation .font-secondary .font-xs}
+:::: {}
+::: display-inline-block
+Invest Ophthalmol Vis Sci
+:::</p>
+<p>. 2018 Mar;59(3):1288--1294. doi: <a href="https://doi.org/10.1167/iovs.17-23278">10.1167/iovs.17-23278</a>{.usa-link .usa-link--external ga-action=&quot;click_feat_suppl&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;}
+::::</p>
+<ul>
+<li><a href="https://pmc.ncbi.nlm.nih.gov/search/?term=%22Invest%20Ophthalmol%20Vis%20Sci%22%5Bjour%5D">Search in PMC</a>{.usa-link role=&quot;menuitem&quot;}</li>
+<li><a href="https://pubmed.ncbi.nlm.nih.gov/?term=%22Invest%20Ophthalmol%20Vis%20Sci%22%5Bjour%5D">Search in PubMed</a>{.usa-link lang=&quot;en&quot; role=&quot;menuitem&quot;}</li>
+<li><a href="https://www.ncbi.nlm.nih.gov/nlmcatalog?term=%22Invest%20Ophthalmol%20Vis%20Sci%22%5BTitle%20Abbreviation%5D">View in NLM Catalog</a>{.usa-link role=&quot;menuitem&quot;}</li>
+<li><a href="?term=%22Invest%20Ophthalmol%20Vis%20Sci%22%5Bjour%5D">Add to search</a>{.usa-link role=&quot;menuitem&quot; add-to-search=&quot;true&quot;}
+:::::</li>
+</ul>
+<p>::::::::::::::::::::::::::::::::::::: {.section .front-matter}
+:::::::::::::::::::::::::::::::::::: {.ameta .p .font-secondary .font-xs}</p>
+<h1 id="a-robust-optomotor-assay-for-assessing-the-efficacy-of-optogenetic-tools-for-vision-restoration">A Robust Optomotor Assay for Assessing the Efficacy of Optogenetic Tools for Vision Restoration</h1>
+<p>:::::::::::::::::::: {.cg .p}
+<a href="https://pubmed.ncbi.nlm.nih.gov/?term=%22Lu%20Q%22%5BAuthor%5D">[Qi Lu]{.name .western}</a>{.usa-link aria-describedby=&quot;id1&quot;}</p>
+<p>:::::: {#id1 hidden=&quot;hidden&quot;}</p>
+<h3 id="qi-luname-western">[Qi Lu]{.name .western}</h3>
+<p>::: p
+^1^Department of Anatomy and Cell Biology, Wayne State University School of Medicine, Detroit, Michigan, United States
+:::</p>
+<p>::: p
+^2^Department of Ophthalmology, Kresge Eye Institute, Wayne State University School of Medicine, Detroit, Michigan, United States
+:::</p>
+<p>::: p
+Find articles by <a href="https://pubmed.ncbi.nlm.nih.gov/?term=%22Lu%20Q%22%5BAuthor%5D">[Qi Lu]{.name .western}</a>{.usa-link}
+:::
+::::::</p>
+<p>^1,2^, <a href="https://pubmed.ncbi.nlm.nih.gov/?term=%22Ganjawala%20TH%22%5BAuthor%5D">[Tushar H Ganjawala]{.name .western}</a>{.usa-link aria-describedby=&quot;id2&quot;}</p>
+<p>::::: {#id2 hidden=&quot;hidden&quot;}</p>
+<h3 id="tushar-h-ganjawalaname-western">[Tushar H Ganjawala]{.name .western}</h3>
+<p>::: p
+^1^Department of Anatomy and Cell Biology, Wayne State University School of Medicine, Detroit, Michigan, United States
+:::</p>
+<p>::: p
+Find articles by <a href="https://pubmed.ncbi.nlm.nih.gov/?term=%22Ganjawala%20TH%22%5BAuthor%5D">[Tushar H Ganjawala]{.name .western}</a>{.usa-link}
+:::
+:::::</p>
+<p>^1^, <a href="https://pubmed.ncbi.nlm.nih.gov/?term=%22Hattar%20S%22%5BAuthor%5D">[Samer Hattar]{.name .western}</a>{.usa-link aria-describedby=&quot;id3&quot;}</p>
+<p>::::: {#id3 hidden=&quot;hidden&quot;}</p>
+<h3 id="samer-hattarname-western">[Samer Hattar]{.name .western}</h3>
+<p>::: p
+^3^National Institute of Mental Health, National Institutes of Health, Bethesda, Maryland, United States
+:::</p>
+<p>::: p
+Find articles by <a href="https://pubmed.ncbi.nlm.nih.gov/?term=%22Hattar%20S%22%5BAuthor%5D">[Samer Hattar]{.name .western}</a>{.usa-link}
+:::
+:::::</p>
+<p>^3^, <a href="https://pubmed.ncbi.nlm.nih.gov/?term=%22Abrams%20GW%22%5BAuthor%5D">[Gary W Abrams]{.name .western}</a>{.usa-link aria-describedby=&quot;id4&quot;}</p>
+<p>::::: {#id4 hidden=&quot;hidden&quot;}</p>
+<h3 id="gary-w-abramsname-western">[Gary W Abrams]{.name .western}</h3>
+<p>::: p
+^2^Department of Ophthalmology, Kresge Eye Institute, Wayne State University School of Medicine, Detroit, Michigan, United States
+:::</p>
+<p>::: p
+Find articles by <a href="https://pubmed.ncbi.nlm.nih.gov/?term=%22Abrams%20GW%22%5BAuthor%5D">[Gary W Abrams]{.name .western}</a>{.usa-link}
+:::
+:::::</p>
+<p>^2^, <a href="https://pubmed.ncbi.nlm.nih.gov/?term=%22Pan%20ZH%22%5BAuthor%5D">[Zhuo-Hua Pan]{.name .western}</a>{.usa-link aria-describedby=&quot;id5&quot;}</p>
+<p>:::::: {#id5 hidden=&quot;hidden&quot;}</p>
+<h3 id="zhuo-hua-panname-western">[Zhuo-Hua Pan]{.name .western}</h3>
+<p>::: p
+^1^Department of Anatomy and Cell Biology, Wayne State University School of Medicine, Detroit, Michigan, United States
+:::</p>
+<p>::: p
+^2^Department of Ophthalmology, Kresge Eye Institute, Wayne State University School of Medicine, Detroit, Michigan, United States
+:::</p>
+<p>::: p
+Find articles by <a href="https://pubmed.ncbi.nlm.nih.gov/?term=%22Pan%20ZH%22%5BAuthor%5D">[Zhuo-Hua Pan]{.name .western}</a>{.usa-link}
+:::
+::::::</p>
+<p>^1,2,✉^
+::::::::::::::::::::</p>
+<ul>
+<li>Author information</li>
+<li>Article notes</li>
+<li>Copyright and License information</li>
+</ul>
+<p>:::::::::::::::: {.d-panels .font-secondary-light}
+::::::::: {#aip_a .d-panel .p style=&quot;display: none&quot;}
+::: {#aff1 .p}
+^1^Department of Anatomy and Cell Biology, Wayne State University School of Medicine, Detroit, Michigan, United States
+:::</p>
+<p>::: {#aff2}
+^2^Department of Ophthalmology, Kresge Eye Institute, Wayne State University School of Medicine, Detroit, Michigan, United States
+:::</p>
+<p>::: {#aff3}
+^3^National Institute of Mental Health, National Institutes of Health, Bethesda, Maryland, United States
+:::</p>
+<p>::::: {.author-notes .p}
+::: {#cor1 .fn}
+^✉^</p>
+<p>Correspondence: Zhuo-Hua Pan, Departments of Ophthalmology and Anatomy and Cell Biology, Wayne State University School of Medicine, 540 E Canfield Avenue, Detroit, MI 48201, USA; <a href="mailto:zhpan@med.wayne.edu">zhpan@med.wayne.edu</a>.
+:::</p>
+<p>::: {#<em>fncrsp93pmc</em>_ .fn}
+^✉^</p>
+<p>Corresponding author.
+:::
+:::::
+:::::::::</p>
+<p>::::: {#anp_a .d-panel .p style=&quot;display: none&quot;}
+:::: {.notes .p}
+::: {#historyarticle-meta1 .section .history}
+Received 2017 Nov 2; Accepted 2018 Feb 3.
+:::
+::::
+:::::</p>
+<p>::::: {#clp_a .d-panel .p style=&quot;display: none&quot;}
+::: {}
+Copyright 2018 The Authors
+:::</p>
+<p>This work is licensed under a Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License.</p>
+<p>::: p
+<a href="/about/copyright/">PMC Copyright notice</a>{.usa-link}
+:::
+:::::
+::::::::::::::::</p>
+<p>::: {}
+PMCID: PMC5839255  PMID: <a href="https://pubmed.ncbi.nlm.nih.gov/29625451/">29625451</a>{.usa-link}
+:::
+::::::::::::::::::::::::::::::::::::
+:::::::::::::::::::::::::::::::::::::
+:::::::::::::::::::::::::::::::::::::::::</p>
+<p>:::::::::::::::::::::::::::::::::::::::::::::::::::: {.section aria-label=&quot;Article content&quot;}
+::::::::::::::::::::::::::::::::::::::::::::::::::: {.section .body .main-article-body}
+:::::::: {#abstract1 .section .abstract}</p>
+<h2 id="abstract">Abstract</h2>
+<p>::: {#st1 .section}</p>
+<h3 id="purpose-purpose-pmc_sec_title">Purpose {#purpose .pmc_sec_title}</h3>
+<p>To develop an animal behavioral assay for the quantitative assessment of the functional efficacy of optogenetic therapies.
+:::</p>
+<p>::: {#st2 .section}</p>
+<h3 id="methods-methods-pmc_sec_title">Methods {#methods .pmc_sec_title}</h3>
+<p>A triple-knockout (TKO) mouse line, Gnat1^−/−^Cnga3^−/−^Opn4^−/−^, and a double-knockout mouse line, Gnat1^−/−^Cnga3^−/−^, were employed. The expression of channelrhodopsin-2 (ChR2) and its three more light-sensitive mutants, ChR2-L132C, ChR2-L132C/T159C, and ChR2-132C/T159S, in inner retinal neurons was achieved using rAAV2 vectors via intravitreal delivery. Pupillary constriction was assessed by measuring the pupil diameter. The optomotor response (OMR) was examined using a homemade optomotor system equipped with light-emitting diodes as light stimulation.
+:::</p>
+<p>::: {#st3 .section}</p>
+<h3 id="results-results-pmc_sec_title">Results {#results .pmc_sec_title}</h3>
+<p>A robust OMR was restored in the ChR2-mutant-expressing TKO mice; however, significant pupillary constriction was observed only for the ChR2-L132C/T159S mutant. The ability to evoke an OMR was dependent on both the light intensity and grating frequency. The most light-sensitive frequency for the three ChR2 mutants was approximately 0.042 cycles per degree. Among the three ChR2 mutants, ChR2-L132C/T159S was the most light sensitive, followed by ChR2-L132C/T159C and ChR2-L132C. Melanopsin-mediated pupillary constriction resulted in a substantial reduction in the light sensitivity of the ChR2-mediated OMR.
+:::</p>
+<p>::: {#st4 .section}</p>
+<h3 id="conclusions-conclusions-pmc_sec_title">Conclusions {#conclusions .pmc_sec_title}</h3>
+<p>The OMR assay using TKO mice enabled the quantitative assessment of the efficacy of different optogenetic tools and the properties of optogenetically restored vision. Thus, the assay can serve as a valuable tool for developing effective optogenetic therapies.
+:::</p>
+<p>::: {#kwd-group1 .section .kwd-group}
+<strong>Keywords:</strong> optomotor response, optogenetics, vision restoration
+:::
+::::::::</p>
+<hr>
+<p>Optogenetic approaches have shown promise for restoring vision in blindness caused by retinal degenerative diseases, such as retinitis pigmentosa and age-related macular degeneration, by resensitizing the surviving inner retinal neurons following photoreceptor cell death.^<a href="#i1552-5783-59-3-1288-b01">1</a>{.usa-link aria-describedby=&quot;i1552-5783-59-3-1288-b01&quot;},<a href="#i1552-5783-59-3-1288-b02">2</a>{.usa-link aria-describedby=&quot;i1552-5783-59-3-1288-b02&quot;}^ Since the first demonstration of the feasibility of this approach using channelrhodopsin-2 (ChR2),^<a href="#i1552-5783-59-3-1288-b03">3</a>{.usa-link aria-describedby=&quot;i1552-5783-59-3-1288-b03&quot;}^ sustained efforts have been made to develop more efficient optogenetic tools, particularly to overcome the low light sensitivity of native ChR2; these efforts include engineering more light-sensitive and/or redshifted channelrhodopsins,^<a href="#i1552-5783-59-3-1288-b04">4</a>{.usa-link aria-describedby=&quot;i1552-5783-59-3-1288-b04&quot;}--<a href="#i1552-5783-59-3-1288-b10">10</a>{.usa-link aria-describedby=&quot;i1552-5783-59-3-1288-b10&quot;}^ using melanopsin and vertebrate or human rhodopsin,^<a href="#i1552-5783-59-3-1288-b11">11</a>{.usa-link aria-describedby=&quot;i1552-5783-59-3-1288-b11&quot;}--<a href="#i1552-5783-59-3-1288-b13">13</a>{.usa-link aria-describedby=&quot;i1552-5783-59-3-1288-b13&quot;}^ and creating novel optogenetic receptors.^<a href="#i1552-5783-59-3-1288-b14">14</a>{.usa-link aria-describedby=&quot;i1552-5783-59-3-1288-b14&quot;}--<a href="#i1552-5783-59-3-1288-b16">16</a>{.usa-link aria-describedby=&quot;i1552-5783-59-3-1288-b16&quot;}^ The restoration of vision has been evaluated through various methods, such as in vitro retinal electrophysiological recordings, visually evoked potentials or optical imaging recordings of the visual cortex, and visual behavioral tests.^<a href="#i1552-5783-59-3-1288-b03">3</a>{.usa-link aria-describedby=&quot;i1552-5783-59-3-1288-b03&quot;},<a href="#i1552-5783-59-3-1288-b11">11</a>{.usa-link aria-describedby=&quot;i1552-5783-59-3-1288-b11&quot;},<a href="#i1552-5783-59-3-1288-b16">16</a>{.usa-link aria-describedby=&quot;i1552-5783-59-3-1288-b16&quot;}--<a href="#i1552-5783-59-3-1288-b19">19</a>{.usa-link aria-describedby=&quot;i1552-5783-59-3-1288-b19&quot;}^ However, an assay that enables the quantitative assessment of the efficacy of optogenetic tools for vision restoration remains lacking.</p>
+<p>Behavioral assessments of restored visual function would provide important information regarding the efficacy of optogenetic tools. Several animal behavioral tests have been used to assess optogenetically restored vison, such as dark/light avoidance,^<a href="#i1552-5783-59-3-1288-b11">11</a>{.usa-link aria-describedby=&quot;i1552-5783-59-3-1288-b11&quot;},<a href="#i1552-5783-59-3-1288-b20">20</a>{.usa-link aria-describedby=&quot;i1552-5783-59-3-1288-b20&quot;}^ locomotion,^<a href="#i1552-5783-59-3-1288-b10">10</a>{.usa-link aria-describedby=&quot;i1552-5783-59-3-1288-b10&quot;}^ optomotor response (OMR),^<a href="#i1552-5783-59-3-1288-b09">9</a>{.usa-link aria-describedby=&quot;i1552-5783-59-3-1288-b09&quot;},<a href="#i1552-5783-59-3-1288-b16">17</a>{.usa-link aria-describedby=&quot;i1552-5783-59-3-1288-b16&quot;}--<a href="#i1552-5783-59-3-1288-b19">19</a>{.usa-link aria-describedby=&quot;i1552-5783-59-3-1288-b19&quot;}^ and water maze.^<a href="#i1552-5783-59-3-1288-b21">21</a>{.usa-link aria-describedby=&quot;i1552-5783-59-3-1288-b21&quot;}^ The OMR assay has several advantages. First, the OMR is a reflex behavior; therefore, the assay does not require reinforcement animal training. Second, this method provides quantitative information regarding the restoration of vision function.^<a href="#i1552-5783-59-3-1288-b22">22</a>{.usa-link aria-describedby=&quot;i1552-5783-59-3-1288-b22&quot;}^ However, although the ability to optogenetically restore the OMR has been reported,^<a href="#i1552-5783-59-3-1288-b09">9</a>{.usa-link aria-describedby=&quot;i1552-5783-59-3-1288-b09&quot;},<a href="#i1552-5783-59-3-1288-b16">16</a>{.usa-link aria-describedby=&quot;i1552-5783-59-3-1288-b16&quot;}--<a href="#i1552-5783-59-3-1288-b19">19</a>{.usa-link aria-describedby=&quot;i1552-5783-59-3-1288-b19&quot;},<a href="#i1552-5783-59-3-1288-b23">23</a>{.usa-link aria-describedby=&quot;i1552-5783-59-3-1288-b23&quot;},<a href="#i1552-5783-59-3-1288-b24">24</a>{.usa-link aria-describedby=&quot;i1552-5783-59-3-1288-b24&quot;}^ the properties of the restored OMR are not completely clear. In addition, most previous studies were conducted using animal models with severe retinal degeneration (<em>rd</em>). As the severity and time-course of retinal remodeling triggered by photoreceptor cell death depend on both the etiology of retinal degeneration and the genetic background of the animal model,^<a href="#i1552-5783-59-3-1288-b25">25</a>{.usa-link aria-describedby=&quot;i1552-5783-59-3-1288-b25&quot;},<a href="#i1552-5783-59-3-1288-b26">26</a>{.usa-link aria-describedby=&quot;i1552-5783-59-3-1288-b26&quot;}^ and as the status of retinal remodeling may profoundly affect the outcome,^<a href="#i1552-5783-59-3-1288-b27">27</a>{.usa-link aria-describedby=&quot;i1552-5783-59-3-1288-b27&quot;},<a href="#i1552-5783-59-3-1288-b28">28</a>{.usa-link aria-describedby=&quot;i1552-5783-59-3-1288-b28&quot;}^ comparing the results obtained using <em>rd</em> models and/or under different experimental conditions is often difficult. Thus, to evaluate and compare the efficacy of optogenetic tools, the use of a blind animal model without significant retinal remodeling would be advantageous.</p>
+<p>In this study, we report an OMR assay using a triple-knockout (TKO) mouse line, B6129:Gnat1^−/−^Cnga3^−/−^Opn4^−/−^,^<a href="#i1552-5783-59-3-1288-b29">29</a>{.usa-link aria-describedby=&quot;i1552-5783-59-3-1288-b29&quot;}^ which lacks the OMR, pupillary constriction, and apparent photoreceptor cell death. We show that a robust and long-term stable OMR was restored using highly light-sensitive ChR2 mutants in the TKO mice. This assay enabled the quantitative assessment of optogenetically restored visual function and a comparison of the efficacy of different optogenetic tools.</p>
+<p>:::::::: {#s2 .section}</p>
+<h2 id="methods-methods-1-pmc_sec_title">Methods {#methods-1 .pmc_sec_title}</h2>
+<p>::: {#s2a .section}</p>
+<h3 id="animal-models-animal-models-pmc_sec_title">Animal Models {#animal-models .pmc_sec_title}</h3>
+<p>A TKO mouse line, B6129:Gnat1^−/−^Cnga3^−/−^Opn4^−/−^, which lacked a rod-specific transducing unit,^<a href="#i1552-5783-59-3-1288-b30">30</a>{.usa-link aria-describedby=&quot;i1552-5783-59-3-1288-b30&quot;}^ a cone photoreceptor-specific cyclic nucleotide channel subunit,^<a href="#i1552-5783-59-3-1288-b31">31</a>{.usa-link aria-describedby=&quot;i1552-5783-59-3-1288-b31&quot;}^ and melanopsin,^<a href="#i1552-5783-59-3-1288-b32">32</a>{.usa-link aria-describedby=&quot;i1552-5783-59-3-1288-b32&quot;}^ was transferred from Johns Hopkins University to Wayne State University. The double-knockout mouse line, B6129: Gnat1^−/−^Cnga3^−/−^, was kindly provided by Daoqi Zhang, PhD, at Oakland University. All animal experiments and procedures adhered to the ARVO Statement for the Use of Animals in Ophthalmic and Vision Research, were approved by the Institutional Animal Care and Use Committee of Wayne State University, and were performed in accordance with the NIH Guide for the Care and Use of Laboratory Animals.
+:::</p>
+<p>::: {#s2b .section}</p>
+<h3 id="viral-vectors-and-virus-injection-viral-vectors-and-virus-injection-pmc_sec_title">Viral Vectors and Virus Injection {#viral-vectors-and-virus-injection .pmc_sec_title}</h3>
+<p>rAAV2 vectors carrying a fusion construct of ChR2 or ChR2 mutants and green fluorescent protein (GFP) and driven by a CAG (a hybrid cytomegalovirus early-enhancer/chicken β-actin) promoter have been reported previously.^<a href="#i1552-5783-59-3-1288-b08">8</a>{.usa-link aria-describedby=&quot;i1552-5783-59-3-1288-b08&quot;}^ Viral vectors were packaged and affinity purified by Virovek (Hayward, CA, USA). Virus injections were performed on mice between 1 and 2 months of age, as previously described.^<a href="#i1552-5783-59-3-1288-b03">3</a>{.usa-link aria-describedby=&quot;i1552-5783-59-3-1288-b03&quot;}^ Briefly, the animal was anesthetized via an intraperitoneal injection of a mixture of 120 mg/kg ketamine and 15 mg/kg xylazine. Under a dissecting microscope, a small perforation was made in the temporal sclera region with a sharp needle. Viral vectors of 1.5 μL diluted in saline at a titer of 5 × 10^12^ vector genomes per milliliter (vg/mL) or vehicle (saline) were injected into the intravitreal space through the perforation with a 32-gauge blunt Hamilton syringe. Both eyes were injected in each animal. Animal behavior testing was performed at least 1 month after virus injection.
+:::</p>
+<p>::: {#s2c .section}</p>
+<h3 id="fluorescence-imaging-and-immunochemistry-fluorescence-imaging-and-immunochemistry-pmc_sec_title">Fluorescence Imaging and Immunochemistry {#fluorescence-imaging-and-immunochemistry .pmc_sec_title}</h3>
+<p>Animals were deeply anesthetized with CO~2~ and decapitated. Enucleated eyes were fixed in 4% paraformaldehyde at room temperature for 20 minutes. The expression of GFP in the retina was examined in retinal whole mounts and vertical sections. For the whole mounts, the retina was dissected free in PB solution and flat mounted on slides; GFP fluorescence images were obtained without antibody enhancement. For the vertical sections, the retinas were cryoprotected in a sucrose gradient (10%, 20%, and 30% wt/vol in PB, respectively). Cryostat sections were cut at 16 μm. GFP fluorescence was enhanced by antibody. For immunostaining, retinal vertical sections were blocked for 1 hour in 5% membrane-blocking agent (Chemiblocker; Chemicon, Brica, MA, USA), 0.5% Triton X-100, and 0.05% sodium azide (Sigma Aldrich Corp., St. Louis, MO, USA). The primary antibody, mouse anti-GFP (1:1000; Neuromab, Davis, CA, USA) or rabbit anti-GFP (1:1000; Neuromab), was diluted in the same blocking solution and applied overnight, followed by incubation (1 hour) in the secondary antibody, which was conjugated to Alexa Fluor 488 (1:600, green fluorescence; Thermo Fisher Scientific, Walthem, MA, USA). All images were acquired using a microscope with an attachment (Zeiss Axioplan 2 with ApoTome; Carl Zeiss, Oberkochen, Germany) and software (AxioVision; Carl Zeiss). Image projections were constructed by collapsing individual Z-stacks of optical sections onto a single plane using software (ZEN; Carl Zeiss).
+:::</p>
+<p>::: {#s2d .section}</p>
+<h3 id="measurement-of-pupillary-constriction-measurement-of-pupillary-constriction-pmc_sec_title">Measurement of Pupillary Constriction {#measurement-of-pupillary-constriction .pmc_sec_title}</h3>
+<p>During the measurements, the animals were restrained by hand under a blue light-emitting diode (LED) with a peak wavelength of 470 nm. The light intensity was 3 × 10^15^ photons/cm^2^s, which was measured at the level of the mouse eyes. The direct pupillary light reflex was measured for one eye in each animal. Multiple images were acquired within a 10-second span using a digital camera to measure the normalized pupil area.
+:::</p>
+<p>::: {#s2e .section}</p>
+<h3 id="optomotor-system-optomotor-system-pmc_sec_title">Optomotor System {#optomotor-system .pmc_sec_title}</h3>
+<p>The homemade optomotor system is shown in <a href="#i1552-5783-59-3-1288-f01">Figure 1</a>{.usa-link}. The light stimulus was generated by blue LEDs (SuperLightingLED, <a href="http://www.superlightingled.com">www.superlightingled.com</a>{.usa-link .usa-link--external ga-action=&quot;click_feat_suppl&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;}, in the public domain) with a wavelength range of 465--475 nm mounted on the inner face of a wooden cylinder (40 cm diameter × 51 cm height). The light intensity of the LEDs, controlled by voltage, reached a maximum of 1 × 10^16^ photons/cm^2^s when measured at the center of the platform. A series of exchangeable drums (30 cm diameter × 30 cm height) were made by marking strips on the wall of acrylic cylinders at spatial frequencies of 0.031, 0.042, 0.064, 0.092, 0.130, and 0.192 cycles per degree. The drums were covered with light-diffuser film. Rotation of the drum was controlled by a digital motor and set at four rotations per minute.^<a href="#i1552-5783-59-3-1288-b18">18</a>{.usa-link aria-describedby=&quot;i1552-5783-59-3-1288-b18&quot;}^ During testing, unrestrained animals were placed on a central platform (6.5-cm diameter) positioned 11.5 cm above the floor. A video camera was mounted above the apparatus for animal behavior monitoring and video capture.</p>
+<figure id="i1552-5783-59-3-1288-f01" class="fig xbox font-sm">
+<h4 id="figure-1." class="obj_head">Figure 1.</h4>
+<p><img src="https://cdn.ncbi.nlm.nih.gov/pmc/blobs/ef9f/5839255/72a8be5b3fc7/i1552-5783-59-3-1288-f01.jpg" class="graphic" loading="lazy" width="683" height="282" alt="Figure 1" /></p>
+<div class="p text-right font-secondary">
+<a href="figure/i1552-5783-59-3-1288-f01/" class="usa-link" target="_blank" rel="noopener noreferrer">Open in a new tab</a>
+</div>
+<figcaption><p>The homemade optomotor system. (A) Schematic side view. (B) A top view photograph.</p></figcaption>
+</figure>
+<p>To determine the threshold light intensity at each grating frequency, the ability to elicit head tracking in each animal in response to drum rotation was assessed starting at a relatively high light intensity. Head tracking was tested for both clockwise and counterclockwise directions. Once tracking was confirmed, the light intensity was systematically decreased to determine the lowest light intensity that elicited tracking behavior. Data for the two directions of drum rotation for each animal were treated as two independent data points in the data analysis. All data are expressed as the mean ± SD, with <em>n</em> indicating the number of animals unless otherwise specified.
+:::
+::::::::</p>
+<p>::::::: {#s3 .section}</p>
+<h2 id="results-results-1-pmc_sec_title">Results {#results-1 .pmc_sec_title}</h2>
+<p>::: {#s3a .section}</p>
+<h3 id="expression-of-chr2-gfp-in-the-retina-of-tko-mice-expression-of-chr2-gfp-in-the-retina-of-tko-mice-pmc_sec_title">Expression of ChR2-GFP in the Retina of TKO Mice {#expression-of-chr2-gfp-in-the-retina-of-tko-mice .pmc_sec_title}</h3>
+<p>We previously characterized several ChR2 mutants with improved light sensitivity in the mouse retina based on in vitro electrophysiological recordings.^<a href="#i1552-5783-59-3-1288-b08">8</a>{.usa-link aria-describedby=&quot;i1552-5783-59-3-1288-b08&quot;}^ In particular, the light sensitivities of three ChR2 mutants, ChR2-L132C, ChR2-L132C/T159C (ChR2-C/C), and ChR2-132C/T159S (ChR2-C/S), were ∼1, 1.5, and 2 log units higher than wild-type ChR2 (wt-ChR2), respectively. Therefore, these three ChR2 mutants along with the wt-ChR2 (together referred to as ChR2s) were used for the current study. The expression of ChR2s fused with GFP in the retina of the TKO mice was delivered by rAAV2 vectors using the same virus cassette with a CAG promoter via intravitreal injection.^<a href="#i1552-5783-59-3-1288-b03">3</a>{.usa-link aria-describedby=&quot;i1552-5783-59-3-1288-b03&quot;}^ Robust expression was observed for all ChR2s in the retina as previously reported.^<a href="#i1552-5783-59-3-1288-b08">8</a>{.usa-link aria-describedby=&quot;i1552-5783-59-3-1288-b08&quot;}^ As shown in the representative images of ChR2-C/S in <a href="#i1552-5783-59-3-1288-f02">Figure 2</a>{.usa-link}, the expression of GFP was observed throughout the retina (<a href="#i1552-5783-59-3-1288-f02">Figs. 2</a>{.usa-link}A, <a href="#i1552-5783-59-3-1288-f02">2</a>{.usa-link}B). In the retinal vertical sections (<a href="#i1552-5783-59-3-1288-f02">Figs. 2</a>{.usa-link}C, <a href="#i1552-5783-59-3-1288-f02">2</a>{.usa-link}D), GFP expression was predominantly observed in retinal ganglion cells (RGCs), as well as some amacrine cells and horizontal cells, as evidenced by their somas located in the proximal and distal margins of the inner nuclear layer, respectively. GFP expression was also occasionally observed in Müller cells (data not shown); however, it was mostly absent in bipolar cells. ChR2-C/S-GFP expression was stable for up to at least 1 year, the longest period examined in the current study. Furthermore, as previously reported,^<a href="#i1552-5783-59-3-1288-b29">29</a>{.usa-link aria-describedby=&quot;i1552-5783-59-3-1288-b29&quot;}^ the overall retinal morphology for the TKO mice was largely normal, including the preservation of photoreceptors (<a href="#i1552-5783-59-3-1288-f02">Fig. 2</a>{.usa-link}E).</p>
+<figure id="i1552-5783-59-3-1288-f02" class="fig xbox font-sm">
+<h4 id="figure-2." class="obj_head">Figure 2.</h4>
+<p><img src="https://cdn.ncbi.nlm.nih.gov/pmc/blobs/ef9f/5839255/8cd520f84ae0/i1552-5783-59-3-1288-f02.jpg" class="graphic" loading="lazy" width="570" height="373" alt="Figure 2" /></p>
+<div class="p text-right font-secondary">
+<a href="figure/i1552-5783-59-3-1288-f02/" class="usa-link" target="_blank" rel="noopener noreferrer">Open in a new tab</a>
+</div>
+<figcaption><p>Stable long-term expression of ChR2s-GFP in the retina of TKO mice. (A, B) Representative GFP fluorescence images obtained from retinal whole mounts at low (A) and high (B) magnification with the focal plane at the retinal ganglion cell layer. (C) A representative transmission image obtained from the retinal vertical section. Retinal morphology was normal, including the presence of photoreceptor cells. (D) A representative GFP fluorescence image obtained from the retinal vertical section. GFP expression was observed in cells located in the ganglion cell layer, the proximal and distal margins of the inner nuclear layer, and both the inner and outer plexiform layers. (E) Light microscope image of a semi-thin vertical retinal section. All images were obtained from mice 12 months after the injection of ChR2-C/S-GFP viral vectors. OSL, outer segment layer; ISL, inner segment layer; ONL, outer nuclear layer; OPL, outer plexiform layer; INL, inner nuclear layer; IPL, inner plexiform layer; GCL, ganglion cell layer.</p></figcaption>
+</figure>
+:::
+<p>::: {#s3b .section}</p>
+<h3 id="effect-of-expressing-chr2s-on-pupillary-constriction-effect-of-expressing-chr2s-on-pupillary-constriction-pmc_sec_title">Effect of Expressing ChR2s on Pupillary Constriction {#effect-of-expressing-chr2s-on-pupillary-constriction .pmc_sec_title}</h3>
+<p>TKO mice lack the light pupillary reflex, and the pupils of the mice are wide open.^<a href="#i1552-5783-59-3-1288-b29">29</a>{.usa-link aria-describedby=&quot;i1552-5783-59-3-1288-b29&quot;}^ We first examined whether the expression of ChR2s restores pupillary constriction. It is interesting that significant pupillary constriction in response to light stimulation (3 × 10^15^ photons/cm^2^s; 470 nm) was observed only in the ChR2-C/S--injected mice and not in the other ChR2s-injected mice (<a href="#i1552-5783-59-3-1288-f03">Figs. 3</a>{.usa-link}A, <a href="#i1552-5783-59-3-1288-f03">3</a>{.usa-link}B). The application of atropine blocked ChR2-C/S--mediated pupillary constriction.</p>
+<figure id="i1552-5783-59-3-1288-f03" class="fig xbox font-sm">
+<h4 id="figure-3." class="obj_head">Figure 3.</h4>
+<p><img src="https://cdn.ncbi.nlm.nih.gov/pmc/blobs/ef9f/5839255/db70cb66b03c/i1552-5783-59-3-1288-f03.jpg" class="graphic" loading="lazy" width="694" height="289" alt="Figure 3" /></p>
+<div class="p text-right font-secondary">
+<a href="figure/i1552-5783-59-3-1288-f03/" class="usa-link" target="_blank" rel="noopener noreferrer">Open in a new tab</a>
+</div>
+<figcaption><p>Comparison of pupillary constriction in TKO mice expressing the wt-ChR2 and three ChR2 mutants. (A) Representative images for vehicle-injected mice and mice expressing wt-ChR2, ChR2-L132C, ChR2-C/C, and ChR2-C/S in response to light stimulation. (B) Significant pupil constriction was observed only in ChR2-C/S viral vector–injected mice. Application of atropine completely blocked pupil constriction. Light intensity: 3 × 10<sup>15</sup> photons/cm<sup>2</sup>s with blue LED illumination (470 nm). Data are expressed as the mean ± SD, n = 4–7 eyes. ***P &lt; 0.001.</p></figcaption>
+</figure>
+:::
+<p>::: {#s3c .section}</p>
+<h3 id="restoration-of-omr-in-tko-mice-restoration-of-omr-in-tko-mice-pmc_sec_title">Restoration of OMR in TKO Mice {#restoration-of-omr-in-tko-mice .pmc_sec_title}</h3>
+<p>TKO mice also lack an OMR.^<a href="#i1552-5783-59-3-1288-b33">33</a>{.usa-link aria-describedby=&quot;i1552-5783-59-3-1288-b33&quot;}^ We next examined whether the expression of ChR2s restores the OMR. We first confirmed the total absence of an OMR to our optomotor system up to a light intensity of 1 × 10^16^ photons/cm^2^s in uninjected (<em>n</em> = 6) or vehicle-injected TKO mice (<em>n</em> = 4; <a href="#iovs-59-02-45_s01">Supplementary Video S1</a>{.usa-link}). In contrast, robust head tracking following the rotation of the grating drum was observed for all ChR2-mutant-injected mice (<a href="#iovs-59-02-45_s02">Supplementary Video S2</a>{.usa-link}). No abnormal behavior or head movement was observed in response to light stimulation when the grating drum was not rotating.</p>
+<p>The ability to evoke an OMR was dependent on both the light intensity and grating frequency. We therefore examined the relationship between the threshold light intensity required to evoke an OMR and the spatial frequency (<a href="#i1552-5783-59-3-1288-f04">Fig. 4</a>{.usa-link}A). The most sensitive spatial frequency was 0.042 cycles per degree. Among the three mutants, ChR2-C/S was the most light sensitive, followed by ChR2-C/C and ChR2-L132C. For the wt-ChR2, an OMR was observed only in two of four mice at the grating frequency of 0.042 cycles per degree with the light intensity close to the maximal level of our system (<a href="#i1552-5783-59-3-1288-f04">Fig. 4</a>{.usa-link}A). These results are consistent with the previously reported light sensitivity for these ChR2s, as assessed by in vitro retinal multielectrode array recordings.^<a href="#i1552-5783-59-3-1288-b08">8</a>{.usa-link aria-describedby=&quot;i1552-5783-59-3-1288-b08&quot;}^</p>
+<figure id="i1552-5783-59-3-1288-f04" class="fig xbox font-sm">
+<h4 id="figure-4." class="obj_head">Figure 4.</h4>
+<p><img src="https://cdn.ncbi.nlm.nih.gov/pmc/blobs/ef9f/5839255/fcd6f60ce8a1/i1552-5783-59-3-1288-f04.jpg" class="graphic" loading="lazy" width="773" height="326" alt="Figure 4" /></p>
+<div class="p text-right font-secondary">
+<a href="figure/i1552-5783-59-3-1288-f04/" class="usa-link" target="_blank" rel="noopener noreferrer">Open in a new tab</a>
+</div>
+<figcaption><p>Properties of OMR in TKO mice mediated by three ChR2 mutants and wt-ChR2. (A) Comparison of the relationship between the threshold light intensity and spatial frequency in ChR2-L132C– (n = 4 mice), ChR2-C/C– (n = 5), and ChR2-C/S–expressing mice (n = 6). The data point shown for wt-ChR2 is from the two (of four) mice that exhibited OMR. Data are expressed as the mean ± SD. *P &lt; 0.05; **P &lt; 0.01; ***P &lt; 0.001. (B) The threshold light intensity required to elicit an OMR at 0.042 cycles per degree did not significantly change up to 1 year after virus injection (n = 4–6 mice).</p></figcaption>
+</figure>
+<p>For the ChR2-C/S mutant, the threshold light intensity for evoking an OMR at the most light-sensitive frequency (0.042 cycles per degree) was ∼1 × 10^14^ photons/cm^2^s. No significant change in this value was observed for up to 12 months after virus injection (<a href="#i1552-5783-59-3-1288-f04">Fig. 4</a>{.usa-link}B).
+:::</p>
+<p>::: {#s3d .section}</p>
+<h3 id="impact-of-pupillary-constriction-on-omr-restoration-impact-of-pupillary-constriction-on-omr-restoration-pmc_sec_title">Impact of Pupillary Constriction on OMR Restoration {#impact-of-pupillary-constriction-on-omr-restoration .pmc_sec_title}</h3>
+<p>A melanopsin-mediated pupillary light reflex is present in <em>rd</em> animals.^<a href="#i1552-5783-59-3-1288-b34">34</a>{.usa-link aria-describedby=&quot;i1552-5783-59-3-1288-b34&quot;},<a href="#i1552-5783-59-3-1288-b35">35</a>{.usa-link aria-describedby=&quot;i1552-5783-59-3-1288-b35&quot;}^ We subsequently investigated how melanopsin-mediated pupillary constriction affects the light sensitivity of the ChR2-mediated OMR. For this purpose, we examined the ChR2-C/S--mediated OMR in the double-knockout mouse line Gnat1^−/−^Cnga3^−/−^ (referred to as DKO), which retains melanopsin but not rod and cone signaling. As expected based on previous reports,^<a href="#i1552-5783-59-3-1288-b29">29</a>{.usa-link aria-describedby=&quot;i1552-5783-59-3-1288-b29&quot;}^ marked pupillary constriction was observed in the ChR2-C/S--injected DKO mice in response to light stimulation (3 × 10^15^ photons/cm^2^s; 470 nm) (<a href="#i1552-5783-59-3-1288-f05">Figs. 5</a>{.usa-link}A, <a href="#i1552-5783-59-3-1288-f05">5</a>{.usa-link}B). The pupillary constriction was blocked by the application of atropine (<a href="#i1552-5783-59-3-1288-f05">Figs. 5</a>{.usa-link}A, <a href="#i1552-5783-59-3-1288-f05">5</a>{.usa-link}B). We compared the relationships between the threshold light sensitivity and spatial frequency measured before and after atropine application (<a href="#i1552-5783-59-3-1288-f05">Fig. 5</a>{.usa-link}C). The results show that more than 10 times higher light intensity was required to elicit a ChR2-C/S--mediated OMR without dilating the pupil by atropine. On the other hand, consistent with a previous report,^<a href="#i1552-5783-59-3-1288-b33">33</a>{.usa-link aria-describedby=&quot;i1552-5783-59-3-1288-b33&quot;}^ untreated DKO mice did not exhibit an OMR with or without atropine under our conditions (data not shown).</p>
+<figure id="i1552-5783-59-3-1288-f05" class="fig xbox font-sm">
+<h4 id="figure-5." class="obj_head">Figure 5.</h4>
+<p><a href="https://www.ncbi.nlm.nih.gov/core/lw/2.0/html/tileshop_pmc/tileshop_pmc_inline.html?title=Click%20on%20image%20to%20zoom&amp;p=PMC3&amp;id=5839255_i1552-5783-59-3-1288-f05.jpg" class="tileshop" target="_blank"><img src="https://cdn.ncbi.nlm.nih.gov/pmc/blobs/ef9f/5839255/a78311285e2d/i1552-5783-59-3-1288-f05.jpg" class="graphic zoom-in" loading="lazy" width="603" height="235" alt="Figure 5" /></a></p>
+<div class="p text-right font-secondary">
+<a href="figure/i1552-5783-59-3-1288-f05/" class="usa-link" target="_blank" rel="noopener noreferrer">Open in a new tab</a>
+</div>
+<figcaption><p>Effect of pupillary constriction on ChR2-mediated light sensitivity in OMR. (A) Representative images showing marked pupillary constriction evoked in DKO mice. Pupillary constriction was blocked by atropine. Light intensity: 3 × 10<sup>15</sup> photons/cm<sup>2</sup>s with blue LED illumination (470 nm). (B) Statistical data for the normalized pupil area from four DKO mice with and without atropine. Data are expressed as the mean ± SD, n = 4 eyes. (C) Relationships between the threshold light intensity required to produce an OMR and the spatial frequency in DKO mice with and without atropine. Data are expressed as the mean ± SD, n = 4 mice.</p></figcaption>
+</figure>
+:::
+:::::::
+<p>::: {#s4 .section}</p>
+<h2 id="discussion-discussion-pmc_sec_title">Discussion {#discussion .pmc_sec_title}</h2>
+<p>In this study, we described an OMR assay that enables the quantitative assessment of the properties of optogenetically restored OMRs. The key feature of the assay is the use of TKO mice. The use of TKO mice provides several advantages. First, TKO mice have been reported to lack an OMR.^<a href="#i1552-5783-59-3-1288-b34">34</a>{.usa-link aria-describedby=&quot;i1552-5783-59-3-1288-b34&quot;}^ The complete absence of an OMR for untreated or sham-injected TKO mice was confirmed under our experimental conditions with the light intensity up to 1 × 10^16^ photons/cm^2^s. Thus, OMR restoration by optogenetics can be unequivocally demonstrated in this mouse line. It should be noted that these mice have been reported to show visual responses, based on ERG recordings and behavioral light aversion measurements, which may be a result of the existence of a Gnat1-independent rod phototransduction mechanism.^<a href="#i1552-5783-59-3-1288-b36">36</a>{.usa-link aria-describedby=&quot;i1552-5783-59-3-1288-b36&quot;},<a href="#i1552-5783-59-3-1288-b37">37</a>{.usa-link aria-describedby=&quot;i1552-5783-59-3-1288-b37&quot;}^ However, the presence of residual vision in TKO mice should not interfere with the OMR-based behavioral assessment under our experimental conditions. Second, the morphology of the retina in these mice is largely normal, including the preservation of photoreceptor cells, which implies no significant retinal remodeling. Therefore, complications that may arise as a result of <em>rd</em> model- and time-dependent retinal remodeling regarding the interpretation of experimental outcomes may be avoided. Consistently, the light sensitivity of the ChR2-C/S--restored OMR was stable for up to at least 1 year in TKO mice, as examined in this study. Furthermore, the lack of significant pupillary constriction in these mice represents another advantage because the efficacy of OMR restoration can be evaluated without a significant influence from pupil constriction. Taken together, these properties make the TKO mouse line a unique model for evaluating the efficacy of different optogenetic therapies based on the OMR.</p>
+<p>Our results showed that the combined use of the TKO mouse line and a homemade optomotor system enables a quantitative comparison of the light sensitivity of different optogenetic tools. As demonstrated for wt-ChR2 and its three ChR2 mutants in this study, the order of their light sensitivity based on the OMR is consistent with results previously obtained by multielectrode array recordings from RGCs.^<a href="#i1552-5783-59-3-1288-b08">8</a>{.usa-link aria-describedby=&quot;i1552-5783-59-3-1288-b08&quot;}^ In addition, the OMR assay provides the absolute threshold light intensity that is required for each optogenetic tool to elicit functional visual behavior. Specifically, the threshold light intensity for evoking an OMR for ChR2-C/S was ∼1 × 10^14^ photons/cm^2^s, which is close to 2 log units lower than that for wt-ChR2 (<a href="#i1552-5783-59-3-1288-f04">Fig. 4</a>{.usa-link}A), as previously estimated by in vitro retinal electrophysical recordings.^<a href="#i1552-5783-59-3-1288-b08">8</a>{.usa-link aria-describedby=&quot;i1552-5783-59-3-1288-b08&quot;}^ It is interesting that the threshold light intensity required to evoke an OMR for each of the ChR2s was close to 1 log unit higher than that required to elicit the spike activity of RGCs in in vitro recordings. This difference likely reflects the attenuation of light intensity through the eye and the requirement of above-threshold RGC activities to drive the OMR. Thus, the OMR assay can serve as a valuable tool for evaluating the efficacy of different optogenetic tools^<a href="#i1552-5783-59-3-1288-b04">4</a>{.usa-link aria-describedby=&quot;i1552-5783-59-3-1288-b04&quot;}--<a href="#i1552-5783-59-3-1288-b16">16</a>{.usa-link aria-describedby=&quot;i1552-5783-59-3-1288-b16&quot;}^ and different retinal targeting strategies.^<a href="#i1552-5783-59-3-1288-b03">3</a>{.usa-link aria-describedby=&quot;i1552-5783-59-3-1288-b03&quot;},<a href="#i1552-5783-59-3-1288-b17">17</a>{.usa-link aria-describedby=&quot;i1552-5783-59-3-1288-b17&quot;},<a href="#i1552-5783-59-3-1288-b21">21</a>{.usa-link aria-describedby=&quot;i1552-5783-59-3-1288-b21&quot;},<a href="#i1552-5783-59-3-1288-b24">24</a>{.usa-link aria-describedby=&quot;i1552-5783-59-3-1288-b24&quot;}^ Furthermore, the results from TKO mice with the OMR assay can serve as a basis for investigating the impact of retinal remodeling on optogenetic vision restoration and developing effective therapeutic interventions.^<a href="#i1552-5783-59-3-1288-b27">27</a>{.usa-link aria-describedby=&quot;i1552-5783-59-3-1288-b27&quot;},<a href="#i1552-5783-59-3-1288-b28">28</a>{.usa-link aria-describedby=&quot;i1552-5783-59-3-1288-b28&quot;}^</p>
+<p>Our results revealed several properties of optogenetically restored OMRs. First, the threshold light intensity required to evoke an OMR was dependent on the spatial frequency. The overall pattern of the curves for the three ChR2 mutants is similar; however, they are shifted in parallel based on their light sensitivity. These results indicate that visual acuity restored by optogenetics will depend on the light sensitivity of the optogenetic tools and the light intensity delivered. Second, the most light-sensitive spatial frequency for all ChR2s is at ∼0.042 cycles per degree. It is interesting that this value is slightly lower than that with a peak contrast sensitivity in normal-sighted mice, which is reported to be 0.064 cycles per degree.^<a href="#i1552-5783-59-3-1288-b38">38</a>{.usa-link aria-describedby=&quot;i1552-5783-59-3-1288-b38&quot;}^ Third, our results indicate that melanopsin-mediated pupillary constriction leads to a substantial reduction in the light sensitivity of optogenetically restored vision, which would pose a significant constraint for clinical applications because the melanopsin-mediated pupillary light reflex is present in patients with retinal degeneration.^<a href="#i1552-5783-59-3-1288-b39">39</a>{.usa-link aria-describedby=&quot;i1552-5783-59-3-1288-b39&quot;}^ Although pupillary constriction may be pharmacologically blocked by drugs such as atropine, a better solution would be to develop more light-sensitive optogenetic tools with a light sensitivity comparable to melanopsin.</p>
+<p>Furthermore, our studies showed that ChR2-mediated pupillary constriction was significant only for ChR2-C/S and not for the other ChR2s. Even for ChR2-C/S, the magnitude of the constriction was small compared with that mediated by melanopsin, as demonstrated in the DKO mice (<a href="#i1552-5783-59-3-1288-f03">Fig. 3</a>{.usa-link}; see also ref. 29). As pupillary constriction is conveyed through a small population of melanopsin-expressing or intrinsically photosensitive RGCs (ipRGCs),^<a href="#i1552-5783-59-3-1288-b40">40</a>{.usa-link aria-describedby=&quot;i1552-5783-59-3-1288-b40&quot;}^ the lack of marked pupillary constriction may be a result of the low viral transduction efficiency in these ipRGCs and/or the low efficiency of ChR2-mediated activity to drive pupillary constriction.</p>
+<p>In summary, we reported a robust OMR assay using a TKO mouse line. The assay enables quantitative assessments of the efficacy of optogenetic tools, the properties of optogenetically restored vision, and the impact of melanopsin-mediated pupillary constriction on optogenetic vision restoration. Thus, this assay can serve as a valuable tool for the further development of better optogenetic tools and evaluation of optimal treatment strategies for vision restoration.
+:::</p>
+<p>::::::::::::::: {#sec17 .section}</p>
+<h2 id="supplementary-material-supplementary-material-pmc_sec_title">Supplementary Material {#supplementary-material .pmc_sec_title}</h2>
+<p>:::::: {#iovs-59-02-45_s01 .section .sm .xbox .font-sm}
+::: {.caption .p}
+Supplement 1
+:::</p>
+<p>:::: {.media .p}
+::: caption
+<a href="/articles/instance/5839255/bin/iovs-59-02-45_s01.mov">Click here for additional data file.</a>{.usa-link ga-action=&quot;click_feat_suppl&quot;} ^(1.5MB,\ mov)^
+:::
+::::
+::::::</p>
+<p>:::::: {#iovs-59-02-45_s02 .section .sm .xbox .font-sm}
+::: {.caption .p}
+Supplement 2
+:::</p>
+<p>:::: {.media .p}
+::: caption
+<a href="/articles/instance/5839255/bin/iovs-59-02-45_s02.mov">Click here for additional data file.</a>{.usa-link ga-action=&quot;click_feat_suppl&quot;} ^(3MB,\ mov)^
+:::
+::::
+::::::</p>
+<p>:::::: {#iovs-59-02-45_s03 .section .sm .xbox .font-sm}
+::: {.caption .p}
+Supplement 3
+:::</p>
+<p>:::: {.media .p}
+::: caption
+<a href="/articles/instance/5839255/bin/iovs-59-02-45_s03.pdf">Click here for additional data file.</a>{.usa-link ga-action=&quot;click_feat_suppl&quot;} ^(189.9KB,\ pdf)^
+:::
+::::
+::::::
+:::::::::::::::</p>
+<p>::: {#ack1 .section .ack}</p>
+<h2 id="acknowledgments-acknowledgments-pmc_sec_title">Acknowledgments {#acknowledgments .pmc_sec_title}</h2>
+<p>The authors thank Daoqi Zhang, PhD, for providing the Gnat1^−/−^Cnga3^−/−^ mouse line.</p>
+<p>Supported by the Ligon Research Center of Vision at Kresge Eye Institute, the Dryer Foundation, the National Institutes of Health Core Grant EY04068 to the Department of Anatomy and Cell Biology at Wayne State University, and a grant from Research to Prevent Blindness to the Department of Ophthalmology at Wayne State University.</p>
+<p>Disclosure: <strong>Q. Lu</strong>, None; <strong>T.H. Ganjawala</strong>, None; <strong>S. Hattar</strong>, None; <strong>G.W. Abrams</strong>, None; <strong>Z.-H. Pan</strong>, P
+:::</p>
+<p>:::: {#ref-list1 .section .ref-list}</p>
+<h2 id="references-references-pmc_sec_title">References {#references .pmc_sec_title}</h2>
+<p>::: {#ref-list1_sec2 .section}</p>
+<ul>
+<li>[[1.]{.label} Pan ZH, Lu Q, Bi A, Dizhoor AM, Abrams GW. . Optogenetic approaches to restoring vision. <em>Annu Rev Vis Sci</em>. 2015; 1: 185-- 210. [<a href="https://doi.org/10.1146/annurev-vision-082114-035532">DOI</a>{.usa-link .usa-link--external ga-action=&quot;click_feat_suppl&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;}] [<a href="https://pubmed.ncbi.nlm.nih.gov/28532375/">PubMed</a>{.usa-link}] [<a href="https://scholar.google.com/scholar_lookup?journal=Annu%20Rev%20Vis%20Sci&amp;title=Optogenetic%20approaches%20to%20restoring%20vision&amp;author=ZH%20Pan&amp;author=Q%20Lu&amp;author=A%20Bi&amp;author=AM%20Dizhoor&amp;author=GW%20Abrams&amp;volume=1&amp;publication_year=2015&amp;pages=185-210&amp;pmid=28532375&amp;doi=10.1146/annurev-vision-082114-035532&amp;">Google Scholar</a>{.usa-link .usa-link--external ga-action=&quot;click_feat_suppl&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;}]]{#i1552-5783-59-3-1288-b01}</li>
+<li>[[2.]{.label} Busskamp V, Picaud S, Sahel JA, Roska B. . Optogenetic therapy for retinitis pigmentosa. <em>Gene Ther</em>. 2012; 19: 169-- 175. [<a href="https://doi.org/10.1038/gt.2011.155">DOI</a>{.usa-link .usa-link--external ga-action=&quot;click_feat_suppl&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;}] [<a href="https://pubmed.ncbi.nlm.nih.gov/21993174/">PubMed</a>{.usa-link}] [<a href="https://scholar.google.com/scholar_lookup?journal=Gene%20Ther&amp;title=Optogenetic%20therapy%20for%20retinitis%20pigmentosa&amp;author=V%20Busskamp&amp;author=S%20Picaud&amp;author=JA%20Sahel&amp;author=B%20Roska&amp;volume=19&amp;publication_year=2012&amp;pages=169-175&amp;pmid=21993174&amp;doi=10.1038/gt.2011.155&amp;">Google Scholar</a>{.usa-link .usa-link--external ga-action=&quot;click_feat_suppl&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;}]]{#i1552-5783-59-3-1288-b02}</li>
+<li>[[3.]{.label} Bi A, Cui J, Ma YP,et al. Ectopic expression of a microbial-type rhodopsin restores visual responses in mice with photoreceptor degeneration. <em>Neuron</em>. 2006; 50: 23-- 33. [<a href="https://doi.org/10.1016/j.neuron.2006.02.026">DOI</a>{.usa-link .usa-link--external ga-action=&quot;click_feat_suppl&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;}] [<a href="/articles/PMC1459045/">PMC free article</a>{.usa-link}] [<a href="https://pubmed.ncbi.nlm.nih.gov/16600853/">PubMed</a>{.usa-link}] [<a href="https://scholar.google.com/scholar_lookup?journal=Neuron&amp;title=Ectopic%20expression%20of%20a%20microbial-type%20rhodopsin%20restores%20visual%20responses%20in%20mice%20with%20photoreceptor%20degeneration&amp;author=A%20Bi&amp;author=J%20Cui&amp;author=YP%20Ma&amp;volume=50&amp;publication_year=2006&amp;pages=23-33.&amp;pmid=16600853&amp;doi=10.1016/j.neuron.2006.02.026&amp;">Google Scholar</a>{.usa-link .usa-link--external ga-action=&quot;click_feat_suppl&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;}]]{#i1552-5783-59-3-1288-b03}</li>
+<li>[[4.]{.label} Kleinlogel S, Feldbauer K, Dempski RE,et al. Ultralight-sensitive and fast neuronal activation with the Ca^2+^-permeable channelrhodopsin CatCh. <em>Nat Neurosci</em>. 2011; 14: 513-- 518. [<a href="https://doi.org/10.1038/nn.2776">DOI</a>{.usa-link .usa-link--external ga-action=&quot;click_feat_suppl&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;}] [<a href="https://pubmed.ncbi.nlm.nih.gov/21399632/">PubMed</a>{.usa-link}] [<a href="https://scholar.google.com/scholar_lookup?journal=Nat%20Neurosci&amp;title=Ultralight-sensitive%20and%20fast%20neuronal%20activation%20with%20the%20Ca2+-permeable%20channelrhodopsin%20CatCh&amp;author=S%20Kleinlogel&amp;author=K%20Feldbauer&amp;author=RE%20Dempski&amp;volume=14&amp;publication_year=2011&amp;pages=513-518&amp;pmid=21399632&amp;doi=10.1038/nn.2776&amp;">Google Scholar</a>{.usa-link .usa-link--external ga-action=&quot;click_feat_suppl&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;}]]{#i1552-5783-59-3-1288-b04}</li>
+<li>[[5.]{.label} Berndt A, Schoenenberger P, Mattis J,et al. High-efficiency channelrhodopsins for fast neuronal stimulation at low light levels. <em>Proc Natl Acad Sci U S A</em>. 2011; 108: 7595-- 7600. [<a href="https://doi.org/10.1073/pnas.1017210108">DOI</a>{.usa-link .usa-link--external ga-action=&quot;click_feat_suppl&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;}] [<a href="/articles/PMC3088623/">PMC free article</a>{.usa-link}] [<a href="https://pubmed.ncbi.nlm.nih.gov/21504945/">PubMed</a>{.usa-link}] [<a href="https://scholar.google.com/scholar_lookup?journal=Proc%20Natl%20Acad%20Sci%20U%20S%20A&amp;title=High-efficiency%20channelrhodopsins%20for%20fast%20neuronal%20stimulation%20at%20low%20light%20levels&amp;author=A%20Berndt&amp;author=P%20Schoenenberger&amp;author=J%20Mattis&amp;volume=108&amp;publication_year=2011&amp;pages=7595-7600&amp;pmid=21504945&amp;doi=10.1073/pnas.1017210108&amp;">Google Scholar</a>{.usa-link .usa-link--external ga-action=&quot;click_feat_suppl&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;}]]{#i1552-5783-59-3-1288-b05}</li>
+<li>[[6.]{.label} Prigge M, Schneider F, Tsunoda SP,et al. Color-tuned channelrhodopsins for multiwavelength optogenetics. <em>J Biol Chem</em>. 2012; 287: 31804-- 31812. [<a href="https://doi.org/10.1074/jbc.M112.391185">DOI</a>{.usa-link .usa-link--external ga-action=&quot;click_feat_suppl&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;}] [<a href="/articles/PMC3442514/">PMC free article</a>{.usa-link}] [<a href="https://pubmed.ncbi.nlm.nih.gov/22843694/">PubMed</a>{.usa-link}] [<a href="https://scholar.google.com/scholar_lookup?journal=J%20Biol%20Chem&amp;title=Color-tuned%20channelrhodopsins%20for%20multiwavelength%20optogenetics&amp;author=M%20Prigge&amp;author=F%20Schneider&amp;author=SP%20Tsunoda&amp;volume=287&amp;publication_year=2012&amp;pages=31804-31812&amp;pmid=22843694&amp;doi=10.1074/jbc.M112.391185&amp;">Google Scholar</a>{.usa-link .usa-link--external ga-action=&quot;click_feat_suppl&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;}]]{#i1552-5783-59-3-1288-b06}</li>
+<li>[[7.]{.label} Lin JY, Knutsen PM, Müller A, Kleinfeld D, Tsien RY. . ReaChR: a red-shifted variant of channelrhodopsin enables deep transcranial optogenetic excitation. <em>Nat Neurosci</em>. 2013; 16: 1499-- 1508. [<a href="https://doi.org/10.1038/nn.3502">DOI</a>{.usa-link .usa-link--external ga-action=&quot;click_feat_suppl&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;}] [<a href="/articles/PMC3793847/">PMC free article</a>{.usa-link}] [<a href="https://pubmed.ncbi.nlm.nih.gov/23995068/">PubMed</a>{.usa-link}] [<a href="https://scholar.google.com/scholar_lookup?journal=Nat%20Neurosci&amp;title=ReaChR:%20a%20red-shifted%20variant%20of%20channelrhodopsin%20enables%20deep%20transcranial%20optogenetic%20excitation&amp;author=JY%20Lin&amp;author=PM%20Knutsen&amp;author=A%20M%C3%BCller&amp;author=D%20Kleinfeld&amp;author=RY%20Tsien&amp;volume=16&amp;publication_year=2013&amp;pages=1499-1508&amp;pmid=23995068&amp;doi=10.1038/nn.3502&amp;">Google Scholar</a>{.usa-link .usa-link--external ga-action=&quot;click_feat_suppl&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;}]]{#i1552-5783-59-3-1288-b07}</li>
+<li>[[8.]{.label} Pan ZH, Ganjawala TH, Lu Q, Ivanova E, Zhang Z. . ChR2 mutants at L132 and T159 with improved operational light sensitivity for vision restoration. <em>PLoS One</em>. 2014; 9: e98924. [<a href="https://doi.org/10.1371/journal.pone.0098924">DOI</a>{.usa-link .usa-link--external ga-action=&quot;click_feat_suppl&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;}] [<a href="/articles/PMC4047080/">PMC free article</a>{.usa-link}] [<a href="https://pubmed.ncbi.nlm.nih.gov/24901492/">PubMed</a>{.usa-link}] [<a href="https://scholar.google.com/scholar_lookup?journal=PLoS%20One&amp;title=ChR2%20mutants%20at%20L132%20and%20T159%20with%20improved%20operational%20light%20sensitivity%20for%20vision%20restoration&amp;author=ZH%20Pan&amp;author=TH%20Ganjawala&amp;author=Q%20Lu&amp;author=E%20Ivanova&amp;author=Z%20Zhang&amp;volume=9&amp;publication_year=2014&amp;pages=e98924&amp;pmid=24901492&amp;doi=10.1371/journal.pone.0098924&amp;">Google Scholar</a>{.usa-link .usa-link--external ga-action=&quot;click_feat_suppl&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;}]]{#i1552-5783-59-3-1288-b08}</li>
+<li>[[9.]{.label} Tomita H, Sugano E, Murayama N,et al. Restoration of the majority of the visual spectrum by using modified Volvox channelrhodopsin-1. <em>Mol Ther</em>. 2014; 22: 1434-- 1440. [<a href="https://doi.org/10.1038/mt.2014.81">DOI</a>{.usa-link .usa-link--external ga-action=&quot;click_feat_suppl&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;}] [<a href="/articles/PMC4435592/">PMC free article</a>{.usa-link}] [<a href="https://pubmed.ncbi.nlm.nih.gov/24821344/">PubMed</a>{.usa-link}] [<a href="https://scholar.google.com/scholar_lookup?journal=Mol%20Ther&amp;title=Restoration%20of%20the%20majority%20of%20the%20visual%20spectrum%20by%20using%20modified%20Volvox%20channelrhodopsin-1&amp;author=H%20Tomita&amp;author=E%20Sugano&amp;author=N%20Murayama&amp;volume=22&amp;publication_year=2014&amp;pages=1434-1440&amp;pmid=24821344&amp;doi=10.1038/mt.2014.81&amp;">Google Scholar</a>{.usa-link .usa-link--external ga-action=&quot;click_feat_suppl&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;}]]{#i1552-5783-59-3-1288-b09}</li>
+<li>[[10.]{.label} Sengupta A, Chaffiol A, Mace E,et al. Red-shifted channelrhodopsin stimulation restores light responses in blind mice, macaque retina, and human retina. <em>EMBO Mol Med</em>. 2016; 8: 1248-- 1264. [<a href="https://doi.org/10.15252/emmm.201505699">DOI</a>{.usa-link .usa-link--external ga-action=&quot;click_feat_suppl&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;}] [<a href="/articles/PMC5090658/">PMC free article</a>{.usa-link}] [<a href="https://pubmed.ncbi.nlm.nih.gov/27679671/">PubMed</a>{.usa-link}] [<a href="https://scholar.google.com/scholar_lookup?journal=EMBO%20Mol%20Med&amp;title=Red-shifted%20channelrhodopsin%20stimulation%20restores%20light%20responses%20in%20blind%20mice,%20macaque%20retina,%20and%20human%20retina&amp;author=A%20Sengupta&amp;author=A%20Chaffiol&amp;author=E%20Mace&amp;volume=8&amp;publication_year=2016&amp;pages=1248-1264&amp;pmid=27679671&amp;doi=10.15252/emmm.201505699&amp;">Google Scholar</a>{.usa-link .usa-link--external ga-action=&quot;click_feat_suppl&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;}]]{#i1552-5783-59-3-1288-b10}</li>
+<li>[[11.]{.label} Lin B, Koizumi A, Tanaka N, Panda S, Masland RH. . Restoration of visual function in retinal degeneration mice by ectopic expression of melanopsin. <em>Proc Natl Acad Sci U S A</em>. 2008; 105: 16009-- 16014. [<a href="https://doi.org/10.1073/pnas.0806114105">DOI</a>{.usa-link .usa-link--external ga-action=&quot;click_feat_suppl&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;}] [<a href="/articles/PMC2572922/">PMC free article</a>{.usa-link}] [<a href="https://pubmed.ncbi.nlm.nih.gov/18836071/">PubMed</a>{.usa-link}] [<a href="https://scholar.google.com/scholar_lookup?journal=Proc%20Natl%20Acad%20Sci%20U%20S%20A&amp;title=Restoration%20of%20visual%20function%20in%20retinal%20degeneration%20mice%20by%20ectopic%20expression%20of%20melanopsin&amp;author=B%20Lin&amp;author=A%20Koizumi&amp;author=N%20Tanaka&amp;author=S%20Panda&amp;author=RH%20Masland&amp;volume=105&amp;publication_year=2008&amp;pages=16009-16014&amp;pmid=18836071&amp;doi=10.1073/pnas.0806114105&amp;">Google Scholar</a>{.usa-link .usa-link--external ga-action=&quot;click_feat_suppl&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;}]]{#i1552-5783-59-3-1288-b11}</li>
+<li>[[12.]{.label} Gaub BM, Berry MH, Holt AE, Isacoff EY, Flannery JG. . Optogenetic vision restoration using rhodopsin for enhanced sensitivity. <em>Mol Ther</em>. 2015; 23: 1562-- 1571. [<a href="https://doi.org/10.1038/mt.2015.121">DOI</a>{.usa-link .usa-link--external ga-action=&quot;click_feat_suppl&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;}] [<a href="/articles/PMC4817926/">PMC free article</a>{.usa-link}] [<a href="https://pubmed.ncbi.nlm.nih.gov/26137852/">PubMed</a>{.usa-link}] [<a href="https://scholar.google.com/scholar_lookup?journal=Mol%20Ther&amp;title=Optogenetic%20vision%20restoration%20using%20rhodopsin%20for%20enhanced%20sensitivity&amp;author=BM%20Gaub&amp;author=MH%20Berry&amp;author=AE%20Holt&amp;author=EY%20Isacoff&amp;author=JG%20Flannery&amp;volume=23&amp;publication_year=2015&amp;pages=1562-1571&amp;pmid=26137852&amp;doi=10.1038/mt.2015.121&amp;">Google Scholar</a>{.usa-link .usa-link--external ga-action=&quot;click_feat_suppl&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;}]]{#i1552-5783-59-3-1288-b12}</li>
+<li>[[13.]{.label} Cehajic-Kapetanovic J, Eleftheriou C, Allen AE,et al. Restoration of vision with ectopic expression of human rod opsin. <em>Curr Biol</em>. 2015; 25: 2111-- 2122. [<a href="https://doi.org/10.1016/j.cub.2015.07.029">DOI</a>{.usa-link .usa-link--external ga-action=&quot;click_feat_suppl&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;}] [<a href="/articles/PMC4540256/">PMC free article</a>{.usa-link}] [<a href="https://pubmed.ncbi.nlm.nih.gov/26234216/">PubMed</a>{.usa-link}] [<a href="https://scholar.google.com/scholar_lookup?journal=Curr%20Biol&amp;title=Restoration%20of%20vision%20with%20ectopic%20expression%20of%20human%20rod%20opsin&amp;author=J%20Cehajic-Kapetanovic&amp;author=C%20Eleftheriou&amp;author=AE%20Allen&amp;volume=25&amp;publication_year=2015&amp;pages=2111-2122&amp;pmid=26234216&amp;doi=10.1016/j.cub.2015.07.029&amp;">Google Scholar</a>{.usa-link .usa-link--external ga-action=&quot;click_feat_suppl&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;}]]{#i1552-5783-59-3-1288-b13}</li>
+<li>[[14.]{.label} Caporale N, Kolstad KD, Lee T,et al. LiGluR restores visual responses in rodent models of inherited blindness. <em>Mol Ther</em>. 2011; 19: 1212-- 1219. [<a href="https://doi.org/10.1038/mt.2011.103">DOI</a>{.usa-link .usa-link--external ga-action=&quot;click_feat_suppl&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;}] [<a href="/articles/PMC3129552/">PMC free article</a>{.usa-link}] [<a href="https://pubmed.ncbi.nlm.nih.gov/21610698/">PubMed</a>{.usa-link}] [<a href="https://scholar.google.com/scholar_lookup?journal=Mol%20Ther&amp;title=LiGluR%20restores%20visual%20responses%20in%20rodent%20models%20of%20inherited%20blindness&amp;author=N%20Caporale&amp;author=KD%20Kolstad&amp;author=T%20Lee&amp;volume=19&amp;publication_year=2011&amp;pages=1212-1219&amp;pmid=21610698&amp;doi=10.1038/mt.2011.103&amp;">Google Scholar</a>{.usa-link .usa-link--external ga-action=&quot;click_feat_suppl&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;}]]{#i1552-5783-59-3-1288-b14}</li>
+<li>[[15.]{.label} Gaub BM, Berry MH, Holt AE,et al. Restoration of visual function by expression of a light-gated mammalian ion channel in retinal ganglion cells or ON-bipolar cells. <em>Proc Natl Acad Sci U S A</em>. 2014; 111: E5574-- E5583. [<a href="https://doi.org/10.1073/pnas.1414162111">DOI</a>{.usa-link .usa-link--external ga-action=&quot;click_feat_suppl&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;}] [<a href="/articles/PMC4280620/">PMC free article</a>{.usa-link}] [<a href="https://pubmed.ncbi.nlm.nih.gov/25489083/">PubMed</a>{.usa-link}] [<a href="https://scholar.google.com/scholar_lookup?journal=Proc%20Natl%20Acad%20Sci%20U%20S%20A&amp;title=Restoration%20of%20visual%20function%20by%20expression%20of%20a%20light-gated%20mammalian%20ion%20channel%20in%20retinal%20ganglion%20cells%20or%20ON-bipolar%20cells&amp;author=BM%20Gaub&amp;author=MH%20Berry&amp;author=AE%20Holt&amp;volume=111&amp;publication_year=2014&amp;pages=E5574-E5583&amp;pmid=25489083&amp;doi=10.1073/pnas.1414162111&amp;">Google Scholar</a>{.usa-link .usa-link--external ga-action=&quot;click_feat_suppl&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;}]]{#i1552-5783-59-3-1288-b15}</li>
+<li>[[16.]{.label} van Wyk M, Pielecka-Fortuna J, Lowel S, Kleinlogel S. . Restoring the ON switch in blind retinas: Opto-mGluR6, a next-generation, cell-tailored optogenetic tool. <em>PLoS Biol</em>. 2015; 13: e1002143. [<a href="https://doi.org/10.1371/journal.pbio.1002143">DOI</a>{.usa-link .usa-link--external ga-action=&quot;click_feat_suppl&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;}] [<a href="/articles/PMC4423780/">PMC free article</a>{.usa-link}] [<a href="https://pubmed.ncbi.nlm.nih.gov/25950461/">PubMed</a>{.usa-link}] [<a href="https://scholar.google.com/scholar_lookup?journal=PLoS%20Biol&amp;title=Restoring%20the%20ON%20switch%20in%20blind%20retinas:%20Opto-mGluR6,%20a%20next-generation,%20cell-tailored%20optogenetic%20tool&amp;author=M%20van%20Wyk&amp;author=J%20Pielecka-Fortuna&amp;author=S%20Lowel&amp;author=S%20Kleinlogel&amp;volume=13&amp;publication_year=2015&amp;pages=e1002143&amp;pmid=25950461&amp;doi=10.1371/journal.pbio.1002143&amp;">Google Scholar</a>{.usa-link .usa-link--external ga-action=&quot;click_feat_suppl&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;}]]{#i1552-5783-59-3-1288-b16}</li>
+<li>[[17.]{.label} Lagali PS, Balya D, Awatramani GB,et al. Light-activated channels targeted to ON bipolar cells restore visual function in retinal degeneration. <em>Nat Neurosci</em>. 2008; 11: 667-- 675. [<a href="https://doi.org/10.1038/nn.2117">DOI</a>{.usa-link .usa-link--external ga-action=&quot;click_feat_suppl&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;}] [<a href="https://pubmed.ncbi.nlm.nih.gov/18432197/">PubMed</a>{.usa-link}] [<a href="https://scholar.google.com/scholar_lookup?journal=Nat%20Neurosci&amp;title=Light-activated%20channels%20targeted%20to%20ON%20bipolar%20cells%20restore%20visual%20function%20in%20retinal%20degeneration&amp;author=PS%20Lagali&amp;author=D%20Balya&amp;author=GB%20Awatramani&amp;volume=11&amp;publication_year=2008&amp;pages=667-675&amp;pmid=18432197&amp;doi=10.1038/nn.2117&amp;">Google Scholar</a>{.usa-link .usa-link--external ga-action=&quot;click_feat_suppl&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;}]]{#i1552-5783-59-3-1288-b17}</li>
+<li>[[18.]{.label} Tomita H, Sugano E, Isago H,et al. Channelrhodopsin-2 gene transduced into retinal ganglion cells restores functional vision in genetically blind rats. <em>Exp Eye Res</em>. 2010; 90: 429-- 436. [<a href="https://doi.org/10.1016/j.exer.2009.12.006">DOI</a>{.usa-link .usa-link--external ga-action=&quot;click_feat_suppl&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;}] [<a href="https://pubmed.ncbi.nlm.nih.gov/20036655/">PubMed</a>{.usa-link}] [<a href="https://scholar.google.com/scholar_lookup?journal=Exp%20Eye%20Res&amp;title=Channelrhodopsin-2%20gene%20transduced%20into%20retinal%20ganglion%20cells%20restores%20functional%20vision%20in%20genetically%20blind%20rats&amp;author=H%20Tomita&amp;author=E%20Sugano&amp;author=H%20Isago&amp;volume=90&amp;publication_year=2010&amp;pages=429-436&amp;pmid=20036655&amp;doi=10.1016/j.exer.2009.12.006&amp;">Google Scholar</a>{.usa-link .usa-link--external ga-action=&quot;click_feat_suppl&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;}]]{#i1552-5783-59-3-1288-b18}</li>
+<li>[[19.]{.label} Nirenberg S, Pandarinath C. . Retinal prosthetic strategy with the capacity to restore normal vision. <em>Proc Natl Acad Sci U S A</em>. 2012; 109: 15012-- 15017. [<a href="https://doi.org/10.1073/pnas.1207035109">DOI</a>{.usa-link .usa-link--external ga-action=&quot;click_feat_suppl&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;}] [<a href="/articles/PMC3443127/">PMC free article</a>{.usa-link}] [<a href="https://pubmed.ncbi.nlm.nih.gov/22891310/">PubMed</a>{.usa-link}] [<a href="https://scholar.google.com/scholar_lookup?journal=Proc%20Natl%20Acad%20Sci%20U%20S%20A&amp;title=Retinal%20prosthetic%20strategy%20with%20the%20capacity%20to%20restore%20normal%20vision&amp;author=S%20Nirenberg&amp;author=C%20Pandarinath&amp;volume=109&amp;publication_year=2012&amp;pages=15012-15017&amp;pmid=22891310&amp;doi=10.1073/pnas.1207035109&amp;">Google Scholar</a>{.usa-link .usa-link--external ga-action=&quot;click_feat_suppl&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;}]]{#i1552-5783-59-3-1288-b19}</li>
+<li>[[20.]{.label} Mace E, Caplette R, Marre O,et al. Targeting channelrhodopsin-2 to ON-bipolar cells with vitreally administered AAV restores ON and OFF visual responses in blind mice. <em>Mol Ther</em>. 2015; 23: 7-- 16. [<a href="https://doi.org/10.1038/mt.2014.154">DOI</a>{.usa-link .usa-link--external ga-action=&quot;click_feat_suppl&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;}] [<a href="/articles/PMC4270733/">PMC free article</a>{.usa-link}] [<a href="https://pubmed.ncbi.nlm.nih.gov/25095892/">PubMed</a>{.usa-link}] [<a href="https://scholar.google.com/scholar_lookup?journal=Mol%20Ther&amp;title=Targeting%20channelrhodopsin-2%20to%20ON-bipolar%20cells%20with%20vitreally%20administered%20AAV%20restores%20ON%20and%20OFF%20visual%20responses%20in%20blind%20mice&amp;author=E%20Mace&amp;author=R%20Caplette&amp;author=O%20Marre&amp;volume=23&amp;publication_year=2015&amp;pages=7-16&amp;pmid=25095892&amp;doi=10.1038/mt.2014.154&amp;">Google Scholar</a>{.usa-link .usa-link--external ga-action=&quot;click_feat_suppl&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;}]]{#i1552-5783-59-3-1288-b20}</li>
+<li>[[21.]{.label} Doroudchi MM, Greenberg KP, Liu J,et al. Virally delivered channelrhodopsin-2 safely and effectively restores visual function in multiple mouse models of blindness. <em>Mol Ther</em>. 2011; 19: 1220-- 1229. [<a href="https://doi.org/10.1038/mt.2011.69">DOI</a>{.usa-link .usa-link--external ga-action=&quot;click_feat_suppl&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;}] [<a href="/articles/PMC3129568/">PMC free article</a>{.usa-link}] [<a href="https://pubmed.ncbi.nlm.nih.gov/21505421/">PubMed</a>{.usa-link}] [<a href="https://scholar.google.com/scholar_lookup?journal=Mol%20Ther&amp;title=Virally%20delivered%20channelrhodopsin-2%20safely%20and%20effectively%20restores%20visual%20function%20in%20multiple%20mouse%20models%20of%20blindness&amp;author=MM%20Doroudchi&amp;author=KP%20Greenberg&amp;author=J%20Liu&amp;volume=19&amp;publication_year=2011&amp;pages=1220-1229&amp;pmid=21505421&amp;doi=10.1038/mt.2011.69&amp;">Google Scholar</a>{.usa-link .usa-link--external ga-action=&quot;click_feat_suppl&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;}]]{#i1552-5783-59-3-1288-b21}</li>
+<li>[[22.]{.label} Prusky GT, Alam NM, Beekman S, Douglas RM. . Rapid quantification of adult and developing mouse spatial vision using a virtual optomotor system. <em>Invest Ophthalmol Vis Sci</em>. 2004; 45: 4611-- 4616. [<a href="https://doi.org/10.1167/iovs.04-0541">DOI</a>{.usa-link .usa-link--external ga-action=&quot;click_feat_suppl&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;}] [<a href="https://pubmed.ncbi.nlm.nih.gov/15557474/">PubMed</a>{.usa-link}] [<a href="https://scholar.google.com/scholar_lookup?journal=Invest%20Ophthalmol%20Vis%20Sci&amp;title=Rapid%20quantification%20of%20adult%20and%20developing%20mouse%20spatial%20vision%20using%20a%20virtual%20optomotor%20system&amp;author=GT%20Prusky&amp;author=NM%20Alam&amp;author=S%20Beekman&amp;author=RM%20Douglas&amp;volume=45&amp;publication_year=2004&amp;pages=4611-4616&amp;pmid=15557474&amp;doi=10.1167/iovs.04-0541&amp;">Google Scholar</a>{.usa-link .usa-link--external ga-action=&quot;click_feat_suppl&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;}]]{#i1552-5783-59-3-1288-b22}</li>
+<li>[[23.]{.label} Tomita H, Sugano E, Fukazawa Y,et al. Visual properties of transgenic rats harboring the channelrhodopsin-2 gene regulated by the thy-1.2 promoter. <em>PLoS One</em>. 2009; 4: e7679. [<a href="https://doi.org/10.1371/journal.pone.0007679">DOI</a>{.usa-link .usa-link--external ga-action=&quot;click_feat_suppl&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;}] [<a href="/articles/PMC2772120/">PMC free article</a>{.usa-link}] [<a href="https://pubmed.ncbi.nlm.nih.gov/19893752/">PubMed</a>{.usa-link}] [<a href="https://scholar.google.com/scholar_lookup?journal=PLoS%20One&amp;title=Visual%20properties%20of%20transgenic%20rats%20harboring%20the%20channelrhodopsin-2%20gene%20regulated%20by%20the%20thy-1.2%20promoter&amp;author=H%20Tomita&amp;author=E%20Sugano&amp;author=Y%20Fukazawa&amp;volume=4&amp;publication_year=2009&amp;pages=e7679&amp;pmid=19893752&amp;doi=10.1371/journal.pone.0007679&amp;">Google Scholar</a>{.usa-link .usa-link--external ga-action=&quot;click_feat_suppl&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;}]]{#i1552-5783-59-3-1288-b23}</li>
+<li>[[24.]{.label} Busskamp V, Duebel J, Balya D,et al. Genetic reactivation of cone photoreceptors restores visual responses in retinitis pigmentosa. <em>Science</em>. 2010; 329: 413-- 417. [<a href="https://doi.org/10.1126/science.1190897">DOI</a>{.usa-link .usa-link--external ga-action=&quot;click_feat_suppl&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;}] [<a href="https://pubmed.ncbi.nlm.nih.gov/20576849/">PubMed</a>{.usa-link}] [<a href="https://scholar.google.com/scholar_lookup?journal=Science&amp;title=Genetic%20reactivation%20of%20cone%20photoreceptors%20restores%20visual%20responses%20in%20retinitis%20pigmentosa&amp;author=V%20Busskamp&amp;author=J%20Duebel&amp;author=D%20Balya&amp;volume=329&amp;publication_year=2010&amp;pages=413-417&amp;pmid=20576849&amp;doi=10.1126/science.1190897&amp;">Google Scholar</a>{.usa-link .usa-link--external ga-action=&quot;click_feat_suppl&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;}]]{#i1552-5783-59-3-1288-b24}</li>
+<li>[[25.]{.label} Chang B, Hawes NL, Hurd RE, Davisson MT, Nusinowitz S, Heckenlively JR. . Retinal degeneration mutants in the mouse. <em>Vision Res</em>. 2002; 42: 517-- 525. [<a href="https://doi.org/10.1016/s0042-6989(01)00146-8">DOI</a>{.usa-link .usa-link--external ga-action=&quot;click_feat_suppl&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;}] [<a href="https://pubmed.ncbi.nlm.nih.gov/11853768/">PubMed</a>{.usa-link}] [<a href="https://scholar.google.com/scholar_lookup?journal=Vision%20Res&amp;title=Retinal%20degeneration%20mutants%20in%20the%20mouse&amp;author=B%20Chang&amp;author=NL%20Hawes&amp;author=RE%20Hurd&amp;author=MT%20Davisson&amp;author=S%20Nusinowitz&amp;volume=42&amp;publication_year=2002&amp;pages=517-525&amp;pmid=11853768&amp;doi=10.1016/s0042-6989(01)00146-8&amp;">Google Scholar</a>{.usa-link .usa-link--external ga-action=&quot;click_feat_suppl&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;}]]{#i1552-5783-59-3-1288-b25}</li>
+<li>[[26.]{.label} Jones BW, Marc RE. . Retinal remodeling during retinal degeneration. <em>Exp Eye Res</em>. 2005; 81: 123-- 137. [<a href="https://doi.org/10.1016/j.exer.2005.03.006">DOI</a>{.usa-link .usa-link--external ga-action=&quot;click_feat_suppl&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;}] [<a href="https://pubmed.ncbi.nlm.nih.gov/15916760/">PubMed</a>{.usa-link}] [<a href="https://scholar.google.com/scholar_lookup?journal=Exp%20Eye%20Res&amp;title=Retinal%20remodeling%20during%20retinal%20degeneration&amp;author=BW%20Jones&amp;author=RE%20Marc&amp;volume=81&amp;publication_year=2005&amp;pages=123-137&amp;pmid=15916760&amp;doi=10.1016/j.exer.2005.03.006&amp;">Google Scholar</a>{.usa-link .usa-link--external ga-action=&quot;click_feat_suppl&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;}]]{#i1552-5783-59-3-1288-b26}</li>
+<li>[[27.]{.label} Toychiev AH, Ivanova E, Yee CW, Sagdullaev BT. . Block of gap junctions eliminates aberrant activity and restores light responses during retinal degeneration. <em>J Neurosci</em>. 2013; 33: 13972-- 13977. [<a href="https://doi.org/10.1523/JNEUROSCI.2399-13.2013">DOI</a>{.usa-link .usa-link--external ga-action=&quot;click_feat_suppl&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;}] [<a href="/articles/PMC3756747/">PMC free article</a>{.usa-link}] [<a href="https://pubmed.ncbi.nlm.nih.gov/23986234/">PubMed</a>{.usa-link}] [<a href="https://scholar.google.com/scholar_lookup?journal=J%20Neurosci&amp;title=Block%20of%20gap%20junctions%20eliminates%20aberrant%20activity%20and%20restores%20light%20responses%20during%20retinal%20degeneration&amp;author=AH%20Toychiev&amp;author=E%20Ivanova&amp;author=CW%20Yee&amp;author=BT%20Sagdullaev&amp;volume=33&amp;publication_year=2013&amp;pages=13972-13977&amp;pmid=23986234&amp;doi=10.1523/JNEUROSCI.2399-13.2013&amp;">Google Scholar</a>{.usa-link .usa-link--external ga-action=&quot;click_feat_suppl&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;}]]{#i1552-5783-59-3-1288-b27}</li>
+<li>[[28.]{.label} Barrett JM, Degenaar P, Sernagor E. . Blockade of pathological retinal ganglion cell hyperactivity improves optogenetically evoked light responses in rd1 mice. <em>Front Cell Neurosci</em>. 2015; 9: 330. [<a href="https://doi.org/10.3389/fncel.2015.00330">DOI</a>{.usa-link .usa-link--external ga-action=&quot;click_feat_suppl&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;}] [<a href="/articles/PMC4548307/">PMC free article</a>{.usa-link}] [<a href="https://pubmed.ncbi.nlm.nih.gov/26379501/">PubMed</a>{.usa-link}] [<a href="https://scholar.google.com/scholar_lookup?journal=Front%20Cell%20Neurosci&amp;title=Blockade%20of%20pathological%20retinal%20ganglion%20cell%20hyperactivity%20improves%20optogenetically%20evoked%20light%20responses%20in%20rd1%20mice&amp;author=JM%20Barrett&amp;author=P%20Degenaar&amp;author=E%20Sernagor&amp;volume=9&amp;publication_year=2015&amp;pages=330&amp;pmid=26379501&amp;doi=10.3389/fncel.2015.00330&amp;">Google Scholar</a>{.usa-link .usa-link--external ga-action=&quot;click_feat_suppl&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;}]]{#i1552-5783-59-3-1288-b28}</li>
+<li>[[29.]{.label} Hattar S, Lucas RJ, Mrosovsky N,et al. Melanopsin and rod-cone photoreceptive systems account for all major accessory visual functions in mice. <em>Nature</em>. 2003; 424: 76-- 81. [<a href="https://doi.org/10.1038/nature01761">DOI</a>{.usa-link .usa-link--external ga-action=&quot;click_feat_suppl&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;}] [<a href="/articles/PMC2885907/">PMC free article</a>{.usa-link}] [<a href="https://pubmed.ncbi.nlm.nih.gov/12808468/">PubMed</a>{.usa-link}] [<a href="https://scholar.google.com/scholar_lookup?journal=Nature&amp;title=Melanopsin%20and%20rod-cone%20photoreceptive%20systems%20account%20for%20all%20major%20accessory%20visual%20functions%20in%20mice&amp;author=S%20Hattar&amp;author=RJ%20Lucas&amp;author=N%20Mrosovsky&amp;volume=424&amp;publication_year=2003&amp;pages=76-81&amp;pmid=12808468&amp;doi=10.1038/nature01761&amp;">Google Scholar</a>{.usa-link .usa-link--external ga-action=&quot;click_feat_suppl&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;}]]{#i1552-5783-59-3-1288-b29}</li>
+<li>[[30.]{.label} Calvert PD, Krasnoperova NV, Lyubarsky AL,et al. Phototransduction in transgenic mice after targeted deletion of the rod transducin alpha-subunit. <em>Proc Natl Acad Sci U S A</em>. 2000; 97: 13913-- 13918. [<a href="https://doi.org/10.1073/pnas.250478897">DOI</a>{.usa-link .usa-link--external ga-action=&quot;click_feat_suppl&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;}] [<a href="/articles/PMC17675/">PMC free article</a>{.usa-link}] [<a href="https://pubmed.ncbi.nlm.nih.gov/11095744/">PubMed</a>{.usa-link}] [<a href="https://scholar.google.com/scholar_lookup?journal=Proc%20Natl%20Acad%20Sci%20U%20S%20A&amp;title=Phototransduction%20in%20transgenic%20mice%20after%20targeted%20deletion%20of%20the%20rod%20transducin%20alpha-subunit&amp;author=PD%20Calvert&amp;author=NV%20Krasnoperova&amp;author=AL%20Lyubarsky&amp;volume=97&amp;publication_year=2000&amp;pages=13913-13918&amp;pmid=11095744&amp;doi=10.1073/pnas.250478897&amp;">Google Scholar</a>{.usa-link .usa-link--external ga-action=&quot;click_feat_suppl&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;}]]{#i1552-5783-59-3-1288-b30}</li>
+<li>[[31.]{.label} Biel M, Seeliger M, Pfeifer A,et al. Selective loss of cone function in mice lacking the cyclic nucleotide-gated channel CNG3. <em>Proc Natl Acad Sci U S A</em>. 1999; 96: 7553-- 7557. [<a href="https://doi.org/10.1073/pnas.96.13.7553">DOI</a>{.usa-link .usa-link--external ga-action=&quot;click_feat_suppl&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;}] [<a href="/articles/PMC22124/">PMC free article</a>{.usa-link}] [<a href="https://pubmed.ncbi.nlm.nih.gov/10377453/">PubMed</a>{.usa-link}] [<a href="https://scholar.google.com/scholar_lookup?journal=Proc%20Natl%20Acad%20Sci%20U%20S%20A&amp;title=Selective%20loss%20of%20cone%20function%20in%20mice%20lacking%20the%20cyclic%20nucleotide-gated%20channel%20CNG3&amp;author=M%20Biel&amp;author=M%20Seeliger&amp;author=A%20Pfeifer&amp;volume=96&amp;publication_year=1999&amp;pages=7553-7557&amp;pmid=10377453&amp;doi=10.1073/pnas.96.13.7553&amp;">Google Scholar</a>{.usa-link .usa-link--external ga-action=&quot;click_feat_suppl&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;}]]{#i1552-5783-59-3-1288-b31}</li>
+<li>[[32.]{.label} Lucas RJ, Hattar S, Takao M, Berson DM, Foster RG, Yau KW. . Diminished pupillary light reflex at high irradiances in melanopsin-knockout mice. <em>Science</em>. 2003; 299: 245-- 247. [<a href="https://doi.org/10.1126/science.1077293">DOI</a>{.usa-link .usa-link--external ga-action=&quot;click_feat_suppl&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;}] [<a href="https://pubmed.ncbi.nlm.nih.gov/12522249/">PubMed</a>{.usa-link}] [<a href="https://scholar.google.com/scholar_lookup?journal=Science&amp;title=Diminished%20pupillary%20light%20reflex%20at%20high%20irradiances%20in%20melanopsin-knockout%20mice&amp;author=RJ%20Lucas&amp;author=S%20Hattar&amp;author=M%20Takao&amp;author=DM%20Berson&amp;author=RG%20Foster&amp;volume=299&amp;publication_year=2003&amp;pages=245-247&amp;pmid=12522249&amp;doi=10.1126/science.1077293&amp;">Google Scholar</a>{.usa-link .usa-link--external ga-action=&quot;click_feat_suppl&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;}]]{#i1552-5783-59-3-1288-b32}</li>
+<li>[[33.]{.label} Ecker JL, Dumitrescu ON, Wong KY,et al. Melanopsin-expressing retinal ganglion-cell photoreceptors: cellular diversity and role in pattern vision. <em>Neuron</em>. 2010; 67: 49-- 60. [<a href="https://doi.org/10.1016/j.neuron.2010.05.023">DOI</a>{.usa-link .usa-link--external ga-action=&quot;click_feat_suppl&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;}] [<a href="/articles/PMC2904318/">PMC free article</a>{.usa-link}] [<a href="https://pubmed.ncbi.nlm.nih.gov/20624591/">PubMed</a>{.usa-link}] [<a href="https://scholar.google.com/scholar_lookup?journal=Neuron&amp;title=Melanopsin-expressing%20retinal%20ganglion-cell%20photoreceptors:%20cellular%20diversity%20and%20role%20in%20pattern%20vision&amp;author=JL%20Ecker&amp;author=ON%20Dumitrescu&amp;author=KY%20Wong&amp;volume=67&amp;publication_year=2010&amp;pages=49-60&amp;pmid=20624591&amp;doi=10.1016/j.neuron.2010.05.023&amp;">Google Scholar</a>{.usa-link .usa-link--external ga-action=&quot;click_feat_suppl&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;}]]{#i1552-5783-59-3-1288-b33}</li>
+<li>[[34.]{.label} Panda S, Provencio I, Tu DC,et al. Melanopsin is required for non-image-forming photic responses in blind mice. <em>Science</em>. 2003; 301: 525-- 527. [<a href="https://doi.org/10.1126/science.1086179">DOI</a>{.usa-link .usa-link--external ga-action=&quot;click_feat_suppl&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;}] [<a href="https://pubmed.ncbi.nlm.nih.gov/12829787/">PubMed</a>{.usa-link}] [<a href="https://scholar.google.com/scholar_lookup?journal=Science&amp;title=Melanopsin%20is%20required%20for%20non-image-forming%20photic%20responses%20in%20blind%20mice&amp;author=S%20Panda&amp;author=I%20Provencio&amp;author=DC%20Tu&amp;volume=301&amp;publication_year=2003&amp;pages=525-527&amp;pmid=12829787&amp;doi=10.1126/science.1086179&amp;">Google Scholar</a>{.usa-link .usa-link--external ga-action=&quot;click_feat_suppl&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;}]]{#i1552-5783-59-3-1288-b34}</li>
+<li>[[35.]{.label} Semo M, Peirson S, Lupi D, Lucas RJ, Jeffery G, Foster RG. . Melanopsin retinal ganglion cells and the maintenance of circadian and pupillary responses to light in aged rodless/coneless (rd/rd cl) mice. <em>Eur J Neurosci</em>. 2003; 17: 1793-- 1801. [<a href="https://doi.org/10.1046/j.1460-9568.2003.02616.x">DOI</a>{.usa-link .usa-link--external ga-action=&quot;click_feat_suppl&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;}] [<a href="https://pubmed.ncbi.nlm.nih.gov/12752778/">PubMed</a>{.usa-link}] [<a href="https://scholar.google.com/scholar_lookup?journal=Eur%20J%20Neurosci&amp;title=Melanopsin%20retinal%20ganglion%20cells%20and%20the%20maintenance%20of%20circadian%20and%20pupillary%20responses%20to%20light%20in%20aged%20rodless/coneless%20(rd/rd%20cl)%20mice&amp;author=M%20Semo&amp;author=S%20Peirson&amp;author=D%20Lupi&amp;author=RJ%20Lucas&amp;author=G%20Jeffery&amp;volume=17&amp;publication_year=2003&amp;pages=1793-1801&amp;pmid=12752778&amp;doi=10.1046/j.1460-9568.2003.02616.x&amp;">Google Scholar</a>{.usa-link .usa-link--external ga-action=&quot;click_feat_suppl&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;}]]{#i1552-5783-59-3-1288-b35}</li>
+<li>[[36.]{.label} Allen AE, Cameron MA, Brown TM, Vugler AA, Lucas RJ. . Visual responses in mice lacking critical components of all known retinal phototransduction cascades. <em>PLoS One</em>. 2010; 5: e15063. [<a href="https://doi.org/10.1371/journal.pone.0015063">DOI</a>{.usa-link .usa-link--external ga-action=&quot;click_feat_suppl&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;}] [<a href="/articles/PMC2993945/">PMC free article</a>{.usa-link}] [<a href="https://pubmed.ncbi.nlm.nih.gov/21124780/">PubMed</a>{.usa-link}] [<a href="https://scholar.google.com/scholar_lookup?journal=PLoS%20One&amp;title=Visual%20responses%20in%20mice%20lacking%20critical%20components%20of%20all%20known%20retinal%20phototransduction%20cascades&amp;author=AE%20Allen&amp;author=MA%20Cameron&amp;author=TM%20Brown&amp;author=AA%20Vugler&amp;author=RJ%20Lucas&amp;volume=5&amp;publication_year=2010&amp;pages=e15063&amp;pmid=21124780&amp;doi=10.1371/journal.pone.0015063&amp;">Google Scholar</a>{.usa-link .usa-link--external ga-action=&quot;click_feat_suppl&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;}]]{#i1552-5783-59-3-1288-b36}</li>
+<li>[[37.]{.label} Semo M, Gias C, Ahmado A,et al. Dissecting a role for melanopsin in behavioural light aversion reveals a response independent of conventional photoreception. <em>PLoS One</em>. 2010; 5: e15009. [<a href="https://doi.org/10.1371/journal.pone.0015009">DOI</a>{.usa-link .usa-link--external ga-action=&quot;click_feat_suppl&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;}] [<a href="/articles/PMC2993953/">PMC free article</a>{.usa-link}] [<a href="https://pubmed.ncbi.nlm.nih.gov/21124784/">PubMed</a>{.usa-link}] [<a href="https://scholar.google.com/scholar_lookup?journal=PLoS%20One&amp;title=Dissecting%20a%20role%20for%20melanopsin%20in%20behavioural%20light%20aversion%20reveals%20a%20response%20independent%20of%20conventional%20photoreception&amp;author=M%20Semo&amp;author=C%20Gias&amp;author=A%20Ahmado&amp;volume=5&amp;publication_year=2010&amp;pages=e15009&amp;pmid=21124784&amp;doi=10.1371/journal.pone.0015009&amp;">Google Scholar</a>{.usa-link .usa-link--external ga-action=&quot;click_feat_suppl&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;}]]{#i1552-5783-59-3-1288-b37}</li>
+<li>[[38.]{.label} Douglas RM, Alam NM, Silver BD, McGill TJ, Tschetter WW, Prusky GT. . Independent visual threshold measurements in the two eyes of freely moving rats and mice using a virtual-reality optokinetic system. <em>Vis Neurosci</em>. 2005; 22: 677-- 684. [<a href="https://doi.org/10.1017/S0952523805225166">DOI</a>{.usa-link .usa-link--external ga-action=&quot;click_feat_suppl&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;}] [<a href="https://pubmed.ncbi.nlm.nih.gov/16332278/">PubMed</a>{.usa-link}] [<a href="https://scholar.google.com/scholar_lookup?journal=Vis%20Neurosci&amp;title=Independent%20visual%20threshold%20measurements%20in%20the%20two%20eyes%20of%20freely%20moving%20rats%20and%20mice%20using%20a%20virtual-reality%20optokinetic%20system&amp;author=RM%20Douglas&amp;author=NM%20Alam&amp;author=BD%20Silver&amp;author=TJ%20McGill&amp;author=WW%20Tschetter&amp;volume=22&amp;publication_year=2005&amp;pages=677-684&amp;pmid=16332278&amp;doi=10.1017/S0952523805225166&amp;">Google Scholar</a>{.usa-link .usa-link--external ga-action=&quot;click_feat_suppl&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;}]]{#i1552-5783-59-3-1288-b38}</li>
+<li>[[39.]{.label} Charng J, Jacobson SG, Heon E,et al. Pupillary light reflexes in severe photoreceptor blindness isolate the melanopic component of intrinsically photosensitive retinal ganglion cells. <em>Invest Ophthalmol Vis Sci</em>. 2017; 58: 3215-- 3224 [<a href="https://doi.org/10.1167/iovs.17-21909">DOI</a>{.usa-link .usa-link--external ga-action=&quot;click_feat_suppl&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;}] [<a href="/articles/PMC5490362/">PMC free article</a>{.usa-link}] [<a href="https://pubmed.ncbi.nlm.nih.gov/28660274/">PubMed</a>{.usa-link}] [<a href="https://scholar.google.com/scholar_lookup?journal=Invest%20Ophthalmol%20Vis%20Sci&amp;title=Pupillary%20light%20reflexes%20in%20severe%20photoreceptor%20blindness%20isolate%20the%20melanopic%20component%20of%20intrinsically%20photosensitive%20retinal%20ganglion%20cells&amp;author=J%20Charng&amp;author=SG%20Jacobson&amp;author=E%20Heon&amp;volume=58&amp;publication_year=2017&amp;pages=3215-3224&amp;pmid=28660274&amp;doi=10.1167/iovs.17-21909&amp;">Google Scholar</a>{.usa-link .usa-link--external ga-action=&quot;click_feat_suppl&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;}]]{#i1552-5783-59-3-1288-b39}</li>
+<li>[[40.]{.label} Schmidt TM, Chen SK, Hattar S. . Intrinsically photosensitive retinal ganglion cells: many subtypes, diverse functions. <em>Trends Neurosci</em>. 2011; 34: 5725-- 5780. [<a href="https://doi.org/10.1016/j.tins.2011.07.001">DOI</a>{.usa-link .usa-link--external ga-action=&quot;click_feat_suppl&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;}] [<a href="/articles/PMC3200463/">PMC free article</a>{.usa-link}] [<a href="https://pubmed.ncbi.nlm.nih.gov/21816493/">PubMed</a>{.usa-link}] [<a href="https://scholar.google.com/scholar_lookup?journal=Trends%20Neurosci&amp;title=Intrinsically%20photosensitive%20retinal%20ganglion%20cells:%20many%20subtypes,%20diverse%20functions&amp;author=TM%20Schmidt&amp;author=SK%20Chen&amp;author=S%20Hattar&amp;volume=34&amp;publication_year=2011&amp;pages=5725-5780&amp;pmid=21816493&amp;doi=10.1016/j.tins.2011.07.001&amp;">Google Scholar</a>{.usa-link .usa-link--external ga-action=&quot;click_feat_suppl&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;}]]{#i1552-5783-59-3-1288-b40}
+:::
+::::</li>
+</ul>
+<p>:::::::::::::::: {#<em>ad93</em> .section .associated-data lang=&quot;en&quot;}</p>
+<h2 id="associated-data-associated-data-pmc_sec_title">Associated Data {#associated-data .pmc_sec_title}</h2>
+<p><em>This section collects any data citations, data availability statements, or supplementary materials included in this article.</em></p>
+<p>::::::::::::::: {#<em>adsm93</em> .section .supplementary-materials lang=&quot;en&quot;}</p>
+<h3 id="supplementary-materials-supplementary-materials-pmc_sec_title">Supplementary Materials {#supplementary-materials .pmc_sec_title}</h3>
+<p>:::::: {#db_ds_supplementary-material1_reqid_ .section .sm .xbox .font-sm}
+::: {.caption .p}
+Supplement 1
+:::</p>
+<p>:::: {.media .p}
+::: caption
+<a href="/articles/instance/5839255/bin/iovs-59-02-45_s01.mov">Click here for additional data file.</a>{.usa-link ga-action=&quot;click_feat_suppl&quot;} ^(1.5MB,\ mov)^
+:::
+::::
+::::::</p>
+<p>:::::: {#db_ds_supplementary-material2_reqid_ .section .sm .xbox .font-sm}
+::: {.caption .p}
+Supplement 2
+:::</p>
+<p>:::: {.media .p}
+::: caption
+<a href="/articles/instance/5839255/bin/iovs-59-02-45_s02.mov">Click here for additional data file.</a>{.usa-link ga-action=&quot;click_feat_suppl&quot;} ^(3MB,\ mov)^
+:::
+::::
+::::::</p>
+<p>:::::: {#db_ds_supplementary-material3_reqid_ .section .sm .xbox .font-sm}
+::: {.caption .p}
+Supplement 3
+:::</p>
+<p>:::: {.media .p}
+::: caption
+<a href="/articles/instance/5839255/bin/iovs-59-02-45_s03.pdf">Click here for additional data file.</a>{.usa-link ga-action=&quot;click_feat_suppl&quot;} ^(189.9KB,\ pdf)^
+:::
+::::
+::::::
+:::::::::::::::
+::::::::::::::::
+:::::::::::::::::::::::::::::::::::::::::::::::::::</p>
+<hr>
+<p>Articles from Investigative Ophthalmology &amp; Visual Science are provided here courtesy of <strong>Association for Research in Vision and Ophthalmology</strong>
+::::::::::::::::::::::::::::::::::::::::::::::::::::
+:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::</p>
+
+            
+            
+        </body>
+        </html>
