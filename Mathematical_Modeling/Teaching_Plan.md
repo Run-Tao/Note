@@ -27,7 +27,8 @@ created: 2026-09-02
 1. **教案笔记** → 放进对应 Level 目录（02–09 主题目录），如 `09 Case Studies`、`04 Optimization` 等；
 2. **可运行代码** → `Mathematical_Modeling/08 - Python/daily/<YYYY-MM-DD>/`，每个主题配 `README` + 脚本 + 输出截图/图；
 3. **进度更新** → 本文件"进度日志"追加当天条目；
-4. **推送** → git commit + push 到 `Run-Tao/Note`。
+4. **文献查找与下载** → 为当日主题检索 1–3 篇相关资料（论文 / 官方文档 / 教程）：**可下载的一律下载**到 `Resources/Downloads/`（文件名 `作者-标题.pdf` 或 `标题.pdf`）并在 `Resources/README.md` 登记；无法下载 / 仅在线浏览的只记链接并标注"仅在线"（依 [[AGENTS]] §6.5）；
+5. **推送** → git commit + push 到 `Run-Tao/Note`。
 
 ## 选题策略（沿 Roadmap，补齐代码闭环优先）
 
