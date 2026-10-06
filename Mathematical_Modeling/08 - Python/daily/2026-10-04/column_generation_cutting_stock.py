@@ -22,6 +22,7 @@ goal    : 用「钢材厂接到一批不同长度钢管的订单，每根标准�
 import numpy as np
 from scipy.optimize import linprog, milp, LinearConstraint, Bounds
 import itertools
+from pathlib import Path
 import matplotlib
 
 matplotlib.use("Agg")
@@ -418,7 +419,7 @@ def main():
     fig.suptitle("Day36 · 一维下料问题与列生成法（Column Generation）",
                  fontsize=14, fontweight="bold")
     fig.tight_layout(rect=[0, 0, 1, 0.97])
-    out = "Mathematical_Modeling/08 - Python/daily/2026-10-04/column_generation_cutting_stock.png"
+    out = Path(__file__).with_name("column_generation_cutting_stock.png")
     fig.savefig(out, dpi=130)
     print(f"\n图已保存：{out}")
 

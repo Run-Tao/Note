@@ -41,8 +41,13 @@ created: 2026-09-02
 | Day4 | L3 | 差分/连续方程入门 | scipy odeint |
 | Day5 | L3 | SIR 传染病仿真 | 仿真图 |
 | Day6 | L4 | 线性回归 + 拟合诊断 | sklearn |
-| Day7 | L4 | 时间序列/ARIMA 初步 | statsmodels |
+| ~~Day7~~ | L4 | ~~时间序列/ARIMA 初步~~ | ~~statsmodels~~ |
 | ... | L5–12 | AHP/TOPSIS→优化→ML→真题→论文 | 逐步 |
+
+> [!note] 计划草表与实际序列的差异（2026-10-06 整理核定）
+> 本表 **Day4 之后为早期草案**，实际产出已沿"模型 / 算法增量主线"演进（以下方进度日志与 `04 - Optimization/`、`05 - Algorithms/` 的教案编号为准）。
+> 因此 **`05 - Algorithms/` 中 Day6 → Day8 的编号缺口不是内容缺失**：2026-09-07 的 GA/SA 求解 TSP 已作为课程内 Day6 成稿（见 `08 - Python/daily/2026-09-07/README.md`）。
+> 但 **`时间序列 / ARIMA` 至今无任何一讲覆盖**（全仓零命中），而它是预测类赛题（Level 4）的核心方法 → 记为**待补专题**，建议在学预测类题目时补写，而不是为凑编号补课。
 
 ## 待办 / 约束
 
