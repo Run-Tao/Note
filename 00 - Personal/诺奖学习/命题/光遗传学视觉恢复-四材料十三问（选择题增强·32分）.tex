@@ -16,6 +16,8 @@
 \usepackage{float}
 \usepackage{titlesec}
 \usepackage{fancyhdr}
+\usepackage{tcolorbox}
+\tcbuselibrary{skins,breakable}
 \usepackage[hidelinks]{hyperref}
 
 \graphicspath{{../命题图/}{../../Resources/Downloads/原图-光遗传学视觉恢复/}}
@@ -37,6 +39,15 @@
 \newcommand{\key}[1]{\textbf{\color{deepred}#1}}
 \newcommand{\tian}[1]{\underline{\hspace{#1}}}
 \newcommand{\choice}[1]{\par\smallskip\noindent #1\par}
+
+% 材料区块：位于材料开头；设问区块：紧跟对应材料
+\newtcolorbox{matbox}[1]{colback=blue!4,colframe=deepblue,boxrule=0.9pt,
+  arc=2pt,left=6pt,right=6pt,top=5pt,bottom=5pt,
+  title={\bfseries #1},fonttitle=\normalsize\color{white},
+  coltitle=white,colbacktitle=deepblue,breakable}
+\newtcolorbox{qbox}{colback=deepgreen!5,colframe=deepgreen,boxrule=0.7pt,
+  arc=2pt,left=6pt,right=6pt,top=4pt,bottom=4pt,breakable,
+  before skip=6pt,after skip=6pt}
 
 \title{\bfseries 光遗传学与视网膜退化性疾病的视觉功能恢复\\[5pt]
 \large 四材料综合题 · 选择题增强版（13 问 / 32 分）}
@@ -87,11 +98,13 @@ Q13 & 简答·开放 & 综合方案与依据 & 拔高 & 3 & 综合 \\
 \section{材料一\quad 视觉损伤与治疗思路}
 \addcontentsline{toc}{section}{材料一：视觉损伤与治疗思路}
 
+\begin{matbox}{材料一\quad 视觉损伤与治疗思路}
 视网膜像一台"光信号转换器"：其中的\textbf{感光细胞}（视杆细胞与视锥细胞）感受光并把光信号转变为电信号；信号随后经\textbf{双极细胞}传到\textbf{神经节细胞}，后者的轴突汇聚成视神经，把信号送往大脑皮层视觉中枢，最终形成视觉（图1）。
 
 视网膜色素变性（RP）是一类由基因突变引起的遗传性眼病。患者的\textbf{感光细胞逐渐死亡}，而内层的双极细胞与神经节细胞大多仍然存活。由于信号在视网膜的"第一站"就无法形成，患者即使眼球结构和视神经通路完好，视觉功能仍会逐渐下降。
 
 研究者尝试用\textbf{光遗传学}方法恢复视觉：把一种来自单细胞藻类的\textbf{光敏蛋白基因（ChR2 基因）}导入残存的视网膜细胞。ChR2 蛋白能在细胞膜上形成\textbf{受光控制的离子通道}——受到蓝光照射时通道开放，离子流动，细胞的膜电位随之改变，从而产生电信号。
+\end{matbox}
 
 \begin{figure}[H]
 \centering
@@ -99,8 +112,8 @@ Q13 & 简答·开放 & 综合方案与依据 & 拔高 & 3 & 综合 \\
 \caption{图1\quad 视网膜三级细胞通路、RP 的主要受损环节与治疗靶点（简化示意图）}
 \end{figure}
 
-\subsection*{问题}
-
+\begin{qbox}
+\noindent\textbf{\color{deepgreen}第 1—4 问（据材料一作答）}
 \begin{enumerate}[leftmargin=2.2em,itemsep=5pt]
 \item \lv{单选} \pt{2} 结合图1 与材料，RP 患者视觉功能下降的直接原因是（\quad）\\
 \choice{A. 视神经被切断，信号无法上传到大脑\\
@@ -118,11 +131,14 @@ D. 治疗后视觉信号仍需经神经节细胞传至大脑皮层视觉中枢�
 
 \item \lv{中等} \pt{3} 研究者把 ChR2 基因导入残存的视网膜神经细胞后，这些细胞便能在蓝光照射下产生反应。请用"基因 → 蛋白质 → 细胞功能"的思路说明其原因。
 \end{enumerate}
+\end{qbox}
 
 \section{材料二\quad ChR2 突变体}
 \addcontentsline{toc}{section}{材料二：ChR2 突变体}
 
+\begin{matbox}{材料二\quad ChR2 突变体}
 天然 ChR2 需要较强的光才能被有效激活。研究者通过改变 ChR2 基因中特定位置的碱基序列，获得三种突变体，并比较了它们的性能（表1）。
+\end{matbox}
 
 \begin{table}[H]
 \centering\small
@@ -144,6 +160,8 @@ M3（ChR2-L132C/T159S） & 3 & 很长 & 很差 \\
 
 \subsection*{问题}
 
+\begin{qbox}
+\noindent\textbf{\color{deepgreen}第 5—7 问（据材料二作答）}
 \begin{enumerate}[leftmargin=2.2em,itemsep=5pt,start=5]
 \item \lv{编号排序} \pt{2} 根据表1，把四种变体按\textbf{被弱光激活的能力由强到弱}排序（填变体名称）：\\
 \tian{2.4cm} $>$ \tian{2.4cm} $>$ \tian{2.4cm} $>$ \tian{2.4cm}
@@ -156,13 +174,16 @@ D. 表1 显示，"被弱光激活的能力"与"恢复时间"总体相关，但�
 
 \item \lv{拔高} \pt{3} 某突变体被弱光激活的能力明显提高，但光照停止后恢复到静息所需时间变长。请结合表1 分析它用于视觉恢复时的\textbf{优势}与\textbf{局限}，并说明"被弱光激活的能力最强"是否就等于"视觉恢复效果最好"。
 \end{enumerate}
+\end{qbox}
 
 \section{材料三\quad AAV 递送与目标细胞表达}
 \addcontentsline{toc}{section}{材料三：AAV 递送与目标细胞表达}
 
+\begin{matbox}{材料三\quad AAV 递送与目标细胞表达}
 把基因送入细胞需要"载体"。研究者使用\textbf{腺相关病毒（AAV）}作为载体：它能把携带的基因送入细胞，且本身引起的免疫反应较弱。但仅有载体还不够——基因在哪些细胞里表达、表达多少，与连接在它旁边的\textbf{调控元件}（启动子、增强子）有关：它们能影响目的基因在不同细胞中的表达水平。
 
 研究者设计了三种构建方案（方法中只有调控元件不同），并检测了小鼠视网膜中的表达情况（表2）。图2 是把 ChR2 与红色荧光蛋白融合后，与能标记双极细胞的抗体共同染色的结果：若红色荧光（表示基因表达）与绿色荧光（表示双极细胞）大量重叠，说明目的基因主要表达在双极细胞中。
+\end{matbox}
 
 \begin{table}[H]
 \centering\small
@@ -189,6 +210,8 @@ D. 表1 显示，"被弱光激活的能力"与"恢复时间"总体相关，但�
 
 \subsection*{问题}
 
+\begin{qbox}
+\noindent\textbf{\color{deepgreen}第 8—10 问（据材料三作答）}
 \begin{enumerate}[leftmargin=2.2em,itemsep=5pt,start=8]
 \item \lv{编号选填+简答} \pt{3}
 \begin{enumerate}[label=(\arabic*),leftmargin=1.4em,itemsep=2pt]
@@ -204,13 +227,16 @@ D. 目的基因若在非目标细胞中大量表达，可能干扰视网膜原�
 
 \item \lv{拔高} \pt{3} 表2 中甲方案的 ChR2 总表达量最高，但研究者并未选择它。请结合表1—表3，说明为什么"ChR2 表达量高"不能说明视觉恢复效果好。
 \end{enumerate}
+\end{qbox}
 
 \section{材料四\quad 用 OMR 评价视觉功能是否恢复}
 \addcontentsline{toc}{section}{材料四：用 OMR 评价视觉功能是否恢复}
 
+\begin{matbox}{材料四\quad 用 OMR 评价视觉功能是否恢复}
 细胞"对光有反应"不等于动物"看得见"。为评价视觉功能是否真正恢复，研究者使用\textbf{视动反应（OMR）}：把小鼠放在能显示移动条纹的装置中，若小鼠能看清条纹，其头部会随条纹运动方向转动；条纹越密集（\textbf{空间频率}越高），看清越困难，需要的光也越强。
 
 研究者把三种 ChR2 变体分别导入三组同种失明小鼠，并设置一组\textbf{未经基因治疗}的小鼠作对照，测定了各组出现 OMR 所需的最低光强（表3）。
+\end{matbox}
 
 \begin{table}[H]
 \centering\small
@@ -230,6 +256,8 @@ M3 组 & 6 & 14 & 未出现 \\
 
 \subsection*{问题}
 
+\begin{qbox}
+\noindent\textbf{\color{deepgreen}第 11—12 问（据材料四作答）}
 \begin{enumerate}[leftmargin=2.2em,itemsep=5pt,start=11]
 \item \lv{单选} \pt{2} 在条纹稀疏与中等两种条件下，出现 OMR 所需最低光强最小（最容易被测到 OMR）的一组是（\quad）\\
 \choice{A. wt-ChR2 组 \quad B. M1 组 \quad C. M2 组 \quad D. M3 组}
@@ -246,13 +274,17 @@ D. OMR 是否出现属于行为学指标，比单纯检测蛋白表达更能反�
 \item \pt{1} 为什么必须设置"未经基因治疗"的对照组？若该对照组也出现了 OMR，最可能说明什么？
 \end{enumerate}
 \end{enumerate}
+\end{qbox}
 
 \section{综合题}
 \addcontentsline{toc}{section}{综合题}
 
+\begin{qbox}
+\noindent\textbf{\color{deepgreen}第 13 问（综合全部材料作答）}
 \begin{enumerate}[leftmargin=2.2em,itemsep=5pt,start=13]
 \item \lv{拔高·开放} \pt{3} 有一位患者以\textbf{夜间活动为主}，且需要\textbf{躲避快速移动的物体}。请综合表1—表3 的结果，从"\textbf{变体选择}、\textbf{靶细胞表达}、\textbf{功能评价}"中至少两个方面提出你的方案，并说明依据。
 \end{enumerate}
+\end{qbox}
 
 \clearpage
 \section*{参考答案与评分细则}
