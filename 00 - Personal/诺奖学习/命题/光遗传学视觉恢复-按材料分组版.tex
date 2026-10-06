@@ -19,6 +19,8 @@
 \usepackage{tcolorbox}
 \tcbuselibrary{skins,breakable}
 \usepackage{pifont}
+% 把全角符号（≠、①—⑤ 等）划归中文字体，避免在拉丁字体中缺字形
+\xeCJKDeclareCharClass{CJK}{"2260, "2460 -> "2464}
 \usepackage[hidelinks]{hyperref}
 
 \graphicspath{{../命题图/}{../../Resources/Downloads/原图-光遗传学视觉恢复/}}
