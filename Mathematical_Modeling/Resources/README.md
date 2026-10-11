@@ -24,3 +24,13 @@
 
 > ⚠️ 说明：2026-10-10 备课时宿主机**无外网出口**（`curl`/`web_fetch` 均超时），故本日资料**全部按"仅在线"登记、未下载 PDF**；待网络恢复后补下 Edmonds–Johnson 1973 与管梅谷 1962 原文。
 
+## 元启发式 / 调度（Level 5–6）
+
+- **Glover, F. (1986). Future paths for integer programming and links to artificial intelligence.** *Computers & Operations Research* 13(5):533–549；及 Glover (1989/1990) Tabu Search 系列（*ORSA Journal on Computing*） — 进阶，英文，**禁忌搜索（Tabu Search）的奠基论文**，是 Day42 理论的直接来源（Elsevier/INFORMS，付费/需机构访问）（**仅在线**）状态：待读
+- **Lawler, E. L. (1977). A pseudopolynomial algorithm for sequencing jobs to minimize total tardiness.** *Annals of Discrete Mathematics* 1:331–342 — 进阶，英文，证明单机总延误 $1\|\sum T_j$ 的伪多项式 DP，Day42 复杂度与 NP-hard 论断的来源（Elsevier，付费）（**仅在线**）状态：待读
+- **Rachamadugu, R. & Morton, T. E. (1982). Myopic heuristics for the weighted tardiness problem.** CMU 工作论文 — 进阶，英文，**ATC（Apparent Tardiness Cost）规则**的原始出处，Day42 构造规则对照的来源（CMU，可索取）（**仅在线**）状态：待读
+- **Pinedo, M. *Scheduling: Theory, Algorithms, and Systems*（第 5 版）** — 进阶，英文，调度领域标准教材，第 3 章单机调度（EDD/WSPT/ATC 与总加权延误）与 Day42 直接对应（Springer，付费）（**仅在线**）状态：待读
+- **Wikipedia: Tabu search** — 入门，英文，[Tabu search](https://en.wikipedia.org/wiki/Tabu_search)（**仅在线**：Wiki 动态页面；2026-10-11 备课时宿主机无外网，未能抓取正文）状态：待读
+
+> ⚠️ 说明：2026-10-11 备课时宿主机**仍无外网出口**（`curl` 超时），故本日资料**全部按"仅在线"登记、未下载 PDF**；待网络恢复后补下 Glover 1986 与 Lawler 1977 原文。
+
