@@ -34,3 +34,12 @@
 
 > ⚠️ 说明：2026-10-11 备课时宿主机**仍无外网出口**（`curl` 超时），故本日资料**全部按"仅在线"登记、未下载 PDF**；待网络恢复后补下 Glover 1986 与 Lawler 1977 原文。
 
+## 群体智能 / 蚁群（Level 5–6）
+
+- **Dorigo, M., Maniezzo, V., & Colorni, A. (1996). Ant system: optimization by a colony of cooperating agents.** *IEEE Transactions on Systems, Man, and Cybernetics, Part B* 26(1):29–41 — 进阶，英文，**蚁群算法 ACO / Ant System 的奠基论文**，是 Day43 理论的直接来源（IEEE，付费/需机构访问）（**仅在线**）状态：待读
+- **Dorigo, M., & Gambardella, L. M. (1997). Ant colony system: a cooperative learning approach to the traveling salesman problem.** *IEEE Transactions on Evolutionary Computation* 1(1):53–66 — 进阶，英文，**ACS（Ant Colony System）** 面向 TSP 的经典改进（引入伪随机比例选择与局部更新），Day43 落地增强的理论背景（IEEE，付费）（**仅在线**）状态：待读
+- **Dorigo, M., & Stützle, T. *Ant Colony Optimization*（MIT Press, 2004）** — 进阶，英文，ACO 领域标准专著，覆盖 AS/ACS/MAX-MIN AS 各变体与 TSP/调度/路由应用，与 Day43 直接对应（MIT Press，付费）（**仅在线**）状态：待读
+- **Wikipedia: Ant colony optimization algorithms** — 入门，英文，[Ant colony optimization algorithms](https://en.wikipedia.org/wiki/Ant_colony_optimization_algorithms)（**仅在线**：Wiki 动态页面，无稳定 PDF；2026-10-12 备课时宿主机外网受限，未能抓取正文）状态：待读
+
+> ⚠️ 说明：2026-10-12 备课时宿主机**外网仍受限**（`web_search` 禁用、`web_fetch`/`curl` 多数超时；仅 arXiv 偶发 200 但无可下载目标），故本日资料**全部按"仅在线"登记、未下载 PDF**；待网络恢复后补下 Dorigo 1996/1997 与 Dorigo–Stützle 2004 专著。
+
