@@ -43,3 +43,13 @@
 
 > ⚠️ 说明：2026-10-12 备课时宿主机**外网仍受限**（`web_search` 禁用、`web_fetch`/`curl` 多数超时；仅 arXiv 偶发 200 但无可下载目标），故本日资料**全部按"仅在线"登记、未下载 PDF**；待网络恢复后补下 Dorigo 1996/1997 与 Dorigo–Stützle 2004 专著。
 
+
+## 群体智能 / 粒子群（Level 5–6）
+
+- **Kennedy, J., & Eberhart, R. (1995). Particle swarm optimization.** *Proceedings of ICNN'95 — International Conference on Neural Networks*, vol. 4, pp. 1942–1948, IEEE — 进阶，英文，**粒子群优化 PSO 的奠基论文**，是 Day44 理论的直接来源（IEEE，付费/需机构访问）（**仅在线**）状态：待读
+- **Shi, Y., & Eberhart, R. (1998). A modified particle swarm optimizer.** *1998 IEEE International Conference on Evolutionary Computation Proceedings*, pp. 69–73 — 进阶，英文，**引入惯性权重 $w$** 的关键改进，Day44 参数讨论（$w,c_1,c_2$）的直接依据（IEEE，付费）（**仅在线**）状态：待读
+- **Clerc, M., & Kennedy, J. (2002). The particle swarm — explosion, stability, and convergence in a multidimensional complex space.** *IEEE Transactions on Evolutionary Computation* 6(1):58–73 — 进阶，英文，**收缩因子（constriction）** 与收敛性分析的经典论文，Day44 常用参数 $c_1=c_2\approx1.49445$ 的来源（IEEE，付费）（**仅在线**）状态：待读
+- **Weiszfeld, E. (1937). Sur le point pour lequel la somme des distances de n points donnés est minimum.** *Tôhoku Mathematical Journal* 43:355–386 — 进阶，多设施 Weber 问题的**经典解析迭代算法**原始出处，Day44 中 k=1 裁判方法的来源（**仅在线**，历史文献）状态：待读
+- **Wikipedia: Particle swarm optimization** — 入门，英文，[Particle swarm optimization](https://en.wikipedia.org/wiki/Particle_swarm_optimization)（**仅在线**：Wiki 动态页面，无稳定 PDF；2026-10-13 备课时宿主机无外网，未能抓取正文）状态：待读
+
+> ⚠️ 说明：2026-10-13 备课时宿主机**仍无外网出口**（`curl`/`web_fetch` 均超时），故本日资料**全部按"仅在线"登记、未下载 PDF**；待网络恢复后补下 Kennedy–Eberhart 1995、Shi–Eberhart 1998 与 Clerc–Kennedy 2002 原文。
