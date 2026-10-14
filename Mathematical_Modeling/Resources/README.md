@@ -53,3 +53,14 @@
 - **Wikipedia: Particle swarm optimization** — 入门，英文，[Particle swarm optimization](https://en.wikipedia.org/wiki/Particle_swarm_optimization)（**仅在线**：Wiki 动态页面，无稳定 PDF；2026-10-13 备课时宿主机无外网，未能抓取正文）状态：待读
 
 > ⚠️ 说明：2026-10-13 备课时宿主机**仍无外网出口**（`curl`/`web_fetch` 均超时），故本日资料**全部按"仅在线"登记、未下载 PDF**；待网络恢复后补下 Kennedy–Eberhart 1995、Shi–Eberhart 1998 与 Clerc–Kennedy 2002 原文。
+
+## 进化算法 / 差分进化（Level 5–6）
+
+- **Storn, R., & Price, K. (1997). Differential evolution – a simple and efficient heuristic for global optimization over continuous spaces.** *Journal of Global Optimization* 11(4):341–359 — 进阶，英文，**差分进化 DE 的奠基论文**，是 Day45 理论的直接来源（Springer，付费/需机构访问）（**仅在线**）状态：待读
+- **Price, K. V., Storn, R. M., & Lampinen, J. A. *Differential Evolution: A Practical Approach to Global Optimization*（Springer, 2005）** — 进阶，英文，DE 领域标准专著，覆盖 DE/rand/1/bin、DE/best、F/CR 参数调校与工程应用，与 Day45 直接对应（Springer，付费）（**仅在线**）状态：待读
+- **Das, S., & Suganthan, P. N. (2011). Differential evolution: A survey of the state-of-the-art.** *IEEE Transactions on Evolutionary Computation* 15(1):4–31 — 进阶，英文，**DE 综述经典**，系统梳理各变异策略与自适应变体（含 JADE/SHADE），Day45 进阶路线的入口（IEEE，付费）（**仅在线**）状态：待读
+- **MetaDE: Evolving Differential Evolution by Differential Evolution**（arXiv:2502.10470）— 进阶，英文，**已下载** PDF，用元进化自动搜索 DE 算法结构，Day45 「进化算法自调参」方向的现代延伸 → `Resources/Downloads/MetaDE-Evolving-Differential-Evolution-by-Differential-Evolution.pdf` 状态：待读
+- **Differential evolution outside the box**（arXiv:2004.10489）— 进阶，英文，**已下载** PDF，讨论 DE 跳出常规（参数自适应/种群结构）的设计思想与收敛分析，Day45 参数 F/CR 讨论的深化 → `Resources/Downloads/Differential-Evolution-Outside-the-Box.pdf` 状态：待读
+- **Wikipedia: Differential evolution** — 入门，英文，[Differential evolution](https://en.wikipedia.org/wiki/Differential_evolution)（**仅在线**：Wiki 动态页面，无稳定 PDF；2026-10-14 备课时 Wikipedia 超时，仅 arXiv 可达）状态：待读
+
+> ⚠️ 说明：2026-10-14 备课时宿主机**外网部分受限**（Wikipedia 超时、arXiv API 时通时断，但 arXiv 主页与 PDF 下载可达），故**成功下载 2 篇 arXiv PDF**（MetaDE 2502.10470、DE outside the box 2004.10489）；Storn–Price 1997 奠基论文与 Das–Suganthan 2011 综述（Springer/IEEE 付费）**仅在线**登记，待网络/机构访问恢复后补下。
