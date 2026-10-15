@@ -64,3 +64,15 @@
 - **Wikipedia: Differential evolution** — 入门，英文，[Differential evolution](https://en.wikipedia.org/wiki/Differential_evolution)（**仅在线**：Wiki 动态页面，无稳定 PDF；2026-10-14 备课时 Wikipedia 超时，仅 arXiv 可达）状态：待读
 
 > ⚠️ 说明：2026-10-14 备课时宿主机**外网部分受限**（Wikipedia 超时、arXiv API 时通时断，但 arXiv 主页与 PDF 下载可达），故**成功下载 2 篇 arXiv PDF**（MetaDE 2502.10470、DE outside the box 2004.10489）；Storn–Price 1997 奠基论文与 Das–Suganthan 2011 综述（Springer/IEEE 付费）**仅在线**登记，待网络/机构访问恢复后补下。
+
+## 时间序列 / 预测（Level 4）
+
+- **Box, G. E. P., & Jenkins, G. M. (1970). *Time Series Analysis: Forecasting and Control*.** Holden-Day（后由 Wiley 出版第 5 版, 2015）— 进阶，英文，**ARIMA / Box-Jenkins 方法论的奠基之作**，是本讲（Day46）「差分 → ACF/PACF 定阶 → 估参 → 诊断 → 预测」整套流程的原始来源（Wiley，付费/需机构访问）（**仅在线**）状态：待读
+- **Hyndman, R. J., & Athanasopoulos, G. *Forecasting: Principles and Practice*（第 3 版, 2021, OTexts）** — 入门，英文，**免费在线教材**，第 8 章 ARIMA 与本讲（Day46）逐节对应（含 ACF/PACF 判读、信息准则定阶、残差诊断、预测区间）（**仅在线**：[otexts.com/fpp3](https://otexts.com/fpp3/)；2026-10-15 尝试下载整书 PDF 未果，仅拿到 HTML 目录，未入库）状态：待读
+- **Ljung, G. M., & Box, G. E. P. (1978). On a measure of lack of fit in time series models.** *Biometrika* 65(2):297–303 — 进阶，英文，**Ljung-Box 白噪声检验**的原始论文，本讲（Day46）残差诊断 `ljung_box()` 的直接依据（Oxford，付费）（**仅在线**）状态：待读
+- **Chakhchoukh, Y., & Ishikawa, S. *Modeling Data Containing Outliers using ARIMA Additive Outlier (ARIMA-AO)***（arXiv:1803.00257）— 进阶，英文，**已下载** PDF，讲 ARIMA 遇异常点/断点时的加性离群值处理（本讲「停摆阶跃」类问题的进阶解法）→ `Resources/Downloads/Chakhchoukh-Ishikawa-Modeling-Data-Containing-Outliers-using-ARIMA-Additive-Outlier.pdf` 状态：待读
+- **Wang, et al. *Why Are the ARIMA and SARIMA not Sufficient***（arXiv:1904.07632）— 进阶，英文，**已下载** PDF，讨论 ARIMA/SARIMA 的适用边界与不足（对本讲「局限」一节的现代视角补充，呼应本讲「强季节要上 SARIMA」）→ `Resources/Downloads/Wang-Why-Are-the-ARIMA-and-SARIMA-not-Sufficient.pdf` 状态：待读
+- **Xu, et al. *Forecasting Crime Using ARIMA Model***（arXiv:2003.08006）— 入门/进阶，英文，**已下载** PDF，ARIMA 在城市时序（犯罪量）预测上的完整应用案例，与本讲「景区客流预测」流程同构，可作迁移参考 → `Resources/Downloads/Xu-Forecasting-Crime-Using-ARIMA-Model.pdf` 状态：待读
+- **Wikipedia: Autoregressive integrated moving average** — 入门，英文，[Autoregressive integrated moving average](https://en.wikipedia.org/wiki/Autoregressive_integrated_moving_average)（**仅在线**：Wiki 动态页面，无稳定 PDF）状态：待读
+
+> ⚠️ 说明：2026-10-15 备课时宿主机**外网恢复**（arXiv API 与 PDF 下载均可达），故**成功下载 3 篇 arXiv PDF**（ARIMA-AO 1803.00257、Why ARIMA/SARIMA not Sufficient 1904.07632、Forecasting Crime using ARIMA 2003.08006）；Box–Jenkins 1970、Ljung–Box 1978（Wiley/Oxford 付费）与 Hyndman FPP3（在线整书 PDF 下载未果）**仅在线**登记，待机构访问/网络条件允许时补下。
