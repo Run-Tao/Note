@@ -336,10 +336,10 @@ def main():
     # ---------- ⑧ 决策读数
     print("\n[8] 决策读数")
     print(f"    GM 预测 2026Q3 = {gm_fut:.2f} mg/L：距软线 {WARN - gm_fut:+.2f}、距硬线 {LIMIT - gm_fut:+.2f}")
-    print(f"    硬线越线 k*={k_hit:.2f}（扰动 P5~P95 [{np.nanpercentile(noisy, 5):.2f},"
+        print(f"    硬线越线 k*={k_hit:.2f}（扰动 P5~P95 [{np.nanpercentile(noisy, 5):.2f},"
           f"{np.nanpercentile(noisy, 95):.2f}]）")
-    print(f"    ⇒ 下季越过软线、两季后越硬线：限排令「本季下发、按 2 季执行 + 每季复核」，"
-          f"不等越线再动")
+    print("    ⇒ 命令书：本季发一级限排令、按 2~3 季执行、每季复核"
+          "（连续两季环比 >9% 提前一级）")
 
 
 if __name__ == "__main__":
