@@ -76,3 +76,14 @@
 - **Wikipedia: Autoregressive integrated moving average** — 入门，英文，[Autoregressive integrated moving average](https://en.wikipedia.org/wiki/Autoregressive_integrated_moving_average)（**仅在线**：Wiki 动态页面，无稳定 PDF）状态：待读
 
 > ⚠️ 说明：2026-10-15 备课时宿主机**外网恢复**（arXiv API 与 PDF 下载均可达），故**成功下载 3 篇 arXiv PDF**（ARIMA-AO 1803.00257、Why ARIMA/SARIMA not Sufficient 1904.07632、Forecasting Crime using ARIMA 2003.08006）；Box–Jenkins 1970、Ljung–Box 1978（Wiley/Oxford 付费）与 Hyndman FPP3（在线整书 PDF 下载未果）**仅在线**登记，待机构访问/网络条件允许时补下。
+
+## 灰色系统 / 小样本预测（Level 4）
+
+- **Deng, J. L. (1982). Control problems of grey systems.** *Systems & Control Letters* 1(5):288–294 — 进阶，英文，**灰色系统理论奠基论文**（"灰"= 部分信息已知、部分未知），Day50 GM(1,1) 的思想来源；邓聚龙《灰色系统（社会·经济）》亦为中文原典（Elsevier/华中理工大学出版社，付费）（**仅在线**）状态：待读
+- **Deng, J. L. (1989). Introduction to grey system theory.** *The Journal of Grey System* 1(1):1–24 — 入门/进阶，英文，灰色系统理论的系统导读（含 AGO/IAGO、GM(1,1)、后验差检验、灰色关联），Day50 「级比检验 → 建模 → 后验差 C/P」流程的直接出处（JGS，付费）（**仅在线**）状态：待读
+- **Liu, S., & Lin, Y. *Grey Systems: Theory and Applications*（Springer, 2010）** — 进阶，英文，灰色系统标准教材，GM(1,1)/DGM(1,1)/Verhulst/滚动 GM 的规范定义与精度等级表，与本讲 `gm11` / `dgm11` 实现逐条对应（Springer，付费）（**仅在线**）状态：待读
+- **Ma, X. *A Brief Introduction to the Grey Machine Learning***（arXiv:1805.01745v2）— 进阶，英文，**已下载** PDF，用核方法统一解释灰模型（GM 是"差分 + 核"的特例），Day50 讨论「GM 与线性/指数外推的关系」时的现代视角 → `Resources/Downloads/Ma-A-Brief-Introduction-to-the-Grey-Machine-Learning.pdf` 状态：待读
+- **Comert, G., Khan, Z., Rahman, M., & Chowdhury, M. *Grey Models for Short-Term Queue Length Predictions for Adaptive Traffic Signal Control***（arXiv:1912.12676v1）— 进阶，英文，**已下载** PDF，GM(1,1)/Verhulst/滚动 GM 在**只有几个数据点**的实时场景下的工程用法，明确提出"长序列用滚动 GM"，与本讲「末点敏感 + 滚动回测」一节正好互为印证 → `Resources/Downloads/Comert-Grey-Models-for-Short-Term-Queue-Length-Predictions.pdf` 状态：待读
+- **Wikipedia: Grey relational analysis / Grey system theory** — 入门，英文，[Grey relational analysis](https://en.wikipedia.org/wiki/Grey_relational_analysis)（**仅在线**：动态页面）状态：待读
+
+> ⚠️ 说明：2026-10-20 备课时宿主机外网**部分可达**（arXiv API/PDF 正常，Springer 正文页返回 HTML 而非 PDF、ScienceDirect 403、Wikipedia 超时），故**成功下载 2 篇 arXiv PDF**（Ma 1805.01745 灰机器学习、Comert 1912.12676 短序列滚动 GM）；Deng 1982/1989 与 Liu–Lin 2010 专著（Elsevier/JGS/Springer 付费）**仅在线**登记。
