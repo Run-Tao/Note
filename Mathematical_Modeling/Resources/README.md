@@ -87,3 +87,15 @@
 - **Wikipedia: Grey relational analysis / Grey system theory** — 入门，英文，[Grey relational analysis](https://en.wikipedia.org/wiki/Grey_relational_analysis)（**仅在线**：动态页面）状态：待读
 
 > ⚠️ 说明：2026-10-20 备课时宿主机外网**部分可达**（arXiv API/PDF 正常，Springer 正文页返回 HTML 而非 PDF、ScienceDirect 403、Wikipedia 超时），故**成功下载 2 篇 arXiv PDF**（Ma 1805.01745 灰机器学习、Comert 1912.12676 短序列滚动 GM）；Deng 1982/1989 与 Liu–Lin 2010 专著（Elsevier/JGS/Springer 付费）**仅在线**登记。
+
+## 回归诊断 / OLS 假设检验（Level 4）
+
+- **White, H. (1980). A heteroskedasticity-consistent covariance matrix estimator and a direct test for heteroskedasticity.** *Econometrica* 48(4):817–838 — 进阶，英文，**HC0 稳健协方差 + White 检验的原始论文**，Day51 `hc1()` 与 `white_test()` 的直接出处（Wiley/Econometrica，付费）（**仅在线**）状态：待读
+- **Breusch, T. S., & Pagan, A. R. (1979). A simple test for heteroscedasticity and random coefficient variation.** *Econometrica* 47(5):1287–1294 — 进阶，英文，BP 检验原始论文；Koenker (1981) 的学生化版本（$nR^2$ 形式）就是本讲 `bp_test()` 用的那个（Econometrica，付费）（**仅在线**）状态：待读
+- **Ramsey, J. B. (1969). Tests for specification errors in classical linear least-squares regression analysis.** *JRSS-B* 31(2):350–371 — 进阶，英文，**RESET 检验原始论文**，用 ŷ 的高次幂探测遗漏的非线性/交互项（Wiley，付费）（**仅在线**）状态：待读
+- **Cook, R. D. (1977). Detection of influential observation in linear regression.** *Technometrics* 19(1):15–18 — 进阶，英文，**Cook 距离**原始论文，本讲 `D_i` 与"删点前后系数漂移"的依据（Taylor & Francis，付费）（**仅在线**）状态：待读
+- **Cook, R. D., & Weisberg, S. *Residuals and Influence in Regression*（Chapman & Hall, 1982）** — 进阶，英文，回归诊断的经典专著（外部学生化残差、DFFITS、杠杆-残差图的标准参考），本讲后半段的系统性背景（付费）（**仅在线**）状态：待读
+- **StataCorp. *regress postestimation — Postestimation tools for regress*（Stata 手册章节）** — 入门/进阶，英文，**已下载** PDF，把 `estat hettest`（BP）、`estat ovtest`（RESET）、`predict h`/`cooksd`/`dfits` 全部列在一页上，是与本讲输出**逐项对应**的实务清单，适合写论文时对照检查有没有漏项 → `Resources/Downloads/Stata-Regress-Postestimation-Manual-Chapter-Robust-HC1.pdf` 状态：待读
+- **D'Agostino, R. B., & Pearson, E. S. (1973). Tests for departure from normality.** *Biometrika* 60(3):613–622 — 进阶，英文，$K^2$ 正态性检验的出处（`scipy.stats.normaltest` 的底层），本讲 QQ 图那一步的统计依据（Oxford，付费）（**仅在线**）状态：待读
+
+> ⚠️ 说明：2026-10-21 备课时宿主机外网**部分可达**——Stata 官网手册 PDF 下载成功（**已下载 1 篇**）；Econometrica/Wiley/Taylor & Francis/Oxford 的正文页返回 HTML 或 403，Wikipedia REST PDF 接口超时，arXiv API 本次查询亦超时，故 White 1980、Breusch–Pagan 1979、Ramsey 1969、Cook 1977、Cook–Weisberg 1982、D'Agostino–Pearson 1973 **仅在线**登记，待机构访问恢复后补下。
