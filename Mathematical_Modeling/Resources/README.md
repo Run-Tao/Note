@@ -99,3 +99,11 @@
 - **D'Agostino, R. B., & Pearson, E. S. (1973). Tests for departure from normality.** *Biometrika* 60(3):613–622 — 进阶，英文，$K^2$ 正态性检验的出处（`scipy.stats.normaltest` 的底层），本讲 QQ 图那一步的统计依据（Oxford，付费）（**仅在线**）状态：待读
 
 > ⚠️ 说明：2026-10-21 备课时宿主机外网**部分可达**——Stata 官网手册 PDF 下载成功（**已下载 1 篇**）；Econometrica/Wiley/Taylor & Francis/Oxford 的正文页返回 HTML 或 403，Wikipedia REST PDF 接口超时，arXiv API 本次查询亦超时，故 White 1980、Breusch–Pagan 1979、Ramsey 1969、Cook 1977、Cook–Weisberg 1982、D'Agostino–Pearson 1973 **仅在线**登记，待机构访问恢复后补下。
+
+## 设施选址 / 车次联合优化（Level 6，Day59）
+
+- **Desaulniers, G., Desrosiers, J., & Solomon, M. M. (eds). *Column Generation*（Springer, 2005）** — 进阶，英文，列生成的标准参考书；Day59 讲「整站不可拆 + 多仓分配」时，站点数上千的场景就是这一路的方法（Springer，付费）（**仅在线**）状态：待读
+- **Detour Dual Optimal Inequalities for Column Generation with Application to Routing and Location**（arXiv:2108.09233v1）— 进阶，英文，**已下载** PDF（32 页），讲列生成里「对偶最优不等式（DOI）」的加割技巧，直接服务于**路径 / 选址**类主问题的加速；对应 Day59 §八「站点数上去以后 ILP 直接解不动」那条局限 → `Resources/Downloads/Detour-Dual-Optimal-Inequalities-Column-Generation-Routing-Location.pdf` 状态：待读
+- **Chentout, M., et al. *Neural Embedded Mixed-Integer Optimization for Location-Routing Problems***（arXiv:2412.05665）— 进阶，英文，**仅在线**（本期 PDF 下载两次均超时，只登记链接），用神经网络嵌入加速 LRP（选址-路径联合），是 Day59「选址 + 车次耦合」的现代学习型求解路线，适合作「模型方法 vs 学习方法」的对照阅读 → [arxiv.org/abs/2412.05665](https://arxiv.org/abs/2412.05665) 状态：待读
+
+> ⚠️ 说明：2026-10-29 补登记时宿主机外网**可达但限速**——arXiv 2108.09233 全量 1.94 MB 下载成功（**已下载 1 篇**）；2412.05665 两次尝试分别在 1.1 MB 处与中途超时，故**仅在线**登记。本节同时补齐 **Day52–Day59 连续 8 讲的文献环节**（此前自 10-22 起未再登记，见 2026-10-29 日报 P4）。
