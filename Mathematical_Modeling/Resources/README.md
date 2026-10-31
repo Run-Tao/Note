@@ -24,6 +24,19 @@
 
 > ⚠️ 说明：2026-10-10 备课时宿主机**无外网出口**（`curl`/`web_fetch` 均超时），故本日资料**全部按"仅在线"登记、未下载 PDF**；待网络恢复后补下 Edmonds–Johnson 1973 与管梅谷 1962 原文。
 
+## 图聚类 / 网络（Level 8, M1）
+
+> ⚠️ 说明：2026-10-31 备课时宿主机**外网出口受限**（arXiv / Springer / ZIB / optimization-online 十余次尝试，均返回 HTML 错误页或超时），
+> 故本组资料**全部按"仅在线"登记、未下载 PDF**，如实说明。
+
+- **van Dongen, S. (2000). *Graph Clustering by Flow Simulation*（博士论文）. University of Utrecht** — 进阶，英文，**MCL（Markov Clustering）的原始定义**：expand / inflate / prune 三步与「团」的判定，是 Day63 代码的直接依据（Utrecht 大学库藏，需机构访问）（**仅在线**）状态：待读
+- **van Dongen, S. (2008). Graph clustering via a discrete uncoupling process.** *SIAM Journal on Matrix Analysis and Applications* 30(1):121–141 — 进阶，英文，MCL 的理论化版本（SIAM，付费）（**仅在线**）状态：待读
+- **Ng, A., Jordan, M., & Weiss, Y. (2001). On spectral clustering: analysis and an algorithm.** *NIPS 14* — 进阶，英文，归一化谱聚类与 Fiedler 向量的经典推导（NIPS 论文集，可在线浏览）（**仅在线**）状态：待读
+- **Fiedler, M. (1973). Algebraic connectivity of graphs.** *Czechoslovak Mathematical Journal* 23:298–305 — 进阶，英文，代数连通度与 Fiedler 向量（可在线浏览）（**仅在线**）状态：待读
+- **Newman, M. E. J. (2006). Modularity and community structure in networks.** *PNAS* 103(23):8577–8582 — 进阶，英文，模块度定义（Day63 的 Q 值即此口径）（**仅在线**）状态：待读
+- **Blondel, V. D., Guillaume, J.-L., Lambiotte, R., & Lefebvre, E. (2008). Fast unfolding of communities in large networks.** *J. Stat. Mech.* P10008 — 入门，英文，Louvain 算法（Day63 对照方法，networkx 实现即此）（**仅在线**）状态：待读
+- **Traag, V. A., Waltman, L., & van Eck, N. J. (2019). From Louvain to Leiden.** *Scientific Reports* 9:5233 — 进阶，英文，Louvain 的连通性缺陷与 Leiden 修正（可开放获取，但本次未下载）（**仅在线**）状态：待读
+
 ## 元启发式 / 调度（Level 5–6）
 
 - **Glover, F. (1986). Future paths for integer programming and links to artificial intelligence.** *Computers & Operations Research* 13(5):533–549；及 Glover (1989/1990) Tabu Search 系列（*ORSA Journal on Computing*） — 进阶，英文，**禁忌搜索（Tabu Search）的奠基论文**，是 Day42 理论的直接来源（Elsevier/INFORMS，付费/需机构访问）（**仅在线**）状态：待读
