@@ -120,3 +120,13 @@
 - **Chentout, M., et al. *Neural Embedded Mixed-Integer Optimization for Location-Routing Problems***（arXiv:2412.05665）— 进阶，英文，**仅在线**（本期 PDF 下载两次均超时，只登记链接），用神经网络嵌入加速 LRP（选址-路径联合），是 Day59「选址 + 车次耦合」的现代学习型求解路线，适合作「模型方法 vs 学习方法」的对照阅读 → [arxiv.org/abs/2412.05665](https://arxiv.org/abs/2412.05665) 状态：待读
 
 > ⚠️ 说明：2026-10-29 补登记时宿主机外网**可达但限速**——arXiv 2108.09233 全量 1.94 MB 下载成功（**已下载 1 篇**）；2412.05665 两次尝试分别在 1.1 MB 处与中途超时，故**仅在线**登记。本节同时补齐 **Day52–Day59 连续 8 讲的文献环节**（此前自 10-22 起未再登记，见 2026-10-29 日报 P4）。
+
+## 下料 / 列生成（Level 8，Day65）
+
+- **Aristidou, A., et al. (2023). *The Ensemble Approach of Column Generation for Solving Cutting Stock Problems*.** arXiv:2305.14055 — 进阶，英文，**已下载** PDF，把「多个列生成变体各自跑 → 集成挑选」，专门治切割问题里**列生成尾部收敛慢（tailing-off）**的毛病；正对应 Day65 §4.3「10 轮里前 5 轮降得很快、后 5 轮只降 0.5 根」那一幕 → `Resources/Downloads/Ensemble-Column-Generation-Cutting-Stock-2023.pdf` 状态：待读
+- **Martinovic, J., & Saramago, S. (2023). *Solving Cutting Stock Problems via an Extended Ryan-Foster Branching Scheme and Fast Column Generation*.** arXiv:2308.03595 — 进阶，英文，**已下载** PDF（40 页；连接中途超时，实收 471477/534486 字节，PDF 结构自检完整），Day65 只解到 LP，**整数解必须靠 branch-and-price**，本文的 Ryan–Foster（按「同规格对」分支）就是下料问题的标准分支法，是 §七「下一步」的直接入口 → `Resources/Downloads/Extended-Ryan-Foster-Branching-Fast-CG-2023.pdf` 状态：待读
+- **Gilmore, P. C., & Gomory, R. E. (1961). A linear programming approach to the cutting-stock problem.** *Operations Research* 9(6):849–859 — 进阶，英文，下料问题列生成的**原始论文**（INFORMS，付费）（**仅在线**）状态：待读
+- **Gilmore, P. C., & Gomory, R. E. (1963). A linear programming approach to the cutting stock problem — Part II.** *Operations Research* 11(6):863–888 — 进阶，英文，Part II 补上整数解与多规格（INFORMS，付费）（**仅在线**）状态：待读
+- **Vance, P. H., Barnhart, C., Johnson, E. L., & Nemhauser, G. L. (1994). Solving binary cutting stock problems by column generation and branch-and-bound.** *Computational Optimization and Applications* 3:111–130 — 进阶，英文，下料问题 branch-and-price 的早期系统实现（Springer，付费）（**仅在线**）状态：待读
+
+> ⚠️ 说明：2026-11-02 备课时宿主机外网**部分可达**——arXiv 2305.14055 全量下载成功；2308.03595 在 85 s 上限处超时（471477/534486 字节），因 PDF 正文自检 40 页且页尾完整，按「已下载」登记并注明；Springer/INFORMS 正文页不可达，故 Gilmore–Gomory 1961/1963 与 Vance et al. 1994 **仅在线**。

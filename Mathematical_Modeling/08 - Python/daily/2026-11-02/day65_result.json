@@ -1,0 +1,368 @@
+{
+  "stock_mm": 14000.0,
+  "cost_per_bar": 116.0,
+  "waste_rate": 0.1,
+  "specs": [
+    {
+      "name": "A 落地窗竖框",
+      "len_mm": 2700,
+      "demand": 25,
+      "gross": 28
+    },
+    {
+      "name": "B 飘窗横档",
+      "len_mm": 1150,
+      "demand": 45,
+      "gross": 50
+    },
+    {
+      "name": "C 推拉门下轨",
+      "len_mm": 900,
+      "demand": 50,
+      "gross": 56
+    },
+    {
+      "name": "D 纱窗框",
+      "len_mm": 700,
+      "demand": 20,
+      "gross": 22
+    },
+    {
+      "name": "E 封边压条",
+      "len_mm": 450,
+      "demand": 10,
+      "gross": 11
+    }
+  ],
+  "naive_bars": 167,
+  "greedy": {
+    "bars": 15,
+    "used_m": 204.306,
+    "excess_m": 0.0,
+    "waste_m": 5.694,
+    "yield": 0.9729,
+    "cost": 1740.0,
+    "made": [
+      28,
+      50,
+      56,
+      22,
+      11
+    ],
+    "patterns_used": 15
+  },
+  "simple": {
+    "bars": 56,
+    "used_m": 204.183,
+    "excess_m": 126.889,
+    "waste_m": 452.928,
+    "yield": 0.2604,
+    "cost": 6496.0,
+    "made": [
+      56,
+      56,
+      56,
+      56,
+      56
+    ],
+    "patterns_used": {
+      "1,1,1,1,1": 56.0
+    }
+  },
+  "ip": {
+    "bars": 15,
+    "used_m": 204.306,
+    "excess_m": 5.274,
+    "waste_m": 0.42,
+    "yield": 0.9729,
+    "cost": 1740.0,
+    "made": [
+      28,
+      51,
+      57,
+      24,
+      15
+    ],
+    "n_patterns": 10931,
+    "patterns_used": {
+      "3,0,6,0,1": 6,
+      "3,0,1,7,0": 1,
+      "2,7,0,0,1": 1,
+      "1,9,1,0,0": 4,
+      "1,0,11,0,3": 1,
+      "0,6,5,3,1": 1,
+      "0,2,0,14,4": 1
+    }
+  },
+  "column_generation": [
+    {
+      "iter": 1,
+      "cols": 6,
+      "lp": 56.0,
+      "lb": 56.0,
+      "pattern": [
+        0,
+        0,
+        15,
+        0,
+        1
+      ],
+      "reduced_cost": -14.0
+    },
+    {
+      "iter": 2,
+      "cols": 7,
+      "lp": 50.4,
+      "lb": 50.4,
+      "pattern": [
+        0,
+        12,
+        0,
+        0,
+        0
+      ],
+      "reduced_cost": -10.2
+    },
+    {
+      "iter": 3,
+      "cols": 8,
+      "lp": 31.7,
+      "lb": 31.7,
+      "pattern": [
+        5,
+        0,
+        0,
+        0,
+        1
+      ],
+      "reduced_cost": -3.25
+    },
+    {
+      "iter": 4,
+      "cols": 9,
+      "lp": 27.8,
+      "lb": 27.8,
+      "pattern": [
+        0,
+        0,
+        0,
+        19,
+        1
+      ],
+      "reduced_cost": -11.35
+    },
+    {
+      "iter": 5,
+      "cols": 10,
+      "lp": 15.1044,
+      "lb": 15.104381443,
+      "pattern": [
+        0,
+        0,
+        0,
+        0,
+        30
+      ],
+      "reduced_cost": -25.3273
+    },
+    {
+      "iter": 6,
+      "cols": 11,
+      "lp": 14.6749,
+      "lb": 14.674853801,
+      "pattern": [
+        0,
+        0,
+        0,
+        7,
+        20
+      ],
+      "reduced_cost": -0.0228
+    },
+    {
+      "iter": 7,
+      "cols": 12,
+      "lp": 14.6743,
+      "lb": 14.674262735,
+      "pattern": [
+        0,
+        3,
+        0,
+        15,
+        0
+      ],
+      "reduced_cost": -0.0141
+    },
+    {
+      "iter": 8,
+      "cols": 13,
+      "lp": 14.6542,
+      "lb": 14.654166667,
+      "pattern": [
+        0,
+        9,
+        0,
+        0,
+        8
+      ],
+      "reduced_cost": -0.01
+    },
+    {
+      "iter": 9,
+      "cols": 14,
+      "lp": 14.6521,
+      "lb": 14.652083333,
+      "pattern": [
+        1,
+        9,
+        1,
+        0,
+        0
+      ],
+      "reduced_cost": -0.0083
+    },
+    {
+      "iter": 10,
+      "cols": 15,
+      "lp": 14.6129,
+      "lb": 14.612903226,
+      "pattern": [
+        5,
+        0,
+        0,
+        0,
+        1
+      ],
+      "reduced_cost": -0.0
+    }
+  ],
+  "cg_lp_bars": 14.6129,
+  "duals": [
+    0.1935,
+    0.0824,
+    0.0645,
+    0.0502,
+    0.0323
+  ],
+  "ceil": {
+    "bars": 15,
+    "used_m": 204.306,
+    "excess_m": 3.012,
+    "waste_m": 2.682,
+    "yield": 0.9729,
+    "cost": 1740.0,
+    "made": [
+      28,
+      51,
+      56,
+      24,
+      12
+    ]
+  },
+  "ceil_bars": 15,
+  "integrality_gap_pct": 2.65,
+  "stock_scan": [
+    {
+      "bars": 18,
+      "used_m": 204.297,
+      "excess_m": 11.286,
+      "waste_m": 0.417,
+      "yield": 0.9458,
+      "cost": 1789.7,
+      "made": [
+        29,
+        51,
+        58,
+        30,
+        11
+      ],
+      "stock_m": 12.0
+    },
+    {
+      "bars": 16,
+      "used_m": 204.303,
+      "excess_m": 3.156,
+      "waste_m": 0.541,
+      "yield": 0.9822,
+      "cost": 1723.4,
+      "made": [
+        29,
+        50,
+        56,
+        22,
+        12
+      ],
+      "stock_m": 13.0
+    },
+    {
+      "bars": 15,
+      "used_m": 204.306,
+      "excess_m": 5.274,
+      "waste_m": 0.42,
+      "yield": 0.9729,
+      "cost": 1740.0,
+      "made": [
+        28,
+        51,
+        57,
+        24,
+        15
+      ],
+      "stock_m": 14.0
+    },
+    {
+      "bars": 14,
+      "used_m": 204.309,
+      "excess_m": 5.318,
+      "waste_m": 0.373,
+      "yield": 0.9729,
+      "cost": 1740.0,
+      "made": [
+        28,
+        52,
+        57,
+        25,
+        11
+      ],
+      "stock_m": 15.0
+    },
+    {
+      "bars": 13,
+      "used_m": 204.312,
+      "excess_m": 2.712,
+      "waste_m": 0.976,
+      "yield": 0.9823,
+      "cost": 1723.4,
+      "made": [
+        28,
+        50,
+        58,
+        22,
+        13
+      ],
+      "stock_m": 16.0
+    }
+  ],
+  "relax_100mm": {
+    "bars": 16,
+    "used_m": 221.003,
+    "excess_m": 2.006,
+    "waste_m": 0.991,
+    "yield": 0.9866,
+    "cost": 1856.0,
+    "made": [
+      28,
+      50,
+      58,
+      22,
+      11
+    ]
+  },
+  "bottleneck": {
+    "C_per_bar_max": 15,
+    "E_per_bar_max": 30,
+    "C_bound_bars": 4,
+    "E_bound_bars": 1
+  },
+  "runtime_s": 8.003
+}
