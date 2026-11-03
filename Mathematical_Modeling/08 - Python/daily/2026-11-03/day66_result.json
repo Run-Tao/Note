@@ -1,0 +1,526 @@
+{
+  "subject": "mathematical-modeling",
+  "day": 66,
+  "topic": "dp_steel_box_girder",
+  "L_total": 40.0,
+  "W_total": 112.689,
+  "W_per_m": 2.8172249999999996,
+  "equal": [
+    {
+      "n": 2,
+      "pts": [
+        0.0,
+        20.0,
+        40.0
+      ],
+      "ws": [
+        56.3445,
+        56.3445
+      ],
+      "flips": 0,
+      "lifts": 0,
+      "joints": 1,
+      "trucks_naive": 0,
+      "trucks_pack": 0,
+      "cost_naive": Infinity,
+      "cost_pack": Infinity,
+      "over_crane": [
+        0,
+        1
+      ],
+      "over_truck": [
+        0,
+        1
+      ],
+      "too_long": [
+        0,
+        1
+      ],
+      "feasible": false,
+      "max_end_r": NaN,
+      "label": "2块等长"
+    },
+    {
+      "n": 3,
+      "pts": [
+        0.0,
+        13.333333,
+        26.666667,
+        40.0
+      ],
+      "ws": [
+        37.562999060924994,
+        37.56300187815,
+        37.562999060924994
+      ],
+      "flips": 0,
+      "lifts": 0,
+      "joints": 2,
+      "trucks_naive": 0,
+      "trucks_pack": 0,
+      "cost_naive": Infinity,
+      "cost_pack": Infinity,
+      "over_crane": [],
+      "over_truck": [
+        0,
+        1,
+        2
+      ],
+      "too_long": [],
+      "feasible": false,
+      "max_end_r": NaN,
+      "label": "3块等长"
+    },
+    {
+      "n": 4,
+      "pts": [
+        0.0,
+        10.0,
+        20.0,
+        30.0,
+        40.0
+      ],
+      "ws": [
+        28.17225,
+        28.17225,
+        28.17225,
+        28.17225
+      ],
+      "flips": 4,
+      "lifts": 8,
+      "joints": 3,
+      "trucks_naive": 4,
+      "trucks_pack": 4,
+      "cost_naive": 51200.0,
+      "cost_pack": 51200.0,
+      "over_crane": [],
+      "over_truck": [],
+      "too_long": [],
+      "feasible": true,
+      "max_end_r": 20.0,
+      "label": "4块等长"
+    },
+    {
+      "n": 5,
+      "pts": [
+        0.0,
+        8.0,
+        16.0,
+        24.0,
+        32.0,
+        40.0
+      ],
+      "ws": [
+        22.537799999999997,
+        22.537799999999997,
+        22.537799999999997,
+        22.537799999999997,
+        22.537799999999997
+      ],
+      "flips": 0,
+      "lifts": 5,
+      "joints": 4,
+      "trucks_naive": 5,
+      "trucks_pack": 5,
+      "cost_naive": 50400.0,
+      "cost_pack": 50400.0,
+      "over_crane": [],
+      "over_truck": [],
+      "too_long": [],
+      "feasible": true,
+      "max_end_r": 20.0,
+      "label": "5块等长"
+    },
+    {
+      "n": 6,
+      "pts": [
+        0.0,
+        6.666667,
+        13.333333,
+        20.0,
+        26.666667,
+        33.333333,
+        40.0
+      ],
+      "ws": [
+        18.781500939075,
+        18.781498121849996,
+        18.781500939075,
+        18.781500939075,
+        18.781498121850007,
+        18.781500939074988
+      ],
+      "flips": 0,
+      "lifts": 6,
+      "joints": 5,
+      "trucks_naive": 6,
+      "trucks_pack": 6,
+      "cost_naive": 59200.0,
+      "cost_pack": 59200.0,
+      "over_crane": [],
+      "over_truck": [],
+      "too_long": [],
+      "feasible": true,
+      "max_end_r": 20.0,
+      "label": "6块等长"
+    }
+  ],
+  "min_blocks": {
+    "n": 4,
+    "pts": [
+      0.0,
+      11.25,
+      22.5,
+      33.75,
+      40.0
+    ],
+    "ws": [
+      31.693781249999997,
+      31.693781249999997,
+      31.693781249999997,
+      17.607656249999998
+    ],
+    "flips": 3,
+    "lifts": 7,
+    "joints": 3,
+    "trucks_naive": 4,
+    "trucks_pack": 4,
+    "cost_naive": 48800.0,
+    "cost_pack": 48800.0,
+    "over_crane": [],
+    "over_truck": [],
+    "too_long": [],
+    "feasible": true,
+    "max_end_r": 20.0
+  },
+  "fixed_blocks": [
+    {
+      "n": 4,
+      "pts": [
+        0.0,
+        11.25,
+        21.0,
+        30.75,
+        40.0
+      ],
+      "ws": [
+        31.693781249999997,
+        27.467943749999996,
+        27.467943749999996,
+        26.059331249999996
+      ],
+      "flips": 1,
+      "lifts": 5,
+      "joints": 3,
+      "trucks_naive": 4,
+      "trucks_pack": 4,
+      "cost_naive": 44000.0,
+      "cost_pack": 44000.0,
+      "over_crane": [],
+      "over_truck": [],
+      "too_long": [],
+      "feasible": true,
+      "max_end_r": 20.0,
+      "label": "4块最优"
+    },
+    {
+      "n": 5,
+      "pts": [
+        0.0,
+        9.75,
+        19.5,
+        29.25,
+        39.0,
+        40.0
+      ],
+      "ws": [
+        27.467943749999996,
+        27.467943749999996,
+        27.467943749999996,
+        27.467943749999996,
+        2.8172249999999996
+      ],
+      "flips": 0,
+      "lifts": 5,
+      "joints": 4,
+      "trucks_naive": 5,
+      "trucks_pack": 4,
+      "cost_naive": 50400.0,
+      "cost_pack": 48600.0,
+      "over_crane": [],
+      "over_truck": [],
+      "too_long": [],
+      "feasible": true,
+      "max_end_r": 20.0,
+      "label": "5块最优"
+    },
+    {
+      "n": 6,
+      "pts": [
+        0.0,
+        9.75,
+        19.5,
+        29.25,
+        39.0,
+        39.75,
+        40.0
+      ],
+      "ws": [
+        27.467943749999996,
+        27.467943749999996,
+        27.467943749999996,
+        27.467943749999996,
+        2.1129187499999995,
+        0.7043062499999999
+      ],
+      "flips": 0,
+      "lifts": 6,
+      "joints": 5,
+      "trucks_naive": 6,
+      "trucks_pack": 4,
+      "cost_naive": 59200.0,
+      "cost_pack": 55600.0,
+      "over_crane": [],
+      "over_truck": [],
+      "too_long": [],
+      "feasible": true,
+      "max_end_r": 20.0,
+      "label": "6块最优"
+    },
+    {
+      "n": 7,
+      "pts": [
+        0.0,
+        9.75,
+        19.5,
+        29.25,
+        39.0,
+        39.5,
+        39.75,
+        40.0
+      ],
+      "ws": [
+        27.467943749999996,
+        27.467943749999996,
+        27.467943749999996,
+        27.467943749999996,
+        1.4086124999999998,
+        0.7043062499999999,
+        0.7043062499999999
+      ],
+      "flips": 0,
+      "lifts": 7,
+      "joints": 6,
+      "trucks_naive": 7,
+      "trucks_pack": 4,
+      "cost_naive": 68000.0,
+      "cost_pack": 62600.0,
+      "over_crane": [],
+      "over_truck": [],
+      "too_long": [],
+      "feasible": true,
+      "max_end_r": 20.0,
+      "label": "7块最优"
+    }
+  ],
+  "best": {
+    "n": 4,
+    "pts": [
+      0.0,
+      11.25,
+      21.0,
+      30.75,
+      40.0
+    ],
+    "ws": [
+      31.693781249999997,
+      27.467943749999996,
+      27.467943749999996,
+      26.059331249999996
+    ],
+    "flips": 1,
+    "lifts": 5,
+    "joints": 3,
+    "trucks_naive": 4,
+    "trucks_pack": 4,
+    "cost_naive": 44000.0,
+    "cost_pack": 44000.0,
+    "over_crane": [],
+    "over_truck": [],
+    "too_long": [],
+    "feasible": true,
+    "max_end_r": 20.0,
+    "label": "4块最优"
+  },
+  "local_search": [
+    {
+      "n": 4,
+      "pts": [
+        0.0,
+        9.0,
+        20.0,
+        29.0,
+        40.0
+      ],
+      "flips": 2,
+      "lifts": 6,
+      "joints": 3,
+      "trucks_naive": 4,
+      "trucks_pack": 4,
+      "cost_naive": 46400.0,
+      "cost_pack": 46400.0,
+      "over_crane": [],
+      "over_truck": [],
+      "too_long": [],
+      "feasible": true,
+      "max_end_r": 20.0,
+      "label": "局部搜索4块"
+    },
+    {
+      "n": 5,
+      "pts": [
+        0.0,
+        8.0,
+        16.0,
+        24.0,
+        32.0,
+        40.0
+      ],
+      "flips": 0,
+      "lifts": 5,
+      "joints": 4,
+      "trucks_naive": 5,
+      "trucks_pack": 5,
+      "cost_naive": 50400.0,
+      "cost_pack": 50400.0,
+      "over_crane": [],
+      "over_truck": [],
+      "too_long": [],
+      "feasible": true,
+      "max_end_r": 20.0,
+      "label": "局部搜索5块"
+    },
+    {
+      "n": 6,
+      "pts": [
+        0.0,
+        6.666667,
+        13.333333,
+        20.0,
+        26.666667,
+        33.333333,
+        40.0
+      ],
+      "flips": 0,
+      "lifts": 6,
+      "joints": 5,
+      "trucks_naive": 6,
+      "trucks_pack": 6,
+      "cost_naive": 59200.0,
+      "cost_pack": 59200.0,
+      "over_crane": [],
+      "over_truck": [],
+      "too_long": [],
+      "feasible": true,
+      "max_end_r": 20.0,
+      "label": "局部搜索6块"
+    }
+  ],
+  "greedy": {
+    "n": 4,
+    "pts": [
+      0.0,
+      8.75,
+      20.0,
+      31.25,
+      40.0
+    ],
+    "ws": [
+      24.650718749999996,
+      31.693781249999997,
+      31.693781249999997,
+      24.650718749999996
+    ],
+    "flips": 2,
+    "lifts": 6,
+    "joints": 3,
+    "trucks_naive": 4,
+    "trucks_pack": 4,
+    "cost_naive": 46400.0,
+    "cost_pack": 46400.0,
+    "over_crane": [],
+    "over_truck": [],
+    "too_long": [],
+    "feasible": true,
+    "max_end_r": 20.0,
+    "label": "贪心4块"
+  },
+  "sensitivity": {
+    "CRANE_DAY": [
+      {
+        "value": 6000,
+        "best_blocks": 4,
+        "cost": 40200.0
+      },
+      {
+        "value": 9800,
+        "best_blocks": 4,
+        "cost": 44000.0
+      },
+      {
+        "value": 14000,
+        "best_blocks": 4,
+        "cost": 48200.0
+      },
+      {
+        "value": 20000,
+        "best_blocks": 4,
+        "cost": 54200.0
+      }
+    ],
+    "JOINT": [
+      {
+        "value": 2000,
+        "best_blocks": 4,
+        "cost": 36200.0
+      },
+      {
+        "value": 4600,
+        "best_blocks": 4,
+        "cost": 44000.0
+      },
+      {
+        "value": 9000,
+        "best_blocks": 4,
+        "cost": 57200.0
+      },
+      {
+        "value": 15000,
+        "best_blocks": 4,
+        "cost": 75200.0
+      }
+    ],
+    "TRUCK_CAP": [
+      {
+        "value": 24.0,
+        "best_blocks": 5,
+        "cost": 50400.0
+      },
+      {
+        "value": 28.0,
+        "best_blocks": 5,
+        "cost": 50400.0
+      },
+      {
+        "value": 32.0,
+        "best_blocks": 4,
+        "cost": 44000.0
+      },
+      {
+        "value": 36.0,
+        "best_blocks": 4,
+        "cost": 44000.0
+      }
+    ]
+  }
+}

@@ -22,7 +22,12 @@
 - **Wikipedia: Route inspection problem（中国邮递员问题）** — 入门，英文，[Route inspection problem](https://en.wikipedia.org/wiki/Route_inspection_problem)（**仅在线**：Wiki 动态页面，无稳定 PDF；本 README 2026-10-10 笔记引用时宿主机无外网，未能抓取正文）状态：待读
 - **Hierholzer (1873) 欧拉回路算法** — 入门，欧拉回路求解的经典算法，Day41 代码的 Step 4 实现依据（**仅在线**，教材内容）状态：待读
 
+- **Dantzig, G. B., & Ramser, J. H. (1959). The truck dispatching problem.** *Management Science* 6(1):80–91 — 进阶，英文，**VRP 的奠基论文**（原题 "truck dispatching"，汽油配送场景），首次把「一组客户 + 车队容量」写成整数规划并给出行生成求解，Day61 的车型/车数争议直接源自这里（INFORMS，付费）（**仅在线**）状态：待读
+- **Clarke, G., & Wright, J. W. (1964). Scheduling of vehicles from a central depot to a number of delivery points.** *Operations Research* 12(4):568–581 — 进阶，英文，**节约法（savings algorithm）原始论文**，Day61「先算下界再构造」的对立面：它不证最优、只给可行解，是 OR 教材里最常见的启发式（INFORMS，付费）（**仅在线**）状态：待读
+- **Solomon, M. M. (1987). Algorithms for the vehicle routing and scheduling problems with time window constraints.** *Operations Research* 35(2):254–265 — 进阶，英文，**带时间窗 VRP（VRPTW）的标准测试集与构造/改进启发式出处**，Day61「时间窗把能同车的店分成互斥组」这句结论的经典依据；本库若要做 VRP 复现， Solomon 的 R1/C1/RC1 算例是默认基准（INFORMS，付费）（**仅在线**）状态：待读
+
 > ⚠️ 说明：2026-10-10 备课时宿主机**无外网出口**（`curl`/`web_fetch` 均超时），故本日资料**全部按"仅在线"登记、未下载 PDF**；待网络恢复后补下 Edmonds–Johnson 1973 与管梅谷 1962 原文。
+> ⚠️ 补记（2026-11-03 日报）：本节此前缺 **Day61 三条 VRP 奠基文献**（Dantzig & Ramser 1959 / Clarke & Wright 1964 / Solomon 1987），自 2026-10-31 起连续 3 期列为待补，本期补齐；文案与 Day61 §4「六台装得下但被时间窗打断」互指。
 
 ## 图聚类 / 网络（Level 8, M1）
 
@@ -130,3 +135,11 @@
 - **Vance, P. H., Barnhart, C., Johnson, E. L., & Nemhauser, G. L. (1994). Solving binary cutting stock problems by column generation and branch-and-bound.** *Computational Optimization and Applications* 3:111–130 — 进阶，英文，下料问题 branch-and-price 的早期系统实现（Springer，付费）（**仅在线**）状态：待读
 
 > ⚠️ 说明：2026-11-02 备课时宿主机外网**部分可达**——arXiv 2305.14055 全量下载成功；2308.03595 在 85 s 上限处超时（471477/534486 字节），因 PDF 正文自检 40 页且页尾完整，按「已下载」登记并注明；Springer/INFORMS 正文页不可达，故 Gilmore–Gomory 1961/1963 与 Vance et al. 1994 **仅在线**。
+
+## 钢箱梁吊装 / 动态规划 / 区间划分（Level 8，Day66）
+
+- **Barr, C., & Schenk, O. (2022). *Labeled Optimal Partitioning*.** arXiv:2106.10142 — 进阶，英文，**已下载** PDF（约 860 KB，PDF 结构自检完整），把「最优区间划分 + 标签误分惩罚」统一在同一个 DP 里（changepoint / 序列切段的标准算法族）；正对应 Day66 §三「固定段数 DP」往「段数 + 误判代价一起优化」的推广 → `Resources/Downloads/Labeled-Optimal-Partitioning-2022.pdf` 状态：待读
+- **Bellman, R. (1957). *Dynamic Programming*.** Princeton University Press — 入门偏经典，英文，DP 的原始专著（**仅在线**，无公开 PDF）状态：待读
+- **Skiena, S. S. (2020). *The Algorithm Design Manual*, 3rd ed., §10 「Dynamic Programming」** — 入门，英文，区间划分/背包/编辑距离的**模板化写法**，适合把 Day66 的 `F(t,i)` 写成通用函数（Springer，付费）（**仅在线**）状态：待读
+
+> ⚠️ 说明：2026-11-03 备课时宿主机外网**部分可达**——arXiv PDF 2106.10142 下载成功（**已下载 1 篇**）；"segmental construction / box girder" 类工程论文在 arXiv 无命中、且中文期刊库不可达，故工程侧文献本次**仅在线**登记为 Springer 经典书目。
