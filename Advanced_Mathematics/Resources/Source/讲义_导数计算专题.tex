@@ -1,0 +1,289 @@
+% !TeX program = xelatex
+\documentclass[11pt,a4paper]{ctexart}
+% ============================================================
+%  导数计算 · 专题讲义（含 20 分钟专项限时卷）
+%  编译：xelatex 两遍
+%  依据：上海交大高数 A 类期中真题 2008--2025 共 17 套；
+%        所有数值结论经 Homework/_review/tools/verify_new_materials.py 复核（93 项全 PASS）
+%  配套笔记：Notes/导数计算_题型专题.md、Notes/Level2_Derivatives_and_Differentials.md
+% ============================================================
+\usepackage[a4paper,top=2.3cm,bottom=2.3cm,left=2.2cm,right=2.2cm]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools,bm}
+\usepackage{booktabs,array,longtable,tabularx,multicol}
+\usepackage{enumitem}
+\usepackage[most]{tcolorbox}
+\usepackage{fancyhdr}
+\usepackage{hyperref}
+\hypersetup{hidelinks,colorlinks=true,linkcolor=blue!50!black}
+\usepackage{titlesec}
+
+\linespread{1.28}
+\setlength{\parskip}{0.25em}
+\setlist[enumerate]{itemsep=3pt,topsep=4pt,parsep=0pt,leftmargin=1.9em}
+\setlist[itemize]{itemsep=3pt,topsep=4pt,parsep=0pt,leftmargin=1.6em}
+\titleformat{\section}{\Large\bfseries\color{blue!35!black}}{\thesection}{0.6em}{}
+\titleformat{\subsection}{\large\bfseries\color{blue!25!black}}{\thesubsection}{0.5em}{}
+\titlespacing*{\section}{0pt}{1.7ex plus .3ex}{1.1ex}
+\titlespacing*{\subsection}{0pt}{1.3ex plus .2ex}{0.8ex}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small 导数计算 · 专题讲义}
+\fancyhead[R]{\small 陶理}
+\fancyfoot[C]{\small\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\eps}{\varepsilon}
+\newcommand{\abs}[1]{\left\lvert #1\right\rvert}
+\newcommand{\ee}{\mathrm{e}}
+\newcommand{\D}{\mathrm{d}}
+\newcommand{\blank}{\underline{\hspace{1.6cm}}}
+
+\newtcolorbox{keypoint}[1][]{enhanced,breakable,colback=blue!3,colframe=blue!40!black,
+  fonttitle=\bfseries,title={#1},boxrule=0.5pt,arc=1.5mm,
+  left=3mm,right=3mm,top=2mm,bottom=2mm,before skip=4pt,after skip=4pt}
+\newtcolorbox{warnbox}[1][]{enhanced,breakable,colback=red!3,colframe=red!50!black,
+  fonttitle=\bfseries,title={#1},boxrule=0.5pt,arc=1.5mm,
+  left=3mm,right=3mm,top=2mm,bottom=2mm,before skip=4pt,after skip=4pt}
+\newtcolorbox{methodbox}[1][]{enhanced,breakable,colback=green!3!white,colframe=green!35!black,
+  fonttitle=\bfseries,title={#1},boxrule=0.5pt,arc=1.5mm,
+  left=3mm,right=3mm,top=2mm,bottom=2mm,before skip=4pt,after skip=4pt}
+
+\newcounter{exa}[section]
+\newenvironment{exa}[1][]{\refstepcounter{exa}\par\smallskip\noindent
+  \textbf{例 \thesection.\theexa}\if\relax\detokenize{#1}\relax\else\textbf{（#1）}\fi\ \ignorespaces}{\par\smallskip}
+\newenvironment{sol}{\par\noindent\textbf{解}\quad\ignorespaces}{\par\smallskip}
+
+\begin{document}
+
+\begin{center}
+  {\LARGE\bfseries 导数计算 · 专题讲义}\\[4pt]
+  {\large 上海交大《高等数学 I（A 类）》期中复习}\\[4pt]
+  {\small 陶理\quad 2026-11-04\quad 配套 [[导数计算\_题型专题]]}
+\end{center}
+
+\begin{keypoint}[怎么用这本]
+本讲义是\textbf{题面 + 完整解答}，按 \S 3 的例题顺序做，\textbf{先遮住解答自己算}；\S 4 限时卷 20 分钟掐表，做完再翻 \S 5。方法口诀与错因回炉在笔记 \texttt{导数计算\_题型专题.md}，不要在考前通读本讲义。
+\end{keypoint}
+
+\section{考情与知识地图}
+
+导数计算块在 17 套真题里的分值从 16 升到 20，且三型连年出现。下表按「触发特征 → 第一动作」组织，做题时先查表定位型，再翻对应例题。
+
+\begin{center}
+\begin{tabularx}{15.2cm}{@{}c l X c@{}}
+\toprule
+型 & 触发特征 & 第一动作 & 例题 \\
+\midrule
+D1 & 分段函数求参数 $a,b$ & 先验连续，再令左右导相等 & 3.1--3.2 \\
+D2 & $x=x(t),y=y(t)$ 求二阶导 & $\frac{\D}{\D t}(y'/x')$ 再除以 $x'$ & 3.3--3.4 \\
+D3 & $F(x,y)=0$ 求 $y''$ & $y'=-F_x/F_y$，再对 $x$ 求导代回 & 3.5--3.6 \\
+D4 & 求 $f^{(n)}(x_0)$，$n\ge5$ & Leibniz 代点消项 / 展开式取系数 & 3.7--3.8 \\
+D5 & $r=r(\theta)$ 求切线 & 先算点 $(x,y)$，再算斜率 & 3.9--3.10 \\
+D6 & 填空「求 $\D y$」 & 求导后乘 $\D x$ & 3.11 \\
+\bottomrule
+\end{tabularx}
+\end{center}
+
+\begin{methodbox}[动笔前三问：六个型通用]
+\textbf{(1) 定义域？}\quad \textbf{(2) 前提？}（$x'_t\ne0$、$F_y\ne0$、分段点先验连续）\quad \textbf{(3) 用哪条公式？}\\
+这三句写在答题纸第一行，既是给分点，也是防错闸门。作业 12--14 累计的 7 处「条件漏写」都出在这里。
+\end{methodbox}
+
+\section{六型方法框}
+
+\begin{keypoint}[D1 分段可导]
+可导 $=$ \textbf{连续} $+$ \textbf{左右导数相等}。写出两个方程：
+$f(a^-)=f(a^+)$ 与 $f'_-(a)=f'_+(a)$。分界点必须用定义，不能套导函数公式。
+\end{keypoint}
+
+\begin{keypoint}[D2 参数方程]
+$$\frac{\D y}{\D x}=\frac{y'(t)}{x'(t)},\qquad
+\frac{\D^2 y}{\D x^2}=\frac{\D}{\D t}\!\left(\frac{y'}{x'}\right)\!\Big/ x'
+=\frac{y''x'-y'x''}{(x')^3}.$$
+\end{keypoint}
+
+\begin{keypoint}[D3 隐函数]
+$y'=-\dfrac{F_x}{F_y}$；二阶可逐项再导（更稳），或用
+$y''=-\dfrac{F_{xx}F_y^2-2F_{xy}F_xF_y+F_{yy}F_x^2}{F_y^3}$。
+\end{keypoint}
+
+\begin{keypoint}[D4 Leibniz]
+$(uv)^{(n)}=\sum_{k=0}^n\binom nk u^{(k)}v^{(n-k)}$。求 $x=0$ 处的值时，若 $u=x^m$，展开式只剩 $k=m$ 一项：$f^{(n)}(0)=n!\,[\text{展开式 }x^n\text{ 系数}]$。
+\end{keypoint}
+
+\begin{keypoint}[D5 极坐标]
+$(x,y)=(r\cos\theta,r\sin\theta)$，
+$\dfrac{\D y}{\D x}=\dfrac{r'\sin\theta+r\cos\theta}{r'\cos\theta-r\sin\theta}$；分母为零而分子非零时是\textbf{竖直切线}。
+\end{keypoint}
+
+\section{例题 12 道}
+
+\begin{exa}[D1]
+设 $f(x)=\begin{cases}a\ee^{2x},&x\le0\\ x^2+bx+1,&x>0\end{cases}$ 在 $x=0$ 处可导，求 $a,b$。
+\end{exa}
+\begin{sol}
+连续：$f(0^-)=a=f(0^+)=1\Rightarrow a=1$。
+左右导：$f'_-(0)=2a=2$，$f'_+(0)=b$，令相等得 $b=2$。
+\end{sol}
+
+\begin{exa}[D1 变式]
+$f(x)=\begin{cases}x^2+2x+3,&x\le0\\ a\ln(1+x)+b,&x>0\end{cases}$ 在 $0$ 可导，求 $a,b$。
+\end{exa}
+\begin{sol}
+连续：$3=b$。左导 $=2$，右导 $=\frac{a}{1+0}=a\Rightarrow a=2$。故 $a=2,b=3$。
+\end{sol}
+
+\begin{exa}[D2]
+$x=t-\sin t,\ y=1-\cos t$，求 $\dfrac{\D^2y}{\D x^2}$ 及 $t=\pi/2$ 处的值。
+\end{exa}
+\begin{sol}
+$x'=1-\cos t$，$y'=\sin t$，故 $\dfrac{\D y}{\D x}=\dfrac{\sin t}{1-\cos t}$。
+$$\frac{\D}{\D t}\frac{\sin t}{1-\cos t}
+=\frac{\cos t(1-\cos t)-\sin^2t}{(1-\cos t)^2}=\frac{\cos t-1}{(1-\cos t)^2}=\frac{-1}{1-\cos t}.$$
+再除以 $x'$：$\dfrac{\D^2y}{\D x^2}=\dfrac{-1}{(1-\cos t)^2}$；$t=\pi/2$ 时为 $-1$。
+\end{sol}
+
+\begin{exa}[D2 变式]
+$x=t^2,\ y=t^3\ (t>0)$，求 $\dfrac{\D^2y}{\D x^2}$。
+\end{exa}
+\begin{sol}
+$\dfrac{\D y}{\D x}=\dfrac{3t^2}{2t}=\dfrac{3t}{2}$，$\dfrac{\D^2y}{\D x^2}=\dfrac{3/2}{2t}=\dfrac{3}{4t}$。
+\end{sol}
+
+\begin{exa}[D3]
+设 $y=y(x)$ 由 $x^2+xy+y^2=3$ 确定，求点 $(1,1)$ 处的 $y'$ 与 $y''$。
+\end{exa}
+\begin{sol}
+一阶：$2x+y+xy'+2yy'=0$，代入得 $3+3y'=0\Rightarrow y'=-1$。
+再对 $x$ 求导：$2+y'+y'+xy''+2(y')^2+2yy''=0$，代入得 $2-2+(1+2)y''+2=0\Rightarrow y''=-\dfrac23$。
+\end{sol}
+
+\begin{exa}[D3 变式]
+$x^2+y^2=1$，求点 $(0,1)$ 处的 $y''$。
+\end{exa}
+\begin{sol}
+$2x+2yy'=0\Rightarrow y'=-x/y=0$；再导 $2+2(y')^2+2yy''=0\Rightarrow y''=-1$。
+也可由通式 $y''=-\dfrac{1}{y^3}=-1$。
+\end{sol}
+
+\begin{exa}[D4]
+求 $(x^2\ee^{2x})^{(10)}(0)$。
+\end{exa}
+\begin{sol}
+Leibniz 展开中只有 $k=2$ 项存活：
+$\binom{10}{2}\cdot(x^2)''\cdot(\ee^{2x})^{(8)}\big|_{0}=45\cdot2\cdot2^8=23040$。
+或由 $x^2\ee^{2x}=\sum\frac{2^m}{m!}x^{m+2}$，$x^{10}$ 系数 $\frac{2^8}{8!}$，乘 $10!$ 同得 $23040$。
+\end{sol}
+
+\begin{exa}[D4 变式]
+求 $(\ln(1+2x))^{(5)}(0)$ 与 $(1+x)^{1/3}$ 的 $f^{(4)}(0)$。
+\end{exa}
+\begin{sol}
+$\ln(1+2x)=\sum_{n\ge1}(-1)^{n-1}\frac{2^n}{n}x^n$，$x^5$ 系数 $\frac{2^5}{5}$，故 $f^{(5)}(0)=5!\cdot\frac{2^5}{5}=768$。
+$f(x)=(1+x)^\alpha$ 时 $f^{(n)}(0)=\alpha(\alpha-1)\cdots(\alpha-n+1)$，取 $\alpha=\frac13,n=4$：
+$\frac13(-\frac23)(-\frac53)(-\frac83)=-\frac{80}{81}$。
+\end{sol}
+
+\begin{exa}[D5]
+$r=1+\cos\theta$，求 $\theta=\frac\pi2$ 处切线。
+\end{exa}
+\begin{sol}
+$r=1$，$r'=-\sin\theta=-1$，点 $(r\cos\theta,r\sin\theta)=(0,1)$。
+斜率 $=\dfrac{(-1)\cdot1+1\cdot0}{(-1)\cdot0-1\cdot1}=1$，切线 $y=x+1$。
+\end{sol}
+
+\begin{exa}[D5 变式]
+$r=2\sin\theta$，求 $\theta=\frac\pi6$ 处切线斜率。
+\end{exa}
+\begin{sol}
+$r=1$，$r'=2\cos\theta=\sqrt3$，斜率
+$=\dfrac{\sqrt3\cdot\frac12+1\cdot\frac{\sqrt3}2}{\sqrt3\cdot\frac{\sqrt3}2-1\cdot\frac12}=\dfrac{\sqrt3}{1}=\sqrt3$。
+\end{sol}
+
+\begin{exa}[D6]
+$y=\ee^{\sin x^2}$，求 $\D y$。
+\end{exa}
+\begin{sol}
+$\D y=2x\cos(x^2)\ee^{\sin x^2}\D x$。一阶微分形式不变，但二阶微分没有这个性质。
+\end{sol}
+
+\begin{exa}[概念]
+$f(x)=x^2\sin\frac1x\ (x\ne0),\ f(0)=0$。问 $f$ 在 $0$ 处是否可导？$f'$ 在 $0$ 处是否连续？
+\end{exa}
+\begin{sol}
+$f'(0)=\lim_{x\to0}\frac{x^2\sin(1/x)}x=\lim x\sin\frac1x=0$，故可导。
+但 $x\ne0$ 时 $f'(x)=2x\sin\frac1x-\cos\frac1x$，后者在 $x\to0$ 时振荡无极限，故 $f'$ 在 $0$ 处不连续（第二类间断）。
+这\textbf{不违反达布定理}：达布只禁止第一类间断点，且要求区间上处处可导。
+\end{sol}
+
+\section{限时卷（20 分钟，20 分，遮住 \S 5）}
+
+\begin{enumerate}[label=\textbf{T\arabic*.},leftmargin=2.4em,itemsep=8pt]
+\item（3 分）$f(x)=\begin{cases}a\cos x,&x\le0\\ x^2+bx+2,&x>0\end{cases}$ 在 $0$ 处可导，求 $a,b$。
+\item（3 分）$x=\ln(1+t^2),\ y=t-\arctan t$，求 $\dfrac{\D^2y}{\D x^2}$。
+\item（3 分）$x^3+y^3=2xy$，求点 $(1,1)$ 处的 $y''$。
+\item（3 分）求 $(x^3\ee^{x})^{(8)}(0)$。
+\item（2 分）$r=2\cos\theta$，求 $\theta=0$ 处的切线。
+\item（2 分）$y=\arctan(\ee^{2x})$，求 $\D y$。
+\item（2 分）设 $f$ 在 $[a,b]$ 上处处可导，则 $f'(x)$ 在 $(a,b)$ 内（\quad）\\
+(A) 必连续 \quad (B) 必有界 \quad (C) 不可能有第一类间断点 \quad (D) 必单调
+\item（2 分）判断并说明理由：$f(x)=x^2\sin\frac1x\ (x\ne0),f(0)=0$ 在 $0$ 处可导但 $f'$ 在 $0$ 处不连续。
+\end{enumerate}
+
+\section{限时卷答案与详解}
+
+\textbf{T1} $a=2,\ b=0$。连续：$a=2$；左导 $=-a\sin0=0$，右导 $=b\Rightarrow b=0$。
+
+\textbf{T2} $\dfrac{\D^2y}{\D x^2}=\dfrac{1+t^2}{4t}$。因为 $x'=\dfrac{2t}{1+t^2}$，$y'=\dfrac{t^2}{1+t^2}$，故 $\dfrac{\D y}{\D x}=\dfrac t2$，再除以 $x'$ 即得。
+
+\textbf{T3} $y''=-16$。$3x^2+3y^2y'=2y+2xy'$ 代入 $(1,1)$ 得 $y'=-1$；再导一次得 $6+3\bigl(2(y')^2+y''\bigr)=4y'+2y''$，代入解得 $y''=-16$。
+
+\textbf{T4} $336$。$x^3\ee^x=\sum\frac{x^{m+3}}{m!}$，$x^8$ 系数 $\frac1{5!}$，乘 $8!$ 得 $8\cdot7\cdot6=336$。
+
+\textbf{T5} 竖直切线 $x=2$。$r=2,r'=0$，点 $(2,0)$；斜率分子 $r\cos\theta=2\ne0$、分母 $r'\cos\theta-r\sin\theta=0$，故切线垂直于 $x$ 轴。
+
+\textbf{T6} $\D y=\dfrac{2\ee^{2x}}{1+\ee^{4x}}\D x$（等价于 $\dfrac{\D x}{\cosh 2x}$）。
+
+\textbf{T7} 选 \textbf{C}。达布定理：区间上处处可导 $\Rightarrow f'$ 有介值性，不可能有跳跃（第一类）间断点；例 3.12 说明 $f'$ 可以不连续、无界，故 A、B 错；$f'=2x$ 与 $f'=\sin x$ 说明不必单调，D 错。
+
+\textbf{T8} 正确。$f'(0)=\lim x\sin\frac1x=0$；$x\ne0$ 时 $f'(x)=2x\sin\frac1x-\cos\frac1x$，$-\cos\frac1x$ 在 $0$ 附近振荡，故 $\lim_{x\to0}f'(x)$ 不存在，$f'$ 在 $0$ 处为第二类间断。
+
+\begin{warnbox}[验收线]
+限时卷 $\ge 15/20$ 为达标。低于 15 分按题型回炉：T1 回例 3.1、T2--T3 回例 3.3/3.5、T4 回例 3.7、T5 回例 3.9、T7--T8 回例 3.12；不要开新卷。
+\end{warnbox}
+
+\section{十二条高频错误}
+
+\begin{enumerate}[label=\arabic*.,leftmargin=2em]
+\item 分段点只算导数方程，漏连续性；\item 分段点套导函数公式而不用定义；
+\item 参数二阶导写成 $y''(t)/x''(t)$；\item 参数方程忘写 $x'(t)\ne0$；
+\item 隐函数 $F_y=0$ 仍套公式；\item 隐函数二阶导忘把 $y'$ 代回；
+\item Leibniz 逐项硬展开不消项；\item $(1+x)^\alpha$ 的 $f^{(n)}(0)$ 少写一个因子；
+\item 极坐标把 $r'(\theta)$ 直接当斜率；\item 极坐标忽略 $\theta$ 范围与 $r<0$ 的点；
+\item 微分答案漏 $\D x$；\item 把「$f'$ 不连续」当成达布定理的反例。
+\end{enumerate}
+
+\section{速查卡（考前一页）}
+
+\begin{center}
+\begin{tabularx}{15.2cm}{@{}l X@{}}
+\toprule
+型 & 一句话 \\
+\midrule
+D1 & 先验连续 $f(a^-)=f(a^+)$，再令 $f'_-(a)=f'_+(a)$ \\
+D2 & $\frac{\D^2 y}{\D x^2}=\frac{y''x'-y'x''}{(x')^3}$，不是 $y''/x''$ \\
+D3 & $y'=-F_x/F_y$；逐项再导并代回 $y'$ \\
+D4 & $f^{(n)}(0)=n!\cdot[x^n]$；先找会归零的因子 \\
+D5 & 先算点 $(x,y)$；$\frac{r'\sin\theta+r\cos\theta}{r'\cos\theta-r\sin\theta}$ \\
+D6 & $\D y=f'(x)\D x$，别漏 $\D x$ \\
+\bottomrule
+\end{tabularx}
+\end{center}
+
+\vspace{4pt}
+\noindent\textbf{全部数值结论}：\texttt{Homework/\_review/tools/verify\_new\_materials.py}（93 项 PASS）。
+\textbf{真题练手}：2021-22 卷 p2 Q14、2022-23 卷 Q14、2008-09 卷 Q14、2009-10 卷 p2 Q13、2023-24 填 10、2021-22 填 9。
+
+\end{document}

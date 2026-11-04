@@ -1,0 +1,198 @@
+% !TeX program = xelatex
+\documentclass[11pt,a4paper]{ctexart}
+\usepackage[margin=2.4cm]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{enumitem}
+\usepackage{array,booktabs,tabularx}
+
+\setlength{\parindent}{0pt}
+\pagestyle{plain}
+\newcommand{\ee}{\mathrm{e}}
+\newcommand{\D}{\mathrm{d}}
+
+\begin{document}
+
+\begin{center}
+  {\LARGE\bfseries 期中模拟卷 C · 参考答案与详解}\\[4pt]
+  {\large 陶理\quad 2026-11-04}\\[4pt]
+  {\small 全部数值结论经 \texttt{Homework/\_review/tools/verify\_new\_materials.py} 复核（93 项 PASS）；解答题中给出的分值点为建议给分点}
+\end{center}
+
+\noindent\textbf{答案速查}
+\begin{center}
+\small\setlength{\tabcolsep}{4pt}
+\begin{tabular}{c|cccccccccc}
+\toprule
+题 & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 \\
+\midrule
+答 & B & C & C & C & A & 768 & $\frac2\pi$ & $y=x$ & $-\frac{80}{81}$ & $\ee^4$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\begin{center}
+\small\setlength{\tabcolsep}{4pt}
+\begin{tabular}{c|cccccccc}
+\toprule
+题 & 11 & 12 & 13 & 14 & 15 & 16 & 17 & 18 \\
+\midrule
+答 & $\varepsilon$-$\delta$ 证明 & $\frac12$ & $\frac{-1}{(1-\cos t)^2}$，$-1$ & $-\frac23$ & Rolle 证明 & 单调性证明 & 七步作图 & 介值定理证明 \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\bigskip
+\noindent\textbf{一、选择题}
+
+\textbf{1. B}（3 分）$\sqrt{1+x^2}=1+\frac{x^2}2+o(x^2)$，$\cos x=1-\frac{x^2}2+o(x^2)$，差 $=x^2+o(x^2)$，故为 2 阶无穷小。
+\textit{考点}：泰勒展开定阶；回炉 \texttt{讲义\_练习\_函数极限计算与泰勒.pdf} p3。
+
+\textbf{2. C}（3 分）分母 $x^2-x=x(x-1)$，可疑点 $x=0,1$，两点分子也为零。
+$x=0$：$\sin\pi x\sim\pi x$，故 $\frac{\sin\pi x}{x(x-1)}\to\frac{\pi}{-1}=-\pi$；
+$x=1$：令 $u=x-1$，$\sin\pi x=-\sin\pi u\sim-\pi u$，故极限 $\to\frac{-\pi}{1}=-\pi$。
+两点极限均存在（有限），故都是\textbf{可去}间断点，共 2 个。
+\textit{考点}：间断点判型；回炉 \texttt{讲义\_函数极限与间断点.pdf} §4、笔记 \texttt{左右极限求法与间断点判型.md}。
+
+\textbf{3. C}（3 分）达布定理：区间上处处可导 $\Rightarrow f'$ 具介值性，不可能有第一类（跳跃/可去）间断点。
+A 错：$f(x)=x^2\sin\frac1x\,(x\ne0),f(0)=0$ 处处可导但 $f'$ 在 0 处不连续；
+B 错：同一个例子在 0 附近 $f'$ 无界；D 错：$f'(x)=2x$ 与 $\sin x$ 说明不必单调。
+\textit{考点}：达布定理及其边界；回炉 \texttt{Level2\_Derivatives\_and\_Differentials.md}、\texttt{讲义\_导数计算专题.pdf} 例 3.12。
+
+\textbf{4. C}（3 分）$f'(0)=\lim_{x\to0}\frac{x^2\sin(1/x)}x=\lim x\sin\frac1x=0$，故可导；
+$x\ne0$ 时 $f'(x)=2x\sin\frac1x-\cos\frac1x$，其中 $-\cos\frac1x$ 在 $x\to0$ 时振荡无极限，故 $f'$ 在 0 处不连续（第二类间断），更不二阶可导。
+\textit{考点}：导数定义 vs 导函数极限；回炉 \texttt{讲义\_导数计算专题.pdf} 例 3.12。
+
+\textbf{5. A}（3 分）由拉格朗日中值定理，$\exists\xi\in(0,1)$ 使 $f'(\xi)=\frac{f(1)-f(0)}{1-0}=1$。
+B 反例 $f(x)=x$（$f'\equiv1$）；C 反例 $f(x)=x^2$（$f(\xi)=\xi$ 在 $(0,1)$ 内无解）；D 反例 $f(x)=x$（$f'=1\ne\xi$ 除非 $\xi=1$ 不在开区间）。
+\textit{考点}：Lagrange 存在性；回炉 \texttt{微分中值定理专题讲义.pdf} §2。
+
+\bigskip
+\noindent\textbf{二、填空题}
+
+\textbf{6.} $768$（3 分）$\ln(1+2x)=\sum_{n\ge1}(-1)^{n-1}\frac{2^n}{n}x^n$，$x^5$ 系数为 $\frac{2^5}{5}$，故 $y^{(5)}(0)=5!\cdot\frac{2^5}{5}=120\cdot\frac{32}{5}=768$。\quad\textit{考点}：Leibniz / 展开式取系数。
+
+\textbf{7.} $\dfrac2\pi$（3 分）$=\int_0^1\sin\frac{\pi x}2\D x=\left[-\frac2\pi\cos\frac{\pi x}2\right]_0^1=\frac2\pi$。\quad\textit{考点}：定积分定义求数列极限。
+
+\textbf{8.} $y=x$（3 分）$k=\lim_{x\to\infty}\frac{y}{x}=1$，$b=\lim(y-x)=\lim\frac{-x}{x^2+1}=0$。\quad\textit{考点}：斜渐近线两端同值。
+
+\textbf{9.} $-\dfrac{80}{81}$（3 分）$f^{(4)}(0)=\alpha(\alpha-1)(\alpha-2)(\alpha-3)$，$\alpha=\frac13$，四个因子相乘得 $-\frac{80}{81}$。\quad\textit{考点}：$(1+x)^\alpha$ 一般项系数（4 个因子别少写）。
+
+\textbf{10.} $\ee^4$（3 分）令 $u=\frac{x+3}{x+1}=1+\frac{2}{x+1}$，则
+$2x\ln u\sim2x\cdot\frac{2}{x+1}\to4$，故极限 $\ee^4$。
+注意 $1^\infty$ 捷径 $\ee^{\lim v(u-1)}$ 要求 $v(u-1)^2\to0$：此处 $2x\cdot\frac{4}{(x+1)^2}\to0$，条件满足。
+\quad\textit{考点}：幂指极限；回炉 \texttt{限时卷计算题补强\_三型.md} 型 B。
+
+\bigskip
+\noindent\textbf{三、第 11 题（8 分）}
+
+\textbf{证明}：对 $x\ne-2$，
+$$\left|\frac{x+1}{x+2}-\frac23\right|=\left|\frac{3(x+1)-2(x+2)}{3(x+2)}\right|=\frac{|x-1|}{3|x+2|}.$$
+先限制 $|x-1|<1$，则 $0<x<2$，从而 $x+2>2$，$\frac1{3|x+2|}<\frac16$。
+对任意 $\varepsilon>0$，取 $\delta=\min\{1,\,6\varepsilon\}$。当 $0<|x-1|<\delta$ 时，
+$$\left|\frac{x+1}{x+2}-\frac23\right|<\frac{|x-1|}{6}<\frac{\delta}{6}\le\varepsilon.$$
+故 $\lim_{x\to1}\frac{x+1}{x+2}=\frac23$。\quad$\square$
+
+\noindent\textit{给分点}：写出差的化简 2 分；先限制 $\delta\le1$ 并给出放缩 3 分；显式写出 $\delta=\min\{1,6\varepsilon\}$ 2 分；完整 $\varepsilon$-$\delta$ 语句 1 分。
+\textit{回炉}：\texttt{讲义\_极限定义证明.pdf} §2--§3 三模板与五步骨架。
+
+\bigskip
+\noindent\textbf{四、计算题（12--14）}
+
+\textbf{12.}（8 分）$\tan x-\sin x=\tan x(1-\cos x)\sim x\cdot\frac{x^2}2=\frac{x^3}2$，$\ln(1+x)\sim x$，故
+$$\lim_{x\to0}\frac{\tan x-\sin x}{x^2\ln(1+x)}=\lim\frac{x^3/2}{x^3}=\frac12.$$
+亦可用泰勒：$\tan x=x+\frac{x^3}3+o(x^3)$，$\sin x=x-\frac{x^3}6+o(x^3)$，差 $=\frac{x^3}2+o(x^3)$。
+\textit{给分点}：正确写出分子主部 4 分、分母主部 2 分、结论 2 分。
+\textit{易错}：加减式逐项等价替换（只有各项极限都存在时才可拆；此处须展到 $x^3$）。\quad\textit{回炉}：\texttt{限时卷计算题补强\_三型.md} 型 A。
+
+\textbf{13.}（8 分）$x'=1-\cos t,\ y'=\sin t$，故
+$$\frac{\D y}{\D x}=\frac{\sin t}{1-\cos t},\qquad
+\frac{\D}{\D t}\frac{\sin t}{1-\cos t}=\frac{\cos t(1-\cos t)-\sin^2t}{(1-\cos t)^2}=\frac{-1}{1-\cos t}.$$
+$$\Rightarrow\ \frac{\D^2y}{\D x^2}=\frac{-1}{(1-\cos t)^2},\qquad \left.\frac{\D^2y}{\D x^2}\right|_{t=\pi/2}=-1.$$
+\textit{给分点}：写出 $x'\ne0$ 前提 1 分、一阶导 2 分、对 $t$ 再导 3 分、除以 $x'$ 1 分、代值 1 分。
+\textit{易错}：写成 $y''/x''$。\quad\textit{回炉}：\texttt{讲义\_导数计算专题.pdf} 例 3.3。
+
+\textbf{14.}（8 分）对 $x^2+xy+y^2=3$ 求导：$2x+y+xy'+2yy'=0$，代入 $(1,1)$ 得 $3+3y'=0\Rightarrow y'=-1$。
+再导：$2+2y'+xy''+2(y')^2+2yy''=0$，代入得 $2-2+(1+2)y''+2=0\Rightarrow 3y''=-2$，故 $y''=-\dfrac23$。
+\textit{给分点}：$F_y\ne0$ 前提 1 分、一阶 3 分、二阶并代回 $y'$ 3 分、结论 1 分。\quad\textit{回炉}：\texttt{讲义\_导数计算专题.pdf} 例 3.5。
+
+\bigskip
+\noindent\textbf{五、证明题（15--16）}
+
+\textbf{15.}（8 分）令 $F(x)=f(x)-x^2$。由条件，$F$ 在 $[0,1]$ 连续、在 $(0,1)$ 可导，且
+$F(0)=f(0)-0=0$，$F(1)=f(1)-1=0$。由罗尔定理，存在 $\xi\in(0,1)$ 使 $F'(\xi)=0$，即 $f'(\xi)-2\xi=0$，得 $f'(\xi)=2\xi$。\quad$\square$
+
+\noindent\textit{给分点}：构造 $F=f-x^2$ 3 分；逐条验证连续、可导 2 分；验 $F(0)=F(1)$ 2 分；Rolle 与结论 1 分。
+\textit{回炉}：\texttt{中值定理与不等式证明\_题型专题.md} §1--§2、\texttt{微分中值定理专题讲义.pdf} §3。
+
+\textbf{16.}（8 分）令 $g(x)=\ln(1+x)-x+\frac{x^2}2$，则 $g(0)=0$，且当 $x>0$ 时
+$$g'(x)=\frac1{1+x}-1+x=\frac{1-(1+x)+x(1+x)}{1+x}=\frac{x^2}{1+x}>0.$$
+故 $g$ 在 $[0,+\infty)$ 上严格递增，从而 $g(x)>g(0)=0$，即 $\ln(1+x)>x-\frac{x^2}2$。\quad$\square$
+
+\noindent\textit{给分点}：构造 $g$ 2 分；$g(0)=0$ 1 分；$g'$ 化简正确 3 分；判号 + 单调性结论 2 分。
+\textit{说明}：用 Peano 余项的泰勒展开只能得「等价/极限」，不能给严格不等号；若用 Taylor，须写 Lagrange 余项。
+\textit{回炉}：\texttt{Level3\_Mean\_Value\_Theorems.md}、\texttt{微分中值定理专题讲义.pdf} §6。
+
+\bigskip
+\noindent\textbf{六、第 17 题（12 分）}
+
+$y=\dfrac{x^2}{x-1}=x+1+\dfrac1{x-1}$，卷面已给 $y'=\dfrac{x(x-2)}{(x-1)^2},\ y''=\dfrac{2}{(x-1)^3}$。
+
+\textbf{(1)} 定义域 $x\ne1$，非奇非偶；无不可导点（定义域内处处可导）。
+\textbf{(2)} 无对称性。
+\textbf{(3)} 渐近线：垂直 $x=1$（左 $-\infty$、右 $+\infty$）；由多项式部分得斜渐近线 $y=x+1$，$x\to\pm\infty$ 两端皆成立；$y/x\to1$ 但 $y-x\to1$，故无水平渐近线。
+\textbf{(4)} $y'=0\Rightarrow x=0,2$；结合 $x=1$ 分段：$(-\infty,0)$ 增、$(0,1)$ 减、$(1,2)$ 减、$(2,+\infty)$ 增；极大值 $y(0)=0$，极小值 $y(2)=4$。
+\textbf{(5)} $y''$ 在定义域内恒不为零，$x=1$ 不在定义域，故\textbf{无拐点}；$(-\infty,1)$ 上 $y''<0$ 为凸，$(1,+\infty)$ 上 $y''>0$ 为凹。
+\textbf{(6)} 列表（分点 $-\infty,0,1,2,+\infty$）：
+\begin{center}
+\small\setlength{\tabcolsep}{4pt}
+\begin{tabular}{c|ccccccc}
+$x$ & $(-\infty,0)$ & $0$ & $(0,1)$ & $1$ & $(1,2)$ & $2$ & $(2,+\infty)$ \\
+\hline
+$y'$ & $+$ & $0$ & $-$ & 不存在 & $-$ & $0$ & $+$ \\
+$y$ & $\nearrow$ & 极大 $0$ & $\searrow$ & 渐近线 & $\searrow$ & 极小 $4$ & $\nearrow$ \\
+$y''$ & $-$ & $-$ & $-$ & 不存在 & $+$ & $+$ & $+$ \\
+凹凸 & 凸 & 凸 & 凸 & —— & 凹 & 凹 & 凹 \\
+\end{tabular}
+\end{center}
+\textbf{(7)} 作图：先画 $x=1$ 与 $y=x+1$，标出 $(0,0)$、$(2,4)$，按表分别画出左右两支。
+
+\noindent\textit{给分点}：定义域与不可导点 1 分；三类渐近线两端 3 分（漏一端扣 1 分）；单调与极值 3 分；凹凸与「无拐点」判断 2 分；列表 2 分（少于 5 行扣 1 分）；作图 1 分。
+\textit{回炉}：\texttt{讲义\_函数性态与作图.pdf} 例 4.1、\texttt{函数性态与作图\_题型专题.md}。
+
+\bigskip
+\noindent\textbf{七、第 18 题（10 分）}
+
+\textbf{(1)}（4 分）令 $g(x)=f(x+\frac12)-f(x)$，$x\in[0,\frac12]$。由 $f$ 连续知 $g$ 连续，且
+$$g(0)+g(\tfrac12)=\bigl[f(\tfrac12)-f(0)\bigr]+\bigl[f(1)-f(\tfrac12)\bigr]=f(1)-f(0)=0.$$
+若 $g(0)=0$，取 $\xi=0$；否则 $g(0)$ 与 $g(\frac12)$ 异号，由\textbf{介值定理}存在 $\xi\in(0,\frac12)$ 使 $g(\xi)=0$，即 $f(\xi)=f(\xi+\frac12)$。\quad$\square$
+
+\textbf{(2)}（6 分）令 $h(x)=f(x+\frac1n)-f(x)$，$x\in[0,1-\frac1n]$，则 $h$ 连续（用到 $f$ 的\textbf{连续性}）。
+反设 $h$ 在 $[0,1-\frac1n]$ 上无零点，则由\textbf{连续函数的介值性}，$h$ 恒正或恒负。
+但把 $x=0,\frac1n,\dots,\frac{n-1}n$ 代入求和得
+$$\sum_{k=0}^{n-1}h\!\left(\frac kn\right)=f(1)-f(0)=0,$$
+与「各项同号且均非零」矛盾。故 $h$ 必有零点 $\xi$，即 $f(\xi)=f(\xi+\frac1n)$。\quad$\square$
+
+\noindent\textit{用到的性质清单}：(1) $f$ 在闭区间连续 $\Rightarrow h$ 连续；(2) 连续函数若处处非零则保持定号（介值定理的推论）；(3) 端点条件 $f(0)=f(1)$ 使望远镜和为零；(4) 闭区间上连续函数取到零点的介值定理。
+\textit{给分点}：辅助函数构造 2 分；连续性声明 1 分；求和为零 2 分；反证 + 介值定理 2 分；性质说明 1 分。
+\textit{回炉}：\texttt{讲义\_数列极限与压轴新题型.pdf} 例 3.8--3.10、\texttt{数列极限与新压轴\_题型专题.md} §3。
+
+\bigskip
+\begin{center}
+\begin{tabularx}{15.2cm}{@{}l X@{}}
+\toprule
+分段 & 建议用时 \\
+\midrule
+一、二（选择填空 30 分） & 25 分钟 \\
+三（第 11 题 8 分） & 10 分钟 \\
+四（计算 12--14，24 分） & 25 分钟 \\
+五（证明 15--16，16 分） & 20 分钟 \\
+六（作图 17，12 分） & 20 分钟 \\
+七（压轴 18，10 分） & 15 分钟 \\
+留白检查 & 5 分钟 \\
+\bottomrule
+\end{tabularx}
+\end{center}
+
+\noindent{\small 整卷对完答案后，按「错因 + 触发条件」逐题写一句，再按上表的回炉路径定位；不要在考前一晚开新卷。}
+
+\end{document}

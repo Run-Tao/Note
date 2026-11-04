@@ -1,0 +1,127 @@
+% !TeX program = xelatex
+\documentclass[11pt,a4paper]{ctexart}
+\usepackage[margin=2.4cm]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{enumitem}
+\usepackage{array}
+
+\setlength{\parindent}{2em}
+\pagestyle{plain}
+\newcommand{\blank}{\underline{\hspace{2.2cm}}}
+\newcommand{\D}{\mathrm{d}}
+\newcommand{\ee}{\mathrm{e}}
+
+\begin{document}
+
+\begin{center}
+  {\LARGE\bfseries 上海交通大学《高等数学 I（A 类）》}\\[4pt]
+  {\Large\bfseries 期中模拟卷 C（考前全真 · 原创）}\\[8pt]
+  {\kaishu 闭卷，限时 120 分钟，总分 100 分}
+\end{center}
+
+\vspace{2pt}
+\noindent{\small 本卷 18 题全部原创，按 2008--2025 十七套真题的骨架与分值编排：选择 5×3、填空 5×3、第 11 题极限定义证明 8 分、计算 3 题各 8 分、证明 2 题各 8 分、函数性态作图 12 分、压轴 10 分（真题压轴为 8 分，本卷加强为 10 分）。考查范围：函数、极限与连续、导数与微分、高阶导数、中值定理与不等式、泰勒公式、数列极限、函数性态与作图、抽象函数方程。与模拟卷 A（真题重组）、B（原创 18 题）无重复题目。}
+
+\vspace{6pt}
+\noindent\textbf{一、单项选择题（每小题 3 分，共 15 分）}
+
+\begin{enumerate}[label=\textbf{\arabic*.},leftmargin=2.2em,itemsep=7pt]
+
+\item 当 $x\to0$ 时，$\sqrt{1+x^2}-\cos x$ 是关于 $x$ 的\quad（\qquad）
+\[
+\text{(A)}\ 1\ \text{阶无穷小};\quad \text{(B)}\ 2\ \text{阶无穷小};\quad
+\text{(C)}\ 3\ \text{阶无穷小};\quad \text{(D)}\ 4\ \text{阶无穷小}.
+\]
+
+\item 函数 $f(x)=\dfrac{\sin\pi x}{x^2-x}$ 的可去间断点个数为\quad（\qquad）
+\[
+\text{(A)}\ 0;\qquad \text{(B)}\ 1;\qquad \text{(C)}\ 2;\qquad \text{(D)}\ 3.
+\]
+
+\item 设 $f$ 在 $[a,b]$ 上处处可导，则 $f'(x)$ 在 $(a,b)$ 内\quad（\qquad）
+\[
+\begin{aligned}
+&\text{(A)}\ \text{必连续};\qquad &&\text{(B)}\ \text{必有界};\\
+&\text{(C)}\ \text{不可能有第一类间断点};\qquad &&\text{(D)}\ \text{必单调}.
+\end{aligned}
+\]
+
+\item 设 $f(x)=\begin{cases}x^2\sin\dfrac1x,&x\ne0,\\[3pt] 0,&x=0,\end{cases}$ 则 $f$ 在 $x=0$ 处\quad（\qquad）
+\[
+\begin{aligned}
+&\text{(A)}\ \text{不连续};\qquad &&\text{(B)}\ \text{连续但不可导};\\
+&\text{(C)}\ \text{可导且 } f'(0)=0,\ \text{但 } f' \text{ 在 } 0 \text{ 处不连续};\qquad &&\text{(D)}\ \text{二阶可导}.
+\end{aligned}
+\]
+
+\item 设 $f$ 在 $[0,1]$ 上连续、在 $(0,1)$ 内可导，且 $f(0)=0,\ f(1)=1$，则必存在 $\xi\in(0,1)$ 使\quad（\qquad）
+\[
+\text{(A)}\ f'(\xi)=1;\qquad \text{(B)}\ f'(\xi)=0;\qquad
+\text{(C)}\ f(\xi)=\xi;\qquad \text{(D)}\ f'(\xi)=\xi.
+\]
+
+\end{enumerate}
+
+\noindent\textbf{二、填空题（每小题 3 分，共 15 分）}
+
+\begin{enumerate}[label=\textbf{\arabic*.},leftmargin=2.2em,itemsep=8pt,start=6]
+
+\item 设 $y=\ln(1+2x)$，则 $y^{(5)}(0)=$\blank。
+
+\item $\lim\limits_{n\to\infty}\dfrac1n\sum\limits_{k=1}^n\sin\dfrac{k\pi}{2n}=$\blank。
+
+\item 曲线 $y=\dfrac{x^3}{x^2+1}$ 的斜渐近线方程为\blank。
+
+\item 设 $f(x)=(1+x)^{1/3}$，则 $f^{(4)}(0)=$\blank。
+
+\item $\lim\limits_{x\to+\infty}\left(\dfrac{x+3}{x+1}\right)^{2x}=$\blank。
+
+\end{enumerate}
+
+\noindent\textbf{三、（第 11 题，8 分）用极限定义证明}
+
+\noindent\textbf{11.}\quad 用 $\varepsilon$-$\delta$ 定义证明：$\lim\limits_{x\to1}\dfrac{x+1}{x+2}=\dfrac23$。
+
+\vspace{4pt}
+\noindent\textbf{四、计算题（第 12--14 题，每小题 8 分，共 24 分）}
+
+\begin{enumerate}[label=\textbf{\arabic*.},leftmargin=2.2em,itemsep=9pt,start=12]
+
+\item 求极限 $\lim\limits_{x\to0}\dfrac{\tan x-\sin x}{x^2\ln(1+x)}$。
+
+\item 设 $\begin{cases}x=t-\sin t,\\ y=1-\cos t,\end{cases}$ 求 $\dfrac{\D^2y}{\D x^2}$（写成 $t$ 的函数）及其在 $t=\dfrac\pi2$ 处的值。
+
+\item 设 $y=y(x)$ 由方程 $x^2+xy+y^2=3$ 确定，求点 $(1,1)$ 处的 $\dfrac{\D^2y}{\D x^2}$。
+
+\end{enumerate}
+
+\noindent\textbf{五、证明题（第 15--16 题，每小题 8 分，共 16 分）}
+
+\begin{enumerate}[label=\textbf{\arabic*.},leftmargin=2.2em,itemsep=9pt,start=15]
+
+\item 设 $f$ 在 $[0,1]$ 上连续、在 $(0,1)$ 内可导，且 $f(0)=0,\ f(1)=1$。证明：存在 $\xi\in(0,1)$ 使 $f'(\xi)=2\xi$。
+
+\item 证明：当 $x>0$ 时 $\ln(1+x)>x-\dfrac{x^2}{2}$。
+
+\end{enumerate}
+
+\noindent\textbf{六、（第 17 题，12 分）函数性态与作图}
+
+\noindent\textbf{17.}\quad 设 $y=\dfrac{x^2}{x-1}$。按七步（定义域与不可导点、对称性、渐近线、单调与极值、凹凸与拐点、列表、作图）讨论函数的性态并作图。卷面给出
+\[ y'=\frac{x(x-2)}{(x-1)^2},\qquad y''=\frac{2}{(x-1)^3}. \]
+
+\vspace{4pt}
+\noindent\textbf{七、（第 18 题，10 分）压轴：抽象函数方程与连续性}
+
+\noindent\textbf{18.}\quad 设 $f$ 在 $[0,1]$ 上连续，且 $f(0)=f(1)$。
+\begin{enumerate}[label=(\arabic*),leftmargin=2.6em,itemsep=5pt]
+\item 证明：存在 $\xi\in[0,\tfrac12]$ 使 $f(\xi)=f(\xi+\tfrac12)$；
+\item 把结论推广到任意整数 $n\ge2$：证明存在 $\xi\in[0,1-\tfrac1n]$ 使 $f(\xi)=f(\xi+\tfrac1n)$，并说明每一步用到了 $f$ 的什么性质。
+\end{enumerate}
+
+\vspace{10pt}
+\begin{center}
+{\small —— 卷终 ——}
+\end{center}
+
+\end{document}

@@ -1,0 +1,255 @@
+% !TeX program = xelatex
+\documentclass[11pt,a4paper]{ctexart}
+% ============================================================
+%  数列极限与压轴新题型 · 专题讲义（含 15 分钟限时卷）
+%  编译：xelatex 两遍
+%  背景：17 套真题里数列极限几乎年年在选择填空出现；2024-25 压轴改成
+%        抽象函数方程 / 迭代连续性，不再考中值定理。
+%  数值结论经 verify_new_materials.py 复核（93 项全 PASS，另含数值采样）
+%  配套笔记：Notes/数列极限与新压轴_题型专题.md
+% ============================================================
+\usepackage[a4paper,top=2.3cm,bottom=2.3cm,left=2.2cm,right=2.2cm]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools,bm}
+\usepackage{booktabs,array,longtable,tabularx}
+\usepackage{enumitem}
+\usepackage[most]{tcolorbox}
+\usepackage{fancyhdr}
+\usepackage{hyperref}
+\hypersetup{hidelinks,colorlinks=true,linkcolor=blue!50!black}
+\usepackage{titlesec}
+
+\linespread{1.28}
+\setlength{\parskip}{0.25em}
+\setlist[enumerate]{itemsep=3pt,topsep=4pt,parsep=0pt,leftmargin=1.9em}
+\setlist[itemize]{itemsep=3pt,topsep=4pt,parsep=0pt,leftmargin=1.6em}
+\titleformat{\section}{\Large\bfseries\color{blue!35!black}}{\thesection}{0.6em}{}
+\titleformat{\subsection}{\large\bfseries\color{blue!25!black}}{\thesubsection}{0.5em}{}
+\titlespacing*{\section}{0pt}{1.7ex plus .3ex}{1.1ex}
+\titlespacing*{\subsection}{0pt}{1.3ex plus .2ex}{0.8ex}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small 数列极限与压轴新题型 · 专题讲义}
+\fancyhead[R]{\small 陶理}
+\fancyfoot[C]{\small\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+
+\newcommand{\ee}{\mathrm{e}}
+\newcommand{\D}{\mathrm{d}}
+\newcommand{\abs}[1]{\left\lvert #1\right\rvert}
+
+\newtcolorbox{keypoint}[1][]{enhanced,breakable,colback=blue!3,colframe=blue!40!black,
+  fonttitle=\bfseries,title={#1},boxrule=0.5pt,arc=1.5mm,
+  left=3mm,right=3mm,top=2mm,bottom=2mm,before skip=4pt,after skip=4pt}
+\newtcolorbox{warnbox}[1][]{enhanced,breakable,colback=red!3,colframe=red!50!black,
+  fonttitle=\bfseries,title={#1},boxrule=0.5pt,arc=1.5mm,
+  left=3mm,right=3mm,top=2mm,bottom=2mm,before skip=4pt,after skip=4pt}
+\newtcolorbox{methodbox}[1][]{enhanced,breakable,colback=green!3!white,colframe=green!35!black,
+  fonttitle=\bfseries,title={#1},boxrule=0.5pt,arc=1.5mm,
+  left=3mm,right=3mm,top=2mm,bottom=2mm,before skip=4pt,after skip=4pt}
+
+\newcounter{exa}[section]
+\newenvironment{exa}[1][]{\refstepcounter{exa}\par\smallskip\noindent
+  \textbf{例 \thesection.\theexa}\if\relax\detokenize{#1}\relax\else\textbf{（#1）}\fi\ \ignorespaces}{\par\smallskip}
+\newenvironment{sol}{\par\noindent\textbf{解（证）}\quad\ignorespaces}{\par\smallskip}
+
+\begin{document}
+
+\begin{center}
+  {\LARGE\bfseries 数列极限与压轴新题型 · 专题讲义}\\[4pt]
+  {\large 上海交大《高等数学 I（A 类）》期中复习}\\[4pt]
+  {\small 陶理\quad 2026-11-04\quad 配套 [[数列极限与新压轴\_题型专题]]}
+\end{center}
+
+\begin{keypoint}[怎么用这本]
+这是 17 套真题里长期「有考、无册」的一块：数列极限几乎年年进选择填空；2024-25 起压轴改为\textbf{抽象函数方程 + 连续性 / 介值}，不再考中值定理。
+\S 3 十道例题先遮住解答自己做；\S 4 限时卷 15 分钟掐表；压轴题\textbf{必须动笔写构造}，只看懂不算会。中值定理的完整母题另见 \texttt{微分中值定理专题讲义.pdf}，本册不重复。
+\end{keypoint}
+
+\section{考情与四法索引}
+
+\begin{center}
+\begin{tabularx}{15.2cm}{@{}c l X c@{}}
+\toprule
+法 & 触发特征 & 第一动作 & 例题 \\
+\midrule
+S1 & $n$ 项和、每项 $\to0$ & 整体放缩 $b_n\le a_n\le c_n$，两端同极限 & 3.1、3.7 \\
+S2 & 递推 $a_{n+1}=g(a_n)$ & 证单调 + 有界 $\Rightarrow$ 收敛，再取极限解 $L$ & 3.4、3.5 \\
+S3 & $\frac1n\sum f(\frac kn)$ & 写成 $\int_0^1 f(x)\D x$ & 3.2、3.3、3.7 \\
+S4 & 和式 / $n^p$ 型 $\frac{a_n}{b_n}$ & Stolz 差分比（$b_n\nearrow+\infty$） & 3.6 \\
+\bottomrule
+\end{tabularx}
+\end{center}
+
+\begin{methodbox}[四句口令]
+夹逼：\textbf{分母换成最大 / 最小}，别逐项取极限。\\
+单调有界：\textbf{先验有界再证单调}，最后对递推两边取极限。\\
+定积分定义：认准 $\frac1n$ 与 $\frac kn$，先提 $\frac1n$ 再写积分。\\
+Stolz：$\lim\frac{a_n}{b_n}=\lim\frac{a_{n+1}-a_n}{b_{n+1}-b_n}$，先查 $b_n$ 严格增且 $\to+\infty$。
+\end{methodbox}
+
+\section{新压轴的三类母题}
+
+2024-25 卷七(18) 不给具体表达式，只给\textbf{连续性}与函数方程。三条通用构造：
+
+\begin{keypoint}[P1 等距平移]
+$f\in C[0,1],\ f(0)=f(1)\Rightarrow\exists\,\xi\in[0,\frac1n]$ 使 $f(\xi)=f(\xi+\frac1n)$（$n\ge2$）。
+构造 $h(x)=f(x+\frac1n)-f(x)$；若 $h$ 无零点，由连续性 $h$ 恒正或恒负，而 $\sum_{k=0}^{n-1}h(\frac kn)=f(1)-f(0)=0$ 矛盾。
+\end{keypoint}
+
+\begin{keypoint}[P2 不动点]
+$f\in C[a,b],\ f([a,b])\subset[a,b]\Rightarrow\exists\,\xi:f(\xi)=\xi$。
+构造 $g(x)=f(x)-x$，$g(a)\ge0,\ g(b)\le0$，用介值定理。
+\end{keypoint}
+
+\begin{keypoint}[P3 压缩迭代]
+$a_{n+1}=f(a_n)$，$\abs{f(x)-f(y)}\le q\abs{x-y}\ (0<q<1)$，则 $a_n$ 收敛到唯一不动点。
+由 $\abs{a_{n+1}-a_n}\le q^n\abs{a_1-a_0}$ 证 $\{a_n\}$ 是 Cauchy 列，再用 $f$ 的连续性取极限。
+\end{keypoint}
+
+\section{例题 10 道}
+
+\begin{exa}[S1 夹逼]
+求 $\lim_{n\to\infty}\sum_{k=1}^n\frac1{\sqrt{n^2+k}}$。
+\end{exa}
+\begin{sol}
+对 $1\le k\le n$ 有 $\dfrac1{\sqrt{n^2+n}}\le\dfrac1{\sqrt{n^2+k}}\le\dfrac1{\sqrt{n^2+1}}$，故
+$$\frac{n}{\sqrt{n^2+n}}\le S_n\le\frac{n}{\sqrt{n^2+1}},$$
+两端均 $\to1$，由夹逼得极限 $1$。
+\end{sol}
+
+\begin{exa}[S3 定积分定义]
+求 $\lim_{n\to\infty}\frac1n\sum_{k=1}^n\sin\frac{k\pi}{2n}$。
+\end{exa}
+\begin{sol}
+$=\int_0^1\sin\frac{\pi x}{2}\D x=\left[-\frac2\pi\cos\frac{\pi x}2\right]_0^1=\frac2\pi$。
+数值交叉验证：$n=200$ 得 $0.6391$、$n=2000$ 得 $0.63687$、$n=20000$ 得 $0.63664$，趋于 $\frac2\pi\approx0.63662$。
+\end{sol}
+
+\begin{exa}[S3 先提 $\frac1n$]
+求 $\lim_{n\to\infty}\sum_{k=1}^n\frac{n}{n^2+k^2}$。
+\end{exa}
+\begin{sol}
+$\sum\frac{n}{n^2+k^2}=\frac1n\sum\frac1{1+(k/n)^2}\to\int_0^1\frac{\D x}{1+x^2}=\arctan 1=\frac\pi4$。
+数值验证：$n=500$ 得 $0.78490$、$n=5000$ 得 $0.78535$，趋于 $\frac\pi4\approx0.78540$。
+\end{sol}
+
+\begin{exa}[S2 单调有界]
+$a_1=\sqrt2,\ a_{n+1}=\sqrt{2+a_n}$，求 $\lim a_n$。
+\end{exa}
+\begin{sol}
+归纳：$0<a_n<2\Rightarrow a_{n+1}=\sqrt{2+a_n}<2$，故有界；又
+$a_{n+1}-a_n=\frac{(2-a_n)(a_n+1)}{\sqrt{2+a_n}+a_n}>0$，故递增。由单调有界准则收敛，设 $\lim a_n=L$；
+对递推取极限 $L=\sqrt{2+L}\Rightarrow L^2-L-2=0\Rightarrow L=2$（舍 $L=-1$）。
+\end{sol}
+
+\begin{exa}[S2 压缩 / Newton]
+$a_1>0,\ a_{n+1}=\frac12\left(a_n+\frac3{a_n}\right)$，求 $\lim a_n$。
+\end{exa}
+\begin{sol}
+由均值不等式 $a_{n+1}\ge\sqrt3$（$n\ge1$），且 $a_{n+1}-a_n=\frac{3-a_n^2}{2a_n}\le0$，故自第二项起递减有下界，收敛。
+取极限 $L=\frac12(L+\frac3L)\Rightarrow L^2=3$，取正根 $L=\sqrt3$。
+\end{sol}
+
+\begin{exa}[S4 Stolz]
+求 $\lim_{n\to\infty}\frac{1+2+\cdots+n}{n^2}$。
+\end{exa}
+\begin{sol}
+$b_n=n^2$ 严格增且 $\to+\infty$，可用 Stolz：
+$$\lim\frac{a_{n+1}-a_n}{b_{n+1}-b_n}=\lim\frac{n+1}{(n+1)^2-n^2}=\lim\frac{n+1}{2n+1}=\frac12.$$
+（也可直接用 $a_n=\frac{n(n+1)}2$ 得同值。）
+\end{sol}
+
+\begin{exa}[S1 与 S3 的分界]
+求 $\lim_{n\to\infty}\left(\frac1{n+1}+\frac1{n+2}+\cdots+\frac1{2n}\right)$。
+\end{exa}
+\begin{sol}
+写成 $\frac1n\sum_{k=1}^n\frac1{1+k/n}\to\int_0^1\frac{\D x}{1+x}=\ln2$。
+注意\textbf{不能用夹逼取到 $\ln2$}：朴素放缩只给 $\frac12\le S_n\le1$，夹逼在此只能定界不能定值。
+\end{sol}
+
+\begin{exa}[P1 等距平移，$n=2$]
+设 $f\in C[0,1]$，$f(0)=f(1)$。证明 $\exists\,\xi\in[0,\frac12]$ 使 $f(\xi)=f(\xi+\frac12)$。
+\end{exa}
+\begin{sol}
+令 $g(x)=f(x+\frac12)-f(x)$，$x\in[0,\frac12]$，$g$ 连续。
+$g(0)+g(\frac12)=f(1)-f(0)=0$。若 $g(0)=0$ 取 $\xi=0$；否则 $g(0)$ 与 $g(\frac12)$ 异号，由介值定理存在 $\xi\in(0,\frac12)$ 使 $g(\xi)=0$。
+\end{sol}
+
+\begin{exa}[P1 推广]
+设 $f\in C[0,1]$，$f(0)=f(1)$，$n\ge2$。证明 $\exists\,\xi\in[0,\frac{n-1}n]$ 使 $f(\xi)=f(\xi+\frac1n)$。
+\end{exa}
+\begin{sol}
+令 $h(x)=f(x+\frac1n)-f(x)$（$x\in[0,1-\frac1n]$），$h$ 连续。反设 $h$ 无零点，则由连续性 $h$ 恒正或恒负。
+但 $\sum_{k=0}^{n-1}h\!\left(\frac kn\right)=f(1)-f(0)=0$，与「各项同号且非零」矛盾。故 $h$ 有零点。
+\end{sol}
+
+\begin{exa}[P2 不动点 + P3 迭代]
+(1) 设 $f\in C[0,1]$ 且 $f([0,1])\subset[0,1]$，证明存在 $\xi$ 使 $f(\xi)=\xi$。
+(2) 若进一步设 $\abs{f(x)-f(y)}\le q\abs{x-y}\ (0<q<1)$，证明迭代 $a_{n+1}=f(a_n)$ 收敛到该不动点。
+\end{exa}
+\begin{sol}
+(1) $g(x)=f(x)-x$ 连续，$g(0)=f(0)\ge0$，$g(1)=f(1)-1\le0$，由介值定理存在零点。
+(2) $\abs{a_{n+1}-a_n}\le q\abs{a_n-a_{n-1}}\le\cdots\le q^{n-1}\abs{a_2-a_1}$；对 $m>n$，
+$\abs{a_m-a_n}\le\frac{q^{n-1}}{1-q}\abs{a_2-a_1}\to0$，故 $\{a_n\}$ 为 Cauchy 列，设极限 $\xi$；由 $f$ 连续，对 $a_{n+1}=f(a_n)$ 取极限得 $\xi=f(\xi)$。唯一性：两个不动点 $\xi,\eta$ 满足 $\abs{\xi-\eta}\le q\abs{\xi-\eta}\Rightarrow\xi=\eta$。
+\end{sol}
+
+\section{限时卷（15 分钟，20 分，遮住 \S 5）}
+
+\begin{enumerate}[label=\textbf{V\arabic*.},leftmargin=2.4em,itemsep=9pt]
+\item（4 分）求 $\lim_{n\to\infty}\sum_{k=1}^n\frac1{\sqrt{n^2+kn}}$。
+\item（4 分）求 $\lim_{n\to\infty}\frac1n\sum_{k=1}^n\left(\frac kn\right)^2$。
+\item（4 分）$a_1=1,\ a_{n+1}=\frac12\left(a_n+\frac4{a_n}\right)$，求 $\lim a_n$。
+\item（4 分）求 $\lim_{n\to\infty}\frac{1^2+2^2+\cdots+n^2}{n^3}$。
+\item（4 分）设 $f\in C[0,1]$，$f(0)\ge0,\ f(1)\le1$。证明存在 $\xi\in[0,1]$ 使 $f(\xi)=\xi$。
+\end{enumerate}
+
+\section{限时卷答案与详解}
+
+\textbf{V1} $2(\sqrt2-1)$。提 $\frac1n$：$\frac1n\sum\frac1{\sqrt{1+k/n}}\to\int_0^1\frac{\D x}{\sqrt{1+x}}=2\sqrt{1+x}\big|_0^1=2(\sqrt2-1)$。
+
+\textbf{V2} $\frac13$。$\frac1n\sum(\frac kn)^2\to\int_0^1x^2\D x=\frac13$；也可由 $\sum k^2=\frac{n(n+1)(2n+1)}6$ 直接算。
+
+\textbf{V3} $2$。$a_{n+1}\ge2$（均值不等式），且自第二项起递减有下界，故收敛；取极限 $L=\frac12(L+\frac4L)\Rightarrow L^2=4\Rightarrow L=2$。
+
+\textbf{V4} $\frac13$。Stolz：$\lim\frac{(n+1)^2}{(n+1)^3-n^3}=\lim\frac{n^2+2n+1}{3n^2+3n+1}=\frac13$。
+
+\textbf{V5} 令 $g(x)=f(x)-x$，则 $g$ 连续，$g(0)=f(0)\ge0$，$g(1)=f(1)-1\le0$。若某端点为零即得；否则两端异号，由介值定理存在 $\xi\in(0,1)$ 使 $g(\xi)=0$。
+
+\begin{warnbox}[验收线]
+$\ge 15/20$ 达标；V5 必须写出「构造 $g$ + 连续性 + 两端符号 + 介值定理」四步，只写结论不给分。未达标按型回炉：V1/V2 $\to$ 例 3.3、V3 $\to$ 例 3.5、V4 $\to$ 例 3.6、V5 $\to$ 例 3.10。
+\end{warnbox}
+
+\section{十二条高频错误}
+
+\begin{enumerate}[label=\arabic*.,leftmargin=2em]
+\item $n$ 项和逐项取极限（每项 $\to0$ 但项数增长）；\item 夹逼只定界却当成定值（例 3.7）；
+\item 单调有界忘证有界或忘证单调；\item 递推取极限时没先论证收敛；
+\item 认不出 $\frac1n\sum f(\frac kn)$；\item Riemann 和里 $f$ 写错（$\frac kn$ 与 $\frac k{n^2}$ 混淆）；
+\item Stolz 未查 $b_n\nearrow+\infty$；\item 比值判别 $\rho=1$ 时仍下结论；
+\item 条件收敛级数随意重排 / 逐项相加；\item 新压轴不写连续性前提就直接用介值定理；
+\item 压轴只写「由介值定理得」不给辅助函数；\item 把 2024-25 压轴当中值定理题，最后一晚全押中值定理。
+\end{enumerate}
+
+\section{速查卡（考前一页）}
+
+\begin{center}
+\begin{tabularx}{15.2cm}{@{}l X@{}}
+\toprule
+动作 & 一句话 \\
+\midrule
+夹逼 & 分母换最大 / 最小，两端同极限才能夹 \\
+单调有界 & 有界 + 单调 $\Rightarrow$ 收敛；再对递推取极限解 $L$ \\
+定积分定义 & $\frac1n\sum f(\frac kn)\to\int_0^1 f$；先提 $\frac1n$ \\
+Stolz & 和式比 $n^p$ 时用差分比，先查 $b_n\nearrow+\infty$ \\
+压缩 & $\abs{a_{n+1}-a_n}\le q^n\abs{a_1-a_0}\Rightarrow$ Cauchy 列 \\
+压轴 & 连续性 $\to$ 造辅助函数 $\to$ 验两端符号 / 求和为零 $\to$ 介值定理 \\
+\bottomrule
+\end{tabularx}
+\end{center}
+
+\vspace{4pt}
+\noindent\textbf{全部数值结论}：\texttt{Homework/\_review/tools/verify\_new\_materials.py}（93 项 PASS，含 $n=500/5000$ 数值采样）。
+\textbf{真题练手}：2024-25 卷压轴（抽象算子迭代 + 连续性）、2013-14 卷第 3 题（$\lim a_{n+1}/a_n$ 概念辨析）、模拟卷 C 填 7 与 Q18。
+
+\end{document}

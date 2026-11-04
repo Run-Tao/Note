@@ -1,0 +1,191 @@
+\documentclass[11pt,a4paper]{ctexart}
+% ============================================================
+%  该翻哪一本 —— 复习资料分工与使用指南
+%  编译：xelatex 两遍
+%  所有页码均按阅读器 PDF 页码实测（2026-11-04）
+% ============================================================
+\usepackage[a4paper,top=2.3cm,bottom=2.3cm,left=2.2cm,right=2.2cm]{geometry}
+\usepackage{amsmath,amssymb,mathtools,bm}
+\usepackage{booktabs,array,tabularx,longtable}
+\usepackage{enumitem}
+\usepackage[most]{tcolorbox}
+\usepackage{fancyhdr}
+\usepackage{hyperref}
+\hypersetup{hidelinks,colorlinks=true,linkcolor=blue!50!black,urlcolor=blue!50!black}
+\usepackage{titlesec}
+\usepackage{pifont}
+
+\linespread{1.22}
+\setlength{\parskip}{0.25em}
+\setlist[enumerate]{itemsep=3pt,topsep=4pt,parsep=0pt,leftmargin=1.9em}
+\setlist[itemize]{itemsep=3pt,topsep=4pt,parsep=0pt,leftmargin=1.6em}
+\titleformat{\section}{\Large\bfseries\color{blue!35!black}}{\thesection}{0.6em}{}
+\titleformat{\subsection}{\large\bfseries\color{blue!25!black}}{\thesubsection}{0.5em}{}
+\titlespacing*{\section}{0pt}{1.8ex plus .3ex}{1.0ex}
+\titlespacing*{\subsection}{0pt}{1.3ex plus .2ex}{0.8ex}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small 该翻哪一本 · 资料分工与使用指南}
+\fancyhead[R]{\small 陶理}
+\fancyfoot[C]{\small\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+
+\newcommand{\ee}{\mathrm{e}}
+\newcommand{\abs}[1]{\left\lvert #1\right\rvert}
+
+\newtcolorbox{keypoint}[1][]{enhanced,breakable,colback=blue!3,colframe=blue!40!black,
+  fonttitle=\bfseries,title={#1},boxrule=0.5pt,arc=1.5mm,
+  left=3mm,right=3mm,top=2mm,bottom=2mm,before skip=4pt,after skip=4pt}
+\newtcolorbox{warnbox}[1][]{enhanced,breakable,colback=red!3,colframe=red!50!black,
+  fonttitle=\bfseries,title={#1},boxrule=0.5pt,arc=1.5mm,
+  left=3mm,right=3mm,top=2mm,bottom=2mm,before skip=4pt,after skip=4pt}
+\newtcolorbox{methodbox}[1][]{enhanced,breakable,colback=green!3!white,colframe=green!35!black,
+  fonttitle=\bfseries,title={#1},boxrule=0.5pt,arc=1.5mm,
+  left=3mm,right=3mm,top=2mm,bottom=2mm,before skip=4pt,after skip=4pt}
+\newtcolorbox{notebox}[1][]{enhanced,breakable,colback=gray!5,colframe=gray!55,
+  fonttitle=\bfseries,title={#1},boxrule=0.4pt,arc=1mm,
+  left=3mm,right=3mm,top=1.5mm,bottom=1.5mm,before skip=3pt,after skip=3pt}
+
+\begin{document}
+
+\begin{center}
+{\LARGE\bfseries 该翻哪一本？}\\[3pt]
+{\large 复习资料分工与使用指南}\\[6pt]
+{\small 依据：2026-11-04 全部资料现状 \quad$\cdot$\quad 页码＝阅读器里的 PDF 页码，均已实测}
+\end{center}
+
+\vspace{-2pt}
+\begin{keypoint}[一条总规则（背这三行就够）]
+\textbf{方法不会 $\to$ 翻笔记；题目不会 $\to$ 翻讲义；手感/时间不对 $\to$ 掐表做真题。}\\[2pt]
+笔记是\textbf{字典}——按「症状」查，永远不从第一页读到最后一页；\\
+讲义是\textbf{题库 + 答案册}——按「页」刷，每道例题都必须先遮住解答自己做；\\
+计划是\textbf{日程表}——每天开头看一眼，不是学习材料，不用「读」。
+\end{keypoint}
+
+\section{四类资料各管什么}
+
+{\footnotesize
+\renewcommand{\arraystretch}{1.22}
+\begin{tabularx}{\textwidth}{@{}>{\raggedright\arraybackslash}p{2.5cm} >{\raggedright\arraybackslash}p{4.3cm} >{\raggedright\arraybackslash}p{4.5cm} >{\raggedright\arraybackslash}X@{}}
+\toprule
+\textbf{资料} & \textbf{装什么} & \textbf{不装什么} & \textbf{什么时候碰} \\
+\midrule
+方法笔记（Obsidian，17 篇） & 决策卡、口令、判型流程、答案速查、17 套全表 & 完整题面与逐步详解（只引讲义页码） & 学新专题的 20 分钟；做题卡壳时查一步；碎片时段闭卷回忆；考前扫 \\
+专题讲义（PDF，10 本，含本指南） & 题面 + 完整解答 + 错误对照 + 限时卷 & 每日安排；精简口诀（只在各讲义的速查节） & 做题、对答案、看详解；限时卷掐表 \\
+练习册 / 补充卷 / 模拟卷 / 真题原件 & 纯题源 & 方法总结 & 限时实战、加练、整卷模拟 \\
+计划（冲刺计划 + 学习进度方案） & 排期、每日分钟级任务、验收线 & 题目与解答 & 每天开头 1 分钟；每周对一次进度 \\
+\bottomrule
+\end{tabularx}}
+
+\section{每天的标准五步：每一步只碰一本书}
+
+{\footnotesize
+\renewcommand{\arraystretch}{1.22}
+\begin{tabularx}{\textwidth}{@{}>{\raggedright\arraybackslash}p{0.5cm} >{\raggedright\arraybackslash}p{1.9cm} >{\raggedright\arraybackslash}p{1.4cm} >{\raggedright\arraybackslash}p{4.6cm} >{\raggedright\arraybackslash}X@{}}
+\toprule
+ & \textbf{步骤} & \textbf{时长} & \textbf{只碰什么} & \textbf{禁止什么} \\
+\midrule
+1 & 闭卷回忆 & 10 min & 白纸一支笔 & 禁翻任何资料；想不起的条目记下来，第 2 步做完再查 \\
+2 & 做题 & 45--55 min & 讲义 / 练习册\textbf{题面}（遮住解答） & 禁开笔记。卡住超过 2 分钟，才允许翻笔记的\textbf{那一步} \\
+3 & 对答案 & 15 min & 讲义解析页 / 答案速查 & 禁只打叉：每题写一句「错因 + 触发条件」 \\
+4 & 交错尾段 & 20 min & 昨天的\textbf{笔记卡} + 今天的错题 & 禁开新题；只重做错的那一步 \\
+5 & 碎片回收 & 15 min & 只用\textbf{笔记 / 手抄卡}闭卷回忆 & 禁动笔重算；每张卡 $\le 1$ 分钟 \\
+\bottomrule
+\end{tabularx}}
+
+\begin{notebox}[为什么第 2 步禁看笔记]
+看笔记做题 = 开卷，考场上没有笔记。笔记只在两个时刻合法：学方法（第 1 步之前的专题日）和卡壳查一步（$>2$ 分钟）。其余时间翻开笔记，等于把「检索练习」降级成「重读」。
+\end{notebox}
+
+\section{按专题查：先笔记、后讲义}
+
+{\footnotesize
+\renewcommand{\arraystretch}{1.22}
+\begin{tabularx}{\textwidth}{@{}>{\raggedright\arraybackslash}p{2.3cm} >{\raggedright\arraybackslash}p{3.6cm} >{\raggedright\arraybackslash}p{5.6cm} >{\raggedright\arraybackslash}X@{}}
+\toprule
+\textbf{专题} & \textbf{第 1 步：笔记（学方法）} & \textbf{第 2 步：讲义（做题 + 对答案）} & \textbf{第 3 步：加练 / 限时} \\
+\midrule
+第 11 题定义证明 & 极限定义证明\_题型专题 & 讲义\_极限定义证明 §2 三模板、§3 五步骨架（前 6 页）$\to$ §4--§5 十道真题（p7--p13） & 同讲义 p14 的 17 套形式表：$\varepsilon$-$\delta$ / $\varepsilon$-$X$ / $M$ 型各挑 1 题 \\
+函数极限计算 & 函数极限计算与泰勒\_专项练习 §1 决策卡 & 讲义\_函数极限与间断点 §2 决策流程（p3--p4）$\to$ §3 八道真题（p5--p6） & 练习册 p4--p6（A/B/L 组）+ 补充卷 p2--p3 \\
+间断点 & 左右极限求法与间断点判型 §1--§7；D-6 卡第 1 页 & 同讲义 §4 八道真题（p7--p8）$\to$ §5 概念题（p9--p10）$\to$ §6 十二条错误（p11） & 同讲义 §9 全表（p13--p14），按行打勾 \\
+计算题综合（9/10/11 型） & 限时卷计算题补强\_三型 §0--§1（默写级） & 同讲义 §7 限时卷（p11--p12 做题，p12--p13 对答案） & 补强卡 §3 加练清单（\ding{72}必做，§5 有 70 分钟表） \\
+泰勒 & 函数极限计算与泰勒\_专项练习 §1 与 §4.5 & 练习册 p3 决策卡 $\to$ B 组 p5 & L 组 p6（30 分钟限时）+ 2023-24 Q15 / 2024-25 Q14 \\
+导数计算 & 导数计算\_题型专题 §0--§2；D-6 卡第 2 页 & 讲义\_导数计算专题 §3 十二道例题（p2--p4）$\to$ 真题 Q13/Q14 原卷 & 同讲义 §4 20 分钟限时卷 T1--T8（p4）、§7 速查卡（p5）；作业 12--14 的 7 处条件漏写逐题改 \\
+数列极限 / 新压轴 & 数列极限与新压轴\_题型专题 §0--§3 & 讲义\_数列极限与压轴新题型 §2 三类母题（p1--p2）$\to$ §3 十道例题（p2--p3） & 同讲义 §4 15 分钟限时卷 V1--V5（p3--p4）、§7 速查卡（p4） \\
+中值定理 & 中值定理与不等式证明\_题型专题 §0--§1（默写级） & 微分中值定理专题讲义 §2--§5（p4--p18） & 题型专题 §2 答题模板 + §4 Q16 范例；方案 §5-E 六个辅助函数默写 \\
+函数性态作图 & 函数性态与作图\_题型专题 §0--§2；方案 §5-D 七步速查（\textbf{不是}冲刺计划 §5） & 讲义\_函数性态与作图 §3 六道例题（p2--p3）$\to$ 真题 Q17：2021-22 p2 / 2022-23 p3（各 12 分）、2023-24 p4（10 分） & 同讲义 §4 30 分钟限时卷 L1--L2（p3）、§7 四套 Q17 速查（p4）；2009-10 \textbf{Q17} p2（$x\ee^{1/x}$，不可导点 $x=0$） \\
+整卷模拟 & —— & 2024-25、2023-24 真题卷；模拟卷 A/B/C & 按方案 §3 的 D-3 / D-2 掐表；模拟卷 C 第 18 题专测压轴新题型 \\
+\bottomrule
+\end{tabularx}}
+
+\section{卡壳三分法：先问自己一句话，再决定翻哪本}
+
+\begin{methodbox}[三个问题，按顺序问]
+\begin{enumerate}[label=\textbf{问 \arabic*.}]
+  \item \textbf{这题该用什么方法？}——答不上 $\Rightarrow$ 翻\textbf{笔记}的决策卡/口令（补强卡 §0、泰勒决策卡、四步卡）。不要翻讲义详解，那是替你想。
+  \item \textbf{方法知道，算到一半推不动？}——$\Rightarrow$ 翻\textbf{讲义}里同型例题，\textbf{先遮住解答}，只对照「卡住的那一步」看一句，然后合上自己写。
+  \item \textbf{会做，但超时 / 总错符号？}——$\Rightarrow$ 不是资料问题，是熟练度：翻\textbf{真题卷}掐表重做 + 错题本写「错因 + 触发条件」。
+\end{enumerate}
+\end{methodbox}
+
+\begin{warnbox}[三个误区（时间就是这么漏掉的）]
+\textbf{(1) 把笔记从头读到尾}：笔记是字典，通读一遍只留「看过」的错觉。它只在两个时刻打开：专题日开头 20 分钟、卡壳查一步。\\
+\textbf{(2) 把讲义当教材「看」}：讲义的每道例题都必须先遮解答自己做，做完才对。只看解答 $=$ 没学。\\
+\textbf{(3) 对完答案就翻篇}：只改答案不改「错因」，同型题下次照错。每道错题至少写一句「我错在哪一步、什么条件触发」。
+\end{warnbox}
+
+\subsection{三个常见问题}
+
+\begin{itemize}
+  \item \textbf{笔记和讲义内容不是重复了吗？} 有意重叠，分工不同：笔记是\textbf{压缩后的流程 + 答案速查}（对答案用），讲义是\textbf{题面 + 完整过程}（学做法用）。两者冲突时，以 sympy 复核脚本为准（都在 \texttt{Homework/\_review/tools/}）。
+  \item \textbf{时间不够，只能碰一样？} 做题日只碰\textbf{讲义 + 真题}；考前最后一天只碰\textbf{笔记 / 手抄卡}。只选一样时，永远选「动手做题」。
+  \item \textbf{补强卡、D-6 卡算笔记还是讲义？} 算笔记：§0--§1（或第 1 页）是默写级，加练部分只是\textbf{指向练习册的题号}，本身不产生新题。
+\end{itemize}
+
+\section{资料清单与页码速查}
+
+{\footnotesize
+\renewcommand{\arraystretch}{1.12}
+\begin{longtable}{@{}>{\raggedright\arraybackslash}p{4.6cm} >{\raggedright\arraybackslash}p{1.3cm} >{\raggedright\arraybackslash}p{9.1cm}@{}}
+\toprule
+\textbf{资料} & \textbf{页数} & \textbf{页码分布（阅读器页码）} \\
+\midrule
+\endfirsthead
+\toprule
+\textbf{资料} & \textbf{页数} & \textbf{页码分布（阅读器页码）} \\
+\midrule
+\endhead
+讲义\_函数极限与间断点 & 14 & §1 考情 p1--3；§2 决策 p3--4；§3 八道真题 p5--6；§4 间断点 p6--8（8 道真题 p7--8）；§5 概念 p9--10；§6 十二条 p11；§7 限时卷 p11--13；§9 全表 p13--14；§10 速查 p14 \\
+讲义\_极限定义证明 & 14 & 定义与三模板、五步骨架 p3--6；十道真题 p7--13；17 套形式全表 p14 \\
+讲义\_练习\_函数极限计算与泰勒 & 9 & p3 决策卡；p4 A 组 12 题；p5 B 组 13 题；p6 L 组限时卷；p7--8 解析；p9 备用表 \\
+讲义\_练习\_补充卷\_真题难度 & 5 & p2 组 1（A8 型）+ 组 2（L5 型）；p3 组 3 真题变式；p4 两型口令卡；p5 解析 \\
+讲义\_导数计算专题 & 5 & §1 考情与知识地图 p1；§2 六型方法框 p1--2；§3 十二道例题 p2--4；§4 20 分钟限时卷 T1--T8 p4；§5 详解 p4--5；§6 十二条错误、§7 速查卡 p5 \\
+讲义\_函数性态与作图 & 4 & §1 七步法 p1；§2 四类渐近线 p1--2；§3 六道例题 p2--3；§4 30 分钟限时卷 L1--L2 p3；§5 详解 p3--4；§6 十二条错误、§7 速查卡（含四套 Q17） p4 \\
+讲义\_数列极限与压轴新题型 & 4 & §1 四法索引 p1；§2 三类母题 p1--2；§3 十道例题 p2--3；§4 15 分钟限时卷 V1--V5 p3--4；§5 详解 p4；§6 十二条错误、§7 速查卡 p4 \\
+高数I期中复习讲义 & 37 & §1 考情 p3--4；§2 极限 p5--10；§3 导数与中值 p11--18；真题精讲 p19--28；§4 作业对照 p29--30；§5 模拟卷 p31--35；速查 p36--37 \\
+微分中值定理专题讲义 & 25 & §2 三定理 p4--8；§3 构造法 p9--12；§4 母题 p13--15；§5 真题 p15--18；§6 不等式 p19--21；习题 p22--24；最后三句话 p25 \\
+模拟卷 A / B / C（含答案） & 2 / 4 & \texttt{期中复习/模拟卷/} 与 \texttt{Resources/Downloads/} 各一份；C 卷 18 题全原创（选择 5、填空 5、第 11 题 $\varepsilon$-$\delta$、计算 12--14、证明 15--16、作图 17、压轴 18），答案册 4 页含逐题详解、建议给分点、回炉路径与建议用时表 \\
+真题原件 17 套 & —— & \texttt{Homework/\_pdf\_text/exam\_2008\_2024/} \\
+\midrule
+笔记：极限定义证明\_题型专题 & —— & §2--§3 三模板与五步骨架；末尾 17 套形式分布 \\
+笔记：函数极限计算与泰勒\_专项练习 & —— & §1 决策卡；§2 A/B 组答案速查；§3 补充卷；§4.5 两道泰勒真题详解 \\
+笔记：左右极限求法与间断点判型 & —— & §1--§7 方法；§8 17 套全表；§9 速查卡 \\
+笔记：D-6 间断点四步卡与求导检查表 & —— & 第 1 页 间断点四步；第 2 页 求导检查表 \\
+笔记：限时卷计算题补强\_三型 & —— & §0--§1 默写级；§3 加练（\ding{72}必做）；§4 回炉表；§5 70 分钟执行表 \\
+笔记：Level1\_\allowbreak Limits\_\allowbreak and\_\allowbreak Continuity & —— & 概念底座（间断点四类、闭区间性质） \\
+笔记：Level2--Level6（5 篇） & —— & 概念底座：导数与微分 / 中值定理与 Taylor / 积分 / 多元微积分 / 级数与 ODE；每篇按直觉$\to$定义$\to$公式$\to$误解$\to$应用$\to$疑问六段 \\
+笔记：导数计算\_题型专题 & —— & §0 默写卡；§1 六型第一动作；§2 逐型要领与自测；§4 错因回炉；§6 去哪练 \\
+笔记：函数性态与作图\_题型专题 & —— & §0 默写卡；§1 七步判定口径；§2 渐近线四类；§3 三道自测；§4 四套 Q17 速查；§5 十二条错误 \\
+笔记：中值定理与不等式证明\_题型专题 & —— & §0 默写卡；§1 万能构造表；§2 答题模板；§3 不等式三条路；§4 去哪练（页码级） \\
+笔记：数列极限与新压轴\_题型专题 & —— & §0 默写卡；§1 四法逐条；§2 选填四条快判；§3 抽象函数方程 / 介值定理压轴 \\
+笔记：D-5\_作图七步与导数保温 & —— & 11/4 晚提前执行包：§0 该看的东西、§1 默写卡、§2 两道 Q17 答案骨架、§3 110 分钟五步表、§4 压缩取舍 \\
+计划：冲刺计划 / 学习进度方案 & —— & 冲刺计划 §3 排期、§5 速查卡；方案 §3 每日分钟级、§5 速查卡 \\
+\bottomrule
+\end{longtable}}
+
+\begin{keypoint}[底线]
+\textbf{任何一天，「只读不做」的时间不超过 20 分钟。}方法笔记通读上限 20 分钟；其余时间必须动笔——对答案、改错因、重做错题都算。
+\end{keypoint}
+
+\end{document}
