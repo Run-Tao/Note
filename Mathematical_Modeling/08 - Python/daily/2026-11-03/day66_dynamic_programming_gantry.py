@@ -70,6 +70,7 @@ FLIP_W = 28.0
 
 GRID = 0.25               # 连续 DP 的切点网格（m）
 DP_FRAG_PENALTY = 500.0   # DP 里对「短于 13 m 的收尾块」每米加价（元/m），防止碎块解
+MIN_SEG = 3.0             # 非末段最小长度 m（2026-11-04：纯惩罚项实测无效，故改为硬约束）
 LIFT_MAX = 20.0           # 吊车在块远端最大跨距（= 主臂 16 m + 6 m 副臂）  m
 RAIL_MAX = 16.0           # 拖车可拉单块最大长度（平板车 13 m + 前后悬）  m
 
@@ -209,8 +210,10 @@ def dp_fixed_blocks(k, mid_step=None):
                 step = (n_trucks(w) * TRUCK_DAY
                         + LIFT * (2 if fl else 1)
                         + (JOINT if t > 1 else 0.0)
-                        # 末尾碎块惩罚：避免「切到 39 m 再剁 1 m」这种 DP 自娱自乐的解
+                        # 碎块硬约束（2026-11-04 修正）：只罚不收口径时 DP 仍会剁 1 m，故改为拒绝
                         + (1.0 + 20.0 * max(0.0, FLIP_LEN - 1e-9 - (b - a))) * DP_FRAG_PENALTY)
+                if i != N and (b - a) < MIN_SEG:   # 非末段不得短于 MIN_SEG，防 DP 剁碎块
+                    continue
                 c = dp[t - 1][j] + step
                 if c < dp[t][i] - 1e-9:
                     dp[t][i] = c
