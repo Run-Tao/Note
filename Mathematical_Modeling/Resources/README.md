@@ -143,3 +143,11 @@
 - **Skiena, S. S. (2020). *The Algorithm Design Manual*, 3rd ed., §10 「Dynamic Programming」** — 入门，英文，区间划分/背包/编辑距离的**模板化写法**，适合把 Day66 的 `F(t,i)` 写成通用函数（Springer，付费）（**仅在线**）状态：待读
 
 > ⚠️ 说明：2026-11-03 备课时宿主机外网**部分可达**——arXiv PDF 2106.10142 下载成功（**已下载 1 篇**）；"segmental construction / box girder" 类工程论文在 arXiv 无命中、且中文期刊库不可达，故工程侧文献本次**仅在线**登记为 Springer 经典书目。
+
+## 区间调度 / 区间图（Level 4 · 组合优化，Day68）
+
+- **Kleinberg, J., & Tardos, É. (2006). *Algorithm Design*, Ch.4 §4.1 「Interval Scheduling」.** Pearson — 入门，英文，最早完工优先 + 加权区间 DP 的标准推导（**仅在线**）状态：待读
+- **Golumbic, M. C. (2004). *Algorithmic Graph Theory and Perfect Graphs*, 2nd ed., Ch.1 「Interval Graphs」.** Elsevier — 进阶，英文，区间图 = 弦图 = 完美图，解释「区间排序为什么贪心就够」（**仅在线**）状态：待读
+- **Baptiste, P. (1999). Polynomial time algorithms for minimizing the weighted number of late jobs on a single machine with equal processing times.** *Journal of Scheduling* 2:245–252 — 进阶，英文，同工时 $1|p_j=p|\sum w_jU_j$ 可化为区间调度多项式求解，是 Day68 §八「下一步」入口（Springer，**仅在线**）状态：待读
+
+> ⚠️ 说明：2026-11-05 备课时未检索下载（时间全部用于实例校准与静默 bug 定位），上述三条**均仅在线**登记，如实说明。
