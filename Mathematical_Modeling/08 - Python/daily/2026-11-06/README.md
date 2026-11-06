@@ -3,7 +3,7 @@
 > subject: mathematical-modeling ｜ level: L2 优化模型（选址 · 集合覆盖 / 分层服务口径）/ L8 算法（枚举裁判 vs 阈值扫描）｜ 锚点：Roadmap L4–L8
 > 主脚本：`day69_layered_coverage.py`　输出：`day69_result.json`、`day69_layered.png`
 > 运行：`cd /home/ubuntu/Note && ./.venv/bin/python "Mathematical_Modeling/08 - Python/daily/2026-11-06/day69_layered_coverage.py"`
-> 实测：**`-W error` 零告警，5 条断言全过，4.2 s**（含 3 万多种 (开放集, 双档集) 组合的完整枚举 + 9 档阈值扫描）
+> 实测：**`-W error` 零告警，5 条断言全过，4.2 s**（含约 3 万种 (开放集, 双档集) 组合的完整枚举 + 9 档阈值扫描 + 工厂门槛曲线）
 > 教案：[[Day69 - 分层覆盖与可及性学生营养餐保障点]]
 
 ## 一句话结论
