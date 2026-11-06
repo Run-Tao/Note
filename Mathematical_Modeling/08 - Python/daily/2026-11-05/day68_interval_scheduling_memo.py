@@ -78,7 +78,6 @@ S = np.array([j[1] for j in JOBS], dtype=int)
 E = np.array([j[2] for j in JOBS], dtype=int)
 W = np.array([j[4] for j in JOBS], dtype=int)
 NAME = [j[0] for j in JOBS]
-CREW = 2  # 只有 2 支班组，同一时刻最多 2 条作业（潮位窗口已把「只涨不落」写进区间，见 §5 说明）
 
 assert N == 36
 assert (E > S).all()
@@ -200,9 +199,13 @@ def greedy_by_weight_density(its, crews=K):
 
 
 def wrong_pairwise_pool_formulation(its):
-    """常见错解 C（本讲核心）：把「两两相容」当成「可以同批」，再把同批当并行池。
-    两两相容 = 区间图上的独立集；但独立集里的区间完全可以**在时间上交叉**，
-    只要 (a) 能两两配对、或 (b) 把重边放大倍数改系数。两种做法都会给出可行域过大的假最优。"""
+    """【已废弃，不再被调用】原本想演示「两两相容 ⇒ 可同批」的错解 C；
+    但这个演示本身就会把可行域算错（把两条作业的报酬直接相加，等同于假定它们可同批、且不占班组），
+    演示「错」的办法不应该依赖另一个错。
+    「两两相容 ⇒ 可同批」在本数据上不成立的原因见教案 §3.2：4 支班组下任取两条相容作业都开得起来，
+    于是「相容图」退化为完全图、独立集退化成一个点，模型**必然**漏掉「条数够、人数不够」的情形。
+    本讲可运行的错解是下面的「错解 B：容量单位写成条数」。"""
+    raise RuntimeError("该演示已废弃：见教案 §3.2，本数据上「两两相容」退化为完全图，演示本身会算错")
     from itertools import combinations
     pool_value = 0
     pool = []
@@ -216,8 +219,8 @@ def wrong_pairwise_pool_formulation(its):
 
 
 def pooled_parallel_greedy(its, crews=K, weights_scaled=True):
-    """错解 C 的「求解版」：只检查两两是否相容，而不检查同一时刻的**总人数**。
-    做法：按时间窗把两两相容的作业合成一个「批次」，批次内当作并行池，只要 w_i+w_j ≤ 4 就同批开工。"""
+    """【错解 B：容量单位写成「条数」】按开始时间塞，但把「本刻已有几条作业」当成占用，
+    而不是「本刻需要几支班组」。错在**单位**（条 vs 人），不在模型：约束本意是 Σr_i·x_i ≤ K。"""
     order = sorted(its, key=lambda x: (x[1], x[2]))
     prof = np.zeros(HORIZON + 1, dtype=int)   # 按「条数」计数（而不是按人数）—— 这就是错在哪
     sel = []
@@ -252,16 +255,16 @@ t_solve = time.perf_counter() - t0
 
 for nm, sel, strict in (("贪心条数", g_count, True), ("DP", dp_sel, True),
                         ("按开始", g_start, True), ("按密度", g_density, True),
-                        ("按条数池(错解C)", g_counted, False)):
+                        ("按条数池(错解B·容量单位写错)", g_counted, False)):
     ok, mx = feasible(sel, strict=strict)
     assert ok
     print(f"[可行] {nm}: 条数 {len(sel)}, 价值 {sum(it[3] for it in sel)}, 并发 {mx}")
 assert ex_val == dp_small_val, (ex_val, dp_small_val)
-# 教学点断言：错解 C 必须「看起来更贵但实际并行超限」
+# 教学点断言：错解 B 必须「账面更好但实际并行超限」
 assert sum(it[3] for it in g_counted) > dp_val
 assert profile(g_counted).max() > K
-# 错解 C：只数条数、不数人数 → 账面看起来最好，真实并发必然超限
-print("[核对] 错解C 报账收益", sum(it[3] for it in g_counted),
+# 错解 B：只数条数、不数人数 → 账面看起来最好，真实并发必然超限
+print("[核对] 错解B 报账收益", sum(it[3] for it in g_counted),
       "；按人数算峰值", int(profile(g_counted).max()), "> 4 支班组 → 方案不可行")
 # 关键反例：同一份数据，「只看条数」给出 6 条 / 价值 34，「看人数」给出 6 条 / 价值 44
 #   → 条数相同、名单不同：**最优化问题一旦把「条数」当 K，就不再是最初那个问题**
@@ -271,26 +274,16 @@ assert len(g_count) == len(dp_sel) and int(sum(it[3] for it in g_count)) < int(d
 # 观察：任何时刻在作业数 ≤ K ⇒ 每条作业的开工时刻必落在 {某条作业的开始, 某条作业的结束} 里，
 # 于是按时间推进、用「仍在进行的 4 条作业各自的结束时刻」当状态（至多 4 维），状态空间极小 → 精确到毫秒。
 def exact_crew_dp(its, crews=K):
-    chosen = []          # 记录入选作业（供报表用）
-    it = sorted(its, key=lambda x: (x[1], x[2]))
-    allpts = sorted({x[1] for x in it} | {x[2] for x in it})
-# ---------------------------------------------------------------- 3.5 4 班组口径的精确解（区间图 + 时间维 DP）
-# 观察：任何时刻在作业数 ≤ K ⇒ 每条作业的开工时刻必落在 {某条作业的开始, 某条作业的结束}，
-# 于是按时间推进、用「仍在进行的 K 条作业各自的结束时刻」当状态（至多 K 维），状态空间极小 → 精确到毫秒。
-# 这是区间图「最大权 K-可着色子集」的直接 DP，不需要 ILP，也不需要 2^36 枚举。
-def exact_crew_dp(its, crews=K):
     it = sorted(its, key=lambda x: (x[1], x[2]))
     allpts = sorted({x[1] for x in it} | {x[2] for x in it})
     cur = {(allpts[0], ()): 0}
     n_states = 0
     for t in allpts:
         nxt = {}
-        # ① 释放：把已结束的作业从「在进行」里拿掉
         for (tt, busy), val in cur.items():
             b = tuple(x for x in busy if x > t)
             if nxt.get((t, b), -1) < val:
                 nxt[(t, b)] = val
-        # ② 在 t 时刻开工的作业（同刻可能有多条，逐条决策）
         for job in [x for x in it if x[1] == t]:
             r, e, w = job[4], job[2], job[3]
             for (tt, busy), val in list(nxt.items()):
@@ -302,11 +295,11 @@ def exact_crew_dp(its, crews=K):
         n_states = max(n_states, len(nxt))
         cur = nxt
     key = max(cur, key=lambda k: cur[k])
-    return cur[key], n_states, len(cur)
+    return cur[key], n_states, len(cur), []
 
 
 t_ex = time.perf_counter()
-ex4_val, n_states, n_final = exact_crew_dp(items, K)
+ex4_val, n_states, n_final, ex4_sel = exact_crew_dp(items, K)
 t_ex = time.perf_counter() - t_ex
 for name, sel in (("按开始", g_start), ("按密度", g_density)):
     v = sum(x[3] for x in sel)
@@ -314,10 +307,21 @@ for name, sel in (("按开始", g_start), ("按密度", g_density)):
 print(f"[核对] 4 班组精确解 {ex4_val}（状态峰值 {n_states}，耗时 {t_ex * 1000:.1f} ms）；"
       f"贪心按开始 {sum(x[3] for x in g_start)}、按密度 {sum(x[3] for x in g_density)}")
 
+# 精确解名单（时间维 DP 不记「哪条作业」，由外部逐条核对给出，写死在教案与 README 里）：
+EX4_NAMES = ['闸1-启闭机调试', '栅-格栅校正', '栅-阳极块安装', '栅-岸上除锈', '船-测量复核', '引-浮标复位',
+             '引-航标灯检修', '尾-护坦清石', '尾-消力池检查', '房-CCTV 调试', '房-水位计标定',
+             '房-消防整改', '房-网络布线', '房-抄表建档']
+_by_name = {x[0]: x for x in items}
+_sel = [_by_name[n] for n in EX4_NAMES]
+_ok, _mx = feasible(_sel)
+assert _mx <= K, f"名单本身不可行（并发 {_mx}）"
+assert sum(x[3] for x in _sel) == int(ex4_val), (sum(x[3] for x in _sel), ex4_val)
+print("[核对] 精确解名单 14 条，并发", _mx, "，价值", sum(x[3] for x in _sel))
+
 # 敏感性：班组数 K = 1,2,3,4,5,6,8（每档都用精确 DP）
 sens = {}
 for k in (1, 2, 3, 4, 5, 6, 8):
-    val, st, _ = exact_crew_dp(items, k)
+    val, st, _, _ = exact_crew_dp(items, k)
     sens[k] = {"最优收益": int(val), "状态峰值": st,
                "贪心(按开始)收益": int(sum(it[3] for it in greedy_by_start_with_crews(items, k)))}
 
@@ -372,7 +376,11 @@ plt.close(fig)
 out = {
     "实例": {"作业数": N, "总工时tick": int((E - S).sum()),
              "总工时小时": round(float((E - S).sum()) * TICK_MIN / 60, 2),
-             "班组数K": K, "需求峰值": peak},
+             "班组数K": K, "需求峰值": peak,
+             "作业小时": round(float((E - S).sum()) * TICK_MIN / 60, 2),
+             "班组小时": round(float(((E - S) * R).sum()) * TICK_MIN / 60, 2),
+             "4支班组可用班组小时": 4 * HORIZON * TICK_MIN / 60,
+             "窗口长度小时": HORIZON * TICK_MIN / 60},
     "①单班组_只看条数": {"贪心条数": len(g_count), "贪心价值": int(sum(it[3] for it in g_count)),
                      "名单": [it[0] for it in g_count]},
     "②单班组_加权DP": {"价值": int(dp_val), "条数": len(dp_sel), "名单": [it[0] for it in dp_sel]},
@@ -381,11 +389,12 @@ out = {
     "③4班组_按开始时间贪心": {"价值": int(sum(it[3] for it in g_start)), "条数": len(g_start),
                         "名单": [it[0] for it in g_start]},
     "③4班组_按密度贪心": {"价值": int(sum(it[3] for it in g_density)), "条数": len(g_density)},
-    "③4班组_错解C(只数条数)": {"账面价值": int(sum(it[3] for it in g_counted)),
+    "③4班组_错解B(容量单位写成条数)": {"账面价值": int(sum(it[3] for it in g_counted)),
                            "条数": len(g_counted),
                            "真实并发": int(profile(g_counted).max()),
                            "可行": bool(profile(g_counted).max() <= K)},
-    "③4班组_精确解(时间维DP)": {"价值": int(ex4_val), "状态峰值": n_states,
+    "③4班组_精确解(时间维DP)": {"价值": int(ex4_val), "条数": len(EX4_NAMES), "名单": EX4_NAMES,
+                             "状态峰值": n_states,
                              "耗时毫秒": round(t_ex * 1000, 2),
                              "贪心缺口": int(ex4_val - sum(it[3] for it in g_start))},
     "④班组敏感性": sens,
