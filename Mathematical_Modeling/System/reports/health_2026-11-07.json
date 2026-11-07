@@ -1,13 +1,15 @@
 {
-  "checked_at": "2026-11-07T21:32:33+0800",
+  "checked_at": "2026-11-07T21:38:07+0800",
   "runs_total": 6,
   "verified": 6,
   "running": 0,
   "failed": 0,
   "disk_used_pct": 41.3,
-  "mem_available_pct": 40.2,
+  "mem_available_pct": 37.5,
   "warnings": [],
   "info": [
+    "experiments/2026-W45_math_g-001 骨架待补全（跳过证据检查）",
+    "experiments/2026-W45_paper_g-002 骨架待补全（跳过证据检查）",
     "experiments/2026-W45_prediction_lr_arima 证据齐备",
     "experiments/2026-W46_evaluation_ahp_ewm 证据齐备",
     "experiments/2026-W46_optimization_lp_ilp 证据齐备",

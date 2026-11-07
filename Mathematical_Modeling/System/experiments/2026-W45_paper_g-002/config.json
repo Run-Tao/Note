@@ -1,0 +1,20 @@
+{
+  "task_id": "weekly-2026-W45-g-002",
+  "title": "2026-W45 每周比较：证据纪律 — 论文中每个数字必须可追溯到 result.json(先跑后写)",
+  "created_by": "generate_weekly.py",
+  "target_gap": "G-002",
+  "gap_knowledge_point": "证据纪律 — 论文中每个数字必须可追溯到 result.json(先跑后写)",
+  "experiment": {
+    "seed": 20261107,
+    "models_to_compare": [
+      "LP",
+      "MLR",
+      "RIDGE"
+    ],
+    "metrics": [
+      "TODO"
+    ],
+    "notes": "骨架，需人工补全 data/metrics/断言"
+  },
+  "status": "pending_review"
+}

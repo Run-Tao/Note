@@ -68,11 +68,21 @@ def main() -> int:
             warns.append(f"失败任务 {tid}: {r.get('msg', '')[:80]}")
     verified = [t for t, r in runs.items() if r.get("state") == "verified"]
 
-    # 4b 实验/测试证据完整性
+    # 4b 实验/测试证据完整性（骨架目录 status=pending_review 不计入）
     for base, need in (("experiments", ["result.json", "report.md", "review.json", "env.json"]),
                        ("benchmarks", ["score.json", "review.json"])):
         d = ROOT / base
         for sub in sorted(p for p in d.iterdir() if p.is_dir()):
+            cfg = sub / "config.json"
+            skeleton = False
+            if cfg.exists():
+                try:
+                    skeleton = json.loads(cfg.read_text(encoding="utf-8")).get("status") == "pending_review"
+                except Exception:
+                    pass
+            if skeleton:
+                info.append(f"{base}/{sub.name} 骨架待补全（跳过证据检查）")
+                continue
             have = {f.name for f in sub.iterdir() if f.is_file()}
             so = sub / "solver_output"
             if so.exists():

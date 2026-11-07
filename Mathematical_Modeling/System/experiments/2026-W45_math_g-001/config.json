@@ -1,0 +1,20 @@
+{
+  "task_id": "weekly-2026-W45-g-001",
+  "title": "2026-W45 每周比较：相关矩阵的正定性与可实现性(Cholesky 可行性 / 最近正定投影 / rho 可行上限)",
+  "created_by": "generate_weekly.py",
+  "target_gap": "G-001",
+  "gap_knowledge_point": "相关矩阵的正定性与可实现性(Cholesky 可行性 / 最近正定投影 / rho 可行上限)",
+  "experiment": {
+    "seed": 20261107,
+    "models_to_compare": [
+      "LP",
+      "MLR",
+      "RIDGE"
+    ],
+    "metrics": [
+      "TODO"
+    ],
+    "notes": "骨架，需人工补全 data/metrics/断言"
+  },
+  "status": "pending_review"
+}

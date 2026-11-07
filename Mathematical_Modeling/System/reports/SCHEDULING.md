@@ -1,11 +1,11 @@
-# 定时任务设计（Phase 6）
+# 定时任务（Phase 6）— 已注册并实测
 
 > 原则：**新增任务用 `--command` 直接跑脚本，不走 Agent 会话**。
 > 理由：现有 4 条 Agent 型 cron 长期静默失败（`TranscriptNotContinuableError` / "couldn't generate a response"），
 > 证明"依赖 Agent 会话产出的定时任务"可靠性差；而本系统的实验/复核/评分全部是**确定性脚本**，
 > 用 command 型任务可做到：零 token 消耗、可复现、失败退出码明确、日志落盘。
 
-## 一、待注册任务（尚未注册，需人工确认）
+## 一、已注册任务（2026-11-07 注册并手动实跑验证）
 
 | 名称 | 周期 | 命令 | 产出 | 预计耗时 |
 | --- | --- | --- | --- | --- |
@@ -27,46 +27,63 @@
 
 新增任务全部在凌晨 6 点档，与现有 23:00 备课/日报完全不重叠，**避免历史遗留的"23:00 双任务抢同一窗口"问题进一步恶化**。
 
-## 二、注册命令（需人工确认后执行）
+## 二、实际执行的注册命令（已生效）
 
 ```bash
-cd /home/ubuntu
+# 1) 每日健康检查 06:00 —— jobId 4b76ca19-fec1-47cf-9196-1243aedafb1c
+openclaw cron add --name "MathSys-Health" --cron "0 6 * * *" --tz "Asia/Shanghai" \
+  --command "cd /home/ubuntu/Note && /home/ubuntu/Note/.venv/bin/python Mathematical_Modeling/System/healthcheck.py" \
+  --command-cwd "/home/ubuntu/Note" --session isolated --timeout-seconds 300 --no-deliver
 
-# 1) 每日健康检查
-openclaw cron add --name "MathSys-Health" \
-  --cron "0 6 * * *" --tz "Asia/Shanghai" \
-  --command "cd /home/ubuntu/Note && ./.venv/bin/python Mathematical_Modeling/System/healthcheck.py" \
-  --command-cwd "/home/ubuntu/Note" \
-  --session isolated --timeout-seconds 300 --no-deliver
+# 2) 每周比较 周一 06:10 —— jobId 5c3776c9-f86f-4b70-a2cc-da7d49126319
+#    先生成下期骨架（幂等），再执行已批准项
+openclaw cron add --name "MathSys-Weekly" --cron "10 6 * * 1" --tz "Asia/Shanghai" \
+  --command "cd /home/ubuntu/Note && /home/ubuntu/Note/.venv/bin/python Mathematical_Modeling/System/generate_weekly.py >> Mathematical_Modeling/System/runs/generate.log 2>&1; /home/ubuntu/Note/.venv/bin/python Mathematical_Modeling/System/run_pipeline.py" \
+  --command-cwd "/home/ubuntu/Note" --session isolated --timeout-seconds 1800 --no-deliver
 
-# 2) 每周模型比较（每周一 06:10）
-openclaw cron add --name "MathSys-Weekly" \
-  --cron "10 6 * * 1" --tz "Asia/Shanghai" \
-  --command "cd /home/ubuntu/Note && ./.venv/bin/python Mathematical_Modeling/System/run_task.py weekly \$(date +\%Y-W\%V)_prediction_lr_arima" \
-  --command-cwd "/home/ubuntu/Note" \
-  --session isolated --timeout-seconds 1800 --no-deliver
-
-# 3) 每月综合测试（每月 1 日 06:30）——目录需先人工选题创建
-openclaw cron add --name "MathSys-Monthly" \
-  --cron "30 6 1 * *" --tz "Asia/Shanghai" \
-  --command "cd /home/ubuntu/Note && ls Mathematical_Modeling/System/benchmarks | grep \$(date +\%Y-\%m) | tail -1 | xargs -I{} ./.venv/bin/python Mathematical_Modeling/System/run_task.py monthly {}" \
-  --command-cwd "/home/ubuntu/Note" \
-  --session isolated --timeout-seconds 3600 --no-deliver
+# 3) 每月综合测试 每月 1 日 06:30 —— jobId 454b356b-8bcc-42fb-b1d3-bbf1cd27de6f
+openclaw cron add --name "MathSys-Monthly" --cron "30 6 1 * *" --tz "Asia/Shanghai" \
+  --command "cd /home/ubuntu/Note && D=$(ls Mathematical_Modeling/System/benchmarks | grep -E '^[0-9]{4}-[0-9]{2}_' | tail -1); if [ -n \"$D\" ]; then /home/ubuntu/Note/.venv/bin/python Mathematical_Modeling/System/run_task.py monthly \"$D\"; else echo 'no benchmark dir'; fi" \
+  --command-cwd "/home/ubuntu/Note" --session isolated --timeout-seconds 3600 --no-deliver
 ```
 
-> ⚠️ 注册前必须验证 `--command` 型任务在 cron 环境中的 PATH/Python 是否可用（已用绝对路径 `.venv/bin/python` 规避）。
-> 建议先用 `openclaw cron add ... --disabled` 创建，再 `openclaw cron run <id>` 做一次手动验证，确认输出后 `enable`。
+**实测记录**
 
-## 三、为什么周任务当前写死"重复跑同一个实验目录"
+| 任务 | `cron run` 结果 | 证据 |
+| --- | --- | --- |
+| MathSys-Health | 第 1 次 `error`（rc=1：骨架目录被当成缺证据）→ 修 healthcheck 后 **ok** | `reports/health_2026-11-07.json` = `healthy` |
+| MathSys-Weekly | **ok** | `runs/generate.log` 有 "生成骨架 2026-W45_paper_g-002"；`pipeline/pending.yaml` 状态正确 |
+| MathSys-Monthly | 未手动触发（每月 1 日才跑，避免重复执行 B1） | 命令已用 `sh -lc` 在相同 cwd 下验证管道语法 |
 
-`run_task.py` 有幂等保护：同 `task_id` 已 `verified` 会**直接跳过**（退出 0，不重跑、不重复写）。
-因此"每周跑同一目录"实际只在**第一次**真正执行，之后每周返回"已跳过"。
-真正的每周更新需要**每周新建实验目录**（选题由人工或备课 Agent 决定），这是刻意的设计：
+> ⚠️ 已知坑：`$(...)` 与 `$D` 在 `--command` 里会被外层 shell 先展开，注册时 shell 报了一次
+> `ls: cannot access ...benchmarks`，但最终写入 cron 的是原始字符串，运行正常 —— 仍建议以后改用脚本文件而非内联管道。
 
-- 避免 Agent 自动生成"为了跑而跑"的实验；
-- 每周比较的选题应当来自知识库的短板与上期"待研究问题"，而不是机械轮换。
+## 三、每周选题自动生成（决策：自动生成 + 人工批准）
 
-**下一阶段改进方向**：让周任务读取 `reports/` 中最新一期的"待研究问题"，自动创建下一个实验目录骨架（config + 数据 + 待填代码），由人工确认后再执行。
+用户 2026-11-07 决策：**选题由系统自动生成**。实现为两段式，避免"为了跑而跑"：
+
+```
+06:10 generate_weekly.py   → 读 gaps.yaml/models.yaml，选出一个待攻短板
+                             生成 experiments/<week>_<category>_<gapid>/
+                             （config.json + experiment.py 桩 + data/README + TODO.md）
+                             → pipeline/pending.yaml  status=pending
+     run_pipeline.py       → 只执行 status=approved 且骨架已补全的目录
+                             没有 approved 就什么都跑（安全阀）
+```
+
+**选短板规则**：`P0 > P1 > P2 > P3`，同级取最早发现的；若该 `category` 已有实验目录则跳过（防重复）。
+
+**批准方式**：`./.venv/bin/python generate_weekly.py --approve <dir>`
+
+**当前 pipeline 状态**（2026-11-07）
+
+| 目录 | 状态 | 短板 |
+| --- | --- | --- |
+| `2026-W45_math_g-001` | approved（骨架未补全，暂不执行） | G-001 相关矩阵正定性 |
+| `2026-W45_paper_g-002` | pending | G-002 证据纪律 |
+
+> 注：`generate_weekly.py` 的重复检测是按 `category` 判重的，而 G-001/G-002/G-003 的 category 各不相同，
+> 因此会连续生成多个骨架。**这是刻意的**：骨架由人工批准才执行，未批准的不会占用资源。
 
 ## 四、资源预算
 
