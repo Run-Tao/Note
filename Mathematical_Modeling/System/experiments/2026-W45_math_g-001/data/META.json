@@ -1,0 +1,19 @@
+{
+  "source": "https://raw.githubusercontent.com/datasets/s-and-p-500/main/data/data.csv",
+  "source_note": "Yahoo Finance/Stooq 在本机被限流(HTTP 429)/需 JS 挑战，故改用公开 GitHub 数据集",
+  "frequency": "monthly（非日频，报告中须说明）",
+  "assets": [
+    "price",
+    "dividend",
+    "earnings",
+    "rate"
+  ],
+  "rows": 1829,
+  "date_range": [
+    "1871-02-01",
+    "2023-06-01"
+  ],
+  "raw_sha256": "b797a3c8de4586af837b86a156b05f49be11ffab99e13171dae763b2a11bdf79",
+  "csv_sha256": "3eeffc7af1e25cc736eb380bb9c720fd68bdb7b35a082dbdde5f9f4f5e10a5d9",
+  "type": "real"
+}

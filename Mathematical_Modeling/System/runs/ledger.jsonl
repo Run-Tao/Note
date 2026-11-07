@@ -11,3 +11,5 @@
 {"ts": "2026-11-07T21:31:31+0800", "kind": "monthly-run", "id": "benchmark-2026-11-B1-fullrun", "state": "running", "note": "2026-11_B1_coldchain", "owner_pid": 4186690}
 {"ts": "2026-11-07T21:31:38+0800", "kind": "monthly-run", "id": "benchmark-2026-11-B1-fullrun", "state": "running", "note": "2026-11_B1_coldchain", "owner_pid": 4186716}
 {"ts": "2026-11-07T21:31:48+0800", "id": "benchmark-2026-11-B1-fullrun", "state": "verified", "msg": "run_task.py 全流程通过", "owner_pid": 4186790, "kind": "monthly-run"}
+{"ts": "2026-11-07T21:44:58+0800", "kind": "weekly-run", "id": "weekly-2026-W45-g-001", "state": "running", "note": "2026-W45_math_g-001", "owner_pid": 4191332}
+{"ts": "2026-11-07T21:45:03+0800", "id": "weekly-2026-W45-g-001", "state": "verified", "msg": "run_task.py 全流程通过", "owner_pid": 4191377, "kind": "weekly-run"}
