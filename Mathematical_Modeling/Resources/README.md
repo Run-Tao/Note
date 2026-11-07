@@ -22,7 +22,25 @@
 - **Wikipedia: Route inspection problem（中国邮递员问题）** — 入门，英文，[Route inspection problem](https://en.wikipedia.org/wiki/Route_inspection_problem)（**仅在线**：Wiki 动态页面，无稳定 PDF；本 README 2026-10-10 笔记引用时宿主机无外网，未能抓取正文）状态：待读
 - **Hierholzer (1873) 欧拉回路算法** — 入门，欧拉回路求解的经典算法，Day41 代码的 Step 4 实现依据（**仅在线**，教材内容）状态：待读
 
+- **Dantzig, G. B., & Ramser, J. H. (1959). The truck dispatching problem.** *Management Science* 6(1):80–91 — 进阶，英文，**VRP 的奠基论文**（原题 "truck dispatching"，汽油配送场景），首次把「一组客户 + 车队容量」写成整数规划并给出行生成求解，Day61 的车型/车数争议直接源自这里（INFORMS，付费）（**仅在线**）状态：待读
+- **Clarke, G., & Wright, J. W. (1964). Scheduling of vehicles from a central depot to a number of delivery points.** *Operations Research* 12(4):568–581 — 进阶，英文，**节约法（savings algorithm）原始论文**，Day61「先算下界再构造」的对立面：它不证最优、只给可行解，是 OR 教材里最常见的启发式（INFORMS，付费）（**仅在线**）状态：待读
+- **Solomon, M. M. (1987). Algorithms for the vehicle routing and scheduling problems with time window constraints.** *Operations Research* 35(2):254–265 — 进阶，英文，**带时间窗 VRP（VRPTW）的标准测试集与构造/改进启发式出处**，Day61「时间窗把能同车的店分成互斥组」这句结论的经典依据；本库若要做 VRP 复现， Solomon 的 R1/C1/RC1 算例是默认基准（INFORMS，付费）（**仅在线**）状态：待读
+
 > ⚠️ 说明：2026-10-10 备课时宿主机**无外网出口**（`curl`/`web_fetch` 均超时），故本日资料**全部按"仅在线"登记、未下载 PDF**；待网络恢复后补下 Edmonds–Johnson 1973 与管梅谷 1962 原文。
+> ⚠️ 补记（2026-11-03 日报）：本节此前缺 **Day61 三条 VRP 奠基文献**（Dantzig & Ramser 1959 / Clarke & Wright 1964 / Solomon 1987），自 2026-10-31 起连续 3 期列为待补，本期补齐；文案与 Day61 §4「六台装得下但被时间窗打断」互指。
+
+## 图聚类 / 网络（Level 8, M1）
+
+> ⚠️ 说明：2026-10-31 备课时宿主机**外网出口受限**（arXiv / Springer / ZIB / optimization-online 十余次尝试，均返回 HTML 错误页或超时），
+> 故本组资料**全部按"仅在线"登记、未下载 PDF**，如实说明。
+
+- **van Dongen, S. (2000). *Graph Clustering by Flow Simulation*（博士论文）. University of Utrecht** — 进阶，英文，**MCL（Markov Clustering）的原始定义**：expand / inflate / prune 三步与「团」的判定，是 Day63 代码的直接依据（Utrecht 大学库藏，需机构访问）（**仅在线**）状态：待读
+- **van Dongen, S. (2008). Graph clustering via a discrete uncoupling process.** *SIAM Journal on Matrix Analysis and Applications* 30(1):121–141 — 进阶，英文，MCL 的理论化版本（SIAM，付费）（**仅在线**）状态：待读
+- **Ng, A., Jordan, M., & Weiss, Y. (2001). On spectral clustering: analysis and an algorithm.** *NIPS 14* — 进阶，英文，归一化谱聚类与 Fiedler 向量的经典推导（NIPS 论文集，可在线浏览）（**仅在线**）状态：待读
+- **Fiedler, M. (1973). Algebraic connectivity of graphs.** *Czechoslovak Mathematical Journal* 23:298–305 — 进阶，英文，代数连通度与 Fiedler 向量（可在线浏览）（**仅在线**）状态：待读
+- **Newman, M. E. J. (2006). Modularity and community structure in networks.** *PNAS* 103(23):8577–8582 — 进阶，英文，模块度定义（Day63 的 Q 值即此口径）（**仅在线**）状态：待读
+- **Blondel, V. D., Guillaume, J.-L., Lambiotte, R., & Lefebvre, E. (2008). Fast unfolding of communities in large networks.** *J. Stat. Mech.* P10008 — 入门，英文，Louvain 算法（Day63 对照方法，networkx 实现即此）（**仅在线**）状态：待读
+- **Traag, V. A., Waltman, L., & van Eck, N. J. (2019). From Louvain to Leiden.** *Scientific Reports* 9:5233 — 进阶，英文，Louvain 的连通性缺陷与 Leiden 修正（可开放获取，但本次未下载）（**仅在线**）状态：待读
 
 ## 元启发式 / 调度（Level 5–6）
 
@@ -76,3 +94,60 @@
 - **Wikipedia: Autoregressive integrated moving average** — 入门，英文，[Autoregressive integrated moving average](https://en.wikipedia.org/wiki/Autoregressive_integrated_moving_average)（**仅在线**：Wiki 动态页面，无稳定 PDF）状态：待读
 
 > ⚠️ 说明：2026-10-15 备课时宿主机**外网恢复**（arXiv API 与 PDF 下载均可达），故**成功下载 3 篇 arXiv PDF**（ARIMA-AO 1803.00257、Why ARIMA/SARIMA not Sufficient 1904.07632、Forecasting Crime using ARIMA 2003.08006）；Box–Jenkins 1970、Ljung–Box 1978（Wiley/Oxford 付费）与 Hyndman FPP3（在线整书 PDF 下载未果）**仅在线**登记，待机构访问/网络条件允许时补下。
+
+## 灰色系统 / 小样本预测（Level 4）
+
+- **Deng, J. L. (1982). Control problems of grey systems.** *Systems & Control Letters* 1(5):288–294 — 进阶，英文，**灰色系统理论奠基论文**（"灰"= 部分信息已知、部分未知），Day50 GM(1,1) 的思想来源；邓聚龙《灰色系统（社会·经济）》亦为中文原典（Elsevier/华中理工大学出版社，付费）（**仅在线**）状态：待读
+- **Deng, J. L. (1989). Introduction to grey system theory.** *The Journal of Grey System* 1(1):1–24 — 入门/进阶，英文，灰色系统理论的系统导读（含 AGO/IAGO、GM(1,1)、后验差检验、灰色关联），Day50 「级比检验 → 建模 → 后验差 C/P」流程的直接出处（JGS，付费）（**仅在线**）状态：待读
+- **Liu, S., & Lin, Y. *Grey Systems: Theory and Applications*（Springer, 2010）** — 进阶，英文，灰色系统标准教材，GM(1,1)/DGM(1,1)/Verhulst/滚动 GM 的规范定义与精度等级表，与本讲 `gm11` / `dgm11` 实现逐条对应（Springer，付费）（**仅在线**）状态：待读
+- **Ma, X. *A Brief Introduction to the Grey Machine Learning***（arXiv:1805.01745v2）— 进阶，英文，**已下载** PDF，用核方法统一解释灰模型（GM 是"差分 + 核"的特例），Day50 讨论「GM 与线性/指数外推的关系」时的现代视角 → `Resources/Downloads/Ma-A-Brief-Introduction-to-the-Grey-Machine-Learning.pdf` 状态：待读
+- **Comert, G., Khan, Z., Rahman, M., & Chowdhury, M. *Grey Models for Short-Term Queue Length Predictions for Adaptive Traffic Signal Control***（arXiv:1912.12676v1）— 进阶，英文，**已下载** PDF，GM(1,1)/Verhulst/滚动 GM 在**只有几个数据点**的实时场景下的工程用法，明确提出"长序列用滚动 GM"，与本讲「末点敏感 + 滚动回测」一节正好互为印证 → `Resources/Downloads/Comert-Grey-Models-for-Short-Term-Queue-Length-Predictions.pdf` 状态：待读
+- **Wikipedia: Grey relational analysis / Grey system theory** — 入门，英文，[Grey relational analysis](https://en.wikipedia.org/wiki/Grey_relational_analysis)（**仅在线**：动态页面）状态：待读
+
+> ⚠️ 说明：2026-10-20 备课时宿主机外网**部分可达**（arXiv API/PDF 正常，Springer 正文页返回 HTML 而非 PDF、ScienceDirect 403、Wikipedia 超时），故**成功下载 2 篇 arXiv PDF**（Ma 1805.01745 灰机器学习、Comert 1912.12676 短序列滚动 GM）；Deng 1982/1989 与 Liu–Lin 2010 专著（Elsevier/JGS/Springer 付费）**仅在线**登记。
+
+## 回归诊断 / OLS 假设检验（Level 4）
+
+- **White, H. (1980). A heteroskedasticity-consistent covariance matrix estimator and a direct test for heteroskedasticity.** *Econometrica* 48(4):817–838 — 进阶，英文，**HC0 稳健协方差 + White 检验的原始论文**，Day51 `hc1()` 与 `white_test()` 的直接出处（Wiley/Econometrica，付费）（**仅在线**）状态：待读
+- **Breusch, T. S., & Pagan, A. R. (1979). A simple test for heteroscedasticity and random coefficient variation.** *Econometrica* 47(5):1287–1294 — 进阶，英文，BP 检验原始论文；Koenker (1981) 的学生化版本（$nR^2$ 形式）就是本讲 `bp_test()` 用的那个（Econometrica，付费）（**仅在线**）状态：待读
+- **Ramsey, J. B. (1969). Tests for specification errors in classical linear least-squares regression analysis.** *JRSS-B* 31(2):350–371 — 进阶，英文，**RESET 检验原始论文**，用 ŷ 的高次幂探测遗漏的非线性/交互项（Wiley，付费）（**仅在线**）状态：待读
+- **Cook, R. D. (1977). Detection of influential observation in linear regression.** *Technometrics* 19(1):15–18 — 进阶，英文，**Cook 距离**原始论文，本讲 `D_i` 与"删点前后系数漂移"的依据（Taylor & Francis，付费）（**仅在线**）状态：待读
+- **Cook, R. D., & Weisberg, S. *Residuals and Influence in Regression*（Chapman & Hall, 1982）** — 进阶，英文，回归诊断的经典专著（外部学生化残差、DFFITS、杠杆-残差图的标准参考），本讲后半段的系统性背景（付费）（**仅在线**）状态：待读
+- **StataCorp. *regress postestimation — Postestimation tools for regress*（Stata 手册章节）** — 入门/进阶，英文，**已下载** PDF，把 `estat hettest`（BP）、`estat ovtest`（RESET）、`predict h`/`cooksd`/`dfits` 全部列在一页上，是与本讲输出**逐项对应**的实务清单，适合写论文时对照检查有没有漏项 → `Resources/Downloads/Stata-Regress-Postestimation-Manual-Chapter-Robust-HC1.pdf` 状态：待读
+- **D'Agostino, R. B., & Pearson, E. S. (1973). Tests for departure from normality.** *Biometrika* 60(3):613–622 — 进阶，英文，$K^2$ 正态性检验的出处（`scipy.stats.normaltest` 的底层），本讲 QQ 图那一步的统计依据（Oxford，付费）（**仅在线**）状态：待读
+
+> ⚠️ 说明：2026-10-21 备课时宿主机外网**部分可达**——Stata 官网手册 PDF 下载成功（**已下载 1 篇**）；Econometrica/Wiley/Taylor & Francis/Oxford 的正文页返回 HTML 或 403，Wikipedia REST PDF 接口超时，arXiv API 本次查询亦超时，故 White 1980、Breusch–Pagan 1979、Ramsey 1969、Cook 1977、Cook–Weisberg 1982、D'Agostino–Pearson 1973 **仅在线**登记，待机构访问恢复后补下。
+
+## 设施选址 / 车次联合优化（Level 6，Day59）
+
+- **Desaulniers, G., Desrosiers, J., & Solomon, M. M. (eds). *Column Generation*（Springer, 2005）** — 进阶，英文，列生成的标准参考书；Day59 讲「整站不可拆 + 多仓分配」时，站点数上千的场景就是这一路的方法（Springer，付费）（**仅在线**）状态：待读
+- **Detour Dual Optimal Inequalities for Column Generation with Application to Routing and Location**（arXiv:2108.09233v1）— 进阶，英文，**已下载** PDF（32 页），讲列生成里「对偶最优不等式（DOI）」的加割技巧，直接服务于**路径 / 选址**类主问题的加速；对应 Day59 §八「站点数上去以后 ILP 直接解不动」那条局限 → `Resources/Downloads/Detour-Dual-Optimal-Inequalities-Column-Generation-Routing-Location.pdf` 状态：待读
+- **Chentout, M., et al. *Neural Embedded Mixed-Integer Optimization for Location-Routing Problems***（arXiv:2412.05665）— 进阶，英文，**仅在线**（本期 PDF 下载两次均超时，只登记链接），用神经网络嵌入加速 LRP（选址-路径联合），是 Day59「选址 + 车次耦合」的现代学习型求解路线，适合作「模型方法 vs 学习方法」的对照阅读 → [arxiv.org/abs/2412.05665](https://arxiv.org/abs/2412.05665) 状态：待读
+
+> ⚠️ 说明：2026-10-29 补登记时宿主机外网**可达但限速**——arXiv 2108.09233 全量 1.94 MB 下载成功（**已下载 1 篇**）；2412.05665 两次尝试分别在 1.1 MB 处与中途超时，故**仅在线**登记。本节同时补齐 **Day52–Day59 连续 8 讲的文献环节**（此前自 10-22 起未再登记，见 2026-10-29 日报 P4）。
+
+## 下料 / 列生成（Level 8，Day65）
+
+- **Aristidou, A., et al. (2023). *The Ensemble Approach of Column Generation for Solving Cutting Stock Problems*.** arXiv:2305.14055 — 进阶，英文，**已下载** PDF，把「多个列生成变体各自跑 → 集成挑选」，专门治切割问题里**列生成尾部收敛慢（tailing-off）**的毛病；正对应 Day65 §4.3「10 轮里前 5 轮降得很快、后 5 轮只降 0.5 根」那一幕 → `Resources/Downloads/Ensemble-Column-Generation-Cutting-Stock-2023.pdf` 状态：待读
+- **Martinovic, J., & Saramago, S. (2023). *Solving Cutting Stock Problems via an Extended Ryan-Foster Branching Scheme and Fast Column Generation*.** arXiv:2308.03595 — 进阶，英文，**已下载** PDF（40 页；连接中途超时，实收 471477/534486 字节，PDF 结构自检完整），Day65 只解到 LP，**整数解必须靠 branch-and-price**，本文的 Ryan–Foster（按「同规格对」分支）就是下料问题的标准分支法，是 §七「下一步」的直接入口 → `Resources/Downloads/Extended-Ryan-Foster-Branching-Fast-CG-2023.pdf` 状态：待读
+- **Gilmore, P. C., & Gomory, R. E. (1961). A linear programming approach to the cutting-stock problem.** *Operations Research* 9(6):849–859 — 进阶，英文，下料问题列生成的**原始论文**（INFORMS，付费）（**仅在线**）状态：待读
+- **Gilmore, P. C., & Gomory, R. E. (1963). A linear programming approach to the cutting stock problem — Part II.** *Operations Research* 11(6):863–888 — 进阶，英文，Part II 补上整数解与多规格（INFORMS，付费）（**仅在线**）状态：待读
+- **Vance, P. H., Barnhart, C., Johnson, E. L., & Nemhauser, G. L. (1994). Solving binary cutting stock problems by column generation and branch-and-bound.** *Computational Optimization and Applications* 3:111–130 — 进阶，英文，下料问题 branch-and-price 的早期系统实现（Springer，付费）（**仅在线**）状态：待读
+
+> ⚠️ 说明：2026-11-02 备课时宿主机外网**部分可达**——arXiv 2305.14055 全量下载成功；2308.03595 在 85 s 上限处超时（471477/534486 字节），因 PDF 正文自检 40 页且页尾完整，按「已下载」登记并注明；Springer/INFORMS 正文页不可达，故 Gilmore–Gomory 1961/1963 与 Vance et al. 1994 **仅在线**。
+
+## 钢箱梁吊装 / 动态规划 / 区间划分（Level 8，Day66）
+
+- **Barr, C., & Schenk, O. (2022). *Labeled Optimal Partitioning*.** arXiv:2106.10142 — 进阶，英文，**已下载** PDF（约 860 KB，PDF 结构自检完整），把「最优区间划分 + 标签误分惩罚」统一在同一个 DP 里（changepoint / 序列切段的标准算法族）；正对应 Day66 §三「固定段数 DP」往「段数 + 误判代价一起优化」的推广 → `Resources/Downloads/Labeled-Optimal-Partitioning-2022.pdf` 状态：待读
+- **Bellman, R. (1957). *Dynamic Programming*.** Princeton University Press — 入门偏经典，英文，DP 的原始专著（**仅在线**，无公开 PDF）状态：待读
+- **Skiena, S. S. (2020). *The Algorithm Design Manual*, 3rd ed., §10 「Dynamic Programming」** — 入门，英文，区间划分/背包/编辑距离的**模板化写法**，适合把 Day66 的 `F(t,i)` 写成通用函数（Springer，付费）（**仅在线**）状态：待读
+
+> ⚠️ 说明：2026-11-03 备课时宿主机外网**部分可达**——arXiv PDF 2106.10142 下载成功（**已下载 1 篇**）；"segmental construction / box girder" 类工程论文在 arXiv 无命中、且中文期刊库不可达，故工程侧文献本次**仅在线**登记为 Springer 经典书目。
+
+## 区间调度 / 区间图（Level 4 · 组合优化，Day68）
+
+- **Kleinberg, J., & Tardos, É. (2006). *Algorithm Design*, Ch.4 §4.1 「Interval Scheduling」.** Pearson — 入门，英文，最早完工优先 + 加权区间 DP 的标准推导（**仅在线**）状态：待读
+- **Golumbic, M. C. (2004). *Algorithmic Graph Theory and Perfect Graphs*, 2nd ed., Ch.1 「Interval Graphs」.** Elsevier — 进阶，英文，区间图 = 弦图 = 完美图，解释「区间排序为什么贪心就够」（**仅在线**）状态：待读
+- **Baptiste, P. (1999). Polynomial time algorithms for minimizing the weighted number of late jobs on a single machine with equal processing times.** *Journal of Scheduling* 2:245–252 — 进阶，英文，同工时 $1|p_j=p|\sum w_jU_j$ 可化为区间调度多项式求解，是 Day68 §八「下一步」入口（Springer，**仅在线**）状态：待读
+
+> ⚠️ 说明：2026-11-05 备课时未检索下载（时间全部用于实例校准与静默 bug 定位），上述三条**均仅在线**登记，如实说明。
