@@ -1,0 +1,364 @@
+% !TeX program = xelatex
+% 每日阅读包 —— A 部分（由 Homework/_review/tools/build_daily_pack.py 生成）
+\documentclass[10pt,a4paper]{ctexart}
+\usepackage[a4paper,top=1.9cm,bottom=1.9cm,left=1.9cm,right=1.9cm]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools,bm}
+\usepackage{booktabs,array,longtable,tabularx,multicol}
+\usepackage{enumitem}
+\usepackage[most]{tcolorbox}
+\usepackage{fancyhdr}
+\usepackage{titlesec}
+\usepackage{hyperref}
+\hypersetup{hidelinks,colorlinks=true,linkcolor=blue!50!black}
+\linespread{1.20}
+\setlength{\parskip}{0.18em}
+\renewcommand{\arraystretch}{1.30}
+\setlist[enumerate]{itemsep=1pt,topsep=3pt,parsep=0pt,leftmargin=1.7em}
+\setlist[itemize]{itemsep=1pt,topsep=3pt,parsep=0pt,leftmargin=1.5em}
+\titleformat{\section}{\large\bfseries\color{blue!35!black}}{\thesection}{0.5em}{}
+\titleformat{\subsection}{\normalsize\bfseries\color{blue!25!black}}{\thesubsection}{0.45em}{}
+\titlespacing*{\section}{0pt}{1.1ex plus .2ex}{0.6ex}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small 每日阅读包 · 2026-11-08}
+\fancyhead[R]{\small 陶理}
+\fancyfoot[C]{\small \thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\eps}{\varepsilon}
+\newcommand{\abs}[1]{\left\lvert #1\right\rvert}
+\newcommand{\ee}{\mathrm{e}}
+\newcommand{\D}{\mathrm{d}}
+\newcommand{\blank}{\underline{\hspace{1.5cm}}}
+\newtcolorbox{keypoint}[1][]{enhanced,breakable,colback=blue!3,colframe=blue!40!black,
+  fonttitle=\bfseries,title={#1},boxrule=0.5pt,arc=1.2mm,
+  left=2.5mm,right=2.5mm,top=1.5mm,bottom=1.5mm,before skip=3pt,after skip=4pt}
+\newtcolorbox{warnbox}[1][]{enhanced,breakable,colback=red!2,colframe=red!45!black,
+  fonttitle=\bfseries,title={#1},boxrule=0.5pt,arc=1.2mm,
+  left=2.5mm,right=2.5mm,top=1.5mm,bottom=1.5mm,before skip=3pt,after skip=4pt}
+\begin{document}
+% 11/8 阅读包 A 部分正文（由 build_daily_pack.py 读入）
+% 页分隔标记：
+\clearpage
+
+\begin{center}
+{\Huge\bfseries 每日阅读包}\\[0.25em]
+{\LARGE 2026-11-08（周日）}\\[0.45em]
+{\Large\bfseries 泰勒系统篇 + 全专题冲顶}\\[0.3em]
+{\normalsize 泰勒决策卡与母函数表 · 全专题 62 题 · 两套 18 题全真模拟卷}
+\end{center}
+\vspace{0.4em}
+\begin{keypoint}[今天的一句话]
+今天起是\textbf{四天块}（11/8--11/11，考试 11/11 周三已确认），不是一天做完。
+\textbf{册一《泰勒与压轴强化》}把「泰勒」从「会套公式」变成「会估阶、会读系数」；
+\textbf{册二《全专题冲顶》}把真题的六大专题\textbf{按难度上限}各配齐（62 题）+ 两套 18 题全真模拟卷。
+\textbf{册一是工具，册二是题库}：先读册一 §1 系统篇，再做册二 S1--S6，最后整卷。
+\textbf{两册题面与答案严格分开}：题面在 B16--B17、B20--B22、B25--B26；答案在 B18--B19、B23--B24。
+\textbf{册一的 19 题和册二的 62 题全部经 sympy 复核}（PASS 58 / PASS 154，FAIL 0）。
+\end{keypoint}
+
+\section*{五级优先级（按天排；时间不够从下往上砍）}
+\begin{tabularx}{\linewidth}{c|c|p{6.4cm}|c|c}
+\toprule
+级 & 时长 & 内容 & 安排 & 必做 \\
+\midrule
+P0 & 175 min & 册一 §1 系统篇闭卷默写（45）+ 册二 S1 极限定义 12 题（130） & 11/8 & \textbf{必做} \\
+P1 & 300 min & 册一 T 组 19 题（110）+ 册一限时卷 40 min（50）+ 册二 S4 新压轴 8 题（90）+ 册二 S6 作图 6 题（50） & 11/8 & \textbf{必做} \\
+P2 & 220 min & 册二 S2 导数与微分 14 题（120）+ 册二 S3 极坐标与间断点 12 题（100） & 11/8 & \textbf{必做} \\
+P2+ & 180 min & 册二 S5 不等式与最值 10 题 + 八组组末反馈（80） & 11/8 & \textbf{必做} \\
+P3 & 300 min & \textbf{模拟卷 A（11/9）+ 模拟卷 B（11/10）各 120 min 掐表} + 每卷 60--75 min 订正 & 11/9--11/10 & \textbf{必做} \\
+P4 & 20 min & 睡前默写 3 张卡：泰勒决策卡 / 极限定义三模板 / 作图七步 & 每晚 & 固定 \\
+\bottomrule
+\end{tabularx}
+
+\begin{warnbox}[两条不可破的纪律]
+\textbf{(1) 第 11 题（极限定义）是 17/17 必考}。册二 S1 的 12 题按 \texorpdfstring{$\varepsilon$-$\delta$ 6 / $\varepsilon$-$X$ 4 / $M$ 型 2}{eps-delta 6 / eps-X 4 / M 型 2} 配比，
+\textbf{这是最该优先吃掉的一块}，任何情况下都不要跳过 S1。
+\textbf{(2) 2024--25 的压轴换成了「抽象函数方程 + 迭代连续性」}，不再是中值定理。
+册二 S4 专攻这一形态，\textbf{它是本块最值钱的一段}。
+\end{warnbox}
+
+\section*{这份 PDF 怎么用}
+\begin{enumerate}
+\item \textbf{第 2 页}是阅读路线图：B16--B27 对应后面合订的材料原件，按段号顺序翻，不要跳。
+\item \textbf{第 3 页起}是\textbf{可书写页}：泰勒决策卡与母函数表的闭卷默写区、记录表、验收清单。建议打印，或平板手写。
+\item \textbf{核对答案}放在默写页之后：\textbf{做完再看}，否则闭卷无效。
+\item \textbf{册一（B16--B19）}：系统篇 3 页 + T 组题面 2 页 + 速查与详解 5 页 + 限时卷 2 页。
+      \textbf{顺序不能反}：先 §1 系统篇，再 T 组 19 题，最后限时卷。跳过系统篇直接做题，收益只有一半。
+\item \textbf{册二（B20--B24）}：题面 6 页 + 速查 2 页 + 详解 10 页。\textbf{每题掐 8--12 min}；
+      卡满 5 分钟看详解的「卡点」一行，合上重写。\textbf{看懂不算会}。
+\item \textbf{两套模拟卷（B25--B26）}：每套 120 分钟、100 分、18 题，骨架完全照真题。
+      \textbf{闭卷、掐表、中途不看答案}；做完再看答案表与关键步骤。
+\item \textbf{第 11 页起}是材料原件，每页左下角标了来源与原页码。PDF 书签可按 B16--B27 直接跳转。
+\item Level 4--6（积分 / 多元 / 级数与 ODE）不在本次期中范围。
+\end{enumerate}
+
+\begin{keypoint}[产出（明天的输入）]
+(1) 册一 T 组独立做出的题数与错题号；(2) 册一限时卷得分（目标 $\geq 25/36$）；
+(3) 册二 S1 十二题中完整写出量词行的题数（目标 $\geq 10$）；(4) S4 八题独立做出的题数与各组正确率；
+(5) 两条最大失分点；(6) 两册中「展错阶 / 符号反 / 前提漏」三类错误的次数。
+\textbf{模拟卷得分必须实写，记不清就写「未记录」，不要估算分数。}
+\end{keypoint}
+
+\clearpage
+
+\section*{阅读路线图（按段号顺序翻）}
+{\small 表中「页」是\textbf{本 PDF 的绝对页码}；原件页码写在材料列的 p 后面。}
+\small
+\setlength{\tabcolsep}{2pt}
+\begin{longtable}{c|c|p{4.5cm}|p{6.6cm}|c}
+\toprule
+段 & 页 & 材料（原件页码） & 翻到这里做什么 & min \\
+\midrule
+\endhead
+B16 & 11 & 讲义\_泰勒与压轴强化\_11-08.pdf p1,2,3 & P0 闭卷默写：§1.1 决策卡 10 行 + §1.2 母函数表 9 行先默写再翻；§1.3 三种余项要能说清「谁能给符号」 & 45\\
+B17 & 14 & 讲义\_泰勒与压轴强化\_11-08.pdf p4,5 & T1--T4 十九题全做，分 2 组，组末立刻对 B18 速查；正确率 <80\% 回决策卡重做 3 道同型 & 110\\
+B18 & 16 & 讲义\_泰勒与压轴强化\_11-08.pdf p6,7,8,9,10 & 做完一组才翻；卡 5 min 只看「卡点」一行，合上重写；错在「展错阶」回决策卡，错在「符号」回 §1.6 & 60\\
+B19 & 21 & 讲义\_泰勒与压轴强化\_11-08.pdf p11,12 & P1 收口：掐表 40 分钟，中途不看答案；目标 $\geq$ 25 分（70\%）；低于 20 分立刻回 §1.1 决策卡重默写 & 50\\
+B20 & 23 & 讲义\_全专题冲顶\_11-08.pdf p1,2,3 & P0 必做：S1.1--S1.12 全做，每题先写量词行；M 型两题注意 $\delta$ 反过来取；组末对 B23 速查 & 130\\
+B21 & 26 & 讲义\_全专题冲顶\_11-08.pdf p3,4,5 & S2 + S3 共 26 题全做，分 2 组、组末对答案；S2 先验前提（分段点先连续）再算导；S3 尖点处 0/0 必须取极限 & 120\\
+B22 & 29 & 讲义\_全专题冲顶\_11-08.pdf p5,6,7 & S4 + S5 + S6 共 24 题全做，分 2 组、组末对答案；S4 条件不足必须给反例；S6 六道作图按七步写表 & 140\\
+B23 & 32 & 讲义\_全专题冲顶\_11-08.pdf p8,9 & 八组题的组末反馈口：只对答案不重看；错的题号与错因回记录表 C；正确率 <80\% 的组标记回炉 & 20\\
+B24 & 34 & 讲义\_全专题冲顶\_11-08.pdf p9,10,11,12,13,14,15,16,17,18 & 卡 5 min 只看「卡点」一行，合上重写；S1 详解是本库最有价值的部分，务必逐字读一遍 & 90\\
+B25 & 44 & 讲义\_全专题冲顶\_11-08.pdf p19,20 & 今天浏览卷面结构与分值分布；整卷 120 分钟掐表排 11/9，目标 $\geq$ 70 分；< 70 分把该卷逐题回炉而非换卷 & 20\\
+B26 & 46 & 讲义\_全专题冲顶\_11-08.pdf p21,22,23 & 今天只浏览题目形态；整卷 120 分钟掐表排 11/10，两套都做；订正时间不得压缩 & 15\\
+B27 & 49 & 讲义\_全专题冲顶\_11-08.pdf p24 & 两册验收线一起对：册一 T 组独立做出 $\geq$ 15/19 且限时卷 $\geq$ 25 分；册二三条全达标才算「可上考场」 & 25\\
+\bottomrule
+\end{longtable}
+\normalsize
+\begin{keypoint}[路线图的三条纪律]
+(1) \textbf{按组反馈}：册一 T 组 19 题分 2 组、册二 62 题分 5 组，每 12--15 题一组，\textbf{组末立刻对速查表}；正确率 $<80\%$ 的组回对应决策卡重做 3 道同型再往下。册一 B17 对 B18；册二 B20--B22 对 B23--B24。
+(2) 卡住只看详解里的「\textbf{卡点}」一行，\textbf{不要顺着读下去}；合上重写 5 分钟，仍写不出才看全解。
+(3) \textbf{册一限时卷与两套模拟卷不替代单题}：先做单题（S1--S6），再做整卷；整卷分数是\textbf{结果}不是\textbf{练习}。
+\end{keypoint}
+
+\clearpage
+
+\section*{P0 闭卷默写（11/8 第一小时，35 min，写不出的标「?」，不翻书）}
+\textbf{(1) 泰勒决策卡十行（先写「情形 → 用什么 → 例子」三要素）：}
+\par\smallskip\noindent\rule{\linewidth}{0.25pt}\par\vspace{0.50cm}
+\noindent\rule{\linewidth}{0.25pt}\par\vspace{0.50cm}
+\noindent\rule{\linewidth}{0.25pt}\par\vspace{0.50cm}
+\noindent\rule{\linewidth}{0.25pt}\par\vspace{0.50cm}
+\noindent\rule{\linewidth}{0.25pt}\par\vspace{0.50cm}
+\noindent\rule{\linewidth}{0.25pt}\par\vspace{0.50cm}
+\noindent\rule{\linewidth}{0.25pt}\par\vspace{0.50cm}
+\noindent\rule{\linewidth}{0.25pt}\par\vspace{0.50cm}
+\noindent\rule{\linewidth}{0.25pt}\par\vspace{0.50cm}
+\noindent\rule{\linewidth}{0.25pt}\par\vspace{0.50cm}
+\noindent\rule{\linewidth}{0.25pt}\par\vspace{0.50cm}
+\textbf{(2) 母函数展开表九行（只写函数名与展开式前四项，抽查用）：}
+\par\smallskip\noindent\rule{\linewidth}{0.25pt}\par\vspace{0.50cm}
+\noindent\rule{\linewidth}{0.25pt}\par\vspace{0.50cm}
+\noindent\rule{\linewidth}{0.25pt}\par\vspace{0.50cm}
+\noindent\rule{\linewidth}{0.25pt}\par\vspace{0.50cm}
+\noindent\rule{\linewidth}{0.25pt}\par\vspace{0.50cm}
+\noindent\rule{\linewidth}{0.25pt}\par\vspace{0.50cm}
+\noindent\rule{\linewidth}{0.25pt}\par\vspace{0.50cm}
+\noindent\rule{\linewidth}{0.25pt}\par\vspace{0.50cm}
+\noindent\rule{\linewidth}{0.25pt}\par\vspace{0.50cm}
+\textbf{(3) 三种余项一句话（Peano / Lagrange / 积分各写「适用 + 能给你什么」）：}
+\par\smallskip\noindent\rule{\linewidth}{0.25pt}\par\vspace{0.50cm}
+\noindent\rule{\linewidth}{0.25pt}\par\vspace{0.50cm}
+\noindent\rule{\linewidth}{0.25pt}\par\vspace{0.50cm}
+\begin{keypoint}[验收]
+决策卡十行闭卷能写对八行；母函数表九行至少认出六行；
+\textbf{能说清「Peano 只给阶数、Lagrange 才给符号」}——这一条决定你能不能用泰勒证严格不等式。
+\end{keypoint}
+
+\clearpage
+
+\section*{记录表 A：册一 T 组逐题记录（19 题）}
+\small\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{2.30}
+\begin{tabularx}{\linewidth}{c|c|c|p{4.2cm}|X}
+\toprule
+题号 & 用时 & 对错 & 我展到几阶 & 错在「第一步」 \\
+\midrule
+T1.1 & & & & \\
+T1.2 & & & & \\
+T1.3 & & & & \\
+T1.4 & & & & \\
+T1.5 & & & & \\
+T2.1 & & & & \\
+T2.2 & & & & \\
+T2.3 & & & & \\
+T2.4 & & & & \\
+T3.1 & & & & \\
+T3.2 & & & & \\
+T3.3 & & & & \\
+T3.4 & & & & \\
+T3.5 & & & & \\
+T4.1 & & & & \\
+T4.2 & & & & \\
+T4.3 & & & & \\
+T4.4 & & & & \\
+T4.5 & & & & \\
+\bottomrule
+\end{tabularx}
+\renewcommand{\arraystretch}{1.30}
+\normalsize
+
+\section*{记录表 B：册二 S1--S6 记录（62 题，只记错题）}
+{\small 格式：「题号 → 我卡在哪一步」。只写第一步，不抄整题。}
+\par\smallskip\noindent\rule{\linewidth}{0.25pt}\par\vspace{0.56cm}
+\noindent\rule{\linewidth}{0.25pt}\par\vspace{0.56cm}
+\noindent\rule{\linewidth}{0.25pt}\par\vspace{0.56cm}
+\noindent\rule{\linewidth}{0.25pt}\par\vspace{0.56cm}
+\noindent\rule{\linewidth}{0.25pt}\par\vspace{0.56cm}
+\noindent\rule{\linewidth}{0.25pt}\par\vspace{0.56cm}
+\noindent\rule{\linewidth}{0.25pt}\par\vspace{0.56cm}
+\noindent\rule{\linewidth}{0.25pt}\par\vspace{0.56cm}
+\noindent\rule{\linewidth}{0.25pt}\par\vspace{0.56cm}
+\noindent\rule{\linewidth}{0.25pt}\par\vspace{0.56cm}
+\section*{记录表 C：三条最大风险 + 复发点}
+\par\smallskip\noindent\rule{\linewidth}{0.25pt}\par\vspace{0.56cm}
+\noindent\rule{\linewidth}{0.25pt}\par\vspace{0.56cm}
+\noindent\rule{\linewidth}{0.25pt}\par\vspace{0.56cm}
+\noindent\rule{\linewidth}{0.25pt}\par\vspace{0.56cm}
+
+\clearpage
+
+\section*{核对答案 (1)：泰勒决策卡（做完 P0 再看）}
+\textbf{总纲：先问两个问题——(1) 极限是不是 $0/0$（或 $\infty/\infty$）？(2) 分母最高是几阶？}
+答案是 $k$ 阶就展到 $k$ 阶；\textbf{首项抵消掉，就往后再展一阶}。
+\small
+\setlength{\tabcolsep}{4pt}
+\begin{tabularx}{\linewidth}{p{3.8cm}|p{4.6cm}|X}
+\toprule
+情形 & 用什么 & 例子 \\
+\midrule
+乘积 / 商里的因子 & 等价无穷小（$\sin u\sim u$、$\ln(1+u)\sim u$、$1-\cos u\sim\frac{u^{2}}2$） &
+$\lim\limits_{x\to0}\dfrac{\sin 3x}{x}=3$\\
+和差里要消掉低阶项 & 必须泰勒（或先合并 / 有理化） &
+$\lim\limits_{x\to0}\dfrac{\sin x-x}{x^{3}}=-\dfrac16$\\
+分母 $x^{k}$、分子含 $k$ 阶项 & 分子展到 $k$ 阶，分母展到 $k-1$ 阶 &
+$\lim\limits_{x\to0}\dfrac{\ee^{x}-1-x}{x^{2}}=\dfrac12$\\
+条件给了一个极限求某阶导 & 写成泰勒形式再比系数 &
+$\lim\limits_{x\to0}\dfrac{f(x)-x}{x^{2}}=3\Rightarrow f''(0)=6$\\
+$1^\infty$ 型 & 取对数化为 $0/0$ &
+$\lim\limits_{x\to0}\left(\dfrac{\sin x}{x}\right)^{1/x^{2}}=\ee^{-1/6}$\\
+题目要 $f^{(n)}(0)$ & 展到 $n$ 阶，答案 $=$ $n!\times$ $x^{n}$ 系数 &
+$f=(1+x)^{\alpha}$，$f^{(13)}(0)=\alpha(\alpha-1)\cdots(\alpha-12)$\\
+要证不等式 & 差值函数求导定号（不必用泰勒） &
+$\ln(1+x)>x-\dfrac{x^{2}}2\ (x>0)$\\
+要证极限无穷大 & 泰勒只判阶数，符号另判 &
+$x\to0^{+}$ 时 $\ln x\to-\infty$\\
+\bottomrule
+\end{tabularx}
+\normalsize\smallskip
+\textbf{母函数表里最该背的三行}：$\tan x$ 的系数 $\frac13,\frac{2}{15},\frac{17}{315}$；
+$(1+x)^{\alpha}$ 的通项 $\frac{\alpha(\alpha-1)\cdots(\alpha-n+1)}{n!}x^{n}$；
+$\sqrt{1+x}=1+\frac{x}{2}-\frac{x^{2}}8+\cdots$（\textbf{负号在 $x^{2}$ 项}）。
+\vspace{0.2em}
+
+\textbf{三种余项一句话}：Peano 给 $o((x-x_0)^{n+1})$，\textbf{只给阶数不给符号}；
+Lagrange 给 $\frac{f^{(n+1)}(\xi)}{(n+1)!}(x-x_0)^{n+1}$，\textbf{能给符号与上界}；
+积分余项精确但少用。
+\textbf{「估阶」的唯一判据}：把 $f$ 与 $g$ 展到同一阶，看第一个不相等的项。
+\vspace{0.2em}
+
+\textbf{求高阶导四步法}：选母函数 $\to$ 展到 $n$ 阶 $\to$ 读 $x^{n}$ 系数 $c_n$ $\to$ \textbf{乘 $n!$}。
+\textbf{最后一步最常被漏}。
+
+\clearpage
+
+\section*{核对答案 (2)：极限定义三模板（第 11 题 17/17 必考）}
+\textbf{量词顺序不一样，这是最常丢分的地方}：
+\small
+\setlength{\tabcolsep}{4pt}
+\begin{tabularx}{\linewidth}{p{2.6cm}|X}
+\toprule
+形式 & 完整写法 \\
+\midrule
+$\varepsilon$-$\delta$ & $\forall\varepsilon>0,\ \exists\delta>0,\ \forall x$（$0<\abs{x-x_0}<\delta$）$\Rightarrow \abs{f(x)-A}<\varepsilon$\\
+$\varepsilon$-$X$ & $\forall\varepsilon>0,\ \exists X>0,\ \forall x>X\Rightarrow \abs{f(x)-A}<\varepsilon$\\
+无穷大 $M$ 型 & $\forall M>0,\ \exists\delta>0,\ \forall x$（$0<\abs{x-x_0}<\delta$）$\Rightarrow \abs{f(x)}>M$（\textbf{方向相反}）\\
+\bottomrule
+\end{tabularx}
+\normalsize\smallskip
+\textbf{收尾取法}：A 取 $\delta=\min\{\delta_1,\varepsilon/C\}$；B 取 $X=\max\{X_1,C/\varepsilon\}$；
+C 取 $\delta=\min\{\delta_1,k/M\}$。
+\textbf{写证明前必须先写出量词行}，这是步骤分。
+\begin{warnbox}[2024--25 第 11 题的官方答案错在哪]
+$\frac1{\abs x(1+\abs x)}\ge\frac1{\abs x}$ \textbf{不成立}（分母更大）；官方 $\delta=\min\{\frac12,\frac1G\}$ 有反例
+（$G=10$、$x=0.09631$ 时 $\abs f\approx9.497<10$）。
+订正为 $\delta=\min\{\frac12,\frac1{2G}\}$。
+\end{warnbox}
+
+\section*{核对答案 (2)：导数计算六型 + 作图七步}
+\small
+\setlength{\tabcolsep}{4pt}
+\begin{tabularx}{\linewidth}{c|p{3.1cm}|p{4.4cm}|X}
+\toprule
+型 & 触发 & 第一动作 & 必写前提 \\
+\midrule
+D1 & 分段可导求参数 & 先列连续方程，再列导数方程 & 分界点两侧用定义 \\
+D2 & 参数方程二阶导 & 先算 $y'/x'$，再对 $t$ 求导、除以 $x'$ & $x'(t)\ne0$（\textbf{不是} $y''/x''$） \\
+D3 & 隐函数二阶导 & $y'=-F_x/F_y$，再对 $x$ 求导并代回 & $F_y\ne0$ \\
+D4 & Leibniz / 高阶导 & 找「低阶导归零」的因子 & 展开式写到 $n$ \\
+D5 & 极坐标切线 & 先化 $(x,y)=(r\cos\theta,r\sin\theta)$，再取 $k=\frac{r'\sin\theta+r\cos\theta}{r'\cos\theta-r\sin\theta}$ & 尖点 $0/0$ \textbf{必须取极限} \\
+D6 & 微分 $\D y$ & 求导后乘 $\D x$ & 一阶微分形式不变性 \\
+\bottomrule
+\end{tabularx}
+\normalsize\smallskip
+\textbf{作图七步}：定义域（含不可导点）$\to$ 奇偶 / 周期 $\to$ 渐近线（两端分别求）
+$\to$ $f'$ 判单调与极值 $\to$ $f''$ 判凹凸与拐点 $\to$ \textbf{列表} $\to$ 作图。
+\textbf{列表是给分点}：区间 / $f'$ 符号 / 升降 / $f''$ 符号 / 凹凸，五行齐全。
+\textbf{驻点非极值}是压轴常见陷阱：$f'$ 变号才是极值。
+
+\clearpage
+
+\section*{核对答案 (3)：新压轴两类形态（S4，最值钱的一段）}
+\textbf{形态一：抽象函数方程}。套路是\textbf{先求特解} $\to$ \textbf{减掉特解}化 Cauchy 方程
+$\to$ 用连续性推出线性 $\to$ 代回。
+\small
+\setlength{\tabcolsep}{4pt}
+\begin{tabularx}{\linewidth}{p{3.6cm}|X}
+\toprule
+典型条件 & 结论 \\
+\midrule
+$f(x+y)=f(x)+f(y)$，$f$ 连续 & $f(x)=cx$\\
+$f(xy)=f(x)f(y)$，$f$ 连续，$f(1)=1$ & $f(x)=x^{\alpha}$（$\alpha=f(\ee)$）\\
+$f(x)f(y)=f(xy)$，$f(1)=1$，$f(2)=3$ & $f(4)=f(2\cdot2)=f(2)^{2}=9$（\textbf{不必求整条 $f$}）\\
+条件不足 & \textbf{不必然}。必须给反例：$f(x)=x+p(x)$，$p$ 为任意 1-周期连续函数且 $p(0)=0$ \\
+\bottomrule
+\end{tabularx}
+\normalsize\smallskip
+\textbf{形态二：迭代不动点}。三条路：\textbf{单调有界}（先证单调 + 有界，再对递推取极限）；
+\textbf{振荡收敛}（如 $x_{n+1}=\frac{1+x_n}{x_n}$ $\to$ 黄金比例，需先证奇偶子列各自单调有界）；
+\textbf{压缩映射}（$\max|f'|<1$ 则 $\abs{a_{n+1}-L}\le q\abs{a_n-L}$，几何衰减）。
+\textbf{写之前先声明走哪一条}，这是步骤分。
+
+\section*{验收线与放弃线（两册一起对）}
+\small
+\setlength{\tabcolsep}{4pt}
+\begin{tabularx}{\linewidth}{c|X|c}
+\toprule
+册 & PASS 标准 & 达不到时 \\
+\midrule
+册一 & T 组 19 题\textbf{全做}，独立做出 $\geq 15$ 题（79\%），各组正确率 $\geq 80\%$，且限时卷 $\geq 25$ 分（70\%） & 降速不减量：每组缩到 8 题，仍全刷完，\textbf{组末必对答案} \\
+册二 & (1) S1--S6 六十二题\textbf{全做}、各组正确率 $\geq 80\%$；(2) S1 十二题量词顺序不错；(3) S4 八题至少做出四道、S6 六题至少两题写全七步 & (1) 放慢但不跳组，错题回对应组别重做 3 道同型；(2) 整卷留 11/9 起，\textbf{今天不掐表} \\
+\bottomrule
+\end{tabularx}
+\normalsize
+
+\section*{边界与提醒}
+\begin{itemize}
+\item \textbf{今天全刷单题、不做整卷}：册一 T 组 19 + 限时卷 12 + 册二 62 题 = \textbf{93 题}，分 8 组、组末对答案。两套整卷排在 11/9（A）与 11/10（B），\textbf{两套都做}，订正时间不得压缩。
+\item \textbf{2023-24 与 2024-25 两套真题整卷都已做过}，不再重复掐表；只在订正时把这两卷的错题做单题回炉，11/9 腾出的时间全部给 A 卷订正。
+\item \textbf{册一限时卷}（B19）是 40 分钟 12 题 36 分，\textbf{今天就做}，它是泰勒这一块的验收。
+\item \textbf{册二 S4}（B22）若时间不够，\textbf{优先于 S2/S3}——它对应 2024--25 的真题形态。
+\item \textbf{数学公式只认} \texttt{.tex} 源或渲染 PNG，\textbf{不要}用 \texttt{pdftotext} / \texttt{get\_text()} 核对公式。
+\item 2024--25 原卷是扫描件、文本层全空；若需重看某题请用 PDF 阅读器看图。
+\item Level 4--6（积分 / 多元 / 级数与 ODE）是长期概念底座，\textbf{不在本次期中范围}。
+\end{itemize}
+
+\vfill
+\begin{center}
+{\small\color{gray} 生成：\texttt{Homework/\_review/tools/build\_daily\_pack.py} ·
+依据 \texttt{11-8\_泰勒与全专题冲顶.md} ·
+原件合订见 B16--B27（第 11 页起）}
+\end{center}
+
+\end{document}

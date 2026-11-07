@@ -1,0 +1,390 @@
+% !TeX program = xelatex
+\documentclass[11pt,a4paper]{ctexart}
+% ============================================================
+%  全专题冲顶 · 册二（11/8 追加）
+%  编译：xelatex 两遍
+%  定位：用户 2026-11-07 17:10 指令「进一步提供难度对等的补充题，各方面都要多，
+%        尤其是难的」→ 本册把真题的六大专题全部按真题难度上限配齐。
+%  结构：S1 极限定义证明 12（eps-delta 6 / eps-X 4 / M 型 2）
+%        S2 导数与微分 14 / S3 极坐标与间断点 12
+%        S4 新压轴 8 / S5 不等式与最值 10 / S6 作图压轴 6
+%        + 模拟卷 A / B 各 18 题 × 100 分（骨架照真题）
+%  复核：Homework/_review/tools/verify_full_topics_drill.py —— PASS 154 / FAIL 0
+%  避重：与高难册 22 题、配套加练 50 题、泰勒册 19 题、三本专题讲义逐题比对。
+% ============================================================
+\usepackage[a4paper,top=2.0cm,bottom=2.0cm,left=2.0cm,right=2.0cm]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools,bm}
+\usepackage{booktabs,array,longtable,tabularx,multicol}
+\usepackage{enumitem}
+\usepackage[most]{tcolorbox}
+\usepackage{fancyhdr}
+\usepackage{hyperref}
+\hypersetup{hidelinks,colorlinks=true,linkcolor=blue!50!black}
+\usepackage{titlesec}
+
+\linespread{1.20}
+\setlength{\parskip}{0.18em}
+\setlist[enumerate]{itemsep=2pt,topsep=3pt,parsep=0pt,leftmargin=1.9em}
+\setlist[itemize]{itemsep=2pt,topsep=3pt,parsep=0pt,leftmargin=1.6em}
+\titleformat{\section}{\Large\bfseries\color{blue!35!black}}{\thesection}{0.6em}{}
+\titleformat{\subsection}{\large\bfseries\color{blue!25!black}}{\thesubsection}{0.5em}{}
+\titlespacing*{\section}{0pt}{1.4ex plus .3ex}{0.8ex}
+\titlespacing*{\subsection}{0pt}{1.0ex plus .2ex}{0.5ex}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small 全专题冲顶 · 册二 · 11/8}
+\fancyhead[R]{\small 陶理}
+\fancyfoot[C]{\small\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\eps}{\varepsilon}
+\newcommand{\abs}[1]{\left\lvert #1\right\rvert}
+\newcommand{\ee}{\mathrm{e}}
+\newcommand{\D}{\mathrm{d}}
+\newcommand{\dd}[2]{\dfrac{\D #1}{\D #2}}
+\newcommand{\q}[2]{\par\medskip\noindent\textbf{#1}\quad #2\par}
+\newcommand{\tagline}[1]{\par\nopagebreak\noindent{\small\color{blue!45!black}#1}\par}
+\newcommand{\key}[1]{\par\nopagebreak\noindent{\small\color{red!55!black}\textbf{卡点：}#1}\par}
+
+\newtcolorbox{keypoint}[1][]{enhanced,breakable,colback=blue!3,colframe=blue!40!black,
+  fonttitle=\bfseries,title={#1},boxrule=0.5pt,arc=1.5mm,
+  left=3mm,right=3mm,top=2mm,bottom=2mm,before skip=4pt,after skip=4pt}
+\newtcolorbox{warnbox}[1][]{enhanced,breakable,colback=red!3,colframe=red!50!black,
+  fonttitle=\bfseries,title={#1},boxrule=0.5pt,arc=1.5mm,
+  left=3mm,right=3mm,top=2mm,bottom=2mm,before skip=4pt,after skip=4pt}
+\newtcolorbox{methodbox}[1][]{enhanced,breakable,colback=green!3!white,colframe=green!35!black,
+  fonttitle=\bfseries,title={#1},boxrule=0.5pt,arc=1.5mm,
+  left=3mm,right=3mm,top=2mm,bottom=2mm,before skip=4pt,after skip=4pt}
+
+\begin{document}
+
+\begin{center}
+{\LARGE\bfseries 全专题冲顶（册二）}\\[4pt]
+{\large 极限定义 · 导数微分 · 极坐标间断点 · 新压轴 · 不等式最值 · 作图 · 两套全真模拟卷}\\[4pt]
+{\small 陶理\quad 2026-11-08\quad 配套《讲义\_泰勒与压轴强化\_11-08》与《讲义\_高难冲顶\_11-07》}
+\end{center}
+
+\begin{keypoint}[这本册子怎么用]
+\begin{enumerate}
+\item \textbf{定位不同}。高难册 22 题是「精选最卡人的 22 道」，本册 98 题是「把每个专题按真题难度上限配齐」。前者用来冲分，后者用来补面。\textbf{先做高难册，再做本册。}
+\item \textbf{六大专题的比例是按真题分布配的}：极限定义 12、导数与微分 14、极坐标与间断点 12、新压轴 8、不等式与最值 10、作图压轴 6，另加两套 18 题全真模拟卷。
+\item \textbf{极限定义的三种形式是硬指标}。17 套真题里第 11 题 \textbf{17/17 必考}，而形式在轮换：$\eps$-$\delta$ 8 套、$\eps$-$X$ 6 套、无穷大 $M$ 型 3 套。本册按 \textbf{6 : 4 : 2} 配比，这是最该优先吃掉的一块。
+\item \textbf{新压轴组（S4）是最有价值的部分}。2024-25 的压轴换成了「抽象函数方程 + 迭代连续性」，不再是中值定理。本册 S4 专攻这一形态。
+\item \textbf{模拟卷 A/B 是限时用的}，不是用来读的。每套 120 分钟、100 分、18 题，骨架完全照真题：选择 $5\times3$ + 填空 $5\times3$ + 第 11 题 8 分 + 计算块 + 应用 + 作图 + 压轴。
+\item \textbf{所有数值结论经} \texttt{verify\_full\_topics\_drill.py} \textbf{复核：PASS 154 / FAIL 0}。
+\item \textbf{用法}：S1--S6 每题掐 8--12 分钟。卡满 5 分钟看详解的「卡点」一行，合上重写。\textbf{模拟卷必须掐表 120 分钟，中途不看答案。}
+\end{enumerate}
+\end{keypoint}
+
+\section{难度对标与取舍}
+
+\small\setlength{\tabcolsep}{4pt}
+\begin{longtable}{@{}p{2.4cm}p{2.5cm}p{3.3cm}p{1.8cm}p{4.8cm}@{}}
+\toprule
+题号 & 考点 & 对标真题 & 分值与难度 & 一句话卡点\\
+\midrule
+\endhead
+S1.1--S1.6 & $\eps$-$\delta$ 型 & 17/17 必考第 11 题（8 套） & 8 分 / 难 & 反例构造与 $\delta$ 的取法\\
+S1.7--S1.10 & $\eps$-$X$ 型 & 6 套 & 8 分 / 中偏难 & $x\to\infty$ 时换元 $u=1/x$\\
+S1.11--S1.12 & 无穷大 $M$ 型 & 3 套 & 8 分 / 难 & 结论是无穷，$\delta$ 反过来取\\
+\midrule
+S2.1--S2.4 & 参数 / 隐函数高阶导 & 2021-22 Q14、2022-23 Q14 & 10 分 / 难 & 二阶导分母是 $x'(t)$ 不是 $x''(t)$\\
+S2.5--S2.6 & 分段可导求参数 & 2021-22 Q16（10 分） & 10 分 / 难 & 先连续再可导，条件不能漏\\
+S2.7--S2.9 & Leibniz 高阶导 & 每年填空 9/10 & 3 分 / 中偏难 & 代点消项套路\\
+S2.10--S2.14 & 微分 $dy$ 与复合高阶导 & 近 4 年填空连出、2024-25 Q14 & 3--10 分 / 中偏难 & $dy=f'(x)\D x$，别写成导数\\
+\midrule
+S3.1--S3.5 & 极坐标切线 / 弧长 / 方程 & 选择填空近 3 年连出 & 3 分 / 中偏难 & 尖点处 $0/0$ 要取极限\\
+S3.6 & 极坐标与直角互换 & 2013、2008 考过 & 3 分 / 中偏难 & $x=r\cos\theta$，$y=r\sin\theta$\\
+S3.7--S3.12 & 间断点分类 & 10/17 套考过 & 3 分 / 难 & 分左右算，第二类别漏\\
+\midrule
+S4.1--S4.3 & 抽象函数方程 & 2024-25 Q18（8 分） & 8 分 / 压轴 & 减掉特解化成 Cauchy 方程\\
+S4.4--S4.8 & 迭代不动点 / 压缩映射 & 2013-14、2016-17 填 7/9、2024-25 升级 & 8--10 分 / 压轴 & 先证几何衰减再证 Cauchy 列\\
+\midrule
+S5.1--S5.4 & 闭区间最值 / 四种证法 & 2009、2022-23 考过大题 & 10 分 / 中偏难 & 同一不等式四种证法要能换\\
+S5.5--S5.10 & 最值与含参极值 & 应用题块 & 8--10 分 / 难 & 端点与驻点都要算\\
+\midrule
+S6.1--S6.6 & 作图压轴 & 约 16/17 套考倒数第二题 & 12 分 / 难 & 驻点非极值、尖点极值、渐近线\\
+\midrule
+模拟卷 A / B & 全卷 18 题 $\times$ 100 分 & 2008--2025 全卷 & 100 分 / 压轴 & 骨架照真题，120 分钟闭卷\\
+\bottomrule
+\end{longtable}
+
+\begin{warnbox}[时间预算]
+S1--S6 共 62 题，按真题分值当量约 \textbf{600 分}（相当于六套卷的中高难度部分）。加上两套模拟卷，本册完整做完需要 \textbf{12--14 小时}。合理安排：
+
+\begin{enumerate}
+\item \textbf{今天（11/8）}：S1 全部 12 题（100 分钟）+\ S4 全部 8 题（90 分钟）。S1 是必考，S4 是新压轴，优先级最高。
+\item \textbf{明天（11/9）}：S2 全部 14 题（120 分钟）+ S3 全部 12 题（100 分钟）。
+\item \textbf{后天（11/10）}：S5 + S6 共 16 题（140 分钟）+ 模拟卷 A（120 分钟）。
+\item \textbf{缓冲日}：模拟卷 B（120 分钟）+ 全部错题回炉。
+\end{enumerate}
+\textbf{任何情况下都不要跳过 S1}。第 11 题是 17/17 必考，8 分白送。
+\end{warnbox}
+
+% ============================================================
+\section{S1\quad 极限定义证明（12 题）}
+
+\begin{methodbox}[这一组考什么]
+真题第 11 题，\textbf{17/17 必考，8 分}。三种形式轮换出现：$\eps$-$\delta$ 8 套、$\eps$-$X$ 6 套、无穷大 $M$ 型 3 套。
+
+\textbf{三种形式的量词顺序不一样，这是最常丢分的地方}：
+\begin{itemize}
+\item $\eps$-$\delta$ 型：$\forall\eps>0,\ \exists\delta>0,\ \forall x$（$0<|x-x_0|<\delta$）$\Rightarrow |f(x)-A|<\eps$；
+\item $\eps$-$X$ 型：$\forall\eps>0,\ \exists X>0,\ \forall x>X$ $\Rightarrow |f(x)-A|<\eps$；
+\item 无穷大 $M$ 型：$\forall M>0,\ \exists\delta>0,\ \forall x$（$0<|x-x_0|<\delta$）$\Rightarrow |f(x)|>M$。
+\end{itemize}
+\textbf{写证明前必须先写出量词行}，这是步骤分。
+\end{methodbox}
+
+\subsection{A 组：\texorpdfstring{$\eps$-$\delta$ 型}{eps-delta 型}（6 题）}
+
+\q{S1.1}{证明：$\displaystyle\lim_{x\to0}\frac{\cos x-\ee^{-\frac{x^{2}}{2}}}{x^{2}}=0$。}
+\tagline{对标 2019-20 $\eps$-$\delta$（8 分）}
+
+\q{S1.2}{证明：$\displaystyle\lim_{x\to0}\frac{\tan x-x}{x-\sin x}=2$。}
+\tagline{对标 2017-18 $\eps$-$\delta$（8 分）}
+
+\q{S1.3}{证明：$\displaystyle\lim_{x\to0}\frac{\sin x-x\cos x}{x^{3}}=\frac13$。}
+\tagline{对标 2011-12 $\eps$-$\delta$（8 分）}
+
+\q{S1.4}{证明极限 $\displaystyle\lim_{x\to0}\frac{\ln(1+x)+\frac{x}{2}}{x^{2}}$ \textbf{不存在}。}
+\tagline{对标 2020-21 $\eps$-$\delta$（8 分）}
+
+\q{S1.5}{证明：$\displaystyle\lim_{x\to1}\frac{\ee^{x-1}-1}{x-1}=1$。}
+\tagline{对标 2012-13 $\eps$-$\delta$（8 分）}
+
+\q{S1.6}{证明：$\displaystyle\lim_{x\to0}\frac{\arcsin x-x}{x^{3}}=\frac16$。}
+\tagline{对标 2022-23 $\eps$-$\delta$（8 分）}
+
+\subsection{B 组：\texorpdfstring{$\eps$-$X$ 型}{eps-X 型}（4 题）}
+
+\q{S1.7}{证明：$\displaystyle\lim_{x\to+\infty}x^{3}\left(\sin\frac1x-\frac1x\right)=-\frac16$。}
+\tagline{对标 2010-11 $\eps$-$X$（8 分）}
+
+\q{S1.8}{证明：$\displaystyle\lim_{x\to+\infty}\frac{x^{2}+2x}{x^{2}-3x+1}=1$。}
+\tagline{对标 2013-14 $\eps$-$X$（8 分）}
+
+\q{S1.9}{证明：$\displaystyle\lim_{x\to+\infty}x^{2}\left(\ee^{\frac1x}-1-\frac1x\right)=\frac12$。}
+\tagline{对标 2016-17 $\eps$-$X$（8 分）}
+
+\q{S1.10}{证明：$\displaystyle\lim_{x\to-\infty}\frac{x^{2}+1}{x^{2}+3x+1}=1$。}
+\tagline{对标 2018-19 $\eps$-$X$（8 分）}
+
+\subsection{C 组：无穷大 \texorpdfstring{$M$ 型}{M 型}（2 题）}
+
+\q{S1.11}{证明：$\displaystyle\lim_{x\to0^{+}}\frac{1}{x\ln x}=-\infty$。}
+\tagline{对标 2024-25 $M$ 型（8 分）}
+
+\q{S1.12}{证明：$\displaystyle\lim_{x\to1^{-}}\frac{\ln(1-x^{2})}{x-1}=+\infty$。}
+\tagline{对标 2015-16 $M$ 型（8 分）}
+
+% ============================================================
+\section{S2\quad 导数与微分（14 题）}
+
+\begin{methodbox}[这一组考什么]
+真题的导数计算块分值从 16 分升到 20 分，题型是\textbf{参数方程二阶导、隐函数二阶导、分段可导求参数}三件套；填空则连着考 \textbf{Leibniz 高阶导}与\textbf{微分 $dy$}。
+\end{methodbox}
+
+\q{S2.1}{设 $\begin{cases}x=t+\ee^{t},\\ y=t-\ee^{t},\end{cases}$ 求 $\dfrac{\D y}{\D x}$ 与 $\dfrac{\D^{2}y}{\D x^{2}}$ 在 $t=0$ 处的值。}
+\tagline{对标 2021-22 Q14（10 分）}
+
+\q{S2.2}{设 $\begin{cases}x=t^{2}+t,\\ y=t^{2}-t,\end{cases}$ 求 $\dfrac{\D y}{\D x}$ 与 $\dfrac{\D^{2}y}{\D x^{2}}$ 在 $t=0$ 处的值。}
+\tagline{对标 2022-23 Q14（10 分）}
+
+\q{S2.3}{设 $\ee^{y}+xy=\ee$，求 $\dfrac{\D^{2}y}{\D x^{2}}$ 在点 $(0,1)$ 处的值。}
+\tagline{对标 2021-22 Q14（10 分）}
+
+\q{S2.4}{设 $x^{2}+y^{2}=6x$，求 $\dfrac{\D^{2}y}{\D x^{2}}$ 在点 $(3,3)$ 处的值。}
+\tagline{对标 2022-23 Q14（10 分）}
+
+\q{S2.5}{设 $f(x)=\begin{cases}\ln(1+x),&x<0,\\ ax+b,&x\geq0,\end{cases}$ 若 $f$ 在 $x=0$ 处可导，求 $a,b$。}
+\tagline{对标 2021-22 Q16（10 分）}
+
+\q{S2.6}{设 $f(x)=\ln(1+\ee^{x})$，求 $f''(0)$。}
+\tagline{对标 2024-25 Q14（10 分）}
+
+\q{S2.7}{设 $f(x)=x^{2}\ee^{x}$，求 $f^{(4)}(0)$，并用「$4!\times$ $x^{4}$ 系数」复核。}
+\tagline{对标 每年填空 9（3 分）}
+
+\q{S2.8}{设 $f(x)=x^{3}\sin x$，求 $f^{(4)}(0)$ 与 $f^{(5)}(0)$。}
+\tagline{对标 每年填空 10（3 分）}
+
+\q{S2.9}{设 $f(x)=\dfrac{x}{1+x}$，求 $f^{(3)}(0)$。}
+\tagline{对标 2020-21 填空型（3 分）}
+
+\q{S2.10}{设 $f(x)=\ee^{x^{2}}$，求 $f''(0)$。}
+\tagline{对标 2024-25 Q14（10 分）}
+
+\q{S2.11}{设 $y=x\ee^{x}$，写出 $x=1$ 处的微分 $\D y$。}
+\tagline{对标 近 4 年填空 7（3 分）}
+
+\q{S2.12}{设 $y=\ln(x^{2}+1)$，写出 $x=1$ 处的微分 $\D y$。}
+\tagline{对标 近 4 年填空 7（3 分）}
+
+\q{S2.13}{设 $x^{2}+y^{2}=25$，求在点 $(3,4)$ 处的微分 $\D y$。}
+\tagline{对标 2018-19 填空（3 分）}
+
+\q{S2.14}{设 $f(x)=x^{2}\sin\frac1x$（$x\neq0$），$f(0)=0$。求 $f'(0)$。}
+\tagline{对标 2022-23 填空（3 分）}
+
+% ============================================================
+\section{S3\quad 极坐标与间断点（12 题）}
+
+\begin{methodbox}[这一组考什么]
+\textbf{极坐标}：选择填空近 3 年连出，考的是切线斜率、$\theta$ 范围、极坐标与直角方程互换。\textbf{尖点处会出现 $0/0$，必须取极限，不能直接代入。}
+
+\textbf{间断点}：\textbf{10/17 套考过}。判型流程固定：先看极限是否存在 $\to$ 存在且不等于函数值是可去；存在且相等是连续；极限为 $\infty$ 是无穷；左右极限都存在但不等是跳跃；极限不存在是振荡（第二类）。
+\end{methodbox}
+
+\q{S3.1}{曲线 $r=1+\cos\theta$，求 $\theta=\dfrac{\pi}{2}$ 处的切线斜率。}
+\tagline{对标 2021-22 选择（3 分）}
+
+\q{S3.2}{曲线 $r=\ee^{\theta}$，求 $\theta=0$ 处的切线斜率。}
+\tagline{对标 2022-23 选择（3 分）}
+
+\q{S3.3}{曲线 $r=2(1+\cos\theta)$（心形线），求 $\theta=\pi$ 处的切线斜率。}
+\tagline{对标 2024-25 第 8 题升级（3 分）}
+
+\q{S3.4}{求心形线 $r=2(1+\cos\theta)$ 从 $\theta=0$ 到 $\theta=\pi$ 的弧长。}
+\tagline{对标 2013 选择（3 分）}
+
+\q{S3.5}{曲线 $r=\dfrac{1}{1+\cos\theta}$，求 $r$ 的最小值，并写出它的直角方程与顶点。}
+\tagline{对标 2008 选择（3 分）}
+
+\q{S3.6}{把 $r=2\cos\theta$ 化为直角方程，并指出它是什么曲线。}
+\tagline{对标 2013 选择（3 分）}
+
+\q{S3.7}{讨论 $f(x)=\dfrac{x^{2}-1}{x^{2}-3x+2}$ 的间断点，并指出每个间断点的类型。}
+\tagline{对标 2020-21 填 7（3 分）}
+
+\q{S3.8}{讨论 $f(x)=\arctan\left(x+\dfrac{1}{x}\right)$ 在 $x=0$ 处的间断点类型。}
+\tagline{对标 2018-19 填空（3 分）}
+
+\q{S3.9}{讨论 $f(x)=\tan\dfrac{1}{x}$ 在 $x=0$ 处的间断点类型。}
+\tagline{对标 2017-18 填 7（3 分）}
+
+\q{S3.10}{设 $f(x)=\begin{cases}x\sin\dfrac{1}{x},&x\neq0,\\ 0,&x=0,\end{cases}$ 判断 $f$ 在 $x=0$ 处是否连续。}
+\tagline{对标 2011-12 填 7（3 分）}
+
+\q{S3.11}{讨论 $f(x)=\ln|x|$ 在 $x=0$ 处的间断点类型。}
+\tagline{对标 2015-16 选择（3 分）}
+
+\q{S3.12}{讨论 $f(x)=\sin\dfrac{x}{x-1}$ 在 $x=1$ 处的间断点类型。}
+\tagline{对标 2023-24 选择（3 分）}
+
+% ============================================================
+\section{S4\quad 新压轴（8 题）}
+
+\begin{methodbox}[这一组考什么]
+\textbf{这是本册最有价值的部分。} 2010--2023 的压轴是中值定理（Rolle 构造、两次 Rolle、Lagrange 证不等式），但 \textbf{2024-25 的压轴换成了「抽象函数方程 + 迭代连续性」}。
+
+\textbf{不要把最后一周全押在中值定理上}。真题考点索引的结论写得很清楚：基本型必须会，但要留精力给这类新形态。
+
+\textbf{两种新形态}：
+\begin{enumerate}
+\item \textbf{抽象函数方程}：给出 $f$ 的某个函数方程（如 $f(x+y)=f(x)f(y)$），要求求出 $f$ 或证明 $f$ 的连续性。核心动作是「减掉特解，把方程化成 Cauchy 型」。
+\item \textbf{迭代与压缩映射}：给出递推 $x_{n+1}=\varphi(x_n)$，要求证收敛并求极限。核心动作是「先证几何衰减，再证 Cauchy 列，最后给误差界」。
+\end{enumerate}
+\end{methodbox}
+
+\q{S4.1}{设 $x_{1}=2$，$x_{n+1}=\dfrac{x_{n}+\dfrac{2}{x_{n}}}{2}$。证明 $(x_{n})$ 收敛，并求 $\lim\limits_{n\to\infty}x_{n}$。}
+\tagline{对标 2013-14 填 7 升级（8 分）}
+
+\q{S4.2}{设 $x_{1}=1$，$x_{n+1}=\dfrac{1+x_{n}}{x_{n}}$。证明 $(x_{n})$ 收敛，并求 $\lim\limits_{n\to\infty}x_{n}$；再讨论 $y_{1}=1$，$y_{n+1}=y_{n}+\dfrac{1}{y_{n}}$ 的情形。}
+\tagline{对标 2018-19 计算型（8 分）}
+
+\q{S4.3}{设 $f(x)=\dfrac{x+\dfrac{2}{x}}{2}$，$x\in[1,2]$。证明 $f$ 是压缩映射（给出 Lipschitz 常数），并说明迭代法的收敛性。}
+\tagline{对标 2024-25 Q18 升级（10 分）}
+
+\q{S4.4}{设 $f$ 在 $\R$ 上连续且满足 $f(x+y)=f(x)f(y)$，$f(1)=2$。求 $f(x)$。}
+\tagline{对标 2024-25 Q18（8 分）}
+
+\q{S4.5}{设 $x_{1}=0$，$x_{n+1}=\dfrac{1}{2+x_{n}}$。证明 $(x_{n})$ 收敛，并求 $\lim\limits_{n\to\infty}x_{n}$。}
+\tagline{对标 2016-17 填 9 升级（8 分）}
+
+\q{S4.6}{设 $f$ 在 $\R$ 上连续且满足 $f(x+1)=f(x)+1$，$f(0)=0$。证明 $f(x)=x$ 对一切 $x$ 成立是否必然（若不必然，给出反例）。}
+\tagline{对标 2024-25 Q18（8 分）}
+
+\q{S4.7}{设 $x_{1}=1$，$x_{n+1}=\cos x_{n}$。证明 $(x_{n})$ 收敛，并求其极限的近似值（精确到小数点后 6 位）。}
+\tagline{对标 2019-20 计算型（8 分）}
+
+\q{S4.8}{设 $f$ 在 $(0,+\infty)$ 上连续且满足 $f(x)f(y)=f(xy)$，$f(1)=1$，$f(2)=3$。求 $f(4)$。}
+\tagline{对标 2024-25 Q18（8 分）}
+
+% ============================================================
+\section{S5\quad 不等式与最值（10 题）}
+
+\begin{methodbox}[这一组考什么]
+真题的应用题块（约 18 分）考两种东西：\textbf{闭区间最值}和\textbf{用单调性 / 凹凸性 / 泰勒 / 中值定理证不等式}。
+
+\textbf{S5.2--S5.4 是同一个不等式 $\ln(1+x)>x-\frac{x^{2}}{2}$ 的三种证法}。这不是重复练三遍，而是练「换工具」—— 考场上如果单调性证不通，你要能立刻换成另一种。
+\end{methodbox}
+
+\q{S5.1}{求 $f(x)=x^{3}-3x+1$ 在闭区间 $[-2,2]$ 上的最大值与最小值。}
+\tagline{对标 2009 应用题（10 分）}
+
+\q{S5.2}{用\textbf{单调性}证明：当 $x>0$ 时，$\dfrac{x}{1+x}<\ln(1+x)$。}
+\tagline{对标 2009-10 Q18 型（8 分）}
+
+\q{S5.3}{用\textbf{凹凸性}证明：对一切 $x\in\R$，$\ee^{x}\geq ex$。}
+\tagline{对标 2022-23 大题型（8 分）}
+
+\q{S5.4}{用\textbf{泰勒}证明：当 $x>0$ 时，$\ln(1+x)\leq x-\dfrac{x^{2}}{2}+\dfrac{x^{3}}{3}$。}
+\tagline{对标 2023-24 计算型（8 分）}
+
+\q{S5.5}{求 $f(x)=x\ee^{-x}$ 在 $[0,+\infty)$ 上的最大值。}
+\tagline{对标 2022-23 应用题（8 分）}
+
+\q{S5.6}{用\textbf{中值定理}证明：当 $x>0$ 时，$\abs{\ln(1+x)-x}<\dfrac{x^{2}}{2}$。}
+\tagline{对标 2014-15 Q18 型（8 分）}
+
+\q{S5.7}{设 $a,b>0$，用柯西中值定理证明：存在 $\xi\in(a,b)$ 使 $\dfrac{\ln b-\ln a}{b-a}=\dfrac{1}{\xi}$。}
+\tagline{对标 2016-17 Q18 型（8 分）}
+
+\q{S5.8}{设 $f(x)=x^{3}-3ax^{2}+2bx$（$a,b$ 为常数）。求 $f$ 有两个不同极值点的充要条件。}
+\tagline{对标 2022-23 应用题（10 分）}
+
+\q{S5.9}{证明：当 $x>0$ 时，$\sin x<x$。}
+\tagline{对标 2020-21 计算型（8 分）}
+
+\q{S5.10}{求 $f(x)=\dfrac{x^{2}}{1+x^{2}}$ 在 $\R$ 上的最大值。}
+\tagline{对标 2021-22 应用题（8 分）}
+
+% ============================================================
+\section{S6\quad 作图压轴（6 题）}
+
+\begin{methodbox}[这一组考什么]
+作图题约 16/17 套都考，是全卷第二高的大题（10--12 分）。\textbf{考的是流程不是硬算}：定义域 $\to$ 奇偶 $\to$ 截距 $\to$ 导数 $\to$ 极值 $\to$ 凹凸 $\to$ 渐近线。
+
+\textbf{三个高频「反直觉点」}：
+\begin{enumerate}
+\item \textbf{驻点不是极值}（导数变号才叫极值）：$y=\frac{x^{3}}{x^{2}-1}$ 的 $x=0$ 是拐点不是极值；
+\item \textbf{不可导点可以取极值}：$y=|x-1|\ee^{-x}$ 在 $x=1$ 处是尖点极小值；
+\item \textbf{极坐标曲线的尖点}：心形线在 $\theta=\pi$ 处斜率是 $0/0$，必须取极限。
+\end{enumerate}
+\end{methodbox}
+
+\q{S6.1}{作出 $y=\dfrac{x^{3}}{x^{2}+1}$ 的图形，写出定义域、对称性、截距、驻点、极值、凹凸区间与渐近线。}
+\tagline{对标 2013 Q17（12 分）}
+
+\q{S6.2}{作出 $y=x-\dfrac{1}{x}$ 的图形，写出定义域、单调区间、极值与渐近线。}
+\tagline{对标 2016-17 Q17（12 分）}
+
+\q{S6.3}{作出 $y=\abs{x-1}\ee^{-x}$ 的图形，指出 $x=1$ 处的间断点性质与极值，并求其余极值与渐近线。}
+\tagline{对标 2009-10 Q17（12 分）}
+
+\q{S6.4}{作出 $y=x\ee^{-x}$ 的图形，写出极值、单调区间与渐近线。}
+\tagline{对标 2020-21 Q17（12 分）}
+
+\q{S6.5}{作出 $y=\ln(x^{2}+1)$ 的图形，写出极值、单调区间与渐近线。}
+\tagline{对标 2022-23 Q17（12 分）}
+
+\q{S6.6}{作出 $y=\dfrac{x^{2}}{x-1}$ 的图形，写出驻点、极值、单调区间与渐近线。}
+\tagline{对标 2024-25 Q17（12 分）}
+
+% ============================================================
+\include{part2_body.tex}
+
+\end{document}

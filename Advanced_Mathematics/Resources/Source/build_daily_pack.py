@@ -107,6 +107,72 @@ DAY_CONFIG = {
                  action='做完一组才翻；卡 5 min 只看「卡点」一行，合上重写', minutes=40),
         ],
     },
+    # =====================================================================
+    # 2026-11-08：册一《泰勒与压轴强化》+ 册二《全专题冲顶》接入。
+    #   B 段自 B16 起；11/07 的 B1--B15 与 74 页包原样保留、不改动。
+    #   册一 13 页：p1--3 系统篇 / p4--5 T 组题面 / p6--10 速查与详解
+    #               p11--12 限时卷 / p13 验收线
+    #   册二 24 页：p1--2 封面与难度对标 / p2--7 题面 S1--S6
+    #               p8--9 答案速查 / p9--18 逐题详解
+    #               p19--20 模拟卷 A / p21--23 模拟卷 B / p24 验收线
+    # =====================================================================
+    '11-08': {
+        'date': '2026-11-08',
+        'weekday': '周日',
+        'title': '泰勒系统篇 + 全专题冲顶',
+        'subtitle': '泰勒决策卡与母函数表 · 全专题 62 题 · 两套 18 题全真模拟卷',
+        'plan_file': 'Note/Advanced_Mathematics/Notes/11-8_泰勒与全专题冲顶.md',
+        'a_titles': [
+            'A1 封面 · 今日执行卡 · 使用说明',
+            'A2 五级优先级 · 今天的产出',
+            'A3 阅读路线图 B16-B27（页码=本 PDF 绝对页）',
+            'A4 P0 闭卷默写：决策卡 · 母函数表 · 三种余项',
+            'A5 默写验收线 · 记录表 A / B',
+            'A6 记录表 A：册一 T 组 19 题',
+            'A7 记录表 C：三条最大风险（书写页）',
+            'A8 核对答案 (1)：泰勒决策卡 · 母函数表 · 三种余项',
+            'A9 核对答案 (2)：极限定义三模板 · 导数六型 · 作图七步',
+            'A10 核对答案 (3)：新压轴两类形态 · 验收线 · 边界',
+        ],
+        'sections': [
+            dict(key='B16', title='册一 §1 系统篇：决策卡 · 母函数表 · 三种余项 · 12 条错误',
+                 items=[(D('讲义_泰勒与压轴强化_11-08.pdf'), [1, 2, 3])],
+                 action='P0 闭卷默写：§1.1 决策卡 10 行 + §1.2 母函数表 9 行先默写再翻；§1.3 三种余项要能说清「谁能给符号」', minutes=45),
+            dict(key='B17', title='册一 T 组题面：T1 展开与系数 / T2 余项与逼近阶 / T3 求导数 / T4 应用（19 题）',
+                 items=[(D('讲义_泰勒与压轴强化_11-08.pdf'), [4, 5])],
+                 action='T1--T4 十九题全做，分 2 组，组末立刻对 B18 速查；正确率 <80% 回决策卡重做 3 道同型', minutes=110),
+            dict(key='B18', title='册一 答案速查 + 逐题详解（T 组）',
+                 items=[(D('讲义_泰勒与压轴强化_11-08.pdf'), [6, 7, 8, 9, 10])],
+                 action='做完一组才翻；卡 5 min 只看「卡点」一行，合上重写；错在「展错阶」回决策卡，错在「符号」回 §1.6', minutes=60),
+            dict(key='B19', title='册一 §8 泰勒限时卷（12 题 / 40 分钟 / 36 分）+ 答案',
+                 items=[(D('讲义_泰勒与压轴强化_11-08.pdf'), [11, 12])],
+                 action='P1 收口：掐表 40 分钟，中途不看答案；目标 ≥ 25 分（70%）；低于 20 分立刻回 §1.1 决策卡重默写', minutes=50),
+            dict(key='B20', title='册二 §1 难度对标 + S1 极限定义 12 题（eps-delta 6 / eps-X 4 / M 型 2）',
+                 items=[(D('讲义_全专题冲顶_11-08.pdf'), [1, 2, 3])],
+                 action='P0 必做：S1.1--S1.12 全做，每题先写量词行；M 型两题注意 δ 反过来取；组末对 B23 速查', minutes=130),
+            dict(key='B21', title='册二 S2 导数与微分 14 题 + S3 极坐标与间断点 12 题',
+                 items=[(D('讲义_全专题冲顶_11-08.pdf'), [3, 4, 5])],
+                 action='S2 + S3 共 26 题全做，分 2 组、组末对答案；S2 先验前提（分段点先连续）再算导；S3 尖点处 0/0 必须取极限', minutes=120),
+            dict(key='B22', title='册二 S4 新压轴 8 题 + S5 不等式与最值 10 题 + S6 作图压轴 6 题',
+                 items=[(D('讲义_全专题冲顶_11-08.pdf'), [5, 6, 7])],
+                 action='S4 + S5 + S6 共 24 题全做，分 2 组、组末对答案；S4 条件不足必须给反例；S6 六道作图按七步写表', minutes=140),
+            dict(key='B23', title='册二 答案速查（62 题一表）',
+                 items=[(D('讲义_全专题冲顶_11-08.pdf'), [8, 9])],
+                 action='八组题的组末反馈口：只对答案不重看；错的题号与错因回记录表 C；正确率 <80% 的组标记回炉', minutes=20),
+            dict(key='B24', title='册二 逐题详解 S1--S6',
+                 items=[(D('讲义_全专题冲顶_11-08.pdf'), [9, 10, 11, 12, 13, 14, 15, 16, 17, 18])],
+                 action='卡 5 min 只看「卡点」一行，合上重写；S1 详解是本库最有价值的部分，务必逐字读一遍', minutes=90),
+            dict(key='B25', title='册二 模拟卷 A（18 题 / 100 分 / 120 分钟）+ 答案与关键步骤',
+                 items=[(D('讲义_全专题冲顶_11-08.pdf'), [19, 20])],
+                 action='今天浏览卷面结构与分值分布；整卷 120 分钟掐表排 11/9，目标 ≥ 70 分；< 70 分把该卷逐题回炉而非换卷', minutes=20),
+            dict(key='B26', title='册二 模拟卷 B（18 题 / 100 分 / 120 分钟）+ 答案与关键步骤',
+                 items=[(D('讲义_全专题冲顶_11-08.pdf'), [21, 22, 23])],
+                 action='今天只浏览题目形态；整卷 120 分钟掐表排 11/10，两套都做；订正时间不得压缩', minutes=15),
+            dict(key='B27', title='册二 §12 验收线与放弃线',
+                 items=[(D('讲义_全专题冲顶_11-08.pdf'), [24])],
+                 action='两册验收线一起对：册一 T 组独立做出 ≥ 15/19 且限时卷 ≥ 25 分；册二三条全达标才算「可上考场」', minutes=25),
+        ],
+    },
 }
 
 
@@ -178,8 +244,48 @@ PREAMBLE = r'''% !TeX program = xelatex
 '''
 
 
+# 11/8 的 A 部分正文放在独立 .tex 文件里，避免 Python 字符串转义把 LaTeX 弄坏。
+A1108_BODY = os.path.join(os.path.dirname(os.path.abspath(__file__)), '_a1108_body.tex')
+
+
+def make_body_1108(cfg, pageno):
+    """读取 _a1108_body.tex，替换占位符，按 %%PAGESPLIT%% 分页。"""
+    raw = io.open(A1108_BODY, encoding='utf-8').read()
+    ph = lambda k: str(pageno.get(k, 0))
+    rows = []
+    for sec in cfg['sections']:
+        srcs = '、'.join(os.path.basename(f) + ' p' + ','.join(str(x) for x in ps)
+                        for f, ps in sec['items'])
+        def esc(t):
+            # % 是 TeX 注释符；& # 也是表格/宏特殊字符，必须转义
+            return (t.replace(chr(92), '') if False else t
+                    ).replace('%', r'\%').replace('#', r'\#')
+        row = '%s & %s & %s & %s & %s' % (sec['key'], ph(sec['key']),
+                                          srcs.replace('_', r'\_'),
+                                          esc(sec['action']), sec['minutes'])
+        rows.append(row + chr(92) * 2)
+    route = '\n'.join(rows)
+
+    body = raw.replace('@@ROUTE@@', route)
+    body = body.replace('@@BL11@@', blanklines(11, '0.50cm'))
+    body = body.replace('@@BL9@@', blanklines(9, '0.50cm'))
+    body = body.replace('@@BL3@@', blanklines(3, '0.50cm'))
+    body = body.replace('@@BL10@@', blanklines(10, '0.56cm'))
+    body = body.replace('@@BL4@@', blanklines(4, '0.56cm'))
+    for k, v in [('@@DATE@@', cfg['date']), ('@@WEEKDAY@@', cfg['weekday']),
+                 ('@@TITLE@@', cfg['title']), ('@@SUBTITLE@@', cfg['subtitle'])]:
+        body = body.replace(k, v)
+    for k, v in pageno.items():
+        body = body.replace('@@' + k + '@@', str(v))
+    assert '@@' not in body, '11/8 A 部分有未替换的占位符'
+    pages = body.split('%%PAGESPLIT%%')
+    return '\n\\clearpage\n'.join(pages) + '\n\\end{document}\n'
+
+
 def make_body(cfg, pageno):
     """pageno: dict key -> 该 B 段在整份 PDF 中的起始页（占位值会被迭代修正）"""
+    if cfg['date'] == '2026-11-08':
+        return make_body_1108(cfg, pageno)
     ph = lambda k: str(pageno.get(k, 0))
     rows = []
     for s in cfg['sections']:
@@ -609,7 +715,7 @@ def build(day):
     toc = [[1, 'A · 今日执行卡与可书写页', 1]]
 
     # A 部分各页书签（按 section 标题粗分）
-    a_titles = ['A1 封面 · 五级优先级 · 使用说明', 'A2 阅读路线图 B1–B15',
+    a_titles = cfg.get('a_titles') or ['A1 封面 · 五级优先级 · 使用说明', 'A2 阅读路线图 B1–B15',
                 'A3 P0 闭卷默写', 'A4 P1 九宫格闭卷默写',
                 'A5 记录表 A / B', 'A6 记录表 C / D · 验收清单',
                 'A7 核对答案① 中值定理 · 数列（压缩版）', 'A8 核对答案② 导数 · 作图',

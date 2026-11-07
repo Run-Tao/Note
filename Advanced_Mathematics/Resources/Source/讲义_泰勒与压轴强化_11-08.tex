@@ -1,0 +1,750 @@
+% !TeX program = xelatex
+\documentclass[11pt,a4paper]{ctexart}
+% ============================================================
+%  泰勒与压轴强化 · 册一（11/8 追加）
+%  编译：xelatex 两遍
+%  定位：用户 2026-11-07 17:10 指令「进一步提供难度对等的补充题，各方面都要多，
+%        尤其是难的，比如说泰勒也可以让我熟悉一下」→ 本册专门把泰勒打透。
+%  结构：系统篇（决策卡 / 母函数表 / 三种余项 / 求高阶导套路 / 与洛必达分工 /
+%        12 条错误） + 泰勒专项 19 题（T1 展开与系数 5 / T2 余项与逼近阶 4 /
+%        T3 泰勒求导数 5 / T4 泰勒应用 5）+ 泰勒限时卷 12 题 / 40 分钟。
+%  复核：Homework/_review/tools/verify_taylor_drill.py —— PASS 58 / FAIL 0
+%  避重：与《讲义_练习_函数极限计算与泰勒》（B 组 13 题 + 30 分钟卷）、
+%        《讲义_高难冲顶_11-07》（22 题）逐题比对，函数与包装全新。
+% ============================================================
+\usepackage[a4paper,top=2.0cm,bottom=2.0cm,left=2.0cm,right=2.0cm]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools,bm}
+\usepackage{booktabs,array,longtable,tabularx,multicol}
+\usepackage{enumitem}
+\usepackage[most]{tcolorbox}
+\usepackage{fancyhdr}
+\usepackage{hyperref}
+\hypersetup{hidelinks,colorlinks=true,linkcolor=blue!50!black}
+\usepackage{titlesec}
+
+\linespread{1.20}
+\setlength{\parskip}{0.18em}
+\setlist[enumerate]{itemsep=2pt,topsep=3pt,parsep=0pt,leftmargin=1.9em}
+\setlist[itemize]{itemsep=2pt,topsep=3pt,parsep=0pt,leftmargin=1.6em}
+\titleformat{\section}{\Large\bfseries\color{blue!35!black}}{\thesection}{0.6em}{}
+\titleformat{\subsection}{\large\bfseries\color{blue!25!black}}{\thesubsection}{0.5em}{}
+\titlespacing*{\section}{0pt}{1.4ex plus .3ex}{0.8ex}
+\titlespacing*{\subsection}{0pt}{1.0ex plus .2ex}{0.5ex}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small 泰勒与压轴强化 · 册一 · 11/8}
+\fancyhead[R]{\small 陶理}
+\fancyfoot[C]{\small\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\eps}{\varepsilon}
+\newcommand{\abs}[1]{\left\lvert #1\right\rvert}
+\newcommand{\ee}{\mathrm{e}}
+\newcommand{\D}{\mathrm{d}}
+\newcommand{\dd}[2]{\dfrac{\D #1}{\D #2}}
+\newcommand{\q}[2]{\par\medskip\noindent\textbf{#1}\quad #2\par}
+\newcommand{\tagline}[1]{\par\nopagebreak\noindent{\small\color{blue!45!black}#1}\par}
+\newcommand{\key}[1]{\par\nopagebreak\noindent{\small\color{red!55!black}\textbf{卡点：}#1}\par}
+\newcommand{\ans}[1]{\;\boxed{#1}}
+
+\newtcolorbox{keypoint}[1][]{enhanced,breakable,colback=blue!3,colframe=blue!40!black,
+  fonttitle=\bfseries,title={#1},boxrule=0.5pt,arc=1.5mm,
+  left=3mm,right=3mm,top=2mm,bottom=2mm,before skip=4pt,after skip=4pt}
+\newtcolorbox{warnbox}[1][]{enhanced,breakable,colback=red!3,colframe=red!50!black,
+  fonttitle=\bfseries,title={#1},boxrule=0.5pt,arc=1.5mm,
+  left=3mm,right=3mm,top=2mm,bottom=2mm,before skip=4pt,after skip=4pt}
+\newtcolorbox{methodbox}[1][]{enhanced,breakable,colback=green!3!white,colframe=green!35!black,
+  fonttitle=\bfseries,title={#1},boxrule=0.5pt,arc=1.5mm,
+  left=3mm,right=3mm,top=2mm,bottom=2mm,before skip=4pt,after skip=4pt}
+
+\begin{document}
+
+\begin{center}
+{\LARGE\bfseries 泰勒与压轴强化（册一）}\\[4pt]
+{\large 决策卡 · 母函数展开表 · 三种余项 · 求高阶导套路 · 19 道专项题 · 12 题限时卷}\\[4pt]
+{\small 陶理\quad 2026-11-08\quad 配合《讲义\_高难冲顶\_11-07》与《讲义\_全专题冲顶\_11-08》使用}
+\end{center}
+
+\begin{keypoint}[这本册子怎么用]
+\begin{enumerate}
+\item \textbf{定位}。泰勒从「2023-24 起成稳定大题」升到「几乎每套都要会写」。但真题里的泰勒不是考背公式，而是考\textbf{展到第几阶}、\textbf{余项怎么估}、\textbf{怎么从系数反求高阶导}。本册专治这三件事。
+\item \textbf{顺序不能反}。先读 §1 系统篇（把 §1.1 决策卡和 §1.2 母函数表闭卷默写一遍），再做 T 组 19 题，最后做 §7 限时卷。跳过系统篇直接做题，收益只有一半。
+\item \textbf{每题先写一行「我要展到 $k$ 阶」}。这一行就是步骤分，也是唯一能得满分的判据。
+\item \textbf{时间不够时}：只做 T2 全部 4 题（余项与逼近阶）、T3 的 T3.3 与 T3.4、T4 的 T4.3 与 T4.4，共 8 题约 60 分钟，覆盖「展几阶」「求高阶导」「泰勒求极值」「泰勒求渐近」四个真题考点。
+\item \textbf{所有数值结论经} \texttt{verify\_taylor\_drill.py} \textbf{复核：PASS 58 / FAIL 0}（sympy 符号 + mpmath 高精度 + 数值抽检）。
+\item \textbf{用法}：每题掐 8--10 分钟。卡满 5 分钟无第一行，翻到 §5 详解只看开头标红的「卡点」一行，合上再写 5 分钟；仍写不出才看全解。\textbf{看懂不算会。}
+\end{enumerate}
+\end{keypoint}
+
+% ============================================================
+\section{系统篇：泰勒的决策与工具}
+
+\subsection{决策卡（扩充版，闭卷默写）}
+
+\begin{methodbox}[一句话总纲]
+\textbf{先问两个问题：(1) 极限是不是 $0/0$（或 $\infty/\infty$）？(2) 分母（被除的那一项）最高是几阶？}
+
+答案是 $k$ 阶，就展到 $k$ 阶；被除的一项是常数，就把分母展到比它高一阶。\textbf{首项抵消掉，就往后再展一阶。}
+\end{methodbox}
+
+\begin{center}
+\footnotesize
+\renewcommand{\arraystretch}{1.35}
+\begin{tabularx}{\textwidth}{@{}>{\raggedright\arraybackslash}p{3.6cm} >{\raggedright\arraybackslash}p{5.0cm} X@{}}
+\toprule
+\textbf{情形} & \textbf{用什么} & \textbf{例子}\\
+\midrule
+乘积 / 商里的\textbf{因子} & 等价无穷小（$\sin u\sim u$、$\ln(1+u)\sim u$、$1-\cos u\sim\frac{u^{2}}2$、$(1+u)^\alpha\sim1+\alpha u$） &
+$\lim\limits_{x\to0}\dfrac{\sin 3x}{x}=3$\\
+\textbf{和差}里要消掉低阶项 & 必须泰勒（或先合并 / 有理化） &
+$\lim\limits_{x\to0}\dfrac{\sin x-x}{x^{3}}=-\dfrac16$\\
+分母是 $x^{k}$、分子含 $k$ 阶项 & 分子展开到 $k$ 阶，分母展开到 $k-1$ 阶 &
+$\lim\limits_{x\to0}\dfrac{\ee^{x}-1-x}{x^{2}}=\frac12$\\
+条件给了一个极限，求某阶导数 & 用「$f(x)=f(0)+f'(0)x+\frac{f''(0)}{2}x^{2}+o(x^{2})$」\textbf{比对系数} &
+$\lim\limits_{x\to0}\dfrac{f(x)-x}{x^{2}}=3\Rightarrow f''(0)=6$\\
+$1^\infty$ 型 & 取对数化为 $0/0$ 或 $\infty/\infty$ &
+$\lim\limits_{x\to0}\left(\dfrac{\sin x}{x}\right)^{1/x^{2}}=\ee^{-1/6}$\\
+\textbf{题目要 $f^{(n)}(0)$} & 展到 $n$ 阶，答案 $=$ $n!\times$ $x^{n}$ 系数 &
+$f=(1+x)^{\alpha}$，$f^{(13)}(0)=\alpha(\alpha-1)\cdots(\alpha-12)$\\
+\textbf{要证不等式} & 差值函数求导定号（不必用泰勒） &
+$\ln(1+x)>x-\frac{x^{2}}2\ (x>0)$\\
+\textbf{要证极限无穷大} & 泰勒只判\textbf{阶数}，符号另判 &
+$x\to0^{+}$ 时 $\ln x\to-\infty$\\
+\bottomrule
+\end{tabularx}
+\end{center}
+
+\begin{warnbox}[六个高频坑]
+\begin{enumerate}[label=(\alph*)]
+  \item \textbf{加减式不能直接等价替换}。$\sin x - x$ 里 $\sin x\sim x$，替换后得到 $0$，答案错。正确做法：泰勒到第一个非零阶。
+  \item \textbf{分母阶数看错}。分母是 $x^{2}$ 就要展到 2 阶，不是 1 阶；分母是 $x^{3}$ 展到 3 阶。展多了不会错（多写一行），展少了必错。
+  \item \textbf{条件题要写成泰勒形式再比系数}。题目给 $\lim\frac{f(x)-g(x)}{x^{2}}=L$，正确写法是 $f(x)=g(x)+Lx^{2}+o(x^{2})$，然后逐项比对；不要直接「求导两次」硬套。
+  \item \textbf{符号别记错}：$\sqrt{1-x}=1-\frac{x}{2}-\frac{x^{2}}{8}+\cdots$（负号在 $x^{2}$ 项），$\sqrt{1+x}=1+\frac{x}{2}-\frac{x^{2}}{8}+\cdots$。
+  \item \textbf{高阶导别丢阶乘}。$f(x)=\sum c_{n}x^{n}$，则 $f^{(n)}(0)=n!\,c_{n}$。直接求 $n$ 阶导会得到下降阶乘 $\alpha(\alpha-1)\cdots(\alpha-n+1)$，两者差一个 $n!$，这是最常见的失分点。
+  \item \textbf{余项符号要判}。用泰勒证不等式时，Peano 余项只说「趋于 0」，Lagrange 余项才给符号与阶数。只写 $o(x^{3})$ 就想证明严格不等式，是逻辑漏洞。
+\end{enumerate}
+\end{warnbox}
+
+\subsection{母函数展开表（闭卷默写，抽查用）}
+
+\begin{center}
+\footnotesize
+\renewcommand{\arraystretch}{1.25}
+\begin{tabularx}{\textwidth}{@{}l X l X@{}}
+\toprule
+\textbf{函数} & \textbf{展开式} & \textbf{函数} & \textbf{展开式}\\
+\midrule
+$\ee^{x}$ & $1+x+\frac{x^{2}}{2!}+\frac{x^{3}}{3!}+\cdots$ &
+$x$ & $x$\\
+$\sin x$ & $x-\frac{x^{3}}{3!}+\frac{x^{5}}{5!}-\cdots$ &
+$x^{2}$ & $x^{2}$\\
+$\cos x$ & $1-\frac{x^{2}}{2!}+\frac{x^{4}}{4!}-\cdots$ &
+$x^{3}$ & $x^{3}$\\
+$\ln(1+x)$ & $x-\frac{x^{2}}{2}+\frac{x^{3}}{3}-\frac{x^{4}}{4}+\cdots$ &
+$\frac{1}{1-x}$ & $1+x+x^{2}+x^{3}+\cdots$\\
+$\arctan x$ & $x-\frac{x^{3}}{3}+\frac{x^{5}}{5}-\cdots$ &
+$\frac{1}{1+x}$ & $1-x+x^{2}-x^{3}+\cdots$\\
+$1-\cos x$ & $\frac{x^{2}}{2}-\frac{x^{4}}{24}+\cdots$ &
+$(1+x)^{\alpha}$ & $1+\alpha x+\frac{\alpha(\alpha-1)}{2}x^{2}+\frac{\alpha(\alpha-1)(\alpha-2)}{6}x^{3}+\cdots$\\
+$\sqrt{1+x}$ & $1+\frac{x}{2}-\frac{x^{2}}{8}+\frac{x^{3}}{16}-\frac{5x^{4}}{128}+\cdots$ &
+$\tan x$ & $x+\frac{x^{3}}{3}+\frac{2x^{5}}{15}+\frac{17x^{7}}{315}+\cdots$\\
+\bottomrule
+\end{tabularx}
+\end{center}
+
+\begin{keypoint}[表里最该背的三行]
+\begin{enumerate}
+\item $\tan x$ 的系数：$\frac13,\ \frac{2}{15},\ \frac{17}{315}$。真题里出现过两次，而且每次都是「减去前一项后必须再展一阶」。
+\item $(1+x)^{\alpha}$ 的通项 $\frac{\alpha(\alpha-1)\cdots(\alpha-n+1)}{n!}x^{n}$。2023-24 的第 15 题就是求这个的 $n=13$。
+\item $\sqrt{1+x}$ 的前三项 $1+\frac{x}{2}-\frac{x^{2}}{8}$。负号在 $x^{2}$ 项，这是本库记录的第 1 处自身错误。
+\end{enumerate}
+\end{keypoint}
+
+\subsection{三种余项与「估阶」}
+
+\begin{center}
+\footnotesize
+\renewcommand{\arraystretch}{1.35}
+\begin{tabularx}{\textwidth}{@{}l l X@{}}
+\toprule
+\textbf{余项形式} & \textbf{适用} & \textbf{能给你什么}\\
+\midrule
+Peano 余项 & $f$ 在 $x_0$ 处 $n+1$ 阶可导 &
+$o\big((x-x_0)^{n+1}\big)$。\textbf{只给阶数，不给符号}。够算极限，不够证不等式\\
+Lagrange 余项 & $f$ 在含 $x_0$ 的区间上 $n+1$ 阶可导 &
+$\dfrac{f^{(n+1)}(\xi)}{(n+1)!}(x-x_0)^{n+1}$，$\xi$ 在 $x_0$ 与 $x$ 之间。\textbf{能给符号与上界}\\
+积分余项 & $f$ 有连续 $n+1$ 阶导 &
+$\dfrac{1}{n!}\int_{x_0}^{x}f^{(n+1)}(t)(x-t)^{n}\D t$。精确但少用\\
+\bottomrule
+\end{tabularx}
+\end{center}
+
+\begin{methodbox}[「估阶」是真题真正的考点]
+\textbf{任务形式}：已知 $\lim\limits_{x\to x_0}\dfrac{f(x)-g(x)}{x^{k}}=L$（或反之），判断 $f-g$ 是 $x^{k}$ 的几阶等价无穷小，或求 $L$。
+
+\textbf{唯一判据}：把 $f$ 与 $g$ 展到\textbf{同一个}阶，看第一个不相等的项。
+
+\textbf{典型陷阱}：$f-g$ 的低阶项如果没抵消干净，极限就是 $\pm\infty$ 而不是有限值。做完后必须回头看一眼「分子最低次项是不是被消掉了」。本题册的 T2.2 就是这种结构。
+\end{methodbox}
+
+\subsection{用泰勒求高阶导的通用套路}
+
+\begin{keypoint}[四步法，2023-24 第 15 题和 2024-25 那道 Taylor 题都是这个]
+\begin{enumerate}
+\item \textbf{选母函数}。题目给的函数若本身就有展开式，直接用；若没现成展开式，先做代换或复合分解，把它拆成有展开式的部分之积 / 复合。
+\item \textbf{展到 $n$ 阶}（若题目要 $f^{(n)}(0)$）。
+\item \textbf{读 $x^{n}$ 的系数} $c_{n}$。
+\item \textbf{乘上 $n!$}：$f^{(n)}(0)=n!\,c_{n}$。\textbf{这一步最常被漏。}
+\end{enumerate}
+\end{keypoint}
+
+\begin{center}
+\footnotesize
+\renewcommand{\arraystretch}{1.25}
+\begin{tabularx}{\textwidth}{@{}l l X@{}}
+\toprule
+\textbf{典型函数} & \textbf{做法} & \textbf{答案}\\
+\midrule
+$(1+x)^{\alpha}$ & 直接用通项公式 &
+$f^{(13)}(0)=\alpha(\alpha-1)\cdots(\alpha-12)$\\
+$x^{m}\ee^{x}$ & $\ee^{x}$ 的第 $k$ 阶系数是 $\frac1{k!}$，乘上 $x^{m}$ 平移阶数 &
+$f^{(n)}(0)=\frac{n!}{(n-m)!}\ (n\ge m)$\\
+$\ee^{\varphi(x)}$ & 用 $\ee^{u}=1+u+\frac{u^{2}}{2!}+\cdots$ 展开，$u$ 也展到足够阶 &
+复合后读系数\\
+$x^{m}\sin x$ / $x^{m}\cos x$ & 正弦余弦只保留奇/偶次项，$x^{m}$ 平移 &
+逐阶读系数\\
+\bottomrule
+\end{tabularx}
+\end{center}
+
+\subsection{泰勒与洛必达的分工}
+
+\begin{center}
+\footnotesize
+\renewcommand{\arraystretch}{1.35}
+\begin{tabularx}{\textwidth}{@{}l X X@{}}
+\toprule
+\textbf{场景} & \textbf{用洛必达} & \textbf{用泰勒}\\
+\midrule
+$0/0$ 且\textbf{求极限值} & 一阶、二阶往往够快 & 阶数已知时更快，且能一次给出符号\\
+\textbf{求高阶导数} & 做不到 & 唯一武器\\
+\textbf{证不等式} & 做不到 & 可以，但单调性/凹凸性常常更短\\
+\textbf{判等价无穷小的阶} & 做不到 & 唯一武器\\
+$0/0$ 且\textbf{阶数很高} & 会陷入「洛必达套洛必达」&
+直接展到 $k$ 阶，一步到位\\
+\bottomrule
+\end{tabularx}
+\end{center}
+
+\begin{warnbox}[考场上的取舍]
+\textbf{洛必达不是万能}。真题里凡是「$0/0$ 且连着三次洛必达还不干净」，正确解法一定是泰勒。反过来，凡是「要证不等式」「要求高阶导」，洛必达直接出局。
+
+\textbf{口诀}：洛必达治「值」，泰勒治「阶」；不等式优先单调性与凹凸性。
+\end{warnbox}
+
+\subsection{十二条高频错误速查（考前 10 分钟扫一遍）}
+
+\begin{center}
+\footnotesize
+\renewcommand{\arraystretch}{1.25}
+\begin{tabularx}{\textwidth}{@{}r X@{}}
+\toprule
+\textbf{\#} & \textbf{错误}\\
+\midrule
+1 & 加减式用等价无穷小替换，把 $0$ 当答案\\
+2 & 分母是 $x^{k}$ 只展到 $k-1$ 阶\\
+3 & 首项抵消后没有多展一阶\\
+4 & 条件题直接「求导两次」，没先写成泰勒形式\\
+5 & 求 $f^{(n)}(0)$ 忘了乘 $n!$\\
+6 & $\sqrt{1-x}$ 的 $x^{2}$ 项符号记成正\\
+7 & $\tan x$ 只背到 $\frac{x^{3}}{3}$，遇到要 $x^{5}$ 就卡\\
+8 & 复合函数（$\ee^{\sin x}$ 这类）只展了内层\\
+9 & 乘积展开时算错交叉项的阶数\\
+10 & 用 Peano 余项去证严格不等式\\
+11 & $x\to\infty$ 时误用 $x\to0$ 的展开式\\
+12 & 展开算完没做「分子最低次项是否被消掉」的检查\\
+\bottomrule
+\end{tabularx}
+\end{center}
+
+% ============================================================
+\section{T1\quad 展开与系数（5 题）}
+
+\begin{methodbox}[这一组考什么]
+直接写展开式，但\textbf{系数不常见}：有的项系数恰好为 $0$（陷阱），有的需要复合展开（$\ee^{\sin x}$），有的是广义二项式。
+\end{methodbox}
+
+\q{T1.1}{写出 $f(x)=\ee^{\sin x}$ 的 3 阶麦克劳林展开（到 $x^{3}$）。}
+\tagline{对标 2023-24 Q15 复合型（8 分）}
+
+\q{T1.2}{写出 $f(x)=(1+x)^{1/3}$ 的 4 阶麦克劳林展开。}
+\tagline{对标 2023-24 Q15（8 分）}
+
+\q{T1.3}{写出 $f(x)=\sqrt{1+2x}$ 的 4 阶麦克劳林展开。}
+\tagline{对标 2020-21 计算题型（6 分）}
+
+\q{T1.4}{写出 $f(x)=\ln(1+\ee^{x})$ 的 3 阶麦克劳林展开。}
+\tagline{对标 2024-25 Q14 型（10 分）}
+
+\q{T1.5}{写出 $f(x)=\ee^{x^{2}}\cos x$ 的 4 阶麦克劳林展开。}
+\tagline{对标 2022-23 计算题型（6 分）}
+
+% ============================================================
+\section{T2\quad 余项与逼近阶（4 题）}
+
+\begin{methodbox}[这一组考什么]
+\textbf{展到第几阶}。分母是 $x^{k}$，但分子里前 $k-1$ 项全被抵消了，所以你必须展到 $k+1$ 阶才看得出答案。
+\textbf{这是真题里最常见的「差一阶」陷阱。}
+\end{methodbox}
+
+\q{T2.1}{求 $\displaystyle\lim_{x\to0}\frac{\sqrt{1+x}-1-\frac{x}{2}+\frac{x^{2}}{8}}{x^{3}}$。}
+\tagline{对标 2019-20 填空型（3 分）}
+
+\q{T2.2}{求 $\displaystyle\lim_{x\to0}\frac{\sin x-x+\frac{x^{3}}{6}-\frac{x^{5}}{120}}{x^{7}}$。}
+\tagline{对标 2020-21 计算 12 型（6 分）}
+
+\q{T2.3}{求 $\displaystyle\lim_{x\to0}\frac{\ln(\cos x)+\frac{x^{2}}{2}}{x^{4}}$。}
+\tagline{对标 2023-24 计算 14 型（6 分）}
+
+\q{T2.4}{求 $\displaystyle\lim_{x\to0}\frac{\arctan x-x+\frac{x^{3}}{3}-\frac{x^{5}}{5}}{x^{7}}$。}
+\tagline{对标 2021-22 填空 6 型（3 分）}
+
+% ============================================================
+\section{T3\quad 泰勒求导数（5 题）}
+
+\begin{methodbox}[这一组考什么]
+\textbf{反过来用}：已知函数的解析式，求它在某点的 $n$ 阶导数。做法是展到 $n$ 阶，读系数，乘 $n!$。
+\textbf{题面给的函数往往没有现成展开式，必须先拆。}
+\end{methodbox}
+
+\q{T3.1}{设 $\alpha$ 为常数，$f(x)=(1+x)^{\alpha}$。求 $f^{(13)}(0)$ 的表达式，并求 $\displaystyle\lim_{x\to0}\frac{(1+x)^{\alpha}-1-\alpha x}{x^{2}}$。}
+\tagline{对标 2023-24 Q15（8 分）}
+
+\q{T3.2}{设 $f(x)=x\ee^{x^{2}}$。求 $f^{(5)}(0)$。}
+\tagline{对标 2022-23 Q14（10 分）}
+
+\q{T3.3}{设 $f(x)=\ee^{\sin x}$。求 $f^{(3)}(0)$。}
+\tagline{对标 2023-24 Q15 复合型（8 分）}
+
+\q{T3.4}{设 $f(x)=\ee^{x}\cos x$。求 $f^{(4)}(0)$。}
+\tagline{对标 2024-25 Q14（10 分）}
+
+\q{T3.5}{设 $x=t+t^{2}$，$y=t-t^{3}$（$t$ 为参数）。求 $\dfrac{\D y}{\D x}$ 与 $\dfrac{\D^{2}y}{\D x^{2}}$ 在 $t=0$ 处的值，并用泰勒法复核。}
+\tagline{对标 2021-22 Q14（10 分）}
+
+% ============================================================
+\section{T4\quad 泰勒应用（5 题）}
+
+\begin{methodbox}[这一组考什么]
+\textbf{泰勒不只是求极限}。证不等式、求极值、求渐近展开、隐函数求导，都是真题里泰勒的真用法。
+\end{methodbox}
+
+\q{T4.1}{证明：当 $x>0$ 时，$\ln(1+x)>x-\dfrac{x^{2}}{2}$。}
+\tagline{对标 2014-15 Q18 型（8 分）}
+
+\q{T4.2}{证明：当 $x>0$ 时，$\sin x>x-\dfrac{x^{3}}{6}$。}
+\tagline{对标 2010 级 七(18) 型（8 分）}
+
+\q{T4.3}{设 $f(x)=x^{3}\ee^{-x}$（$x>0$）。求 $f$ 的极大值。}
+\tagline{对标 2022-23 应用题（10 分）}
+
+\q{T4.4}{求 $x\to+\infty$ 时 $(1+\frac1x)^{x}$ 的渐近展开到 $\dfrac{1}{x^{2}}$ 项，并据此计算 $\displaystyle\lim_{x\to+\infty}\left[\left(1+\frac1x\right)^{x}-\ee+\frac{\ee}{2x}\right]x^{2}$。}
+\tagline{对标 2020-21 计算 12 型（8 分）}
+
+\q{T4.5}{设 $y$ 由方程 $\ee^{y}+y=x$ 唯一确定。求 $\dfrac{\D y}{\D x}$ 与 $\dfrac{\D^{2}y}{\D x^{2}}$ 在 $x=1$ 处的值。}
+\tagline{对标 2024-25 Q14 隐函数型（10 分）}
+
+% ============================================================
+\section{答案速查（做完再看）}
+
+\begin{center}
+\small\setlength{\tabcolsep}{5pt}
+\begin{tabularx}{\linewidth}{c|X|c}
+\toprule
+题号 & 答案 & 组 \\
+\midrule
+T1.1 & $1+x+\dfrac{x^{2}}{2}+0\cdot x^{3}$（$x^{3}$ 项系数恰为 $0$） & T1 \\
+T1.2 & $1+\dfrac{x}{3}-\dfrac{x^{2}}{9}+\dfrac{5x^{3}}{81}-\dfrac{10x^{4}}{243}$ & T1 \\
+T1.3 & $1+x-\dfrac{x^{2}}{2}+\dfrac{x^{3}}{2}-\dfrac{5x^{4}}{8}$ & T1 \\
+T1.4 & $\ln 2+\dfrac{x}{2}+\dfrac{x^{2}}{8}+0\cdot x^{3}$（$x^{3}$ 项系数恰为 $0$） & T1 \\
+T1.5 & $1+\dfrac{x^{2}}{2}+\dfrac{x^{4}}{24}$ & T1 \\
+\midrule
+T2.1 & $\dfrac1{16}$ & T2 \\
+T2.2 & $-\dfrac1{5040}$ & T2 \\
+T2.3 & $-\dfrac1{12}$ & T2 \\
+T2.4 & $-\dfrac17$ & T2 \\
+\midrule
+T3.1 & $f^{(13)}(0)=\alpha(\alpha-1)(\alpha-2)\cdots(\alpha-12)$；$\lim=\dfrac{\alpha(\alpha-1)}{2}$ & T3 \\
+T3.2 & $60$ & T3 \\
+T3.3 & $0$ & T3 \\
+T3.4 & $-4$ & T3 \\
+T3.5 & $\dfrac{\D y}{\D x}\big|_{t=0}=1$，$\dfrac{\D^{2}y}{\D x^{2}}\big|_{t=0}=-2$ & T3 \\
+\midrule
+T4.1 & 证$g(x)=\ln(1+x)-x+\frac{x^{2}}{2}$，$g'(x)=\frac{x^{2}}{1+x}>0$，$g(0)=0$ & T4 \\
+T4.2 & 证$g(x)=\sin x-x+\frac{x^{3}}{6}$，$g'(x)=\cos x-1+\frac{x^{2}}{2}\ge0$，$g(0)=0$ & T4 \\
+T4.3 & 极大值 $27\ee^{-3}$，在 $x=3$ 处取到 & T4 \\
+T4.4 & $(1+\frac1x)^{x}=\ee\left(1-\frac{1}{2x}+\frac{11}{24x^{2}}+o(x^{-2})\right)$；$\lim=\dfrac{11\ee}{24}$ & T4 \\
+T4.5 & $y'(1)=\dfrac12$，$y''(1)=-\dfrac18$ & T4 \\
+\bottomrule
+\end{tabularx}
+\end{center}
+
+% ============================================================
+\section{逐题详解}
+
+\subsection{T1\quad 展开与系数}
+
+\noindent\textbf{T1.1}\quad 答案 $1+x+\dfrac{x^{2}}{2}+0\cdot x^{3}$。
+\key{$x^{3}$ 项的系数恰好是 $0$。这是复合展开最容易漏的一项：$\ee^{\sin x}$ 里 $\sin x$ 的 $-\frac{x^{3}}6$ 与 $(\sin x)^{2}/2$ 产生的 $+\frac{x^{3}}6$ 正好抵消。只展到二阶不会发现这个问题。}
+
+用 $\ee^{u}=1+u+\dfrac{u^{2}}{2}+\dfrac{u^{3}}{6}+o(u^{3})$，其中 $u=\sin x=x-\dfrac{x^{3}}{6}+o(x^{3})$：
+\[
+u=x-\frac{x^{3}}{6}+o(x^{3}),\qquad
+u^{2}=x^{2}+o(x^{3}),\qquad
+u^{3}=x^{3}+o(x^{3}).
+\]
+于是
+\[
+\ee^{\sin x}=1+\left(x-\frac{x^{3}}{6}\right)+\frac{x^{2}}{2}+\frac{x^{3}}{6}+o(x^{3})
+=1+x+\frac{x^{2}}{2}+0\cdot x^{3}+o(x^{3}).
+\]
+注意：$x^{3}$ 项系数为 $0$，即 $\left(\ee^{\sin x}\right)''\big|_{x=0}=\frac{2}{2}=1$，$\left(\ee^{\sin x}\right)'''\big|_{x=0}=3!\times0=0$。
+
+\medskip
+\noindent\textbf{T1.2}\quad 答案 $1+\dfrac{x}{3}-\dfrac{x^{2}}{9}+\dfrac{5x^{3}}{81}-\dfrac{10x^{4}}{243}$。
+\key{广义二项式的系数是 $\frac{\alpha(\alpha-1)\cdots(\alpha-n+1)}{n!}$，代入 $\alpha=\frac13$ 后逐项算，别靠记忆。}
+
+用 $(1+x)^{\alpha}=\sum\limits_{n=0}^{\infty}\dfrac{\alpha(\alpha-1)\cdots(\alpha-n+1)}{n!}x^{n}$，$\alpha=\frac13$：
+\[
+(1+x)^{1/3}
+=1+\frac13 x+\frac{\frac13\left(-\frac23\right)}{2}x^{2}
++\frac{\frac13\left(-\frac23\right)\left(-\frac53\right)}{6}x^{3}
++\frac{\frac13\left(-\frac23\right)\left(-\frac53\right)\left(-\frac83\right)}{24}x^{4}+\cdots
+\]
+逐项化简即得
+\[
+1+\frac{x}{3}-\frac{x^{2}}{9}+\frac{5x^{3}}{81}-\frac{10x^{4}}{243}+o(x^{4}).
+\]
+
+\medskip
+\noindent\textbf{T1.3}\quad 答案 $1+x-\dfrac{x^{2}}{2}+\dfrac{x^{3}}{2}-\dfrac{5x^{4}}{8}$。
+\key{这是 $(1+2x)^{1/2}$，不是 $(1+x)^{1/2}$。$2x$ 代进去以后每一项都带 $2^{k}$，容易漏。}
+
+令 $u=2x$，用 $\sqrt{1+u}=1+\frac{u}{2}-\frac{u^{2}}{8}+\frac{u^{3}}{16}-\frac{5u^{4}}{128}+o(u^{4})$：
+\[
+\sqrt{1+2x}=1+\frac{2x}{2}-\frac{4x^{2}}{8}+\frac{8x^{3}}{16}-\frac{5\cdot16x^{4}}{128}+o(x^{4})
+=1+x-\frac{x^{2}}{2}+\frac{x^{3}}{2}-\frac{5x^{4}}{8}+o(x^{4}).
+\]
+
+\medskip
+\noindent\textbf{T1.4}\quad 答案 $\ln 2+\dfrac{x}{2}+\dfrac{x^{2}}{8}+0\cdot x^{3}$。
+\key{$x^{3}$ 项系数也是 $0$。而且常数项是 $\ln 2$ 不是 $1$——很多人在这里把 $\ln(1+\ee^{0})=\ln 2$ 写成 $1$。}
+
+把 $\ee^{x}=1+x+\frac{x^{2}}{2}+\frac{x^{3}}{6}+o(x^{3})$ 代入：
+\[
+1+\ee^{x}=2+x+\frac{x^{2}}{2}+\frac{x^{3}}{6}+o(x^{3}).
+\]
+再用 $\ln(1+v)=v-\frac{v^{2}}{2}+\frac{v^{3}}{3}+o(v^{3})$，其中 $v=x+\frac{x^{2}}{2}+\frac{x^{3}}{6}+o(x^{3})$：
+\[
+v^{2}=x^{2}+x^{3}+o(x^{3}),\qquad v^{3}=x^{3}+o(x^{3}).
+\]
+\[
+\ln(1+\ee^{x})=\left(x+\frac{x^{2}}{2}+\frac{x^{3}}{6}\right)-\frac{x^{2}+x^{3}}{2}+\frac{x^{3}}{3}+o(x^{3})
+=\ln 2+\frac{x}{2}+\frac{x^{2}}{8}+0\cdot x^{3}+o(x^{3}).
+\]
+
+\medskip
+\noindent\textbf{T1.5}\quad 答案 $1+\dfrac{x^{2}}{2}+\dfrac{x^{4}}{24}$。
+\key{$\ee^{x^{2}}$ 只含偶次项，$\cos x$ 保留到 $x^{4}$ 时要展到 $x^{4}$，两者相乘时 $x^{2}$ 项要交叉。}
+
+\[
+\ee^{x^{2}}=1+x^{2}+\frac{x^{4}}{2}+o(x^{4}),\qquad
+\cos x=1-\frac{x^{2}}{2}+\frac{x^{4}}{24}+o(x^{4}).
+\]
+\[
+\ee^{x^{2}}\cos x=\left(1+x^{2}+\frac{x^{4}}{2}\right)\left(1-\frac{x^{2}}{2}+\frac{x^{4}}{24}\right)+o(x^{4})
+=1+\left(1-\frac12\right)x^{2}+\left(\frac12-\frac12+\frac1{24}\right)x^{4}+o(x^{4}).
+\]
+即
+\[
+\ee^{x^{2}}\cos x=1+\frac{x^{2}}{2}+\frac{x^{4}}{24}+o(x^{4}).
+\]
+
+\subsection{T2\quad 余项与逼近阶}
+
+\noindent\textbf{T2.1}\quad 答案 $\dfrac1{16}$。
+\key{$\sqrt{1+x}$ 的 $x^{3}$ 项系数是 $\frac{1}{16}$。被减掉的四项恰好把它压到三阶，所以分子必须展到 $x^{3}$。}
+
+$\sqrt{1+x}=1+\frac{x}{2}-\frac{x^{2}}{8}+\frac{x^{3}}{16}-\frac{5x^{4}}{128}+o(x^{4})$，故
+\[
+\sqrt{1+x}-1-\frac{x}{2}+\frac{x^{2}}{8}=\frac{x^{3}}{16}+o(x^{3}),
+\]
+原极限 $=\dfrac1{16}$。
+
+\medskip
+\noindent\textbf{T2.2}\quad 答案 $-\dfrac1{5040}$。
+\key{$\sin x$ 的 $x^{7}$ 项系数是 $-\frac{1}{7!}$。前四项被减掉后剩下的是 $-\frac{x^{7}}{5040}$，符号是负的。}
+
+$\sin x=x-\frac{x^{3}}{6}+\frac{x^{5}}{120}-\frac{x^{7}}{5040}+o(x^{7})$，故
+\[
+\sin x-x+\frac{x^{3}}{6}-\frac{x^{5}}{120}=-\frac{x^{7}}{5040}+o(x^{7}),
+\]
+原极限 $=-\dfrac1{5040}$。
+
+\medskip
+\noindent\textbf{T2.3}\quad 答案 $-\dfrac1{12}$。
+\key{$\ln(\cos x)$ 没有现成展开式。先展 $\cos x$，再取对数，两层都要算到 $x^{4}$。}
+
+$\cos x=1-\frac{x^{2}}{2}+\frac{x^{4}}{24}+o(x^{4})$。令 $v=-\frac{x^{2}}{2}+\frac{x^{4}}{24}+o(x^{4})$，则 $\ln(1+v)=v-\frac{v^{2}}{2}+o(v^{2})$，$v^{2}=\frac{x^{4}}{4}+o(x^{4})$：
+\[
+\ln(\cos x)=-\frac{x^{2}}{2}+\frac{x^{4}}{24}-\frac{x^{4}}{8}+o(x^{4})
+=-\frac{x^{2}}{2}-\frac{x^{4}}{12}+o(x^{4}).
+\]
+故 $\ln(\cos x)+\frac{x^{2}}{2}=-\frac{x^{4}}{12}+o(x^{4})$，原极限 $=-\dfrac1{12}$。
+
+\medskip
+\noindent\textbf{T2.4}\quad 答案 $-\dfrac17$。
+\key{$\arctan x$ 的 $x^{7}$ 项系数是 $-\frac17$。被减掉四项后分子的最低次是 $x^{7}$。}
+
+$\arctan x=x-\frac{x^{3}}{3}+\frac{x^{5}}{5}-\frac{x^{7}}{7}+o(x^{7})$，故
+\[
+\arctan x-x+\frac{x^{3}}{3}-\frac{x^{5}}{5}=-\frac{x^{7}}{7}+o(x^{7}),
+\]
+原极限 $=-\dfrac17$。
+
+\subsection{T3\quad 泰勒求导数}
+
+\noindent\textbf{T3.1}\quad 答案 $f^{(13)}(0)=\alpha(\alpha-1)(\alpha-2)\cdots(\alpha-12)$；$\lim=\dfrac{\alpha(\alpha-1)}{2}$。
+\key{答 $\alpha(\alpha-1)\cdots(\alpha-12)$，\textbf{不要乘 $13!$}。因为 $x^{13}$ 的系数是 $\frac{\alpha(\alpha-1)\cdots(\alpha-12)}{13!}$，而 $f^{(13)}(0)=13!\times$ 系数，两者相消。}
+
+$(1+x)^{\alpha}$ 的 $x^{13}$ 系数为 $\dfrac{\alpha(\alpha-1)\cdots(\alpha-12)}{13!}$，故
+\[
+f^{(13)}(0)=13!\cdot\frac{\alpha(\alpha-1)\cdots(\alpha-12)}{13!}
+=\alpha(\alpha-1)\cdots(\alpha-12).
+\]
+第二个问：$(1+x)^{\alpha}=1+\alpha x+\frac{\alpha(\alpha-1)}{2}x^{2}+o(x^{2})$，故分子 $=\frac{\alpha(\alpha-1)}{2}x^{2}+o(x^{2})$，极限 $=\dfrac{\alpha(\alpha-1)}{2}$。
+
+\medskip
+\noindent\textbf{T3.2}\quad 答案 $60$。
+\key{$\ee^{x^{2}}=1+x^{2}+\frac{x^{4}}{2}+o(x^{4})$，乘上 $x$ 后 $x^{5}$ 的系数是 $\frac12$，$f^{(5)}(0)=5!\cdot\frac12=60$。}
+
+$x\ee^{x^{2}}=x\left(1+x^{2}+\frac{x^{4}}{2}+o(x^{4})\right)=x+x^{3}+\frac{x^{5}}{2}+o(x^{5})$。
+$x^{5}$ 的系数 $=\frac12$，故 $f^{(5)}(0)=5!\cdot\frac12=60$。
+
+\medskip
+\noindent\textbf{T3.3}\quad 答案 $0$。
+\key{直接用 T1.1 的结论：$x^{3}$ 项系数为 $0$，所以 $f^{(3)}(0)=3!\times0=0$。}
+
+由 T1.1，$\ee^{\sin x}=1+x+\frac{x^{2}}{2}+0\cdot x^{3}+o(x^{3})$，$x^{3}$ 系数为 $0$，故 $f^{(3)}(0)=0$。
+
+\medskip
+\noindent\textbf{T3.4}\quad 答案 $-4$。
+\key{也可以用复数法：$\ee^{x}\cos x=\operatorname{Re}\ee^{(1+i)x}$，于是 $f^{(n)}(0)=\operatorname{Re}(1+i)^{n}$。$(1+i)^{4}=-4$。}
+
+方法一（展开）：
+\[
+\ee^{x}\cos x=\left(1+x+\frac{x^{2}}{2}+\frac{x^{3}}{6}+\frac{x^{4}}{24}\right)
+\left(1-\frac{x^{2}}{2}+\frac{x^{4}}{24}\right)+o(x^{4}).
+\]
+$x^{4}$ 的系数 $=\frac1{24}+\frac{1}{2}\left(-\frac12\right)+\frac{1}{24}\cdot 1=-\frac14$，故 $f^{(4)}(0)=4!\cdot\left(-\frac14\right)=-4$。
+
+方法二（复数，秒解）：$\ee^{x}\cos x=\operatorname{Re}\big(\ee^{(1+i)x}\big)$，$f^{(4)}(0)=\operatorname{Re}(1+i)^{4}=\operatorname{Re}(-4)=-4$。
+
+\medskip
+\noindent\textbf{T3.5}\quad 答案 $\dfrac{\D y}{\D x}\big|_{t=0}=1$，$\dfrac{\D^{2}y}{\D x^{2}}\big|_{t=0}=-2$。
+\key{二阶导的分母是 $\dfrac{\D x}{\D t}$，\textbf{不是 $\dfrac{\D^{2}x}{\D t^{2}}$}。这是参数方程二阶导最常见的错。}
+
+$\dfrac{\D x}{\D t}=1+2t$，$\dfrac{\D y}{\D t}=1-3t^{2}$，故
+\[
+\frac{\D y}{\D x}=\frac{1-3t^{2}}{1+2t},\qquad
+\frac{\D^{2}y}{\D x^{2}}=\frac{\dfrac{\D}{\D t}\left(\frac{1-3t^{2}}{1+2t}\right)}{1+2t}.
+\]
+在 $t=0$：$\dfrac{\D y}{\D x}=1$；而
+\[
+\frac{\D}{\D t}\left(\frac{1-3t^{2}}{1+2t}\right)
+=\frac{-6t(1+2t)-2(1-3t^{2})}{(1+2t)^{2}}\;\xrightarrow[t\to0]{}\;-2,
+\]
+故 $\dfrac{\D^{2}y}{\D x^{2}}\big|_{t=0}=\dfrac{-2}{1}=-2$。
+
+\textbf{泰勒法复核}：由 $x=t+t^{2}$ 解出取 $t(0)=0$ 的分支 $t=\frac{-1+\sqrt{1+4x}}{2}=x-x^{2}+2x^{3}+o(x^{3})$，于是
+\[
+y=t-t^{3}=x-x^{2}+2x^{3}-x^{3}+o(x^{3})=x-x^{2}+x^{3}+o(x^{3}),
+\]
+读系数 $y'=1-2x+3x^{2}+\cdots$，故 $y'(0)=1$，$y''(0)=-2$。
+
+\subsection{T4\quad 泰勒应用}
+
+\noindent\textbf{T4.1}\quad 证：$g(x)=\ln(1+x)-x+\dfrac{x^{2}}{2}$，$g'(x)=\dfrac{x^{2}}{1+x}>0$，$g(0)=0$。
+\key{证不等式不必用泰勒。\textbf{差值函数求导定号}是最短路径（这是 S5 组的重点）。但要用泰勒也能证：$\ln(1+x)=x-\frac{x^{2}}{2}+o(x^{2})$ 只能给出渐近意义的不等式，逻辑上不够。}
+
+$g'(x)=\dfrac{1}{1+x}-1+x=\dfrac{1-(1+x)+x(1+x)}{1+x}=\dfrac{x^{2}}{1+x}>0\ (x>0)$。又 $g(0)=0$，故 $g$ 在 $(0,+\infty)$ 严格递增，$g(x)>g(0)=0$，即
+\[
+\ln(1+x)>x-\frac{x^{2}}{2}\qquad(x>0).
+\]
+（泰勒视角：$\ln(1+x)=x-\frac{x^{2}}2+\frac{x^{3}}3-\cdots$ 的交错级数在 $0<x\le1$ 上也给出同样结论，但要注意收敛区间。）
+
+\medskip
+\noindent\textbf{T4.2}\quad 证：$g(x)=\sin x-x+\dfrac{x^{3}}{6}$，$g'(x)=\cos x-1+\dfrac{x^{2}}{2}\ge0$，$g(0)=0$。
+\key{关键一步是 $\cos x\ge 1-\frac{x^{2}}{2}$（对一切实数 $x$ 成立）。这本身可以用泰勒的 Lagrange 余项证：$\cos x=1-\frac{x^{2}}{2}+\frac{x^{4}}{24}\cos\xi\ge1-\frac{x^{2}}2$。}
+
+$g'(x)=\cos x-1+\dfrac{x^{2}}{2}$。由 $\cos x\ge1-\dfrac{x^{2}}{2}$（一切实数 $x$）得 $g'(x)\ge0$。又 $g(0)=0$，故 $g(x)\ge0$，且 $x>0$ 时 $g'(x)>0$ 严格成立，得
+\[
+\sin x>x-\frac{x^{3}}{6}\qquad(x>0).
+\]
+（用泰勒直接看：$\sin x=x-\frac{x^{3}}{6}+\frac{x^{5}}{120}-\cdots$，当 $0<x\le1$ 时交错级数的下一项为正，也给出 $\sin x>x-\frac{x^{3}}6$。但对一切 $x>0$ 成立的证明只有导数法。）
+
+\medskip
+\noindent\textbf{T4.3}\quad 答案：极大值 $27\ee^{-3}$，在 $x=3$ 处取到。
+\key{$f'(x)=x^{2}\ee^{-x}(3-x)$。$x=0$ 也是驻点，但它是\textbf{端点或极小}，不能丢。}
+
+\[
+f'(x)=\ee^{-x}\left(3x^{2}-x^{3}\right)=x^{2}\ee^{-x}(3-x).
+\]
+在 $(0,+\infty)$ 上，$f'>0 \iff x<3$，$f'<0 \iff x>3$。故 $f$ 在 $x=3$ 处取极大值
+\[
+f(3)=27\ee^{-3}.
+\]
+又 $\lim\limits_{x\to+\infty}f(x)=0$，$f(x)>0$，故这是\textbf{全局}极大值。
+
+\medskip
+\noindent\textbf{T4.4}\quad 答案：$(1+\frac1x)^{x}=\ee\left(1-\frac{1}{2x}+\frac{11}{24x^{2}}+o(x^{-2})\right)$；$\lim=\dfrac{11\ee}{24}$。
+\key{$x\to+\infty$ 时不能用 $x\to0$ 的展开。\textbf{先取对数}把底数变成 $1+u$，$u$ 本身很小，再用 $x\ln(1+\frac1x)$ 的展开，最后还原。}
+
+令 $u=\dfrac1x\to0^{+}$。则
+\[
+\left(1+\frac1x\right)^{x}=\ee^{x\ln(1+u)}.
+\]
+用 $\ln(1+u)=u-\frac{u^{2}}{2}+\frac{u^{3}}{3}+o(u^{3})$，得
+\[
+x\ln\left(1+\frac1x\right)=1-\frac{1}{2x}+\frac{1}{3x^{2}}+o(x^{-2})=:1+w,
+\]
+其中 $w=-\frac{1}{2x}+\frac{1}{3x^{2}}+o(x^{-2})$，$w^{2}=\frac{1}{4x^{2}}+o(x^{-2})$。
+于是
+\[
+\ee^{1+w}=\ee\left(1+w+\frac{w^{2}}{2}+o(x^{-2})\right)
+=\ee\left(1-\frac{1}{2x}+\frac{1}{3x^{2}}+\frac{1}{8x^{2}}+o(x^{-2})\right)
+=\ee\left(1-\frac{1}{2x}+\frac{11}{24x^{2}}+o(x^{-2})\right).
+\]
+因此
+\[
+\left[\left(1+\frac1x\right)^{x}-\ee+\frac{\ee}{2x}\right]x^{2}\;\longrightarrow\;\frac{11\ee}{24}.
+\]
+
+\medskip
+\textbf{T4.5}\quad 答案：$y'(1)=\dfrac12$，$y''(1)=-\dfrac18$。
+\key{把 $x$ 看成 $y$ 的函数：$x=\ee^{y}+y$，则 $\dfrac{\D x}{\D y}=\ee^{y}+1$，一切都好算。\textbf{不要硬解方程}（反解要用 Lambert $W$，考纲外）。}
+
+由 $\ee^{y}+y=x$ 知 $x=1$ 时 $y=0$。把 $x$ 看作 $y$ 的函数：
+\[
+\frac{\D x}{\D y}=\ee^{y}+1,\qquad
+\frac{\D y}{\D x}=\frac{1}{\ee^{y}+1}.
+\]
+在 $y=0$：$\dfrac{\D y}{\D x}=\dfrac12$。
+
+再求二阶导（对 $y$ 求导，再除以 $\dfrac{\D x}{\D y}$）：
+\[
+\frac{\D^{2}y}{\D x^{2}}
+=\frac{\dfrac{\D}{\D y}\left(\dfrac{1}{\ee^{y}+1}\right)}{\ee^{y}+1}
+=\frac{-\dfrac{\ee^{y}}{(\ee^{y}+1)^{2}}}{\ee^{y}+1}
+=-\frac{\ee^{y}}{(\ee^{y}+1)^{3}}.
+\]
+在 $y=0$：$-\dfrac{1}{8}$。
+
+（数值佐证：$x=1.001$ 时 $y\approx0.00049994$，与 $y\approx\frac12(x-1)$ 一致。）
+
+% ============================================================
+\newpage
+\section{泰勒限时卷（12 题 / 40 分钟 / 36 分）}
+
+\begin{keypoint}[用法与验收线]
+\textbf{掐表 40 分钟，每题 3 分，共 36 分。} 目标 $\ge25$ 分（70\%）。低于 21 分说明「会算但不会选阶数」，回去重读 §1.1 决策卡并重做 T2 组；低于 14 分则泰勒还没立住，限时卷整份重做。
+\end{keypoint}
+
+\begin{enumerate}[label=\textbf{W\arabic*.}]
+  \item 求 $\displaystyle\lim_{x\to0}\frac{\ee^{x}-1-x-\frac{x^{2}}{2}}{x^{3}}$。
+  \item 求 $f(x)=\sqrt{1+x}$ 的麦克劳林展开中 $x^{3}$ 项的系数。
+  \item 求 $\displaystyle\lim_{x\to0}\frac{\tan x-x}{x^{3}}$。
+  \item 设 $f(x)=\ln(1+x^{2})$，求 $f^{(4)}(0)$。
+  \item 求 $\displaystyle\lim_{x\to0}\frac{\arcsin x-x}{x^{3}}$。
+  \item 求 $\displaystyle\lim_{x\to0}\frac{\ee^{x}-1-x}{x^{2}}$。
+  \item 写出 $f(x)=\ee^{\cos x}$ 的 2 阶麦克劳林展开。
+  \item 求 $\displaystyle\lim_{x\to0}\frac{\sqrt{1+x}-1-\frac{x}{2}}{x^{2}}$。
+  \item 求 $\displaystyle\lim_{x\to+\infty}x\left[\left(1+\frac1x\right)^{x}-\ee\right]$。
+  \item 设 $f(x)$ 在 $x=0$ 处三阶可导，且 $\displaystyle\lim_{x\to0}\frac{f(x)-x-2x^{2}}{x^{3}}=3$，求 $f'''(0)$。
+  \item 求 $\displaystyle\lim_{x\to0}\frac{(1+x)^{1/3}-1-\frac{x}{3}+\frac{x^{2}}{9}}{x^{3}}$。
+  \item 求 $\displaystyle\lim_{x\to0}\frac{\ln(1+\sin x)-x+\frac{x^{2}}{2}}{x^{3}}$。
+\end{enumerate}
+
+\vspace{2em}
+\noindent\rule{\textwidth}{0.4pt}
+
+\subsection{限时卷答案}
+
+\begin{center}
+\small\setlength{\tabcolsep}{5pt}
+\begin{tabularx}{\linewidth}{c|l c}
+\toprule
+题号 & 答案 & 题号\\
+\midrule
+W1 & $\dfrac16$ & W7 $\ee-\dfrac{\ee}{2}x^{2}+o(x^{2})$\\
+W2 & $\dfrac1{16}$ & W8 $-\dfrac18$\\
+W3 & $\dfrac13$ & W9 $-\dfrac{\ee}{2}$\\
+W4 & $-12$ & W10 $18$\\
+W5 & $\dfrac16$ & W11 $\dfrac5{81}$\\
+W6 & $\dfrac12$ & W12 $\dfrac16$\\
+\bottomrule
+\end{tabularx}
+\end{center}
+
+\begin{methodbox}[关键步骤]
+\begin{enumerate}
+\item W1/W6/W8：都是「减去前 $n$ 项后求比值」，直接读母函数展开的下一项系数。
+\item W3：$\tan x=x+\frac{x^{3}}{3}+\cdots$。
+\item W4：$\ln(1+x^{2})=x^{2}-\frac{x^{4}}{2}+\cdots$，$x^{4}$ 系数 $-\frac12$，$f^{(4)}(0)=4!\cdot\left(-\frac12\right)=-12$。
+\item W5：$\arcsin x=x+\frac{x^{3}}{6}+\cdots$。
+\item W7：$u=\cos x=1-\frac{x^{2}}{2}+o(x^{2})$，$\ee^{u}=\ee\left(1+\left(u-1\right)+o(x^{2})\right)=\ee\left(1-\frac{x^{2}}{2}\right)+o(x^{2})$。
+\item W9：见 T4.4，$(1+\frac1x)^{x}=\ee(1-\frac{1}{2x}+o(x^{-1}))$，乘 $x$ 后得 $-\frac{\ee}{2}$。
+\item W10：条件等价于 $f(x)=x+2x^{2}+3x^{3}+o(x^{3})$，故 $f'''(0)=3!\cdot3=18$。
+\item W11：$(1+x)^{1/3}=1+\frac{x}{3}-\frac{x^{2}}{9}+\frac{5x^{3}}{81}+\cdots$。
+\item W12：$u=\sin x=x+o(x^{2})$，$1+u=1+x+o(x^{2})$，$\ln(1+u)=\left(x+o(x^{2})\right)-\frac{x^{2}}{2}+o(x^{2})$。再补一层：$\ln(1+\sin x)=x-\frac{x^{2}}{2}+\frac{x^{3}}{6}+o(x^{3})$，故原极限 $=\frac16$。
+\end{enumerate}
+\end{methodbox}
+
+% ============================================================
+\newpage
+\section{验收线与放弃线}
+
+\begin{warnbox}[验收线]
+\textbf{PASS 标准}：T 组 19 题中，独立做出 $\ge15$ 题（79\%），且限时卷 $\ge25$ 分（70\%）。
+
+\textbf{其中以下 6 题是必须全对的「地基题」，错一道就回去重读对应小节}：
+\begin{enumerate}
+\item T1.1（$\ee^{\sin x}$ 的 $x^{3}$ 系数为 $0$）→ 错则重读 §1.1 复合展开；
+\item T1.4（$\ln(1+\ee^{x})$ 的常数项是 $\ln2$、$x^{3}$ 系数为 $0$）→ 错则重读 §1.2；
+\item T3.1（$f^{(13)}(0)$ \textbf{不要乘 $13!$}）→ 错则重读 §1.4 四步法；
+\item T2.2（$\sin x$ 的 $x^{7}$ 项符号）→ 错则重背 §1.2 母函数表；
+\item T2.4（$\arctan x$ 的 $x^{7}$ 项）→ 同上；
+\item T4.4（$x\to+\infty$ 的渐近展开要取对数）→ 错则重读 §1.5 洛必达与泰勒的分工。
+\end{enumerate}
+\end{warnbox}
+
+\begin{keypoint}[放弃线：什么情况下直接跳过]
+\begin{enumerate}
+\item 时间只剩 30 分钟以内：跳过 T 组，只做 §7 限时卷的 W1、W3、W6、W10、W12 五题（15 分钟）。
+\item 已经稳过 25 分限时卷：本册直接跳过，进《讲义\_全专题冲顶\_11-08》的 S4 新压轴组。
+\item 泰勒部分连续两次限时卷低于 21 分：\textbf{停一天不做新题}，用 60 分钟把 §1.2 母函数表闭卷默写 3 遍 + 重做 T1、T2 两组。泰勒是「背表 + 选阶」的组合题，卡在题上不如卡在表上。
+\end{enumerate}
+\end{keypoint}
+
+\begin{keypoint}[本题册在真题里的位置（复习价值排序）]
+\begin{enumerate}
+\item \textbf{最高}：T3.1（2023-24 Q15 原型）、T4.5（2024-25 Q14 原型）、T1.1/T1.4（复合展开）。这三类在近两套卷里都是稳定大题。
+\item \textbf{高}：T2 组（余项与逼近阶）—— 它考的是「选阶数」这一个动作，一旦会了，填空与计算里的极限题就都拿得到分。
+\item \textbf{中}：T4.1、T4.2、T4.3（应用）—— 与中值定理组高度重叠，做完这册就不要再重复刷不等式。
+\item \textbf{补充}：T3.5（参数方程 + 泰勒）—— 属于「锦上添花」，真题里少，但能同时练参数方程二阶导。
+\end{enumerate}
+\end{keypoint}
+
+\end{document}

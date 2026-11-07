@@ -18,8 +18,13 @@
 | `讲义_今日配套加练_11-07.tex` | `讲义_今日配套加练_11-07.pdf` | 9 |
 | `讲义_高难冲顶_11-07.tex` | `讲义_高难冲顶_11-07.pdf`（题面 p1–4、答案 p5、详解 p6–14、验收 p15） | 15 |
 | `讲义_练习_函数极限计算与泰勒.tex` | `讲义_练习_函数极限计算与泰勒.pdf`（2026-11-07 修复两处圈号缺字并重编译，页数不变） | 9 |
+| `讲义_泰勒与压轴强化_11-08.tex` | `讲义_泰勒与压轴强化_11-08.pdf` | 13 |
+| `讲义_全专题冲顶_11-08.tex` + `part2_body.tex` | `讲义_全专题冲顶_11-08.pdf`（主文件 + `\include` 的后半部分，须放在一起编译） | 24 |
+| `每日阅读包_11-08.tex` + `_a1108_body.tex` | `每日阅读包_11-08.pdf`（A 部分正文独立成文件；B 部分 39 页由脚本合订） | 49 |
 
 `verify_daily_drill.py` 是 11/7 配套加练讲义 50 道题的复核脚本（**PASS 106 / FAIL 0**，sympy 符号极限 + 隐函数二阶导 + 参数/极坐标导数 + mpmath 高精度采样）。
+
+`verify_taylor_drill.py`（**PASS 58 / FAIL 0**）与 `verify_full_topics_drill.py`（**PASS 154 / FAIL 0**）是 11/8 两册讲义的复核脚本，**先于讲义写成**，共抓出 16 处自身答案错误；`_a1108_body.tex` 是阅读包 A 部分的独立 LaTeX 正文（由 `build_daily_pack.py` 读入并替换占位符）。
 
 `verify_hard_drill.py` 是 11/7 高难冲顶 22 题的复核脚本（**PASS 91 / FAIL 0**）：H1 极限（含四阶展开与首项抵消）、H2 隐函数与摆线二阶导、$1/(x^2-3x+2)$ 的 $n$ 阶导通项、分段连续可导、H3 构造恒等式与反例抽检（含三明治逐层导数）、H4 斜/竖直渐近线与「驻点非极值」、心形线 $\theta=\pi$ 处斜率极限、H5 牛顿迭代 / 夹逼展开 / 递推单调有界 / 压缩映射误差界。
 
@@ -38,6 +43,8 @@ xelatex -interaction=nonstopmode -halt-on-error 讲义_导数计算专题.tex   
 PYTHONIOENCODING=utf-8 python verify_new_materials.py
 PYTHONIOENCODING=utf-8 python verify_daily_drill.py   # 11/7 加练 106 项
 PYTHONIOENCODING=utf-8 python verify_hard_drill.py    # 11/7 高难 91 项
+PYTHONIOENCODING=utf-8 python verify_taylor_drill.py       # 11/8 泰勒册 58 项
+PYTHONIOENCODING=utf-8 python verify_full_topics_drill.py  # 11/8 全专题册 154 项
 ```
 
 ## 注意
