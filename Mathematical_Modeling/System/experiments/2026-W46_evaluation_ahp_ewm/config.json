@@ -1,0 +1,8 @@
+{
+  "experiment": "2026-W46_evaluation_ahp_ewm",
+  "task_id": "weekly-2026-W46",
+  "seed": 42,
+  "perturbations": 500,
+  "data_note": "SIMULATED 6x5（明确标记）",
+  "methods": ["AHP+TOPSIS", "熵权+TOPSIS", "组合权重+TOPSIS", "PCA+加权和", "等权+TOPSIS"]
+}

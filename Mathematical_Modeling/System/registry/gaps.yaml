@@ -1,0 +1,89 @@
+# 知识短板台账（Knowledge Gap Registry）
+# 由每月基准测试的独立评审写入；学习任务完成后必须回填 retest 结果，才能关闭。
+# 错误类别: math | model_choice | modeling | code | experiment | paper
+# priority: P0 基本正确性 / P1 模型选择与求解 / P2 效率与实验质量 / P3 高级拓展
+# status: open | in_progress | fixed | regressed | wontfix
+
+version: 3
+updated: 2026-11-07
+source: benchmark-2026-11-B1 + weekly-2026-W45
+
+items:
+  - id: G-001
+    priority: P2
+    category: math
+    knowledge_point: 相关矩阵的正定性与可实现性(Cholesky 可行性 / 最近正定投影 / rho 可行上限)
+    found: 2026-11-07
+    source_test: benchmark-2026-11-B1
+    evidence: "环形+弦结构 rho=0.4 的最小特征值为负, np.linalg.cholesky 抛 LinAlgError"
+    impact: 多元相关随机模拟会直接崩溃或静默使用错误相关性
+    plan: 已完成 weekly-2026-W45-g-001 专项实验(真实数据 + 四种修复 + 风险偏差量化)
+    due: 2026-11-30
+    status: in_progress
+    fixed_evidence: "experiments/2026-W45_math_g-001/report.md：rho 上限 n=10 为 0.366 / 修复致组合风险差 1.74 倍 / 半正定不够必须 eps>0"
+    retest: "B2 必须含 >=15 维相关需求，评审检查 PSD 前置断言；通过则 status=fixed"
+
+  - id: G-002
+    priority: P1
+    category: paper
+    knowledge_point: 证据纪律 — 论文中每个数字必须可追溯到 result.json(先跑后写)
+    found: 2026-11-07
+    source_test: benchmark-2026-11-B1
+    evidence: "论文写 15701.3, 实跑 15682.20; 已被 evaluate.py 的 critical 规则拦下并修正"
+    impact: 结论不可审计
+    plan: 工具化(evaluate.py 自动抽取+比对), 已落地
+    due: 2026-11-15
+    status: in_progress
+    retest: "B2 连续 2 次 0 违规即降级"
+
+  - id: G-003
+    priority: P1
+    category: experiment
+    knowledge_point: 断言设计反模式 — 不能预设谁该赢, 只能检验设计公平性/数据性质
+    found: 2026-11-07
+    source_test: weekly-2026-W45
+    evidence: "首版断言 至少3个模型优于Naive, 两套数据均失败"
+    impact: 断言退化为自证, 失去验证意义
+    plan: 断言四类模板写入 System/README.md §3, 已落地
+    due: 2026-11-15
+    status: in_progress
+    retest: null
+
+  - id: G-004
+    priority: P2
+    category: modeling
+    knowledge_point: 退化情形验证 — 并列最优/多解集合比对, 不能只比一个解
+    found: 2026-11-07
+    source_test: benchmark-2026-11-B1
+    evidence: "S1+S3 与 S1+S2 同价 15682.20, 评审脚本按唯一解误判"
+    impact: 可能把正确的等价解判为错误
+    plan: 优化类测试评分增加并列最优项
+    due: 2026-12-15
+    status: open
+    retest: null
+
+  - id: G-005
+    priority: P2
+    category: experiment
+    knowledge_point: Pareto 前沿适用边界 — epsilon-约束 vs 加权和, 前沿退化为单点的判别
+    found: 2026-11-07
+    source_test: benchmark-2026-11-B1
+    evidence: "epsilon 扫描 15 点仅得 1 个非支配解(固定成本占 61%)"
+    impact: 误报多目标权衡
+    plan: 后续优化比较报告补前沿退化专节
+    due: 2026-12-15
+    status: open
+    retest: null
+
+  - id: G-006
+    priority: P3
+    category: model_choice
+    knowledge_point: 机会约束 vs 事后模拟 的等价性(SAA 收敛, VaR/CVaR 对应)
+    found: 2026-11-07
+    source_test: benchmark-2026-11-B1
+    evidence: "机会约束(lambda=1.645)方案切换 S1+S2 +11.9%, 而后验 S1 超载概率 44%"
+    impact: 风险度量口径不一致
+    plan: 补 Day30 教案的 SAA 收敛部分
+    due: 2027-01-15
+    status: open
+    retest: null

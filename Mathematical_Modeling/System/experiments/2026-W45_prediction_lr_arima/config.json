@@ -1,0 +1,21 @@
+{
+  "experiment": "2026-W45_prediction_lr_arima",
+  "task_id": "weekly-2026-W45",
+  "seed": 42,
+  "data": {
+    "url": "https://archive-api.open-meteo.com/v1/archive?latitude=39.9042&longitude=116.4074&start_date=2020-01-01&end_date=2020-12-31&daily=temperature_2m_mean&timezone=Asia%2FShanghai",
+    "source_note": "real:Open-Meteo ERA5 再分析 · 北京(39.9N,116.4E) 2020 日均气温，366 天，缺测 0",
+    "fallback": "synthetic(确定性合成，明确标记)",
+    "description": "北京 2020 年日均气温日序列（单变量时间序列，强年周期，弱周周期）"
+  },
+  "window": {
+    "initial_train": 120,
+    "horizon": 7,
+    "step": 7
+  },
+  "models": [
+    "Naive", "LR(p=7)", "Polynomial2(p=7)", "Ridge(p=7,a=10)", "Lasso(p=7,a=0.05)",
+    "ARIMA(2,1,1)", "ARIMA(7,1,0)", "ExpSmooth(a=0.3)", "GM(1,1)"
+  ],
+  "metrics": ["MAE", "RMSE", "MAPE", "SMAPE", "R2"]
+}

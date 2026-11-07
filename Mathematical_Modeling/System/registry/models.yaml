@@ -1,0 +1,138 @@
+# 模型成熟度台账（唯一真值源）
+# 等级必须由证据升级，禁止 Agent 自评宣布。
+# 通过条件（System/README.md）：
+#   L1 已了解   : 有资料/教案，能解释基本思想
+#   L2 理论掌握 : 数学原理+公式推导+变量/参数/假设+适用条件
+#   L3 实现掌握 : 有实现代码+自动化测试通过(退出码0+断言)+结果可复跑(指纹一致)
+#   L4 应用掌握 : 在真实数据上解决过问题+与≥1个替代模型同条件比较+分析过局限性
+#   L5 综合应用 : 在综合测试中被组合使用，且通过独立评审(总分≥70 且无 P0 错误)
+# status: active | needs_review(久未使用/复测) | deprecated(仅标记，不删除知识)
+
+version: 2
+updated: 2026-11-07
+source_of_evidence:
+  weekly_2026_W45: "experiments/2026-W45_prediction_lr_arima/{experiment.py,result.json,review.json}"
+
+models:
+  - id: LP
+    name: 线性规划
+    name_en: Linear Programming
+    category: 优化
+    docs: ["04 - Optimization/Day26 - 线性规划对偶理论影子价格与敏感性分析.md"]
+    code: []
+    tests: []
+    maturity: 2
+    evidence: {}
+    last_reviewed: null
+    status: active
+
+  - id: MLR
+    name: 多元线性回归
+    name_en: Multiple Linear Regression
+    category: 预测/统计
+    docs: []
+    code: ["System/experiments/2026-W45_prediction_lr_arima/experiment.py::reg_family(LR)"]
+    tests: ["experiment.py 8断言全过; independent_review.py 12/12"]
+    maturity: 3
+    evidence: {L3: "weekly-2026-W45 verified, fingerprint 584bbb2600f44f9d"}
+    last_reviewed: 2026-11-07
+    status: active
+
+  - id: RIDGE
+    name: 岭回归
+    category: 预测/统计
+    docs: []
+    code: ["experiments/2026-W45_prediction_lr_arima/experiment.py::reg_family(RIDGE)"]
+    tests: ["同 MLR"]
+    maturity: 3
+    evidence: {L3: "weekly-2026-W45"}
+    last_reviewed: 2026-11-07
+    status: active
+
+  - id: LASSO
+    name: Lasso
+    category: 预测/统计
+    docs: []
+    code: ["experiments/2026-W45_prediction_lr_arima/experiment.py::reg_family(LASSO)"]
+    tests: ["同 MLR"]
+    maturity: 3
+    evidence: {L3: "weekly-2026-W45"}
+    last_reviewed: 2026-11-07
+    status: active
+
+  - id: POLYREG
+    name: 多项式回归
+    category: 预测
+    docs: []
+    code: ["experiments/2026-W45_prediction_lr_arima/experiment.py::reg_family(POLY2)"]
+    tests: ["同 MLR（实测在该任务上最差，作为反例保留）"]
+    maturity: 3
+    evidence: {L3: "weekly-2026-W45"}
+    last_reviewed: 2026-11-07
+    status: active
+
+  - id: ARIMA
+    name: ARIMA
+    category: 预测
+    docs: []
+    code: ["experiments/2026-W45_prediction_lr_arima/experiment.py::arima (Hannan-Rissanen 手写)"]
+    tests: ["最优模型 ARIMA(7,1,0) RMSE=2.8036；ARIMA(2,1,1) 亦通过"]
+    maturity: 3
+    evidence: {L3: "weekly-2026-W45", L4: "真实 ERA5 气温数据上与 8 个替代模型同条件比较（未做调优，故不满足 L4 的局限分析闭环）"}
+    last_reviewed: 2026-11-07
+    status: active
+
+  - id: EXPSM
+    name: 指数平滑
+    category: 预测
+    docs: []
+    code: ["experiments/2026-W45_prediction_lr_arima/experiment.py::exp_smooth"]
+    tests: ["alpha=0.3 RMSE=2.8167，耗时 0.005s"]
+    maturity: 3
+    evidence: {L3: "weekly-2026-W45"}
+    last_reviewed: 2026-11-07
+    status: active
+
+  - id: GM11
+    name: GM(1,1) 灰色预测
+    category: 预测
+    docs: []
+    code: ["experiments/2026-W45_prediction_lr_arima/experiment.py::gm11"]
+    tests: ["带周期数据上 R2=-7.81，失效已实证"]
+    maturity: 3
+    evidence: {L3: "weekly-2026-W45", note: "已实证不适用条件，属有效知识"}
+    last_reviewed: 2026-11-07
+    status: active
+
+  - id: MC
+    name: 蒙特卡洛
+    category: 随机
+    docs: ["04 - Optimization/Day57 - 蒙特卡洛仿真与离散事件仿真渡口配船.md"]
+    code: []
+    tests: []
+    maturity: 2
+    evidence: {}
+    last_reviewed: null
+    status: active
+
+  - id: AHP
+    name: 层次分析法
+    category: 综合评价
+    docs: []
+    code: []
+    tests: []
+    maturity: 1
+    evidence: {}
+    last_reviewed: null
+    status: active
+
+  - id: EWM
+    name: 熵权法
+    category: 综合评价
+    docs: []
+    code: []
+    tests: []
+    maturity: 1
+    evidence: {}
+    last_reviewed: null
+    status: active

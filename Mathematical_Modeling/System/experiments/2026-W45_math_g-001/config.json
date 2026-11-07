@@ -1,0 +1,28 @@
+{
+  "task_id": "weekly-2026-W45-g-001",
+  "title": "相关矩阵的可实现性：rho 可行上限 / 正定修复 / 对风险度量的影响",
+  "created_by": "generate_weekly.py",
+  "target_gap": "G-001",
+  "gap_knowledge_point": "相关矩阵的正定性与可实现性(Cholesky 可行性 / 最近正定投影 / rho 可行上限)",
+  "experiment": {
+    "seed": 20261107,
+    "models_to_compare": [
+      "NAIVE_CHOLESKY",
+      "EIG_CLIP",
+      "HIGHAM",
+      "SHRINK",
+      "INDEP_BASELINE"
+    ],
+    "metrics": [
+      "rho_max_feasible",
+      "psd_violation_min_eig",
+      "frobenius_distance",
+      "portfolio_std_bias_pct",
+      "var95_bias_pct",
+      "simulation_crash_rate"
+    ],
+    "data": "真实日频收益率（yfinance 公共数据，全球 + 中国 A 股 ETF/指数代理），落 data/raw.csv",
+    "notes": "核心问题不是'如何修复'，而是'修复会悄悄改变风险结论多少'"
+  },
+  "status": "pending_review"
+}

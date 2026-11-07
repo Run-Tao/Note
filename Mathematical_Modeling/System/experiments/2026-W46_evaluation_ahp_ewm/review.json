@@ -1,0 +1,68 @@
+{
+  "reviewer": "independent_review.py",
+  "checks": [
+    {
+      "check": "独立幂法重算 AHP 权重与记录一致(1e-3)",
+      "pass": true,
+      "detail": "独立=[0.2978 0.1578 0.2978 0.0888 0.1578]"
+    },
+    {
+      "check": "独立重算 CR<0.1",
+      "pass": true,
+      "detail": "CR=0.0030"
+    },
+    {
+      "check": "记录 CR 与独立复算差 <1e-3",
+      "pass": true,
+      "detail": "0.0030 vs 0.003"
+    },
+    {
+      "check": "独立重算熵权与记录一致(1e-3)",
+      "pass": true,
+      "detail": "[0.203  0.1893 0.178  0.1852 0.2446]"
+    },
+    {
+      "check": "独立重算 TOPSIS 分值与记录一致(1e-3)",
+      "pass": true,
+      "detail": "[0.5387 0.4217 0.4641 0.4123 0.6614 0.5115]"
+    },
+    {
+      "check": "TOPSIS 分值均在 (0,1)",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "扰动次数与配置一致",
+      "pass": true,
+      "detail": "500"
+    },
+    {
+      "check": "扰动排名翻转率在 [0,1]",
+      "pass": true,
+      "detail": "0.2427"
+    },
+    {
+      "check": "最优方案在所有扰动下唯一（top1 计数和 == 扰动次数）",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "数据被明确标记为模拟",
+      "pass": true,
+      "detail": "SIMULATED 6 方案 × 5 指标（明确标记为模拟，非现实观测）"
+    },
+    {
+      "check": "env.json 种子与配置一致",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "复跑 2 次指纹一致",
+      "pass": true,
+      "detail": "['fb883a8271843aad', 'fb883a8271843aad']"
+    }
+  ],
+  "passed": 12,
+  "failed": 0,
+  "verdict": "verified"
+}

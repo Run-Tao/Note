@@ -1,0 +1,13 @@
+{
+  "experiment": "2026-W46_optimization_lp_ilp",
+  "task_id": "weekly-2026-W46b",
+  "seed": 42,
+  "problem": {
+    "cost": [420, 560, 780, 640],
+    "capacity": [8, 12, 20, 10],
+    "max_units": [30, 25, 18, 15],
+    "min_units": [4, 3, 2, 0],
+    "demand_ton": 640
+  },
+  "note": "参数为示意（业务逻辑真实），明确标记为模拟"
+}
