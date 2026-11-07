@@ -237,5 +237,11 @@
       "detail": "ok"
     }
   ],
-  "fingerprint": "4b58c46eaa879886"
+  "fingerprint": "4b58c46eaa879886",
+  "data_note": "题面给定参数（benchmark.md，自建题，人工设定的模拟参数）；随机部分为模拟采样，非现实观测",
+  "data": {
+    "note": "题面给定参数（benchmark.md，自建题，人工设定的模拟参数）；随机部分为模拟采样，非现实观测",
+    "source": "benchmark.md 题面（自建题，模拟参数）",
+    "type": "simulated"
+  }
 }
