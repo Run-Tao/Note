@@ -1,0 +1,13 @@
+{"ts": "2026-11-07T21:21:31+0800", "kind": "weekly-2026-W45-verify", "id": "weekly-2026-W45", "state": "running", "note": "预测模型比较实验独立复核脚本", "owner_pid": 4183812}
+{"ts": "2026-11-07T21:22:05+0800", "id": "weekly-2026-W45", "state": "verified", "msg": "独立复核 12/12 通过，指纹 584bbb2600f44f9d", "owner_pid": 4183969, "kind": "weekly-2026-W45-verify", "backfilled": true}
+{"ts": "2026-11-07T21:22:59+0800", "kind": "weekly-2026-W46-verify", "id": "weekly-2026-W46", "state": "running", "note": "综合评价方法比较独立复核", "owner_pid": 4184179}
+{"ts": "2026-11-07T21:23:24+0800", "id": "weekly-2026-W46", "state": "verified", "msg": "独立复核 12/12 通过，指纹 fb883a8271843aad", "owner_pid": 4184271, "kind": "weekly-2026-W46-verify", "backfilled": true}
+{"ts": "2026-11-07T21:24:44+0800", "kind": "weekly-2026-W46b-verify", "id": "weekly-2026-W46b", "state": "running", "note": "LP vs ILP 独立复核", "owner_pid": 4184581}
+{"ts": "2026-11-07T21:24:44+0800", "id": "weekly-2026-W46b", "state": "verified", "msg": "独立复核 11/11 通过（含穷举交叉验证），指纹 dcde024302bcec42", "owner_pid": 4184580, "kind": "weekly-2026-W46b-verify", "backfilled": true}
+{"ts": "2026-11-07T21:28:57+0800", "kind": "benchmark-2026-11-B1-cross", "id": "benchmark-2026-11-B1", "state": "running", "note": "B1 交叉评审", "owner_pid": 4185839}
+{"ts": "2026-11-07T21:29:34+0800", "id": "benchmark-2026-11-B1", "state": "verified", "msg": "交叉评审 23/23 通过，score=100（发现并修复1处数字不可追溯）", "owner_pid": 4185997, "kind": "benchmark-2026-11-B1-cross", "backfilled": true}
+{"ts": "2026-11-07T21:31:21+0800", "kind": "weekly-run", "id": "weekly-2026-W46c-selftest", "state": "running", "note": "2026-W46_optimization_lp_ilp", "owner_pid": 4186637}
+{"ts": "2026-11-07T21:31:29+0800", "id": "weekly-2026-W46c-selftest", "state": "verified", "msg": "run_task.py 全流程通过", "owner_pid": 4186682, "kind": "weekly-run"}
+{"ts": "2026-11-07T21:31:31+0800", "kind": "monthly-run", "id": "benchmark-2026-11-B1-fullrun", "state": "running", "note": "2026-11_B1_coldchain", "owner_pid": 4186690}
+{"ts": "2026-11-07T21:31:38+0800", "kind": "monthly-run", "id": "benchmark-2026-11-B1-fullrun", "state": "running", "note": "2026-11_B1_coldchain", "owner_pid": 4186716}
+{"ts": "2026-11-07T21:31:48+0800", "id": "benchmark-2026-11-B1-fullrun", "state": "verified", "msg": "run_task.py 全流程通过", "owner_pid": 4186790, "kind": "monthly-run"}

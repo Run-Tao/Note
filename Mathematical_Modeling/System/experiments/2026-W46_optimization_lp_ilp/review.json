@@ -1,0 +1,63 @@
+{
+  "reviewer": "independent_review.py",
+  "checks": [
+    {
+      "check": "实验 ILP 解与穷举最优一致（成本）",
+      "pass": true,
+      "detail": "穷举=27340.0 实验=27340.0"
+    },
+    {
+      "check": "实验 ILP 解与穷举最优一致（方案）",
+      "pass": true,
+      "detail": "穷举=[ 5. 20. 18.  0.] 实验=[5.0, 20.0, 18.0, 0.0]"
+    },
+    {
+      "check": "LP 目标值 ≥ 合同保底成本（基本下界）",
+      "pass": true,
+      "detail": "27293.33 vs 4920.0"
+    },
+    {
+      "check": "LP 目标值 ≤ ILP 目标值（松弛不会更贵）",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "LP 解满足需求（独立验算）",
+      "pass": true,
+      "detail": "供给=640.0004"
+    },
+    {
+      "check": "记录间隙与独立重算一致(1e-2)",
+      "pass": true,
+      "detail": "0.1710 vs 0.171"
+    },
+    {
+      "check": "扫描 ILP 成本单调不减",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "每个扫描点 ILP ≥ LP",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "LP 出现分数解的扫描点数落在合理范围 [1, n]",
+      "pass": true,
+      "detail": "8"
+    },
+    {
+      "check": "数据标记为模拟",
+      "pass": true,
+      "detail": "SIMULATED 运力配置参数（业务逻辑真实，数值为示意，不伪装现实观测）"
+    },
+    {
+      "check": "复跑 2 次指纹一致",
+      "pass": true,
+      "detail": "['dcde024302bcec42', 'dcde024302bcec42']"
+    }
+  ],
+  "passed": 11,
+  "failed": 0,
+  "verdict": "verified"
+}

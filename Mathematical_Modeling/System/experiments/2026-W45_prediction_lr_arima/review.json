@@ -1,0 +1,68 @@
+{
+  "reviewer": "independent_review.py",
+  "checks": [
+    {
+      "check": "独立重算 Naive RMSE 与 result.json 一致(1e-3)",
+      "pass": true,
+      "detail": "独立=2.7720 记录=2.772"
+    },
+    {
+      "check": "独立重算 Naive MAE 与 result.json 一致(1e-3)",
+      "pass": true,
+      "detail": "独立=2.0649 记录=2.0649"
+    },
+    {
+      "check": "断言不含预设赢家（未把结论写死成断言）",
+      "pass": true,
+      "detail": "[]"
+    },
+    {
+      "check": "origins 上界不越界",
+      "pass": true,
+      "detail": "max_origin=358 n=366"
+    },
+    {
+      "check": "实验代码中存在只用 train 切片的证据",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "env.json 记录 python/seed/packages",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "env.json 记录了数据文件哈希",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "env.json 未把缺失依赖伪造为非空",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "复跑 2 次指纹一致",
+      "pass": true,
+      "detail": "['584bbb2600f44f9d', '584bbb2600f44f9d']"
+    },
+    {
+      "check": "best_model 与指标表自洽",
+      "pass": true,
+      "detail": "ARIMA(7,1,0) vs ARIMA(7,1,0)"
+    },
+    {
+      "check": "GM(1,1) 在带周期数据上失效（R2<0）",
+      "pass": true,
+      "detail": "-7.8064"
+    },
+    {
+      "check": "最优复杂模型未显著优于 Naive（差距<10%）→ 报告结论成立",
+      "pass": true,
+      "detail": ""
+    }
+  ],
+  "passed": 12,
+  "failed": 0,
+  "verdict": "verified"
+}

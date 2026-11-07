@@ -1,0 +1,159 @@
+{
+  "experiment": "2026-W45_prediction_lr_arima",
+  "task_id": "weekly-2026-W45",
+  "data": {
+    "note": "real:Open-Meteo ERA5 再分析 · 北京(39.9N,116.4E) 2020 日均气温，366 天，缺测 0",
+    "n": 366,
+    "origins": 35,
+    "horizon": 7
+  },
+  "metrics": {
+    "Naive(基准)": {
+      "MAE": 2.0649,
+      "RMSE": 2.772,
+      "MAPE_pct": 70.7994,
+      "SMAPE_pct": 28.8193,
+      "R2": 0.9315
+    },
+    "线性回归AR(p=7)": {
+      "MAE": 2.2333,
+      "RMSE": 2.9848,
+      "MAPE_pct": 71.8701,
+      "SMAPE_pct": 26.5861,
+      "R2": 0.9205
+    },
+    "多项式回归AR(p=7)": {
+      "MAE": 2.2404,
+      "RMSE": 3.0934,
+      "MAPE_pct": 69.4913,
+      "SMAPE_pct": 24.9389,
+      "R2": 0.9147
+    },
+    "岭回归AR(p=7)": {
+      "MAE": 2.1738,
+      "RMSE": 2.9054,
+      "MAPE_pct": 69.7887,
+      "SMAPE_pct": 25.8959,
+      "R2": 0.9247
+    },
+    "Lasso AR(p=7)": {
+      "MAE": 2.1377,
+      "RMSE": 2.8841,
+      "MAPE_pct": 70.4514,
+      "SMAPE_pct": 25.9227,
+      "R2": 0.9258
+    },
+    "ARIMA(2,1,1)": {
+      "MAE": 2.1457,
+      "RMSE": 2.8805,
+      "MAPE_pct": 68.569,
+      "SMAPE_pct": 26.4398,
+      "R2": 0.926
+    },
+    "ARIMA(7,1,0)": {
+      "MAE": 2.0775,
+      "RMSE": 2.8036,
+      "MAPE_pct": 69.0277,
+      "SMAPE_pct": 25.7841,
+      "R2": 0.9299
+    },
+    "指数平滑(α=0.3)": {
+      "MAE": 2.1076,
+      "RMSE": 2.8167,
+      "MAPE_pct": 67.8245,
+      "SMAPE_pct": 24.9631,
+      "R2": 0.9292
+    },
+    "GM(1,1)": {
+      "MAE": 28.1673,
+      "RMSE": 31.4225,
+      "MAPE_pct": 432.0889,
+      "SMAPE_pct": 101.1868,
+      "R2": -7.8064
+    }
+  },
+  "timings_s": {
+    "Naive(基准)": 0.0,
+    "线性回归AR(p=7)": 0.276,
+    "多项式回归AR(p=7)": 0.416,
+    "岭回归AR(p=7)": 0.281,
+    "Lasso AR(p=7)": 0.267,
+    "ARIMA(2,1,1)": 0.102,
+    "ARIMA(7,1,0)": 0.096,
+    "指数平滑(α=0.3)": 0.005,
+    "GM(1,1)": 0.004
+  },
+  "robustness_rmse": {
+    "init_train=90": {
+      "Naive(基准)": 3.7352,
+      "线性回归AR(p=7)": 4.1498,
+      "ARIMA(2,1,1)": 3.3748,
+      "指数平滑(α=0.3)": 3.6796
+    },
+    "init_train=120": {
+      "Naive(基准)": 2.3982,
+      "线性回归AR(p=7)": 2.6567,
+      "ARIMA(2,1,1)": 2.6129,
+      "指数平滑(α=0.3)": 2.7343
+    },
+    "init_train=150": {
+      "Naive(基准)": 2.8669,
+      "线性回归AR(p=7)": 2.5339,
+      "ARIMA(2,1,1)": 2.6656,
+      "指数平滑(α=0.3)": 2.3442
+    }
+  },
+  "metrics_notes": {
+    "MAPE": "气温跨零→分母接近 0 时爆炸，仅作参考，主用 SMAPE",
+    "R2": "多起点拼接后整体计算，反映相对均值的解释力"
+  },
+  "checks": [
+    {
+      "check": "所有模型产出有限数值",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "AR 前缀非平凡模型至少 2 个优于/持平 Naive（差距≤5%）",
+      "pass": true,
+      "detail": "naive=2.772 best=ARIMA(7,1,0)"
+    },
+    {
+      "check": "7 个非单调模型可用（R2 有限且 > -5，GM 失效但可测）",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "GM(1,1) 不作无条件预测时失效可观测（R2<0 或 RMSE>Naive）",
+      "pass": true,
+      "detail": "GB R2=-7.8064"
+    },
+    {
+      "check": "ARIMA 系列 RMSE 在合理区间（0,50）",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "origins 数量足够（≥10）",
+      "pass": true,
+      "detail": "35"
+    },
+    {
+      "check": "无未来信息泄漏：每个起点只用 train（长度严格等于起点）",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "稳健性覆盖 3 个窗口",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "随机种子已固定",
+      "pass": true,
+      "detail": ""
+    }
+  ],
+  "best_model": "ARIMA(7,1,0)",
+  "fingerprint": "584bbb2600f44f9d"
+}

@@ -1,0 +1,257 @@
+{
+  "benchmark": "2026-11-B1",
+  "evaluator": "evaluate.py（程序化证据汇总）",
+  "dimension_scores": {
+    "A": {
+      "score": 100.0,
+      "passed": 3,
+      "total": 3,
+      "failed": []
+    },
+    "B": {
+      "score": 100.0,
+      "passed": 8,
+      "total": 8,
+      "failed": []
+    },
+    "C": {
+      "score": 100.0,
+      "passed": 4,
+      "total": 4,
+      "failed": []
+    },
+    "D": {
+      "score": 100.0,
+      "passed": 3,
+      "total": 3,
+      "failed": []
+    },
+    "E": {
+      "score": 100.0,
+      "passed": 7,
+      "total": 7,
+      "failed": []
+    },
+    "F": {
+      "score": 100.0,
+      "passed": 4,
+      "total": 4,
+      "failed": []
+    },
+    "G": {
+      "score": 100.0,
+      "passed": 3,
+      "total": 3,
+      "failed": []
+    }
+  },
+  "weights": {
+    "A": 0.1,
+    "B": 0.2,
+    "C": 0.15,
+    "D": 0.15,
+    "E": 0.15,
+    "F": 0.1,
+    "G": 0.15
+  },
+  "raw_total": 100.0,
+  "critical_errors": [],
+  "critical_count": 0,
+  "penalty": 0,
+  "final_score": 100.0,
+  "checks": [
+    {
+      "dim": "A",
+      "check": "识别出选址/分配/时效三层结构",
+      "pass": true,
+      "evidence": "paper.md §0 三层结构"
+    },
+    {
+      "dim": "A",
+      "check": "识别量纲陷阱（年化成本折周）",
+      "pass": true,
+      "evidence": "paper.md §2.4"
+    },
+    {
+      "dim": "A",
+      "check": "识别加急费是由分配决定的派生量",
+      "pass": true,
+      "evidence": "paper.md §0"
+    },
+    {
+      "dim": "B",
+      "check": "MILP 变量完整（y/x/e）",
+      "pass": true,
+      "evidence": "§2.1"
+    },
+    {
+      "dim": "B",
+      "check": "含开启联动约束 x<=y",
+      "pass": true,
+      "evidence": "§2.3"
+    },
+    {
+      "dim": "B",
+      "check": "含能力约束",
+      "pass": true,
+      "evidence": "§2.3"
+    },
+    {
+      "dim": "B",
+      "check": "含加急费联动约束",
+      "pass": true,
+      "evidence": "§2.3"
+    },
+    {
+      "dim": "B",
+      "check": "随机部分处理了相关性（未独立采样）",
+      "pass": true,
+      "evidence": "§5"
+    },
+    {
+      "dim": "B",
+      "check": "未用加权和冒充法误导 Pareto（识别非凸）",
+      "pass": true,
+      "evidence": "§4"
+    },
+    {
+      "dim": "B",
+      "check": "确定性最优成本与参考解一致（±1 元）",
+      "pass": true,
+      "evidence": "solver=15682.20 ref=15682.20"
+    },
+    {
+      "dim": "B",
+      "check": "开站方案与参考解一致",
+      "pass": true,
+      "evidence": "solver=[1, 0, 1] ref=[1, 0, 1]"
+    },
+    {
+      "dim": "C",
+      "check": "目标函数三项分列且单位统一为元/周",
+      "pass": true,
+      "evidence": "§2.2"
+    },
+    {
+      "dim": "C",
+      "check": "对 P3/P6 覆盖约束给出说明",
+      "pass": true,
+      "evidence": "§2.3 末"
+    },
+    {
+      "dim": "C",
+      "check": "机会约束/两阶段作为改进给出数学形式",
+      "pass": true,
+      "evidence": "§8"
+    },
+    {
+      "dim": "C",
+      "check": "未出现公式与结论矛盾（成本项 61.3% 与 9615/15682=61.3% 自洽）",
+      "pass": true,
+      "evidence": "9615.38/15682.20=61.3%"
+    },
+    {
+      "dim": "D",
+      "check": "代码可独立运行且退出码 0",
+      "pass": true,
+      "evidence": "rc=0"
+    },
+    {
+      "dim": "D",
+      "check": "复跑指纹一致（可复现）",
+      "pass": true,
+      "evidence": "4b58c46eaa879886 vs 4b58c46eaa879886"
+    },
+    {
+      "dim": "D",
+      "check": "代码含可行性独立验算（不只信任求解器）",
+      "pass": true,
+      "evidence": "solve.py verify()"
+    },
+    {
+      "dim": "E",
+      "check": "做了 Pareto 前沿（ε-约束法，≥10 个 ε 点）",
+      "pass": true,
+      "evidence": "solve.py pareto"
+    },
+    {
+      "dim": "E",
+      "check": "Pareto 结论与参考一致（前沿退化为单点）",
+      "pass": true,
+      "evidence": "solver=1 ref=1"
+    },
+    {
+      "dim": "E",
+      "check": "随机模拟样本量 ≥10 万且固定种子",
+      "pass": true,
+      "evidence": "n_sim=200000 seed=2026"
+    },
+    {
+      "dim": "E",
+      "check": "95% 分位与参考解一致（±50 元，允许采样差异）",
+      "pass": true,
+      "evidence": "solver=16063.42 ref=16063.37"
+    },
+    {
+      "dim": "E",
+      "check": "瓶颈站识别正确（S1 为瓶颈）",
+      "pass": true,
+      "evidence": "overload_prob=[0.4434, 0.0, 0.1424]"
+    },
+    {
+      "dim": "E",
+      "check": "稳健性做了建设成本扫描（≥4 个乘数）",
+      "pass": true,
+      "evidence": "['1.0', '1.15', '1.3', '1.5', '2.0']"
+    },
+    {
+      "dim": "E",
+      "check": "承认不存在方案切换临界点（而非编造一个临界值）",
+      "pass": true,
+      "evidence": "§6"
+    },
+    {
+      "dim": "F",
+      "check": "提出并实测拆分服务改进",
+      "pass": true,
+      "evidence": "§8 item 1"
+    },
+    {
+      "dim": "F",
+      "check": "提出机会约束并实测",
+      "pass": true,
+      "evidence": "chance-constrained cost=17542.30"
+    },
+    {
+      "dim": "F",
+      "check": "改进有实验数据支撑（数字可在 result.json 复现）",
+      "pass": true,
+      "evidence": "split=15682.2, chance=17542.3"
+    },
+    {
+      "dim": "F",
+      "check": "承认拆分服务无效（负结果如实报告）",
+      "pass": true,
+      "evidence": "§8 item 1"
+    },
+    {
+      "dim": "G",
+      "check": "论文结构完整（问题/假设/模型/求解/分析/检验/稳健/局限/参考）",
+      "pass": true,
+      "evidence": "8/9"
+    },
+    {
+      "dim": "G",
+      "check": "有明确数字与单位",
+      "pass": true,
+      "evidence": "§3"
+    },
+    {
+      "dim": "G",
+      "check": "结论不超证据（未把随机模拟结果称为实测）",
+      "pass": true,
+      "evidence": "模拟区（§5）无'实测'标注"
+    }
+  ],
+  "independence_note": "数学/论文两项由同一底层模型在独立上下文评审，可程序化项（成本、方案、Pareto、复现性）全部由脚本验证，不采信文字自述。"
+}
