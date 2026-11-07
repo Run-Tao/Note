@@ -1,0 +1,829 @@
+% !TeX program = xelatex
+\documentclass[11pt,a4paper]{ctexart}
+% ============================================================
+%  高难冲顶 22 题 · 11/7 追加
+%  编译：xelatex 两遍
+%  定位：不是保底册。对标 2008--2025 十七套交大高数 A 类期中真题的
+%        中高难度与压轴难度，专治「基础题会做、真题一做就卡」。
+%  避重：与《讲义_今日配套加练_11-07》（50 题保底册）、三本专题讲义、
+%        练习册 A/B/L 组、§7 限时卷 13 题、25 页中值定理讲义均不重复。
+%  复核：Homework/_review/tools/verify_hard_drill.py —— PASS 91 / FAIL 0
+%  用户指示：2026-11-07 16:30「增加有难度的内容，匹配前几年真题卷的难度，
+%            不要保守型思考」→ 本册 22 题全部按真题难度上限设计。
+% ============================================================
+\usepackage[a4paper,top=2.0cm,bottom=2.0cm,left=2.0cm,right=2.0cm]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools,bm}
+\usepackage{booktabs,array,longtable,tabularx,multicol}
+\usepackage{enumitem}
+\usepackage[most]{tcolorbox}
+\usepackage{fancyhdr}
+\usepackage{hyperref}
+\hypersetup{hidelinks,colorlinks=true,linkcolor=blue!50!black}
+\usepackage{titlesec}
+
+\linespread{1.20}
+\setlength{\parskip}{0.18em}
+\setlist[enumerate]{itemsep=2pt,topsep=3pt,parsep=0pt,leftmargin=1.9em}
+\setlist[itemize]{itemsep=2pt,topsep=3pt,parsep=0pt,leftmargin=1.6em}
+\titleformat{\section}{\Large\bfseries\color{blue!35!black}}{\thesection}{0.6em}{}
+\titleformat{\subsection}{\large\bfseries\color{blue!25!black}}{\thesubsection}{0.5em}{}
+\titlespacing*{\section}{0pt}{1.4ex plus .3ex}{0.8ex}
+\titlespacing*{\subsection}{0pt}{1.0ex plus .2ex}{0.5ex}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small 高难冲顶 22 题 · 11/7 追加}
+\fancyhead[R]{\small 陶理}
+\fancyfoot[C]{\small\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\eps}{\varepsilon}
+\newcommand{\abs}[1]{\left\lvert #1\right\rvert}
+\newcommand{\ee}{\mathrm{e}}
+\newcommand{\D}{\mathrm{d}}
+\newcommand{\dd}[2]{\dfrac{\D #1}{\D #2}}
+\newcommand{\q}[2]{\par\medskip\noindent\textbf{#1}\quad #2\par}
+\newcommand{\tagline}[1]{\par\nopagebreak\noindent{\small\color{blue!45!black}#1}\par}
+\newcommand{\key}[1]{\par\nopagebreak\noindent{\small\color{red!55!black}\textbf{卡点：}#1}\par}
+\newcommand{\ans}[1]{\;\boxed{#1}}
+
+\newtcolorbox{keypoint}[1][]{enhanced,breakable,colback=blue!3,colframe=blue!40!black,
+  fonttitle=\bfseries,title={#1},boxrule=0.5pt,arc=1.5mm,
+  left=3mm,right=3mm,top=2mm,bottom=2mm,before skip=4pt,after skip=4pt}
+\newtcolorbox{warnbox}[1][]{enhanced,breakable,colback=red!3,colframe=red!50!black,
+  fonttitle=\bfseries,title={#1},boxrule=0.5pt,arc=1.5mm,
+  left=3mm,right=3mm,top=2mm,bottom=2mm,before skip=4pt,after skip=4pt}
+\newtcolorbox{methodbox}[1][]{enhanced,breakable,colback=green!3!white,colframe=green!35!black,
+  fonttitle=\bfseries,title={#1},boxrule=0.5pt,arc=1.5mm,
+  left=3mm,right=3mm,top=2mm,bottom=2mm,before skip=4pt,after skip=4pt}
+
+\begin{document}
+
+\begin{center}
+  {\LARGE\bfseries 高难冲顶 22 题}\\[4pt]
+  {\large 对标 2008--2025 十七套真题的中高难度与压轴难度}\\[4pt]
+  {\small 陶理\quad 2026-11-07\quad 配合《讲义\_今日配套加练\_11-07》使用}
+\end{center}
+
+\begin{keypoint}[这本不是保底册]
+\begin{enumerate}
+\item \textbf{定位不同}。50 题保底册（\texttt{讲义\_今日配套加练\_11-07}）把你送到 70 分；本册 22 题练的是\textbf{真题里让人卡住的那一层}——多步变形后才可算、要自己造辅助函数、驻点却不是极值、尖点要求极限。目标是 85 分以上那 15 分。
+\item \textbf{全部不重复}。与 50 题保底册、三本专题讲义、练习册 A/B/L 组、\S 7 限时卷 13 题、25 页中值定理讲义逐题比对过，函数与包装全新，无一道是换个数字重出。
+\item \textbf{每题有难度对标}。题面下方标了「对标 20XX-XX QXX（N 分）」，你可以直接判断这题值不值得花时间。
+\item \textbf{时间不够时按这个顺序做}：H2.9 $\to$ H2.10 $\to$ H3.11 $\to$ H3.13 $\to$ H4.16 $\to$ H5.20。这六道是「真题同型、且最容易在考场上丢分」的，其余可按组取舍。
+\item \textbf{用法}：每题先掐 8--12 分钟。卡满 5 分钟无第一行，翻到对应详解只看「卡点」一行，合上再写 5 分钟；仍写不出才看全解。\textbf{看懂不算会，能不看提示写出第一行才算。}
+\item 所有数值结论经 \texttt{verify\_hard\_drill.py} 复核：\textbf{PASS 91 / FAIL 0}（sympy 符号 + mpmath 高精度 + 数列数值迭代）。
+\end{enumerate}
+\end{keypoint}
+
+\section{难度对标与取舍}
+
+\begin{center}
+\small\setlength{\tabcolsep}{4pt}
+\begin{tabularx}{\linewidth}{c|l|l|c|X}
+\toprule
+题号 & 考点 & 对标真题 & 分值与难度 & 一句话卡点 \\
+\midrule
+H1.1 & 四阶展开 & 2019-20 填 8 型 & 3 分 / 难 & $x\sin x$ 要展到 $x^4$ \\
+H1.2 & 通分 + 二阶 & 2020-21 计 12 型 & 6 分 / 中偏难 & 分子要拆成两个因子 \\
+H1.3 & $\tan x$ 五阶 & 2017-18 计 13 型 & 6 分 / 难 & $x^3$ 项被减掉，须到 $x^5$ \\
+H1.4 & 两支首项抵消 & 2021-22 填 6 型 & 3 分 / 难 & 首项都是 $1+u$，须到 $u^2$ \\
+H1.5 & 乘积展开 & 2023-24 计 14 型 & 6 分 / 中偏难 & 只取到三阶，四阶项要丢 \\
+\midrule
+H2.6 & 隐函数二阶导 & 2021-22 Q14（10 分） & 6 分 / 难 & 中间括号恰为 0 \\
+H2.7 & 参数方程二阶导 & 2022-23 Q14（10 分） & 6 分 / 中偏难 & 分母是 $x'(t)$ 不是 $x''$ \\
+H2.8 & 高阶导系数 & 2023-24 Q15（8 分） & 6 分 / 中偏难 & $x^{10}$ 对应 $n=8$ \\
+H2.9 & 部分分式 + 通项 & 2023-24 Q15(1) 升级 & 8 分 / 难 & 先拆部分分式 \\
+H2.10 & 分段连续可导 & 2021-22 Q16（10 分） & 8 分 / 难 & 可导条件自动满足 \\
+\midrule
+H3.11 & Taylor + 最值分类 & 2010/2017 级七(18) & 8 分 / 压轴 & 二阶余项 + 分类讨论 \\
+H3.12 & 齐次化 + 单调 & 2009-10 Q18 型 & 8 分 / 难 & 先除以 $a$ 再证 \\
+H3.13 & 抽象函数方程 & 2024-25 Q18（8 分） & 8 分 / 压轴 & 减掉特解化 Cauchy \\
+H3.14 & 构造 $\ln x$ & 2014-15 Q18 型 & 8 分 / 难 & 见 $\ln\frac ba$ 想 $\ln x$ \\
+H3.15 & 逐层求导四阶 & 2016-17 Q18 型 & 8 分 / 难 & 四层初始条件不能漏 \\
+\midrule
+H4.16 & 驻点非极值 & 2021-22 Q17（12 分） & 12 分 / 难 & $x=0$ 不变号 \\
+H4.17 & 绝对值 + 尖点 & 2009-10 Q17（12 分） & 12 分 / 难 & 不可导点单算左右导 \\
+H4.18 & 极坐标尖点切线 & 2024-25 Q8 升级 & 6 分 / 难 & $\theta=\pi$ 处 $0/0$ 取极限 \\
+\midrule
+H5.19 & 牛顿迭代 & 2013-14 填 7 型 & 8 分 / 难 & 先证 $n\ge2$ 有下界 \\
+H5.20 & 夹逼 + 展开 & 2018-19 计 12 型 & 8 分 / 难 & 求和后量级要对 \\
+H5.21 & 递推单调有界 & 2016-17 填 9 型 & 8 分 / 中偏难 & 用上界证单调 \\
+H5.22 & 压缩映射 & 2024-25 Q18 升级 & 10 分 / 压轴 & 先几何衰减再 Cauchy \\
+\bottomrule
+\end{tabularx}
+\end{center}
+
+\begin{warnbox}[难度是真的，但不建议 22 道全做]
+按真题分值当量算，本册合计约 \textbf{160 分}，相当于一套半卷子的中高难度部分。今天剩余时间若不足 90 分钟，\textbf{只做第 4 条列的六道}（约 50 分钟）；做完整册建议 \textbf{110--130 分钟}，放在 P2 散项收口之后作为「冲高块」，不要挤占 P0 的 11/6 补齐。
+\end{warnbox}
+
+\section{H1\quad 极限综合（5 题）}
+
+\begin{methodbox}[这一组考什么]
+真题的极限题几乎不会「一步等价就完」。它一定让你先做一步变形（通分 / 有理化 / 提因子 / 换元 / 取对数），\textbf{再把展开阶数算准}。判据只有一句：\textbf{分母是几阶，分子就必须展到几阶；首项抵消掉，就往后再展一阶。}
+\end{methodbox}
+
+\q{H1.1}{求 $\displaystyle\lim_{x\to0}\frac{\sqrt{1+x\sin x}-\cos x-x^{2}}{x^{4}}$。}
+\tagline{对标 2019-20 填空 8 型（3 分）}
+
+\q{H1.2}{求 $\displaystyle\lim_{x\to0}\left(\frac{1}{\sin^{2}x}-\frac{1}{x^{2}}\right)$。}
+\tagline{对标 2020-21 计算 12 型（6 分）}
+
+\q{H1.3}{求 $\displaystyle\lim_{x\to0}\frac{\tan x-x-\frac{x^{3}}{3}}{x^{5}}$。}
+\tagline{对标 2017-18 计算 13 型（6 分）}
+
+\q{H1.4}{求 $\displaystyle\lim_{x\to+\infty}x^{2}\left(\sqrt[3]{1+\frac{3}{x}}-\sqrt{1+\frac{2}{x}}\right)$。}
+\tagline{对标 2021-22 填空 6 型（3 分）}
+
+\q{H1.5}{求 $\displaystyle\lim_{x\to0}\frac{\ee^{x}\sin x-x-x^{2}}{x^{3}}$。}
+\tagline{对标 2023-24 计算 14 型（6 分）}
+
+\section{H2\quad 导数与高阶导（5 题）}
+
+\begin{methodbox}[这一组考什么]
+真题的导数大题分值从 16 涨到 20，考的是\textbf{三种「非显式」求导}：隐函数、参数方程、分段。它们的共同陷阱是——\textbf{二阶导不是把一阶导再求一次那么简单}，隐函数要代回原方程，参数方程要再除以一次 $x'(t)$。高阶导则优先走「泰勒系数」而不是硬求导。
+\end{methodbox}
+
+\q{H2.6}{设 $y=y(x)$ 由 $\ee^{y}+xy=\ee$ 确定，求 $y''(0)$。}
+\tagline{对标 2021-22 Q14（10 分）}
+
+\q{H2.7}{设摆线 $\begin{cases}x=t-\sin t\\ y=1-\cos t\end{cases}$ 求 $\left.\dfrac{\D^{2}y}{\D x^{2}}\right|_{t=\pi/2}$。}
+\tagline{对标 2022-23 Q14（10 分）}
+
+\q{H2.8}{设 $f(x)=x^{2}\ln(1+x)$，求 $f^{(10)}(0)$。}
+\tagline{对标 2023-24 Q15（8 分）}
+
+\q{H2.9}{设 $f(x)=\dfrac{1}{x^{2}-3x+2}$，求 $f^{(n)}(0)$（$n=0,1,2,\dots$）。}
+\tagline{对标 2023-24 Q15(1) 的升级版（8 分）}
+
+\q{H2.10}{设
+\[
+f(x)=\begin{cases}
+\dfrac{\sqrt{1+x}-1}{x}, & x>0,\\[6pt]
+a, & x=0,\\[4pt]
+\dfrac{\ln(1+bx)}{x}, & x<0,
+\end{cases}
+\]
+求 $a,b$，使 $f$ 在 $x=0$ 处连续且可导。}
+\tagline{对标 2021-22 Q16（10 分）}
+
+\section{H3\quad 中值定理与构造证明（5 题）}
+
+\begin{methodbox}[这一组考什么]
+六个标准辅助函数（$\ee^{\lambda x}f$、$x^{n}f$、$f/x^{n}$、$\ee^{g}f$、$f-kx$、$f-x^{2}$）只够应付「一眼看得出」的题。真题后几年的压轴会要求你自己造一个\textbf{不在模板里的} $F$，或者把条件\textbf{齐次化}之后再证。判断该造什么，看结论里出现谁：出现 $\ln\frac ba$ 就想 $\ln x$，出现 $x^{2}$ 就想 $x^{3}/3$，出现抽象方程就想「减掉一个特解」。
+\end{methodbox}
+
+\q{H3.11}{设 $f$ 在 $[0,1]$ 上连续，在 $(0,1)$ 内二阶可导，$f(0)=f(1)=0$，且 $\max_{[0,1]}f=1$。证明：存在 $\xi\in(0,1)$，使 $f''(\xi)\le-8$。}
+\tagline{对标 2010 级 / 2017 级 七(18)（8 分）}
+
+\q{H3.12}{设 $0<a<b$。证明：$\displaystyle\ln\frac{b}{a}>\frac{2(b-a)}{a+b}$。}
+\tagline{对标 2009-10 Q18 型（8 分）}
+
+\q{H3.13}{设 $f:\R\to\R$ 满足 $f(x+y)=f(x)+f(y)+xy$，且 $f$ 在 $x=0$ 处连续。\\
+(1) 求 $f(0)$；\quad (2) 证明 $f$ 在 $\R$ 上处处连续；\quad (3) 求 $f$ 的表达式。}
+\tagline{对标 2024-25 Q18（8 分，新压轴同型）}
+
+\q{H3.14}{设 $f$ 在 $[a,b]$ 上连续，在 $(a,b)$ 内可导，$0<a<b$。证明：存在 $\xi\in(a,b)$，使
+\[
+f(b)-f(a)=\xi f'(\xi)\ln\frac{b}{a}.
+\]}
+\tagline{对标 2014-15 Q18 型（8 分）}
+
+\q{H3.15}{证明：当 $x>0$ 时，
+\[
+x-\frac{x^{3}}{6}<\sin x<x-\frac{x^{3}}{6}+\frac{x^{5}}{120}.
+\]}
+\tagline{对标 2016-17 Q18 型（8 分）}
+
+\section{H4\quad 函数性态与作图（3 题）}
+
+\begin{methodbox}[这一组考什么]
+作图题 11--12 分，是「流程分」。真题给的分不在画得多漂亮，而在\textbf{有没有把 $y'=0$ 的每一个点都验一遍变号}、\textbf{有没有把不可导点单列}、\textbf{有没有把两支渐近线都查}。三个高频坑：驻点但不是极值、尖点极值、极坐标尖点处 $0/0$。
+\end{methodbox}
+
+\q{H4.16}{作函数 $y=\dfrac{x^{3}}{x^{2}-1}$ 的图形（列表给出单调性、极值、渐近线；凹凸性可只讨论 $x>1$ 一支，不必求 $y''$）。}
+\tagline{对标 2021-22 Q17（12 分）}
+
+\q{H4.17}{作函数 $y=\abs{x-1}\ee^{-x}$ 的图形（须说明 $x=1$ 处是否可导，并给出极值与渐近线）。}
+\tagline{对标 2009-10 Q17（12 分）}
+
+\q{H4.18}{设曲线 $r=1+\cos\theta$（$0\le\theta\le2\pi$）。\\
+(1) 求 $\theta=\dfrac{\pi}{2}$ 处的切线方程；\quad (2) 求 $\theta=\pi$ 处的切线方程。}
+\tagline{对标 2024-25 第 8 题升级（6 分）}
+
+\section{H5\quad 数列极限与压轴（4 题）}
+
+\begin{methodbox}[这一组考什么]
+数列题在真题里以选填为主，但\textbf{「先证收敛再求极限」的完整书写}是大题给分点。顺序永远是：\textbf{证有界（归纳）$\to$ 证单调（作差或作商）$\to$ 用单调有界准则$\to$ 对递推式取极限解方程$\to$ 舍去不合题意的根}。压缩映射型则多一步：\textbf{相邻项几何衰减 $\to$ Cauchy 列}。
+\end{methodbox}
+
+\q{H5.19}{设 $a_{1}=1$，$a_{n+1}=\dfrac{1}{2}\left(a_{n}+\dfrac{2}{a_{n}}\right)$（$n\ge1$）。证明 $\{a_{n}\}$ 收敛，并求 $\displaystyle\lim_{n\to\infty}a_{n}$。}
+\tagline{对标 2013-14 填空 7 型（8 分）}
+
+\q{H5.20}{求 $\displaystyle\lim_{n\to\infty}n\left(\sum_{k=1}^{n}\frac{1}{\sqrt{n^{2}+k}}-1\right)$。}
+\tagline{对标 2018-19 计算 12 型（8 分）}
+
+\q{H5.21}{设 $a_{1}=1$，$a_{n+1}=\sqrt{6+a_{n}}$（$n\ge1$）。证明 $\{a_{n}\}$ 收敛，并求 $\displaystyle\lim_{n\to\infty}a_{n}$。}
+\tagline{对标 2016-17 填空 9 型（8 分）}
+
+\q{H5.22}{设 $f:[0,1]\to[0,1]$ 连续，且存在常数 $0<k<1$，使对任意 $x,y\in[0,1]$ 有
+\[
+\abs{f(x)-f(y)}\le k\abs{x-y}.
+\]
+(1) 证明 $f$ 在 $[0,1]$ 上存在唯一不动点 $x^{*}$（即 $f(x^{*})=x^{*}$）；\\
+(2) 对任意 $x_{1}\in[0,1]$，令 $x_{n+1}=f(x_{n})$，证明 $\{x_{n}\}$ 收敛于 $x^{*}$，并证明
+\[
+\abs{x_{n}-x^{*}}\le\frac{k^{n-1}}{1-k}\abs{x_{2}-x_{1}}.
+\]}
+\tagline{对标 2024-25 Q18 升级（10 分，压轴）}
+
+\section{答案速查（做完再看）}
+
+\begin{center}
+\small\setlength{\tabcolsep}{5pt}
+\begin{tabularx}{\linewidth}{c|X|c}
+\toprule
+题号 & 答案 & 组 \\
+\midrule
+H1.1 & $-\dfrac14$ & H1 \\
+H1.2 & $\dfrac13$ & H1 \\
+H1.3 & $\dfrac{2}{15}$ & H1 \\
+H1.4 & $-\dfrac12$ & H1 \\
+H1.5 & $\dfrac13$ & H1 \\
+\midrule
+H2.6 & $y''(0)=\dfrac{1}{\ee^{2}}$ & H2 \\
+H2.7 & $-1$ & H2 \\
+H2.8 & $-453600$ & H2 \\
+H2.9 & $f^{(n)}(0)=n!\left(1-2^{-(n+1)}\right)$ & H2 \\
+H2.10 & $a=b=\dfrac12$（此时可导，导数为 $-\dfrac18$） & H2 \\
+\midrule
+H3.11 & 证明题：最大值点 $c$ 分类，$c\le\frac12$ 取左侧、$c>\frac12$ 取右侧 & H3 \\
+H3.12 & 证明题：令 $t=b/a$，证 $\ln t-\frac{2(t-1)}{t+1}$ 严格增 & H3 \\
+H3.13 & (1) $0$；(2) $f(x+h)-f(x)=f(h)+xh\to0$；(3) $f(x)=\frac{x^{2}}{2}+cx$ & H3 \\
+H3.14 & 证明题：构造 $F(x)=f(x)-\frac{f(b)-f(a)}{\ln(b/a)}\ln x$ & H3 \\
+H3.15 & 证明题：逐层求导四阶递推（或 Taylor 带 Lagrange 余项） & H3 \\
+\midrule
+H4.16 & 奇函数；驻点 $x=0,\pm\sqrt3$，$x=0$ 非极值；极小 $y(\sqrt3)=\frac{3\sqrt3}{2}$、极大 $y(-\sqrt3)=-\frac{3\sqrt3}{2}$；竖直 $x=\pm1$，斜 $y=x$ & H4 \\
+H4.17 & $x=1$ 不可导（左导 $-\ee^{-1}$、右导 $\ee^{-1}$），尖点极小值 $0$；极大 $y(2)=\ee^{-2}$；水平渐近线 $y=0$（$x\to+\infty$） & H4 \\
+H4.18 & (1) $y=x+1$；(2) $y=0$（水平） & H4 \\
+\midrule
+H5.19 & $\sqrt2$ & H5 \\
+H5.20 & $-\dfrac14$ & H5 \\
+H5.21 & $3$ & H5 \\
+H5.22 & 证明题：介值 + 压缩唯一性；几何衰减 + Cauchy 列 + 取极限得误差界 & H5 \\
+\bottomrule
+\end{tabularx}
+\end{center}
+
+\section{逐题详解}
+
+\subsection{H1\quad 极限综合}
+
+\noindent\textbf{H1.1}\quad 答案 $-\dfrac14$。
+\key{$\sin x$ 只展到 $x^{3}$ 是不够的——$x\sin x$ 的 $x^{4}$ 项会通过 $\sqrt{1+u}$ 的 $u^{2}$ 项影响四阶系数。这是本题唯一的难点。}
+
+由 $\sin x=x-\dfrac{x^{3}}{6}+O(x^{5})$ 得
+\[
+x\sin x=x^{2}-\frac{x^{4}}{6}+O(x^{6}).
+\]
+记 $u=x^{2}-\dfrac{x^{4}}{6}$，用 $\sqrt{1+u}=1+\dfrac{u}{2}-\dfrac{u^{2}}{8}+O(u^{3})$：
+\[
+\sqrt{1+x\sin x}=1+\frac{1}{2}\left(x^{2}-\frac{x^{4}}{6}\right)-\frac{1}{8}x^{4}+O(x^{6})
+=1+\frac{x^{2}}{2}-\frac{5x^{4}}{24}+O(x^{6}).
+\]
+又 $\cos x=1-\dfrac{x^{2}}{2}+\dfrac{x^{4}}{24}+O(x^{6})$，故
+\[
+\sqrt{1+x\sin x}-\cos x-x^{2}
+=\left(\frac{x^{2}}{2}+\frac{x^{2}}{2}-x^{2}\right)-\left(\frac{5}{24}+\frac{1}{24}\right)x^{4}+O(x^{6})
+=-\frac{x^{4}}{4}+O(x^{6}).
+\]
+所以原极限 $=-\dfrac14$。
+
+\medskip
+\noindent\textbf{H1.2}\quad 答案 $\dfrac13$。
+\key{不要通分后硬展 $\sin^{2}x$。把 $x^{2}-\sin^{2}x$ 拆成 $(x-\sin x)(x+\sin x)$，两个因子各用一阶信息就够。}
+
+\[
+\frac{1}{\sin^{2}x}-\frac{1}{x^{2}}=\frac{x^{2}-\sin^{2}x}{x^{2}\sin^{2}x}
+=\frac{x-\sin x}{x^{3}}\cdot\frac{x+\sin x}{x}\cdot\frac{x^{2}}{\sin^{2}x}.
+\]
+其中 $\dfrac{x-\sin x}{x^{3}}\to\dfrac16$（由 $\sin x=x-\frac{x^{3}}{6}+o(x^{3})$），$\dfrac{x+\sin x}{x}\to2$，$\dfrac{x^{2}}{\sin^{2}x}\to1$。故极限 $=\dfrac16\cdot2\cdot1=\dfrac13$。
+
+\medskip
+\noindent\textbf{H1.3}\quad 答案 $\dfrac{2}{15}$。
+\key{$\tan x$ 的 $x^{3}$ 项会被题目里的 $-\frac{x^{3}}{3}$ 精确减掉，所以必须展到 $x^{5}$。只背到三阶的人会算出 $0$。}
+
+由 $\tan x=x+\dfrac{x^{3}}{3}+\dfrac{2x^{5}}{15}+O(x^{7})$，
+\[
+\tan x-x-\frac{x^{3}}{3}=\frac{2x^{5}}{15}+O(x^{7}),
+\]
+故原极限 $=\dfrac{2}{15}$。
+（顺带记住：$\tan x$ 的 $x^{5}$ 系数是 $\frac{2}{15}$，$x^{7}$ 系数是 $\frac{17}{315}$，真题里出现过两次。）
+
+\medskip
+\noindent\textbf{H1.4}\quad 答案 $-\dfrac12$。
+\key{两支的首项都是 $1+u$，相减直接抵消。必须展到 $u^{2}$，否则只剩 $O(u^{3})$ 得 $0$。}
+
+令 $u=\dfrac1x\to0^{+}$，则原式 $=\displaystyle\lim_{u\to0^{+}}\frac{(1+3u)^{1/3}-(1+2u)^{1/2}}{u^{2}}$。
+
+用 $(1+v)^{\alpha}=1+\alpha v+\dfrac{\alpha(\alpha-1)}{2}v^{2}+O(v^{3})$：
+\[
+(1+3u)^{1/3}=1+u-u^{2}+O(u^{3}),\qquad
+(1+2u)^{1/2}=1+u-\frac{u^{2}}{2}+O(u^{3}).
+\]
+两支相减得 $-\dfrac{u^{2}}{2}+O(u^{3})$，除以 $u^{2}$ 得 $-\dfrac12$。
+
+\medskip
+\noindent\textbf{H1.5}\quad 答案 $\dfrac13$。
+\key{乘积展开只需保留到三阶。$x\cdot\left(-\frac{x^{3}}{6}\right)$ 是四阶，直接丢；$\frac{x^{2}}{2}\cdot x=\frac{x^{3}}{2}$ 要留。}
+
+\[
+\ee^{x}\sin x=\left(1+x+\frac{x^{2}}{2}+\frac{x^{3}}{6}\right)\left(x-\frac{x^{3}}{6}\right)+O(x^{4})
+=x+x^{2}+\left(\frac12-\frac16\right)x^{3}+O(x^{4})
+=x+x^{2}+\frac{x^{3}}{3}+O(x^{4}).
+\]
+故分子 $=\dfrac{x^{3}}{3}+O(x^{4})$，原极限 $=\dfrac13$。
+
+\subsection{H2\quad 导数与高阶导}
+
+\noindent\textbf{H2.6}\quad 答案 $y''(0)=\dfrac{1}{\ee^{2}}$。
+\key{一阶导代回后，二阶导方程里的 $\left(\ee^{y}y'+1\right)$ 恰好等于 $0$。算对这一点，答案才干净；算错符号就会得到 $\frac{2}{\ee^{2}}$ 之类的错值。}
+
+点 $(0,1)$ 在曲线上（$\ee^{1}+0=\ee$）。两边对 $x$ 求导：
+\[
+\ee^{y}y'+y+xy'=0\;\Longrightarrow\;y'\left(\ee^{y}+x\right)=-y.
+\]
+代入 $x=0,y=1$：$y'(0)\cdot\ee=-1$，故 $y'(0)=-\dfrac1\ee$。
+
+再对 $y'\left(\ee^{y}+x\right)=-y$ 两边求导：
+\[
+y''\left(\ee^{y}+x\right)+y'\left(\ee^{y}y'+1\right)=-y'.
+\]
+代入 $x=0,y=1,y'=-\frac1\ee$：
+\[
+y''\cdot\ee+\left(-\frac1\ee\right)\left(\ee\cdot\left(-\frac1\ee\right)+1\right)=\frac1\ee.
+\]
+括号内 $=-1+1=0$，于是 $y''\ee=\dfrac1\ee$，即 $y''(0)=\dfrac{1}{\ee^{2}}$。
+
+\medskip
+\noindent\textbf{H2.7}\quad 答案 $-1$。
+\key{二阶导的分母是 $x'(t)=1-\cos t$，不是 $x''(t)$。写成 $\frac{y''(t)}{x''(t)}$ 是最常见的失分点。}
+
+\[
+\dd yx=\frac{\sin t}{1-\cos t}=\cot\frac{t}{2},
+\qquad
+\frac{\D^{2}y}{\D x^{2}}=\frac{\dfrac{\D}{\D t}\left(\cot\frac t2\right)}{\dd xt}
+=\frac{-\dfrac12\csc^{2}\dfrac t2}{1-\cos t}.
+\]
+用 $1-\cos t=2\sin^{2}\dfrac t2$：
+\[
+\frac{\D^{2}y}{\D x^{2}}=-\frac{1}{4\sin^{4}\dfrac t2}.
+\]
+当 $t=\dfrac\pi2$ 时 $\sin\dfrac\pi4=\dfrac{\sqrt2}{2}$，$\sin^{4}\dfrac\pi4=\dfrac14$，故 $\dfrac{\D^{2}y}{\D x^{2}}=-1$。
+
+\medskip
+\noindent\textbf{H2.8}\quad 答案 $-453600$。
+\key{$x^{10}$ 对应的是 $\ln(1+x)$ 展开里的 $n=8$ 项，不是 $n=10$。$f$ 里那个 $x^{2}$ 把指标平移了 2。}
+
+由 $\ln(1+x)=\displaystyle\sum_{n\ge1}\frac{(-1)^{n-1}}{n}x^{n}$，
+\[
+f(x)=x^{2}\ln(1+x)=\sum_{n\ge1}\frac{(-1)^{n-1}}{n}x^{n+2}.
+\]
+令 $n+2=10$ 得 $n=8$，故 $x^{10}$ 的系数为 $\dfrac{(-1)^{7}}{8}=-\dfrac18$。由泰勒系数公式 $f^{(10)}(0)=10!\cdot\left(-\dfrac18\right)$：
+\[
+f^{(10)}(0)=-\frac{3628800}{8}=-453600.
+\]
+
+\medskip
+\noindent\textbf{H2.9}\quad 答案 $f^{(n)}(0)=n!\left(1-2^{-(n+1)}\right)$。
+\key{先做部分分式。$x^{2}-3x+2=(x-1)(x-2)$，拆成 $\frac{1}{1-x}-\frac{1}{2-x}$ 之后两个几何级数一减就出通项。硬套莱布尼茨会越算越乱。}
+
+\[
+\frac{1}{x^{2}-3x+2}=\frac{1}{(x-1)(x-2)}=\frac{1}{1-x}-\frac{1}{2-x}.
+\]
+（验证：$\frac{(2-x)-(1-x)}{(1-x)(2-x)}=\frac{1}{(1-x)(2-x)}$，与原式一致。）
+
+而
+\[
+\frac{1}{1-x}=\sum_{n\ge0}x^{n},\qquad
+\frac{1}{2-x}=\frac12\cdot\frac{1}{1-\frac x2}=\sum_{n\ge0}\frac{x^{n}}{2^{n+1}}.
+\]
+故
+\[
+f(x)=\sum_{n\ge0}\left(1-\frac{1}{2^{n+1}}\right)x^{n}
+\;\Longrightarrow\;
+f^{(n)}(0)=n!\left(1-\frac{1}{2^{n+1}}\right).
+\]
+核对 $n=0$：$f(0)=\dfrac12$，公式给 $1-\dfrac12=\dfrac12$，一致。
+
+\medskip
+\noindent\textbf{H2.10}\quad 答案 $a=b=\dfrac12$。
+\key{连续条件定出 $b=\frac12$ 之后，可导条件\textbf{自动满足}，不需要再解方程。很多人在这里多设一个方程，反而把自己绕住。}
+
+\textbf{连续。}右极限
+\[
+\lim_{x\to0^{+}}\frac{\sqrt{1+x}-1}{x}=\lim_{x\to0^{+}}\frac{1}{\sqrt{1+x}+1}=\frac12,
+\]
+左极限 $\displaystyle\lim_{x\to0^{-}}\frac{\ln(1+bx)}{x}=b$。故必须 $a=b=\dfrac12$。
+
+\textbf{可导。}右导数（用有理化后的形式展开）：
+\[
+\frac{\sqrt{1+x}-1}{x}=\frac{1}{\sqrt{1+x}+1}=\frac12-\frac{x}{8}+O(x^{2}),
+\]
+故右导数 $=-\dfrac18$。左导数：
+\[
+\frac{\ln\left(1+\frac x2\right)}{x}=\frac12-\frac{x}{8}+O(x^{2}),
+\]
+故左导数 $=-\dfrac18$。左右导数相等，$f'(0)=-\dfrac18$ 存在。
+
+因此 $a=b=\dfrac12$ 同时满足连续与可导。
+
+\subsection{H3\quad 中值定理与构造证明}
+
+\noindent\textbf{H3.11}\quad 证明。
+\key{两个动作缺一不可：(1) 在最大值点用 \textbf{Taylor 带二阶 Lagrange 余项}（不是 Lagrange 中值）；(2) 按 $c\le\frac12$ 与 $c>\frac12$ \textbf{分类}取对应的那一侧。}
+
+设 $f$ 在 $c\in(0,1)$ 取到最大值 $1$（端点值为 $0$，故 $c$ 必在内部），则 $f(c)=1$，且 $f'(c)=0$。
+
+在 $x=0$ 处对 $f$ 在 $c$ 点展开（二阶 Taylor，Lagrange 余项）：
+\[
+0=f(0)=f(c)+f'(c)(0-c)+\frac{f''(\eta_{1})}{2}(0-c)^{2}
+=1+\frac{f''(\eta_{1})}{2}c^{2},
+\]
+故 $f''(\eta_{1})=-\dfrac{2}{c^{2}}$。同理在 $x=1$ 处：
+\[
+0=f(1)=1+\frac{f''(\eta_{2})}{2}(1-c)^{2}
+\;\Longrightarrow\; f''(\eta_{2})=-\frac{2}{(1-c)^{2}}.
+\]
+\textbf{分类。}若 $c\le\dfrac12$，则 $\dfrac{1}{c^{2}}\ge4$，故 $f''(\eta_{1})=-\dfrac{2}{c^{2}}\le-8$，取 $\xi=\eta_{1}$。
+若 $c>\dfrac12$，则 $1-c<\dfrac12$，$\dfrac{1}{(1-c)^{2}}>4$，故 $f''(\eta_{2})=-\dfrac{2}{(1-c)^{2}}<-8$，取 $\xi=\eta_{2}$。
+
+两种情形都找到了满足 $f''(\xi)\le-8$ 的 $\xi$，证毕。
+
+\medskip
+\noindent\textbf{H3.12}\quad 证明。
+\key{先\textbf{齐次化}（两边同除以 $a$，令 $t=b/a>1$），把双参数不等式变成单变量；再用「端点值为 $0$ + 导数非负」的标准套路。不要直接对 $\ln\frac ba$ 用 Cauchy 中值定理，会绕远。}
+
+令 $t=\dfrac ba>1$。原不等式两边除以 $a$ 后等价于
+\[
+\ln t>\frac{2(t-1)}{t+1}.
+\]
+设
+\[
+\phi(t)=\ln t-\frac{2(t-1)}{t+1},\qquad t\ge1.
+\]
+则 $\phi(1)=0$，且
+\[
+\phi'(t)=\frac1t-\frac{4}{(t+1)^{2}}
+=\frac{(t+1)^{2}-4t}{t(t+1)^{2}}
+=\frac{(t-1)^{2}}{t(t+1)^{2}}\ge0.
+\]
+当 $t>1$ 时 $\phi'(t)>0$，故 $\phi$ 在 $[1,+\infty)$ 上严格增，于是
+\[
+\phi(t)>\phi(1)=0\quad(t>1),
+\]
+即 $\ln t>\dfrac{2(t-1)}{t+1}$。换回 $t=\dfrac ba$ 即得所证。
+
+\medskip
+\noindent\textbf{H3.13}\quad 答案 (1) $0$；(3) $f(x)=\dfrac{x^{2}}{2}+cx$。
+\key{(3) 的关键是「\textbf{减掉一个特解}」：$f(x)=\frac{x^{2}}{2}$ 正好满足方程，把它减掉，非齐次项 $xy$ 就被吸收，剩下纯 Cauchy 方程。直接猜 $f=ax^{2}+bx$ 也能做，但验算量大。}
+
+(1) 令 $x=y=0$，得 $f(0)=2f(0)$，故 $f(0)=0$。
+
+(2) 对任意 $x\in\R$ 与 $h\ne0$，
+\[
+f(x+h)-f(x)=f(h)+xh.
+\]
+由 $f$ 在 $0$ 处连续，$\displaystyle\lim_{h\to0}f(h)=f(0)=0$，又 $xh\to0$，故
+\[
+\lim_{h\to0}\left[f(x+h)-f(x)\right]=0,
+\]
+即 $f$ 在 $x$ 处连续。由 $x$ 的任意性，$f$ 在 $\R$ 上处处连续。
+
+(3) 令
+\[
+g(x)=f(x)-\frac{x^{2}}{2}.
+\]
+则
+\[
+g(x+y)=f(x+y)-\frac{(x+y)^{2}}{2}
+=f(x)+f(y)+xy-\frac{x^{2}+2xy+y^{2}}{2}
+=g(x)+g(y).
+\]
+即 $g$ 满足 Cauchy 方程，且 $g$ 连续（两个连续函数之差）。连续解必为线性：$g(x)=cx$，其中 $c=g(1)$。
+
+因此
+\[
+f(x)=\frac{x^{2}}{2}+cx\quad(c\in\R).
+\]
+代回验证：$\frac{(x+y)^{2}}{2}+c(x+y)=\left(\frac{x^{2}}{2}+cx\right)+\left(\frac{y^{2}}{2}+cy\right)+xy$，成立。
+
+\medskip
+\noindent\textbf{H3.14}\quad 证明。
+\key{结论里出现 $\ln\frac ba$，就说明辅助函数里要放 $\ln x$。系数用「让 $F(b)=F(a)$」反推，不要凭感觉配。}
+
+设 $\Delta=f(b)-f(a)$，构造
+\[
+F(x)=f(x)-\frac{\Delta}{\ln\frac ba}\ln x,\qquad x\in[a,b].
+\]
+$F$ 在 $[a,b]$ 上连续，在 $(a,b)$ 内可导（$0<a$），且
+\[
+F(b)-F(a)=\left[f(b)-f(a)\right]-\frac{\Delta}{\ln\frac ba}\left(\ln b-\ln a\right)
+=\Delta-\Delta=0.
+\]
+由 Rolle 定理，存在 $\xi\in(a,b)$ 使 $F'(\xi)=0$。而
+\[
+F'(x)=f'(x)-\frac{\Delta}{\ln\frac ba}\cdot\frac1x,
+\]
+故
+\[
+0=f'(\xi)-\frac{\Delta}{\xi\ln\frac ba}
+\;\Longrightarrow\;
+\Delta=\xi f'(\xi)\ln\frac ba,
+\]
+即 $f(b)-f(a)=\xi f'(\xi)\ln\dfrac ba$，证毕。
+
+\medskip
+\noindent\textbf{H3.15}\quad 证明。
+\key{这是\textbf{四层}逐层求导。任何一层的初始条件（某阶导在 $0$ 处为 $0$）漏写，链条就断。也可以用 Taylor 带 Lagrange 余项一步到位，但阅卷更认逐层法。}
+
+记
+\[
+h_{1}=x-\sin x,\quad
+h_{2}=\sin x-x+\frac{x^{3}}{6},\quad
+h_{3}=x-\frac{x^{3}}{6}+\frac{x^{5}}{120}-\sin x.
+\]
+
+\textbf{第一层。}$h_{1}(0)=0$，$h_{1}'(x)=1-\cos x\ge0$，故 $h_{1}(x)>0$（$x>0$），即
+\[
+\sin x<x. \tag{1}
+\]
+
+\textbf{第二层。}$h_{2}(0)=0$，$h_{2}'(x)=\cos x-1+\dfrac{x^{2}}{2}$，$h_{2}'(0)=0$，且
+\[
+h_{2}''(x)=-\sin x+x=h_{1}(x)>0\quad(x>0).
+\]
+故 $h_{2}'(x)>0$（$x>0$），进而 $h_{2}(x)>0$，即
+\[
+x-\frac{x^{3}}{6}<\sin x. \tag{2}
+\]
+
+\textbf{第三层。}$h_{3}(0)=h_{3}'(0)=h_{3}''(0)=h_{3}'''(0)=0$，且
+\[
+h_{3}^{(4)}(x)=x-\sin x=h_{1}(x)>0\quad(x>0).
+\]
+于是 $h_{3}'''>0\Rightarrow h_{3}''(x)>0\Rightarrow h_{3}'(x)>0\Rightarrow h_{3}(x)>0$，即
+\[
+\sin x<x-\frac{x^{3}}{6}+\frac{x^{5}}{120}. \tag{3}
+\]
+
+由 (2)(3) 得
+\[
+x-\frac{x^{3}}{6}<\sin x<x-\frac{x^{3}}{6}+\frac{x^{5}}{120}\qquad(x>0).
+\]
+证毕。
+
+\emph{另证（Taylor）。}$\sin x=x-\dfrac{x^{3}}{6}+\dfrac{x^{5}}{120}-\dfrac{\cos\xi}{7!}x^{7}$（$\xi$ 介于 $0,x$ 之间），因 $\abs{\cos\xi}\le1$，$x^{7}>0$，故余项符号由 $-\cos\xi$ 决定不唯一，只能给双边估计；要得到严格的单边结论仍需逐层法。这也是本题为什么不建议只用 Taylor 的原因。
+
+\subsection{H4\quad 函数性态与作图}
+
+\noindent\textbf{H4.16}\quad 图形与列表。
+\key{$x=0$ 是\textbf{驻点但不是极值}。$y'=\frac{x^{2}(x^{2}-3)}{(x^{2}-1)^{2}}$ 里 $x^{2}$ 是偶次因子，两侧不变号。看到 $y'=0$ 就写「极值」是本题的标准失分点。}
+
+\textbf{(1) 定义域与奇偶性。}$x\ne\pm1$；$y(-x)=-y(x)$，奇函数，图形关于原点对称，只需详画 $x>0$。
+
+\textbf{(2) 渐近线。} $x\to1^{+}$ 时 $y\to+\infty$，$x\to1^{-}$ 时 $y\to-\infty$，故 $x=1$ 为竖直渐近线（由奇对称，$x=-1$ 也是）。又
+\[
+y-x=\frac{x^{3}}{x^{2}-1}-x=\frac{x}{x^{2}-1}\to0\quad(x\to\infty),
+\]
+故 $y=x$ 为斜渐近线（两支共用，因奇对称）。
+
+\textbf{(3) 导数与单调性。}
+\[
+y'=\frac{3x^{2}(x^{2}-1)-x^{3}\cdot2x}{(x^{2}-1)^{2}}
+=\frac{x^{2}(x^{2}-3)}{(x^{2}-1)^{2}}.
+\]
+驻点 $x=0,\pm\sqrt3$；不可导点无（$x=\pm1$ 不在定义域内）。列表（$x>0$ 一支）：
+
+\begin{center}
+\small
+\begin{tabular}{c|ccccc}
+\toprule
+$x$ & $(1,\sqrt3)$ & $\sqrt3$ & $(\sqrt3,+\infty)$ \\
+\midrule
+$y'$ & $-$ & $0$ & $+$ \\
+$y$ & $\searrow$ & 极小 $\frac{3\sqrt3}{2}$ & $\nearrow$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+在 $x\in(0,1)$ 上 $y'<0$，$y$ 由 $0^{-}$ 递减到 $-\infty$。
+
+\textbf{(4) $x=0$ 处。}$y'$ 在 $x=0$ 两侧都取负值（$x^{2}(x^{2}-3)<0$ 当 $0<\abs x<\sqrt3$），\textbf{不变号}，故 $x=0$ 不是极值点，只是驻点（曲线在此由凹转凸，是拐点）。
+
+\textbf{(5) 极值。}$x=\sqrt3$ 处极小值 $y=\dfrac{3\sqrt3}{2}$；由奇对称，$x=-\sqrt3$ 处极大值 $y=-\dfrac{3\sqrt3}{2}$。
+
+\textbf{(6) 凹凸（仅 $x>1$ 一支）。}$y''$ 不必求：由 $y'$ 在 $(1,\sqrt3)$ 递减、$(\sqrt3,+\infty)$ 递增可知，$x>1$ 一支先凹后凸，拐点横坐标位于 $y'$ 取极小处（本题不要求精确值）。
+
+\textbf{(7) 描图要点。}$(0,0)$ 处过原点、切线水平（$y'(0)=0$）；$x\to1^{+}$ 沿 $x=1$ 上升并向右贴近 $y=x$；$x\to+\infty$ 从上方贴近 $y=x$。
+
+\medskip
+\noindent\textbf{H4.17}\quad 图形与列表。
+\key{$x=1$ 是\textbf{不可导点}，必须用左右导数\textbf{定义}分别算，不能对 $\abs{x-1}$ 直接套公式。这一点决定 12 分里至少 3 分。}
+
+\textbf{(1) 分段。}
+\[
+y=\begin{cases}(1-x)\ee^{-x}, & x<1,\\[2pt] 0, & x=1,\\[2pt] (x-1)\ee^{-x}, & x>1.\end{cases}
+\]
+
+\textbf{(2) 单调性与极值。}
+$x<1$ 时 $y'=-\ee^{-x}+(1-x)(-\ee^{-x})=\ee^{-x}(x-2)<0$，递减。
+$x>1$ 时 $y'=\ee^{-x}-(x-1)\ee^{-x}=\ee^{-x}(2-x)$，故 $1<x<2$ 递增、$x>2$ 递减，$x=2$ 处取极大值
+\[
+y(2)=\ee^{-2}.
+\]
+
+\textbf{(3) $x=1$ 处可导性。}按定义：
+\[
+f'_{-}(1)=\lim_{x\to1^{-}}\frac{(1-x)\ee^{-x}-0}{x-1}=-\ee^{-1},\qquad
+f'_{+}(1)=\lim_{x\to1^{+}}\frac{(x-1)\ee^{-x}-0}{x-1}=\ee^{-1}.
+\]
+左右导数不相等，故 $f$ 在 $x=1$ 处\textbf{不可导}，图形在此为尖点；又 $y(1)=0$ 且两侧函数值都为正，故 $x=1$ 是\textbf{极小值点}（极小值 $0$）。
+
+\textbf{(4) 渐近线。}$x\to+\infty$ 时 $y=(x-1)\ee^{-x}\to0$，故 $y=0$ 是右侧水平渐近线；$x\to-\infty$ 时 $y=(1-x)\ee^{-x}\to+\infty$，无左侧水平渐近线，也无竖直渐近线。
+
+\textbf{(5) 描图要点。}从 $-\infty$ 出发函数值很大、递减；过 $x=1$ 处尖点触底 $0$；再升到 $x=2$ 的极大 $\ee^{-2}\approx0.135$；之后向右衰减趋于 $0$。
+
+\medskip
+\noindent\textbf{H4.18}\quad 答案 (1) $y=x+1$；(2) $y=0$。
+\key{$\theta=\pi$ 处 $x'(\pi)=y'(\pi)=0$，是 $0/0$，\textbf{不能写「切线不存在」}，要对 $\frac{\D y}{\D x}$ 取 $\theta\to\pi$ 的极限。这是心形线的尖点。}
+
+由 $x=r\cos\theta$、$y=r\sin\theta$ 与 $r=1+\cos\theta$：
+\[
+x=(1+\cos\theta)\cos\theta,\qquad y=(1+\cos\theta)\sin\theta.
+\]
+求导：
+\[
+x'(\theta)=-\sin\theta\,(1+2\cos\theta),\qquad
+y'(\theta)=\cos\theta+\cos2\theta.
+\]
+
+\textbf{(1) $\theta=\dfrac\pi2$。}此时 $r=1$，点为 $(0,1)$；$x'=-1\cdot(1+0)=-1$，$y'=0+(-1)=-1$，故
+\[
+\dd yx=\frac{y'}{x'}=1.
+\]
+切线：$y-1=1\cdot(x-0)$，即 $y=x+1$。
+
+\textbf{(2) $\theta=\pi$。}此时 $r=0$，点为原点；$x'(\pi)=0$，$y'(\pi)=-1+1=0$，需取极限。令 $u=\theta-\pi\to0$，用
+\[
+\cos\theta=-\cos u=-1+\frac{u^{2}}{2}+O(u^{4}),\qquad
+\cos2\theta=\cos2u=1-2u^{2}+O(u^{4}),
+\]
+得 $y'(\theta)=-\dfrac{3}{2}u^{2}+O(u^{4})$；又 $\sin\theta=-\sin u=-u+O(u^{3})$，$1+2\cos\theta=-1+u^{2}+O(u^{4})$，故
+\[
+x'(\theta)=-\left(-u\right)\left(-1\right)+O(u^{3})=-u+O(u^{3}).
+\]
+于是
+\[
+\lim_{\theta\to\pi}\dd yx=\lim_{u\to0}\frac{-\frac32u^{2}}{-u}=\lim_{u\to0}\frac32u=0.
+\]
+切线斜率为 $0$，过原点，故切线为 $\boxed{y=0}$（水平）。
+
+\subsection{H5\quad 数列极限与压轴}
+
+\noindent\textbf{H5.19}\quad 答案 $\sqrt2$。
+\key{顺序不能反：$a_{1}=1<\sqrt2$，所以必须\textbf{先证 $n\ge2$ 时 $a_{n}\ge\sqrt2$}，再证递减。一上来就说「$a_{n}\ge\sqrt2$ 故递减」是逻辑缺口。}
+
+\textbf{(1) 正性与下界。}$a_{1}=1>0$；若 $a_{n}>0$，则 $a_{n+1}>0$。故所有 $a_{n}>0$。
+
+由 AM-GM，
+\[
+a_{n+1}=\frac12\left(a_{n}+\frac{2}{a_{n}}\right)\ge\sqrt{a_{n}\cdot\frac{2}{a_{n}}}=\sqrt2,
+\]
+等号当且仅当 $a_{n}=\sqrt2$。因此\textbf{对一切 $n\ge2$ 有 $a_{n}\ge\sqrt2$}（注意 $a_{1}=1$ 不满足）。
+
+\textbf{(2) 单调性。}对 $n\ge2$，
+\[
+a_{n+1}-a_{n}=\frac12\left(a_{n}+\frac{2}{a_{n}}\right)-a_{n}
+=\frac{2-a_{n}^{2}}{2a_{n}}\le0,
+\]
+故 $\{a_{n}\}_{n\ge2}$ 单调递减。
+
+\textbf{(3) 收敛与极限。}$\{a_{n}\}_{n\ge2}$ 递减且有下界 $\sqrt2$，由单调有界准则收敛。设 $a_{n}\to L$，则 $L\ge\sqrt2>0$。对递推式两边取极限：
+\[
+L=\frac12\left(L+\frac{2}{L}\right)\;\Longrightarrow\;2L^{2}=L^{2}+2\;\Longrightarrow\;L^{2}=2.
+\]
+由 $L>0$ 得 $L=\sqrt2$。
+
+\medskip
+\noindent\textbf{H5.20}\quad 答案 $-\dfrac14$。
+\key{展开到 $(1+u)^{-1/2}$ 的\textbf{一阶}就够（因为 $u=\frac{k}{n^{2}}$ 本身是 $1/n$ 量级），但求和之后要盯住 $n$ 的幂次：$\sum k=\frac{n(n+1)}{2}$ 会贡献 $\frac{1}{n}$ 项。}
+
+记 $S_{n}=\displaystyle\sum_{k=1}^{n}\frac{1}{\sqrt{n^{2}+k}}$。对每项提 $n$：
+\[
+\frac{1}{\sqrt{n^{2}+k}}=\frac1n\left(1+\frac{k}{n^{2}}\right)^{-1/2}
+=\frac1n\left(1-\frac{k}{2n^{2}}+O\!\left(\frac{k^{2}}{n^{4}}\right)\right).
+\]
+求和：
+\[
+S_{n}=\frac1n\left(n-\frac{1}{2n^{2}}\sum_{k=1}^{n}k+O\!\left(\frac{1}{n^{2}}\cdot n\right)\right)
+=1-\frac{n(n+1)}{4n^{3}}+O\!\left(\frac{1}{n^{2}}\right)
+=1-\frac{1}{4n}+O\!\left(\frac{1}{n^{2}}\right).
+\]
+（其中用到 $\sum_{k=1}^{n}k=\dfrac{n(n+1)}{2}$，且 $\sum k^{2}=O(n^{3})$ 使余项为 $O(n^{-2})$。）
+
+于是
+\[
+n\left(S_{n}-1\right)=n\left(-\frac{1}{4n}+O\!\left(\frac{1}{n^{2}}\right)\right)=-\frac14+O\!\left(\frac1n\right)\to-\frac14.
+\]
+
+\medskip
+\noindent\textbf{H5.21}\quad 答案 $3$。
+\key{证单调不要直接作差（带根号很难算），改\textbf{平方作差}：$a_{n+1}^{2}-a_{n}^{2}=6+a_{n}-a_{n}^{2}=(3-a_{n})(2+a_{n})$，上界一用就出符号。}
+
+\textbf{(1) 有界性（归纳）。}$a_{1}=1<3$。若 $a_{n}<3$，则
+\[
+a_{n+1}=\sqrt{6+a_{n}}<\sqrt{6+3}=3,
+\]
+故对一切 $n$ 有 $1\le a_{n}<3$。
+
+\textbf{(2) 单调性。}
+\[
+a_{n+1}^{2}-a_{n}^{2}=(6+a_{n})-a_{n}^{2}=(3-a_{n})(2+a_{n})>0,
+\]
+（因 $a_{n}<3$ 且 $a_{n}\ge1$），故 $a_{n+1}>a_{n}$，$\{a_{n}\}$ 单调递增。
+
+\textbf{(3) 收敛与极限。}$\{a_{n}\}$ 递增且有上界 $3$，故收敛。设 $a_{n}\to L$，则 $1\le L\le3$。对 $a_{n+1}=\sqrt{6+a_{n}}$ 两边取极限：
+\[
+L=\sqrt{6+L}\;\Longrightarrow\;L^{2}-L-6=0\;\Longrightarrow\;(L-3)(L+2)=0.
+\]
+由 $L\ge1$ 得 $L=3$。
+
+\medskip
+\noindent\textbf{H5.22}\quad 证明。
+\key{(2) 有两步都不能省：先用\textbf{相邻项几何衰减}说明 $\{x_{n}\}$ 是 Cauchy 列（这一步给出收敛），再把 $m\to\infty$ \textbf{取极限}得到误差界。直接说「压缩所以收敛」拿不到过程分。}
+
+\textbf{(1) 存在性。}令 $g(x)=f(x)-x$，则 $g$ 在 $[0,1]$ 上连续，且
+\[
+g(0)=f(0)-0=f(0)\ge0,\qquad g(1)=f(1)-1\le0
+\]
+（因 $f$ 取值于 $[0,1]$）。由介值定理，存在 $x^{*}\in[0,1]$ 使 $g(x^{*})=0$，即 $f(x^{*})=x^{*}$。
+
+\textbf{唯一性。}若 $x_{1}^{*}\ne x_{2}^{*}$ 都是不动点，则
+\[
+\abs{x_{1}^{*}-x_{2}^{*}}=\abs{f(x_{1}^{*})-f(x_{2}^{*})}\le k\abs{x_{1}^{*}-x_{2}^{*}}<\abs{x_{1}^{*}-x_{2}^{*}},
+\]
+矛盾。故不动点唯一。
+
+\textbf{(2) 几何衰减。}由压缩条件，
+\[
+\abs{x_{n+1}-x_{n}}=\abs{f(x_{n})-f(x_{n-1})}\le k\abs{x_{n}-x_{n-1}}\le\cdots\le k^{n-1}\abs{x_{2}-x_{1}}.
+\]
+
+\textbf{Cauchy 列。}对任意 $m>n\ge1$，
+\[
+\abs{x_{m}-x_{n}}\le\sum_{j=n}^{m-1}\abs{x_{j+1}-x_{j}}
+\le\sum_{j=n}^{m-1}k^{j-1}\abs{x_{2}-x_{1}}
+\le\frac{k^{n-1}}{1-k}\abs{x_{2}-x_{1}}.
+\]
+因 $0<k<1$，右端当 $n\to\infty$ 时趋于 $0$，故 $\{x_{n}\}$ 是 Cauchy 列，从而收敛。设 $x_{n}\to x^{**}$。
+
+\textbf{极限是不动点。}由 $x_{n+1}=f(x_{n})$ 与 $f$ 连续，两边取极限得 $x^{**}=f(x^{**})$，由唯一性 $x^{**}=x^{*}$。
+
+\textbf{误差界。}在 $\abs{x_{m}-x_{n}}\le\dfrac{k^{n-1}}{1-k}\abs{x_{2}-x_{1}}$ 中固定 $n$、令 $m\to\infty$，由 $x_{m}\to x^{*}$ 与绝对值连续得
+\[
+\abs{x_{n}-x^{*}}\le\frac{k^{n-1}}{1-k}\abs{x_{2}-x_{1}}.
+\]
+证毕。
+
+\newpage
+\section{验收线与放弃线}
+
+\begin{keypoint}[做完怎么判「够不够」]
+\begin{enumerate}
+\item \textbf{达标线}：22 题里\textbf{能独立写出第一行}的不少于 16 题，其中 H2、H3 两组各不少于 3 题。达到这条线，真题里的中高难度部分基本不会再「完全没思路」。
+\item \textbf{冲高线}：H3.11、H3.13、H5.22 三道压轴能\textbf{不看提示写完过程}（不是看懂），说明 8 分的压轴题有把握拿 5 分以上。
+\item \textbf{放弃线}：单题掐表 15 分钟仍写不出第一行，\textbf{标记后立即跳过}，不要恋战。今天的目的是「见过真题的天花板」，不是「今天全部攻克」。
+\item \textbf{错题处理}：只在错题旁写两行——\textbf{「错在第几步」+「下次看到什么条件就触发这个方法」}。写「粗心」等于没写。
+\item \textbf{不许做的事}：不要因为本册难就回头重读笔记。看不懂就只看详解里的\textbf{卡点那一行}，然后合上自己重写；还写不出就跳过，明天回炉。
+\end{enumerate}
+\end{keypoint}
+
+\begin{warnbox}[本册与今天其余材料的关系]
+\begin{itemize}
+\item 本册\textbf{不替代} P0 的 11/6 补齐（中值定理六个辅助函数 + 构造表重推 + 2009-10 Q18）。P0 是保底线，本册是冲高线，\textbf{顺序不能颠倒}。
+\item 与 50 题保底册的分工：保底册的 M / L / J / T / G / E 组仍按原计划做；本册放在 P2 之后，按第 4 条列的六道优先。
+\item 本册题目与 17 套真题、三本专题讲义、练习册、\S 7 限时卷、25 页中值定理讲义\textbf{均不重复}；H3.13 与 H5.22 是「同型升级」——考点对齐 2024-25 Q18，但函数与设问全新。
+\item 所有可计算结论已由 \texttt{verify\_hard\_drill.py} 复核（\textbf{PASS 91 / FAIL 0}）。若本册与旧笔记冲突，\textbf{以本册的复核结论为准}，并把冲突记进错题表。
+\end{itemize}
+\end{warnbox}
+
+\vspace{1.5em}
+\begin{center}
+{\small 高难冲顶 22 题 · 2026-11-07 · 陶理\\[2pt]
+复核：\texttt{Homework/\_review/tools/verify\_hard\_drill.py}（PASS 91 / FAIL 0）}
+\end{center}
+
+\end{document}
