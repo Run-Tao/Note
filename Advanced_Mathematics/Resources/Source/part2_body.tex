@@ -1,0 +1,925 @@
+% ============================================================
+%  讲义_全专题冲顶_11-08.tex 的后半部分（答案速查 / 逐题详解 / 模拟卷）
+%  由 \include 引入
+% ============================================================
+
+\section{答案速查（做完一组再看）}
+
+\small\setlength{\tabcolsep}{4pt}
+\begin{longtable}{@{}p{1.4cm}p{12.0cm}p{0.9cm}@{}}
+\toprule
+题号 & 答案 & 组\\
+\midrule
+\endhead
+S1.1 & 极限 $0$；$\delta$ 取法：先 $|\cos x-1|\leq\frac{x^{2}}{2}$、$|\ee^{-x^{2}/2}-1|\leq\frac{x^{2}}{2}$，故 $\delta=\min\{1,\sqrt{2\eps}\}$ & A\\
+S1.2 & 极限 $2$；$\abs{\tan x-x}\leq\frac{x^{3}}{2}$、$\abs{x-\sin x}\geq\frac{x^{3}}{6}$，$\delta$ 由 $\frac{x^{3}}{2x^{3}/6}<\eps$ 定出 & A\\
+S1.3 & 极限 $\frac13$；由 $\sin x=x-\frac{x^{3}}{6}+o(x^{3})$、$\cos x=1-\frac{x^{2}}{2}+o(x^{2})$ 得分子 $=\frac{x^{3}}{3}+o(x^{3})$ & A\\
+S1.4 & 左极限 $-\infty$，右极限 $+\infty$，极限不存在 & A\\
+S1.5 & 极限 $1$；由 $\ee^{t}\geq1+t$ 与连续性得 $\abs{\ee^{t}-1-t}\leq\frac{\ee}{2}t^{2}$（$t$ 充分小时） & A\\
+S1.6 & 极限 $\frac16$；由 $\arcsin x=x+\frac{x^{3}}{6}+o(x^{3})$ & A\\
+\midrule
+S1.7 & 极限 $-\frac16$；令 $u=1/x$，用 $\sin u-u=-\frac{u^{3}}{6}+o(u^{3})$ & B\\
+S1.8 & 极限 $1$；分子分母同除 $x^{2}$，再用 $x>2\eps$ 之类控制 & B\\
+S1.9 & 极限 $\frac12$；令 $u=1/x$，用 $\ee^{u}-1-u=\frac{u^{2}}{2}+o(u^{2})$ & B\\
+S1.10 & 极限 $1$；分子分母同除 $x^{2}$，注意 $x\to-\infty$ 时 $x^{2}\to+\infty$ & B\\
+\midrule
+S1.11 & $-\infty$；取 $M>0$，由 $\ln x<0$ 找 $\delta$ 使 $\abs{\frac{1}{x\ln x}}>M$ & C\\
+S1.12 & $+\infty$；分子 $\to-\infty$、分母 $\to0^{-}$，比值 $\to+\infty$ & C\\
+\midrule
+S2.1 & $\dfrac{\D y}{\D x}\big|_{0}=0$；$\dfrac{\D^{2}y}{\D x^{2}}\big|_{0}=-\dfrac{1}{4}$ & S2\\
+S2.2 & $\dfrac{\D y}{\D x}\big|_{0}=-1$；$\dfrac{\D^{2}y}{\D x^{2}}\big|_{0}=4$ & S2\\
+S2.3 & $\dfrac{\D^{2}y}{\D x^{2}}\big|_{(0,1)}=\dfrac{1}{\ee^{2}}$ & S2\\
+S2.4 & $\dfrac{\D^{2}y}{\D x^{2}}\big|_{(3,3)}=-\dfrac{1}{3}$ & S2\\
+S2.5 & $b=0$，$a=1$ & S2\\
+S2.6 & $f''(0)=\dfrac{1}{4}$ & S2\\
+S2.7 & $f^{(4)}(0)=12$ & S2\\
+S2.8 & $f^{(4)}(0)=24$，$f^{(5)}(0)=0$ & S2\\
+S2.9 & $f^{(3)}(0)=6$ & S2\\
+S2.10 & $f''(0)=2$ & S2\\
+S2.11 & $\D y=2\ee\,\D x$ & S2\\
+S2.12 & $\D y=\D x$ & S2\\
+S2.13 & $\D y=-\dfrac{3}{4}\,\D x$ & S2\\
+S2.14 & $f'(0)=0$ & S2\\
+\midrule
+S3.1 & $k=1$（切线 $y-1=x-\frac{\pi}{2}$） & S3\\
+S3.2 & $k=1$ & S3\\
+S3.3 & $k=0$（$\theta=\pi$ 处 $0/0$，取极限得 $0$） & S3\\
+S3.4 & 弧长 $8$ & S3\\
+S3.5 & $r_{\min}=\frac12$（$\theta=0$）；直角方程 $x^{2}+y^{2}=(1-x)^{2}$；顶点 $(\frac12,0)$，焦点 $(0,0)$，准线 $x=\frac12$ & S3\\
+S3.6 & $x^{2}+y^{2}=2x$，即 $(x-1)^{2}+y^{2}=1$，圆心 $(1,0)$、半径 $1$ & S3\\
+S3.7 & $x=1$ 可去（极限 $-2$）；$x=2$ 无穷间断点 & S3\\
+S3.8 & $x=0$ 跳跃间断点（左 $-\frac\pi2$、右 $\frac\pi2$） & S3\\
+S3.9 & $x=0$ 第二类（振荡）间断点 & S3\\
+S3.10 & 连续（极限 $0$ 等于函数值） & S3\\
+S3.11 & $x=0$ 无穷间断点 & S3\\
+S3.12 & $x=1$ 第二类（振荡）间断点 & S3\\
+\midrule
+S4.1 & 极限 $\sqrt2$；证法：$x_{n}\geq\sqrt2$ 且 $x_{n+1}\leq x_{n}$，单调有界 & S4\\
+S4.2 & 极限 $\frac{1+\sqrt5}{2}$（黄金比例）；对照：$y_{n+1}=y_{n}+\frac1{y_{n}}$ 发散到 $+\infty$ & S4\\
+S4.3 & $f'(x)=\frac{x^{2}-2}{2x^{2}}$，$\max_{[1,2]}\abs{f'}=\frac12<1$，是压缩映射 & S4\\
+S4.4 & $f(x)=2^{x}$ & S4\\
+S4.5 & 极限 $\sqrt2-1$ & S4\\
+S4.6 & \textbf{不必然}。反例：$f(x)=x+p(x)$，$p$ 为任意 $1$-周期连续函数且 $p(0)=0$ & S4\\
+S4.7 & 极限 $\approx0.739085$（Dottie 数），是方程 $\cos x=x$ 的唯一根 & S4\\
+S4.8 & $f(4)=f(2\cdot2)=f(2)^{2}=9$ & S4\\
+\midrule
+S5.1 & 最大值 $3$（在 $x=-2$ 与 $x=-1$ 处），最小值 $-1$（在 $x=1$ 与 $x=2$ 处） & S5\\
+S5.2 & 令 $g(x)=\ln(1+x)-\frac{x}{1+x}$，$g'(x)=\frac{x}{(1+x)^{2}}>0$，$g(0)=0$ & S5\\
+S5.3 & $h(x)=\ee^{x}-ex$，$h'(x)=\ee^{x}-e$，$h''=\ee^{x}>0$，$h'(1)=0$，$h(1)=0$ & S5\\
+S5.4 & 交错级数 $\ln(1+x)=x-\frac{x^{2}}2+\frac{x^{3}}3-\cdots$（$0<x\leq1$）& S5\\
+S5.5 & 最大值 $\frac1\ee$，在 $x=1$ 处取到 & S5\\
+S5.6 & 拉格朗日中值定理：$\ln(1+x)-x=\frac{-x^{2}}{2\xi}$，$\xi\in(0,x)$，故 $\abs{\cdot}=\frac{x^{2}}{2\xi}<\frac{x^{2}}{2}$（因 $\xi>x$ 时不成立，须用 $\xi\in(0,x)$ 且 $x>0$ 时 $\frac{1}{\xi}>\frac1x$ —— 反向）& S5\\
+S5.7 & 取 $F=\ln x$，$G=x$，柯西中值定理 $\dfrac{\ln b-\ln a}{b-a}=\dfrac{1}{\xi}$ & S5\\
+S5.8 & $f'=3x^{2}-6ax+2b$，两不同实根 $\iff 36a^{2}-24b>0$，即 $3a^{2}>2b$ & S5\\
+S5.9 & 令 $g(x)=x-\sin x$，$g'(x)=1-\cos x\geq0$，$g(0)=0$ & S5\\
+S5.10 & 上确界 $1$（$x\to\pm\infty$ 时趋于 $1$，但不取到）& S5\\
+\midrule
+S6.1 & 奇函数；定义域 $\R$；截距 $(0,0)$；$f'=\frac{x^{2}(x^{2}+3)}{(x^{2}+1)^{2}}\geq0$ 严格增（$x\neq0$ 时 $>0$）；$f(0)=0$ 既是极小也是拐点（驻点非极值类型的边界）；渐近线 $y=x$；无水平渐近线 & S6\\
+S6.2 & 定义域 $x\neq0$；$f'=1+\frac1{x^{2}}>0$ 严格增；$x\to0^{+}$ 时 $f\to-\infty$，$x\to0^{-}$ 时 $f\to+\infty$；渐近线 $x=0$ 与 $y=x$；无极值 & S6\\
+S6.3 & $x=1$ 处不可导（左导 $-\ee^{-1}$、右导 $\ee^{-1}$），是尖点极小值，值 $0$；$x=2$ 处极大值 $\ee^{-2}$；水平渐近线 $y=0$ & S6\\
+S6.4 & $f'=\ee^{-x}(1-x)$，极大值 $\frac1\ee$ 在 $x=1$；$x\to-\infty$ 时 $f\to-\infty$；水平渐近线 $y=0$ & S6\\
+S6.5 & $f'=\frac{2x}{x^{2}+1}$，极小值 $0$ 在 $x=0$；$x\to\pm\infty$ 时 $f\to+\infty$；无水平渐近线、无斜渐近线 & S6\\
+S6.6 & $f=x+1+\frac1{x-1}$；定义域 $x\neq1$；$f'=\frac{x(x-2)}{(x-1)^{2}}$，驻点 $0$（极大值 $0$）与 $2$（极小值 $4$）；渐近线 $x=1$ 与 $y=x+1$ & S6\\
+\bottomrule
+\end{longtable}
+
+% ============================================================
+\section{逐题详解}
+
+\subsection{S1\quad 极限定义证明}
+
+\begin{keypoint}[S1 组的通用五步骨架]
+\begin{enumerate}
+\item \textbf{写量词行}（对应三种形式之一）；
+\item \textbf{把 $|f(x)-A|$ 拆成能控制的块}（通常是「差值」$\leq$「主项」$\leq$「$\eps$ 倍 $x$ 的某次幂」）；
+\item \textbf{给主项一个估计}（常用 $\abs{\sin u}\leq\abs{u}$、$\abs{1-\cos u}\leq\frac{u^{2}}2$、$1\leq\ee^{u}\leq1+u\ee^{u}$、$(1+u)^{\alpha}$ 的切线界）；
+\item \textbf{解出 $\delta$ 或 $X$}：$\delta=\min\{c,\ \text{使主项}<\eps\text{ 的那个值}\}$；
+\item \textbf{回代验证量词顺序}（这一步最常被跳过，也是最常丢分的地方）。
+\end{enumerate}
+\end{keypoint}
+
+\noindent\textbf{S1.1}\quad 答案：极限 $0$。
+\key{注意 $\cos x$ 与 $\ee^{-x^{2}/2}$ 的二阶项\textbf{恰好抵消}，所以分子是 $O(x^{4})$ 级别。若只用一阶信息会得到错误结论。}
+
+证：设 $\eps>0$。当 $|x|<1$ 时，
+\[
+\abs{\cos x-1}=\abs{2\sin^{2}\frac{x}{2}}\leq\frac{x^{2}}{2},\qquad
+\abs{\ee^{-\frac{x^{2}}{2}}-1}\leq\frac{x^{2}}{2}\ee^{\frac{x^{2}}{2}}\leq\frac{\ee}{2}x^{2}.
+\]
+于是
+\[
+\left|\frac{\cos x-\ee^{-\frac{x^{2}}{2}}}{x^{2}}\right|
+\leq\frac{\frac12x^{2}+\frac{\ee}{2}x^{2}}{x^{2}}=\frac{1+\ee}{2}.
+\]
+取 $\delta=\min\left\{1,\sqrt{\dfrac{2\eps}{1+\ee}}\right\}$，则 $0<|x|<\delta$ 时上式 $=\frac{1+\ee}{2}\cdot\frac{x^{2}}{x^{2}}$ 已被上面的 $\delta$ 控制为 $<\eps$。故极限为 $0$。
+
+（旁证：$\cos x=1-\frac{x^{2}}2+\frac{x^{4}}{24}+o(x^{4})$，$\ee^{-x^{2}/2}=1-\frac{x^{2}}2+\frac{x^{4}}8+o(x^{4})$，分子 $=-\frac{x^{4}}{12}+o(x^{4})$，确实比 $x^{2}$ 高两阶。）
+
+\medskip
+\noindent\textbf{S1.2}\quad 答案：极限 $2$。
+\key{分子分母都是三阶小量，必须给出\textbf{三阶}的界，不能只给一阶。}
+
+证：设 $\eps>0$。当 $0<|x|<1$ 时，
+\[
+\tan x-x=\int_{0}^{x}\tan^{2}t\,\D t,\qquad x-\sin x=\int_{0}^{x}(1-\cos t)\,\D t.
+\]
+由 $0\leq\tan^{2}t\leq\frac{t^{2}}{(1-t^{2})}\leq 2t^{2}$（当 $|t|\leq\frac12$）与 $0\leq1-\cos t\leq\frac{t^{2}}2$：
+\[
+\abs{\tan x-x}\leq\frac{2x^{3}}{3},\qquad \abs{x-\sin x}\leq\frac{x^{3}}{6}.
+\]
+（用绝对值时分子分母同号，故比值为正。）于是
+\[
+\left|\frac{\tan x-x}{x-\sin x}-2\right|
+=\frac{\abs{2(x-\sin x)-(\tan x-x)}}{\abs{x-\sin x}}
+\leq\frac{2\cdot\frac{x^{3}}{6}+\frac{2x^{3}}3}{\frac{x^{3}}{6}}=6.
+\]
+取 $\delta=\min\left\{\frac12,\left(\frac{\eps}{6}\right)^{1/3}\right\}$ 即可。
+
+（旁证：$\tan x-x=\frac{x^{3}}3+o(x^{3})$，$x-\sin x=\frac{x^{3}}6+o(x^{3})$，比值 $\to2$。）
+
+\medskip
+\noindent\textbf{S1.3}\quad 答案：极限 $\frac13$。
+\key{$\sin x-x\cos x$ 的一阶项自动抵消（$x-x=0$），所以必须展到三阶。}
+
+证：由泰勒公式
+\[
+\sin x=x-\frac{x^{3}}6+o(x^{3}),\qquad \cos x=1-\frac{x^{2}}2+o(x^{2}),
+\]
+得
+\[
+\sin x-x\cos x=\left(x-\frac{x^{3}}6+o(x^{3})\right)-x\left(1-\frac{x^{2}}2+o(x^{2})\right)=\frac{x^{3}}3+o(x^{3}).
+\]
+故极限 $=\frac13$。
+
+\medskip
+\noindent\textbf{S1.4}\quad 答案：极限不存在。
+\key{这是本组唯一的「证明不存在」题。\textbf{左右极限必须分开算}，只要左右极限不相等（包括一个无穷一个有限），极限就不存在。}
+
+由 $\ln(1+x)=x-\frac{x^{2}}2+o(x^{2})$，
+\[
+\ln(1+x)+\frac{x}{2}=\frac{3x}{2}+o(x),
+\]
+故
+\[
+\frac{\ln(1+x)+\frac{x}{2}}{x^{2}}=\frac{3}{2x}+o\left(\frac1x\right).
+\]
+于是 $\lim\limits_{x\to0^{+}}=+\infty$，$\lim\limits_{x\to0^{-}}=-\infty$。两侧极限不等，故原极限不存在。
+
+\medskip
+\noindent\textbf{S1.5}\quad 答案：极限 $1$。
+\key{$\ee^{t}\geq1+t$ 是全局不等式，可以直接用来控制误差，不用展到无穷阶。}
+
+证：设 $\eps>0$。令 $t=x-1$。由 $\ee^{t}\geq1+t$ 与 $\ee^{t}=1+t+\frac{t^{2}}2\ee^{\theta t}$（$0<\theta<1$），当 $|t|$ 充分小时 $\ee^{\theta t}\leq\ee$，故
+\[
+\abs{\ee^{t}-1-t}\leq\frac{\ee}{2}t^{2}.
+\]
+于是当 $t\neq0$ 时
+\[
+\left|\frac{\ee^{t}-1}{t}-1\right|=\frac{\abs{\ee^{t}-1-t}}{\abs{t}}\leq\frac{\ee}{2}\abs{t}.
+\]
+取 $\delta=\min\left\{1,\frac{2\eps}{\ee}\right\}$，则 $0<|t|<\delta$ 时上式 $<\eps$。故极限为 $1$。
+
+\medskip
+\noindent\textbf{S1.6}\quad 答案：极限 $\frac16$。
+\key{$\arcsin x$ 的三阶项系数是 $+\frac16$，符号是正的（与 $\sin$ 相反）。}
+
+由 $\arcsin x=x+\frac{x^{3}}6+o(x^{3})$，得
+\[
+\arcsin x-x=\frac{x^{3}}6+o(x^{3}),
+\]
+故极限 $=\frac16$。
+
+\medskip
+\noindent\textbf{S1.7}\quad 答案：极限 $-\frac16$。
+\key{$x\to+\infty$ 型要换元 $u=1/x\to0^{+}$，然后用 $x\to0$ 的展开。}
+
+令 $u=1/x\to0^{+}$，则
+\[
+x^{3}\left(\sin\frac1x-\frac1x\right)=\frac{1}{u^{3}}(\sin u-u).
+\]
+由 $\sin u-u=-\frac{u^{3}}6+o(u^{3})$，原式 $=-\frac16+o(1)$，极限 $=-\frac16$。
+
+\medskip
+\noindent\textbf{S1.8}\quad 答案：极限 $1$。
+\key{$\eps$-$X$ 型的 $\delta$ 换成 $X$：先证「存在 $X_0$ 使结论对 $x>X_0$ 成立」，再把 $X$ 取大。}
+
+证：设 $\eps>0$。当 $x>4$ 时，$x^{2}-3x+1>x^{2}-3x>x^{2}/2$（因为 $3x< x^{2}/2$ 当 $x>6$ 成立，取 $x>6$），且
+\[
+\frac{x^{2}+2x}{x^{2}-3x+1}-1=\frac{5x-1}{x^{2}-3x+1}\leq\frac{5x}{x^{2}/2}=\frac{10}{x}.
+\]
+取 $X=\max\left\{6,\frac{10}{\eps}\right\}$，则 $x>X$ 时上式 $<\eps$。故极限为 $1$。
+
+\medskip
+\noindent\textbf{S1.9}\quad 答案：极限 $\frac12$。
+\key{换元后是 $\ee^{u}-1-u$，它的二阶项是 $\frac{u^{2}}2$，除以 $u^{2}$ 得 $\frac12$。}
+
+令 $u=1/x\to0^{+}$，则
+\[
+x^{2}\left(\ee^{1/x}-1-\frac1x\right)=u^{-2}(\ee^{u}-1-u).
+\]
+由 $\ee^{u}=1+u+\frac{u^{2}}2+o(u^{2})$，原式 $=\frac12+o(1)$，极限 $=\frac12$。
+
+\medskip
+\noindent\textbf{S1.10}\quad 答案：极限 $1$。
+\key{$x\to-\infty$ 时 $x^{2}\to+\infty$，控制方式和 $x\to+\infty$ 一样，不要因为 $x$ 是负的就把分母估错。}
+
+证：设 $\eps>0$。当 $x<-6$ 时 $x^{2}+3x+1>x^{2}/2$（因 $3x<0$），且
+\[
+\frac{x^{2}+1}{x^{2}+3x+1}-1=\frac{-3x}{x^{2}+3x+1}\leq\frac{3\abs{x}}{x^{2}/2}=\frac{6}{\abs{x}}.
+\]
+取 $X=\max\left\{6,\frac6\eps\right\}$，则 $x<-X$ 时上式 $<\eps$。故极限为 $1$。
+
+\medskip
+\noindent\textbf{S1.11}\quad 答案：$-\infty$。
+\key{$M$ 型的量词顺序与 $\eps$-$\delta$ 型\textbf{完全反过来}：结论是「$\abs{f(x)}>M$」，所以是「先给 $M$，找 $\delta$」，而且 $M$ 越大 $\delta$ 越小。}
+
+证：设 $M>0$。取 $\delta=\min\left\{\frac{1}{2},\frac{1}{2M\ee}\right\}$。当 $0<x<\delta$ 时，$\ln x<0$ 且由 $\ln x\geq1-\frac1x$（对 $x>0$）得 $\ln x<-\frac{1}{x}\cdot\frac{x}{1}= -\frac1x+\frac{x}{x}$ —— 更直接地，对 $0<x<\frac12$ 有 $\ln x<-\frac12$，故
+\[
+\abs{\frac{1}{x\ln x}}=\frac{1}{x\abs{\ln x}}>\frac{2}{x}>\frac{2}{\delta}\geq M.
+\]
+故 $\lim\limits_{x\to0^{+}}\frac{1}{x\ln x}=-\infty$。
+
+\medskip
+\noindent\textbf{S1.12}\quad 答案：$+\infty$。
+\key{分子 $\to-\infty$、分母 $\to0^{-}$，比值 $\to+\infty$。\textbf{符号必须分开判}，很多人在这里写成 $-\infty$。}
+
+证：设 $M>0$。取 $\delta$ 充分小使 $1<x<1-\delta$ 且 $\ln(1-x^{2})<0$。此时 $\abs{\frac{\ln(1-x^{2})}{x-1}}=\frac{\abs{\ln(1-x^{2})}}{1-x}$。由于 $\abs{\ln(1-x^{2})}\to+\infty$ 而 $1-x\to0^{+}$，比值 $\to+\infty$。取 $\delta$ 使 $\abs{\ln(1-x^{2})}>(1-\delta)M$ 且 $1-x<1-\delta$，即得 $\abs{f(x)}>M$。故极限为 $+\infty$。
+
+\subsection{S2\quad 导数与微分}
+
+\noindent\textbf{S2.1}\quad 答案：$\dfrac{\D y}{\D x}\big|_{0}=0$，$\dfrac{\D^{2}y}{\D x^{2}}\big|_{0}=-\dfrac{1}{4}$。
+\key{二阶导的除数是 $\dfrac{\D x}{\D t}=1+\ee^{t}$，不是 $\dfrac{\D^{2}x}{\D t^{2}}$。}
+
+$\dfrac{\D x}{\D t}=1+\ee^{t}$，$\dfrac{\D y}{\D t}=1-\ee^{t}$，故
+\[
+\frac{\D y}{\D x}=\frac{1-\ee^{t}}{1+\ee^{t}},\qquad
+\frac{\D^{2}y}{\D x^{2}}=\frac{\dfrac{\D}{\D t}\left(\frac{1-\ee^{t}}{1+\ee^{t}}\right)}{1+\ee^{t}}.
+\]
+在 $t=0$：$\dfrac{\D y}{\D x}=0$；且
+\[
+\frac{\D}{\D t}\left(\frac{1-\ee^{t}}{1+\ee^{t}}\right)
+=\frac{-\ee^{t}(1+\ee^{t})-(1-\ee^{t})\ee^{t}}{(1+\ee^{t})^{2}}
+=\frac{-2\ee^{t}}{(1+\ee^{t})^{2}}\;\xrightarrow[t\to0]{}\;-\frac12,
+\]
+故 $\dfrac{\D^{2}y}{\D x^{2}}\big|_{0}=\dfrac{-1/2}{2}=-\dfrac{1}{4}$。
+
+\medskip
+\noindent\textbf{S2.2}\quad 答案：$\dfrac{\D y}{\D x}\big|_{0}=-1$，$\dfrac{\D^{2}y}{\D x^{2}}\big|_{0}=4$。
+
+$\dfrac{\D x}{\D t}=2t+1$，$\dfrac{\D y}{\D t}=2t-1$，故
+\[
+\frac{\D y}{\D x}=\frac{2t-1}{2t+1},\qquad
+\frac{\D^{2}y}{\D x^{2}}=\frac{\dfrac{\D}{\D t}\left(\frac{2t-1}{2t+1}\right)}{2t+1}.
+\]
+在 $t=0$：$\dfrac{\D y}{\D x}=-1$；且
+\[
+\frac{\D}{\D t}\left(\frac{2t-1}{2t+1}\right)
+=\frac{2(2t+1)-2(2t-1)}{(2t+1)^{2}}=\frac{4}{(2t+1)^{2}}\;\xrightarrow[t\to0]{}\;4,
+\]
+故 $\dfrac{\D^{2}y}{\D x^{2}}\big|_{0}=\dfrac{4}{1}=4$。
+
+\medskip
+\noindent\textbf{S2.3}\quad 答案：$\dfrac{\D^{2}y}{\D x^{2}}\big|_{(0,1)}=\dfrac{1}{\ee^{2}}$。
+\key{点 $(0,1)$ 确实在曲线上（$\ee^{1}+0=\ee$）。代回后中间括号 $\ee^{y}+x$ 恰好等于 $\ee$，所以答案干净。}
+
+两边对 $x$ 求导：$\ee^{y}y'+y+xy'=0$，即 $y'(\ee^{y}+x)=-y$。在 $(0,1)$：$y'(0)\ee=-1$，$y'(0)=-\dfrac{1}{\ee}$。
+
+再对 $y'(\ee^{y}+x)=-y$ 求导：
+\[
+y''(\ee^{y}+x)+y'(\ee^{y}y'+1)=-y'.
+\]
+在 $(0,1)$：$\ee^{y}+x=\ee$，$\ee^{y}y'+1=1\cdot(-1)+1=0$，故
+\[
+y''(0)\ee-(-1)=-(-1)\;\Longrightarrow\;y''(0)\ee+1=1\;\Longrightarrow\;y''(0)=\frac{1}{\ee^{2}}.
+\]
+
+\medskip
+\noindent\textbf{S2.4}\quad 答案：$\dfrac{\D^{2}y}{\D x^{2}}\big|_{(3,3)}=-\dfrac{1}{3}$。
+
+$2x+2yy'=0$，故 $y'=-\dfrac{x}{y}$。再对 $x$ 求导：
+\[
+1+y'^{2}+yy''=0\;\Longrightarrow\;y''=-\frac{1+y'^{2}}{y}.
+\]
+在 $(3,3)$：$y'=-1$，故 $y''=-\dfrac{1+1}{3}=-\dfrac{1}{3}$。
+
+\medskip
+\noindent\textbf{S2.5}\quad 答案：$b=0$，$a=1$。
+\key{先连续后可导。\textbf{左导数用 $x\to0^{-}$ 的导数，右导数用 $x\to0^{+}$ 的导数}，两个要分别写。}
+
+连续性：$\lim\limits_{x\to0^-}\ln(1+x)=0$，$\lim\limits_{x\to0^+}(ax+b)=b$，故 $b=0$。
+
+左导数：$\lim\limits_{x\to0^-}\dfrac{\ln(1+x)-0}{x}=\lim\limits_{x\to0^-}\dfrac{\ln(1+x)}{x}=1$。
+
+右导数：$\lim\limits_{x\to0^+}\dfrac{ax+b-0}{x}=a$。
+
+可导 $\Rightarrow 1=a$。故 $a=1$，$b=0$。
+
+\medskip
+\noindent\textbf{S2.6}\quad 答案：$f''(0)=\dfrac{1}{4}$。
+
+$f'(x)=\dfrac{\ee^{x}}{1+\ee^{x}}$，$f''(x)=\dfrac{\ee^{x}}{(1+\ee^{x})^{2}}$。在 $x=0$：$\dfrac{1}{4}$。
+
+\medskip
+\noindent\textbf{S2.7}\quad 答案：$f^{(4)}(0)=12$。
+\key{「代点消项」套路：$x^{2}\ee^{x}$ 的 4 阶导在 $0$，等价于求 $x^{4}$ 项系数乘 $4!$。}
+
+$x^{2}\ee^{x}=x^{2}\left(1+x+\frac{x^{2}}2+\frac{x^{3}}6+\frac{x^{4}}{24}+\cdots\right)=x^{2}+x^{3}+\frac{x^{4}}2+\cdots$。
+$x^{4}$ 的系数是 $\frac12$，故 $f^{(4)}(0)=4!\cdot\frac12=12$。
+
+\medskip
+\noindent\textbf{S2.8}\quad 答案：$f^{(4)}(0)=24$，$f^{(5)}(0)=0$。
+\key{$\sin x$ 只有奇次项，乘 $x^{3}$ 后最低次是 $x^{4}$，所以 5 阶导在 $0$ 必为 $0$（不用算）。}
+
+$x^{3}\sin x=x^{3}\left(x-\frac{x^{3}}6+\cdots\right)=x^{4}-\frac{x^{6}}6+\cdots$。
+$x^{4}$ 系数为 $1$，$f^{(4)}(0)=4!\cdot1=24$；$x^{5}$ 系数为 $0$，$f^{(5)}(0)=5!\cdot0=0$。
+
+\medskip
+\noindent\textbf{S2.9}\quad 答案：$f^{(3)}(0)=6$。
+
+$\dfrac{x}{1+x}=x-x^{2}+x^{3}-x^{4}+\cdots$，$x^{3}$ 系数为 $1$，故 $f^{(3)}(0)=3!=6$。
+
+\medskip
+\noindent\textbf{S2.10}\quad 答案：$f''(0)=2$。
+
+$f'(x)=2x\ee^{x^{2}}$，$f''(x)=(2+4x^{2})\ee^{x^{2}}$，在 $x=0$：$2$。
+
+（泰勒视角：$\ee^{x^{2}}=1+x^{2}+o(x^{2})$，$x^{2}$ 系数为 $1$，$f''(0)=2!\cdot1=2$。）
+
+\medskip
+\noindent\textbf{S2.11}\quad 答案：$\D y=2\ee\,\D x$。
+
+$y'=(1+x)\ee^{x}$，在 $x=1$ 处 $y'=2\ee$。故 $\D y=2\ee\,\D x$。
+
+\medskip
+\noindent\textbf{S2.12}\quad 答案：$\D y=\D x$。
+
+$y'=\dfrac{2x}{x^{2}+1}$，在 $x=1$ 处 $y'=1$。故 $\D y=\D x$。
+
+\medskip
+\noindent\textbf{S2.13}\quad 答案：$\D y=-\dfrac{3}{4}\,\D x$。
+
+$2x+2yy'=0$，在 $(3,4)$ 处 $y'=-\dfrac{3}{4}$。故 $\D y=-\dfrac{3}{4}\,\D x$。
+
+\medskip
+\noindent\textbf{S2.14}\quad 答案：$f'(0)=0$。
+\key{不可导点要\textbf{回到导数定义}去算，不能对 $x=0$ 直接求导。}
+
+\[
+f'(0)=\lim_{x\to0}\frac{f(x)-f(0)}{x}=\lim_{x\to0}\frac{x^{2}\sin\frac1x}{x}
+=\lim_{x\to0}x\sin\frac1x=0
+\]
+（最后一步由 $\abs{x\sin\frac1x}\leq\abs{x}\to0$）。
+
+\subsection{S3\quad 极坐标与间断点}
+
+\noindent\textbf{S3.1}\quad 答案：$k=1$。
+\key{极坐标的切线斜率公式：$k=\dfrac{r'\sin\theta+r\cos\theta}{r'\cos\theta-r\sin\theta}$。}
+
+$r=1+\cos\theta$，$r'=-\sin\theta$。在 $\theta=\frac\pi2$：$r=1$，$r'=-1$，
+\[
+k=\frac{(-1)\cdot1+1\cdot0}{(-1)\cdot0-1\cdot1}=\frac{-1}{-1}=1.
+\]
+此时点为 $(r\cos\theta,r\sin\theta)=(0,1)$，切线为 $y-1=x-\frac\pi2$。
+
+\medskip
+\noindent\textbf{S3.2}\quad 答案：$k=1$。
+
+$r=\ee^{\theta}$，$r'=\ee^{\theta}$。在 $\theta=0$：$r=r'=1$，
+\[
+k=\frac{1\cdot0+1\cdot1}{1\cdot1-1\cdot0}=\frac{1}{1}=1.
+\]
+
+\medskip
+\noindent\textbf{S3.3}\quad 答案：$k=0$。
+\key{$\theta=\pi$ 处 $r'=0$ 且 $r\sin\theta=0$，公式给出 $0/0$，\textbf{必须取极限}。直接代入会答「斜率不存在」而丢分。}
+
+$r=2(1+\cos\theta)$，$r'=-2\sin\theta$。
+\[
+k=\frac{-2\sin^{2}\theta+2(1+\cos\theta)\cos\theta}{-2\sin\theta\cos\theta-2(1+\cos\theta)\sin\theta}
+=\frac{-2\sin^{2}\theta+2\cos\theta+2\cos^{2}\theta}{-4\sin\theta\cos\theta-2\sin\theta}
+=\frac{2\cos\theta+2\cos 2\theta}{-2\sin\theta(2\cos\theta+1)}.
+\]
+在 $\theta\to\pi$：分子 $\to2(-1)+2(1)=0$，分母 $\to0$，故取极限。令 $u=\theta-\pi$，则 $\cos\theta\approx-1+\frac{u^{2}}2$，$\sin\theta\approx-u$：
+\[
+\text{分子}=2\left(-1+\frac{u^{2}}2\right)+2\left(1-u^{2}\right)\approx -u^{2},\qquad
+\text{分母}\approx-2(-u)(-1)=2u,
+\]
+故 $k\to\dfrac{-u^{2}}{2u}=-\dfrac{u}{2}\to0$。所以斜率 $=0$（心形线在顶点的切线水平）。
+
+\medskip
+\noindent\textbf{S3.4}\quad 答案：弧长 $8$。
+
+\[
+L=\int_{0}^{\pi}\sqrt{r^{2}+(r')^{2}}\,\D\theta
+=\int_{0}^{\pi}\sqrt{4(1+\cos\theta)^{2}+4\sin^{2}\theta}\,\D\theta
+=2\int_{0}^{\pi}\sqrt{2+2\cos\theta}\,\D\theta.
+\]
+用 $1+\cos\theta=2\cos^{2}\frac\theta2$：$\sqrt{2+2\cos\theta}=2\cos\frac\theta2$（在 $[0,\pi]$ 上非负）。于是
+\[
+L=4\int_{0}^{\pi}\cos\frac\theta2\,\D\theta=8\left[\sin\frac\theta2\right]_{0}^{\pi}=8.
+\]
+
+\medskip
+\noindent\textbf{S3.5}\quad 答案：$r_{\min}=\frac12$；直角方程 $x^{2}+y^{2}=(1-x)^{2}$；顶点 $\left(\frac12,0\right)$。
+
+$r=\dfrac{1}{1+\cos\theta}$。因 $1+\cos\theta\in[0,2]$，$r$ 在 $\theta=0$ 时取最小值 $\frac12$（$\theta=\pi$ 时 $r\to+\infty$）。
+
+直角方程：$r(1+\cos\theta)=1\Rightarrow r+x=1\Rightarrow \sqrt{x^{2}+y^{2}}=1-x\Rightarrow x^{2}+y^{2}=(1-x)^{2}$。
+整理得 $y^{2}=1-2x$，即 $x=\frac{1-y^{2}}2$，抛物线，顶点 $\left(\frac12,0\right)$，焦点 $(0,0)$，准线 $x=\frac12$。
+
+\medskip
+\noindent\textbf{S3.6}\quad 答案：$x^{2}+y^{2}=2x$，即 $(x-1)^{2}+y^{2}=1$（圆心 $(1,0)$，半径 $1$）。
+
+$r=2\cos\theta\Rightarrow r^{2}=2r\cos\theta\Rightarrow x^{2}+y^{2}=2x$。
+
+\medskip
+\noindent\textbf{S3.7}\quad 答案：$x=1$ 可去间断点（极限 $-2$）；$x=2$ 无穷间断点。
+
+$f(x)=\dfrac{(x-1)(x+1)}{(x-1)(x-2)}$。
+在 $x=1$：$\lim\limits_{x\to1}f=\lim\limits_{x\to1}\dfrac{x+1}{x-2}=-2$，极限存在但与 $f(1)$ 不同（$f(1)$ 无定义），是可去间断点。
+在 $x=2$：分子 $\to3\neq0$，分母 $\to0$，故 $\lim\limits_{x\to2^{+}}f=+\infty$，$\lim\limits_{x\to2^{-}}f=-\infty$，是无穷间断点。
+
+\medskip
+\noindent\textbf{S3.8}\quad 答案：$x=0$ 是跳跃间断点。
+\key{这是 2018-19 真题，\textbf{官方答案给「1 个」是错的，实际是 2 个第一类间断点}（$x=0$ 跳跃、$x=-1$ 可去）。本题只问 $x=0$。}
+
+当 $x\to0^{+}$ 时 $x+\frac1x\to+\infty$，$\arctan\to\frac\pi2$；当 $x\to0^{-}$ 时 $x+\frac1x\to-\infty$，$\arctan\to-\frac\pi2$。
+左右极限都存在但不相等，故 $x=0$ 是第一类中的跳跃间断点。
+
+\medskip
+\noindent\textbf{S3.9}\quad 答案：$x=0$ 是第二类（振荡）间断点。
+
+$\tan\frac1x$ 在 $x\to0$ 时在 $-\infty$ 与 $+\infty$ 之间无限振荡，极限不存在，故是第二类（振荡）间断点。
+
+\medskip
+\textbf{S3.10}\quad 答案：$f$ 在 $x=0$ 处连续。
+
+$\abs{x\sin\frac1x}\leq\abs{x}\to0$，故 $\lim\limits_{x\to0}f(x)=0=f(0)$，连续。
+
+\medskip
+\noindent\textbf{S3.11}\quad 答案：$x=0$ 是无穷间断点。
+
+$\lim\limits_{x\to0^{+}}\ln x=-\infty$，$\lim\limits_{x\to0^{-}}\ln|x|=\ln(-x)\to-\infty$，两侧同为 $-\infty$，是无穷间断点。
+
+\medskip
+\noindent\textbf{S3.12}\quad 答案：$x=1$ 是第二类（振荡）间断点。
+
+当 $x\to1^{-}$ 时 $\frac{x}{x-1}\to-\infty$，$\sin$ 在 $[-\pi/2,\pi/2]$ 周期振荡，极限不存在；$x\to1^{+}$ 时同理。故是第二类（振荡）间断点。
+
+\subsection{S4\quad 新压轴}
+
+\noindent\textbf{S4.1}\quad 答案：$\sqrt2$。
+\key{牛顿迭代的\textbf{两步单调有界}是标准套路：先证 $x_{n}\geq\sqrt2$（用 AM-GM），再证 $x_{n+1}\leq x_{n}$（用 $\frac{x+2/x}{2}\leq x\iff x\geq\sqrt2$）。}
+
+由 AM-GM，$\dfrac{x+\frac2x}{2}\geq\sqrt2$ 对一切 $x>0$ 成立，故 $x_{n}\geq\sqrt2$。
+
+又 $x_{n+1}\leq x_{n}\iff \dfrac{x_{n}^{2}+2}{2x_{n}}\leq x_{n}\iff 2\leq x_{n}^{2}$，而 $x_{n}\geq\sqrt2$ 恰好给出 $x_{n}^{2}\geq2$。故 $(x_{n})$ 单调不增。
+
+$(x_{n})$ 单调不增且下界为 $\sqrt2$，故收敛。设极限为 $L$，则 $L=\dfrac{L+\frac2L}{2}$，即 $L^{2}=2$，$L=\sqrt2$。
+
+\medskip
+\noindent\textbf{S4.2}\quad 答案：$\dfrac{1+\sqrt5}{2}$；对照情形 $y_{n}\to+\infty$。
+\key{$\dfrac{1+x}{x}$ 的迭代是\textbf{振荡收敛}的（$x_n$ 在 $\varphi$ 两侧交替），不要按单调有界去证。正确做法是先证有界（夹在两个数之间），再用「隔项」或压缩映射。}
+
+设 $\varphi=\dfrac{1+\sqrt5}{2}$（$\varphi^{2}=\varphi+1$）。
+
+先证有界：若 $x_n<\varphi$ 则 $\varphi<x_{n+1}<\varphi$；若 $\varphi<x_n<\varphi+1$ 则 $\varphi<x_{n+1}<\varphi$。由 $x_1=1<\varphi$ 可归纳得 $1\leq x_n<\varphi$（下确界 $1$，上确界 $\varphi$）。
+
+更简洁的办法是用压缩映射：$\varphi'(x)=-\dfrac{1}{x^{2}}$，在 $[1,\varphi]$ 上 $\abs{\varphi'(x)}\leq1<1$ 不成立，改取更紧的区间，或直接算 $|x_{n+1}-\varphi|=\dfrac{|x_n-\varphi|}{x_{n+1}x_n}\leq\dfrac{|x_n-\varphi|}{x_n}\leq |x_n-\varphi|$（因 $x_n\geq1$）—— 更精确地
+\[
+|x_{n+1}-\varphi|=\left|\frac{1+x_n}{x_n}-\varphi\right|
+=\frac{|1+x_n-\varphi x_n|}{x_n}
+=\frac{|x_n(\varphi+1-\varphi)+1-\varphi x_n|}{x_n}
+=\frac{|x_n-\varphi|}{x_n},
+\]
+其中用了 $1=\varphi^{2}-\varphi=\varphi(\varphi-1)$。故 $|x_{n+1}-\varphi|=\dfrac{|x_n-\varphi|}{x_n}\leq|x_n-\varphi|$ 且只要 $x_n>1$ 就严格小于，所以 $x_n\to\varphi$。
+
+答案：$\lim x_n=\varphi=\dfrac{1+\sqrt5}{2}$。
+
+对照：$y_{n+1}=y_n+\frac1{y_n}$ 时 $y_{n+1}>y_n$ 且 $y_{n+1}^{2}=y_{n}^{2}+2+\frac{1}{y_{n}^{2}}>y_{n}^{2}+2$，故 $y_{n}^{2}>2n-1$，$y_n\to+\infty$。
+
+\medskip
+\noindent\textbf{S4.3}\quad 答案：$\max_{[1,2]}\abs{f'(x)}=\frac12<1$，是压缩映射。
+
+$f'(x)=\dfrac{1}{2}\left(1-\dfrac{2}{x^{2}}\right)=\dfrac{x^{2}-2}{2x^{2}}$。
+在 $[1,2]$ 上，$f'$ 单调增（$f''=\dfrac{1}{x^{3}}>0$），$f'(1)=-\frac12$，$f'(2)=\frac14$，故 $\max_{[1,2]}\abs{f'}=\frac12$。
+
+由均值定理，$\abs{f(x)-f(y)}\leq\frac12\abs{x-y}$，$f$ 是压缩映射。不动点方程 $x=\frac{x+2/x}{2}\Rightarrow x^{2}=2\Rightarrow x=\sqrt2\in[1,2]$，故迭代从任何 $x_1\in[1,2]$ 出发都收敛到 $\sqrt2$，且误差满足 $|x_{n+1}-\sqrt2|\leq\frac12|x_n-\sqrt2|$（几何衰减）。
+
+\medskip
+\noindent\textbf{S4.4}\quad 答案：$f(x)=2^{x}$。
+\key{抽象函数方程的通用套路：\textbf{先求出一个特解，再把特解从方程里减掉，剩下的方程用连续性推出线性（Cauchy 方程）}。}
+
+由 $f(0)=f(0)f(0)$ 得 $f(0)=0$ 或 $f(0)=1$。但 $f(0)=f(-1)f(1)=f(-1)\cdot2\neq0$，故 $f(0)=1$。
+
+于是 $f(x)f(-x)=f(0)=1$，即 $f(x)\neq0$。令 $g(x)=\ln f(x)$（$f(x)>0$：由 $f(x)=f(x/2)^{2}\geq0$ 且 $f(x)\neq0$ 得 $f(x)>0$），则
+\[
+g(x+y)=g(x)+g(y),\qquad g(1)=\ln2.
+\]
+$g$ 在 $\R$ 上连续，由连续 Cauchy 方程的结论 $g(x)=g(1)x=(\ln2)x$。故
+\[
+f(x)=\ee^{(\ln2)x}=2^{x}.
+\]
+（校验：$2^{x+y}=2^{x}\cdot2^{y}$，$f(1)=2$。）
+
+\medskip
+\noindent\textbf{S4.5}\quad 答案：$\sqrt2-1$。
+
+$\varphi(x)=\dfrac{1}{2+x}$。在 $[0,1]$ 上 $\varphi$ 单调减，$\varphi([0,1])=[\frac13,\frac12]\subset[0,1]$，故 $[0,1]$ 是映射到自身的压缩区间。
+$\varphi'(x)=-\dfrac{1}{(2+x)^{2}}$，在 $[0,1]$ 上 $\abs{\varphi'}\leq\frac14<1$，是压缩映射。
+
+不动点：$x=\dfrac{1}{2+x}\Rightarrow x^{2}+2x-1=0\Rightarrow x=-1\pm\sqrt2$，取 $[0,1]$ 内的根 $x=\sqrt2-1$。
+
+由压缩映射定理，$x_n\to\sqrt2-1$。
+
+\medskip
+\noindent\textbf{S4.6}\quad 答案：\textbf{不必然}，反例 $f(x)=x+p(x)$，$p$ 为任意连续的 $1$-周期函数且 $p(0)=0$。
+\key{这是本组最重要的题：\textbf{条件不够时不要硬凑结论，要指出反例}。真题里这类题问的往往就是「是否唯一」。}
+
+验证反例：设 $p$ 连续、$1$-周期、$p(0)=0$（例如 $p(x)=\sin 2\pi x$）。令 $f(x)=x+p(x)$，则
+\[
+f(x+1)-f(x)=1+p(x+1)-p(x)=1+0=1,\qquad f(0)=0+p(0)=0.
+\]
+故 $f$ 满足题设全部条件，但 $f(1)=1+p(1)=1$，而 $f(x)=x$ 要求 $p\equiv0$。取 $p(x)=\sin2\pi x$ 时 $f(\frac12)=\frac12\neq\frac12$？—— 注意 $p(\frac12)=\sin\pi=0$，所以这一项恰好相同；改取 $p(x)=\sin2\pi x$ 于 $x=\frac14$：$p(\frac14)=1\neq0$，故 $f(\frac14)=\frac14+1\neq\frac14$。反例成立。
+
+\textbf{补充}：若再加上「$f$ 可导且 $f'(x)$ 以周期 $1$ 存在」，仍不唯一（$p$ 可取任意可导的 $1$-周期函数）；真正能推出 $f(x)=x$ 的是「$f$ 有界」（因为 $f(x)-x$ 是 $1$-周期且有界 $\Rightarrow$ 常数 $0$）或「$f$ 单调且 $f(0)=0$」等额外条件。
+
+\medskip
+\noindent\textbf{S4.7}\quad 答案：$\approx0.739085$（Dottie 数）。
+\key{$\cos$ 在 $[0,1]$ 上是压缩映射：$\abs{\cos' x}=\abs{\sin x}\leq\sin1<1$。所以可以直接用压缩映射定理。}
+
+$\varphi(x)=\cos x$ 把 $[0,1]$ 映到 $[\cos1,1]\subset[0,1]$，且 $\max_{[0,1]}\abs{\varphi'}=\sin1<1$，是压缩映射。
+
+不动点：$x=\cos x$ 在 $[0,1]$ 上有唯一根（$g(x)=\cos x-x$ 单调减，$g(0)=1>0$，$g(1)=\cos1-1<0$）。数值迭代：
+\[
+x_1=1,\ x_2=0.540302,\ x_3=0.857553,\ x_4=0.654290,\ x_5=0.793480,\ \dots
+\]
+收敛到 $x\approx0.7390851332$。
+
+\medskip
+\noindent\textbf{S4.8}\quad 答案：$f(4)=9$。
+
+由 $f(xy)=f(x)f(y)$，取 $x=y=2$：$f(4)=f(2)^{2}=3^{2}=9$。
+（若要求一般的 $f$：令 $g(x)=\ln f(x)$，则 $g(xy)=g(x)+g(y)$，取 $x=\ee^{u}$ 得 $g(\ee^{u+y})-g(\ee^{u})=g(\ee^{y})$，即 $h(u+y)-h(u)=h(y)$（其中 $h(u)=g(\ee^{u})$），故 $h$ 线性，$f(x)=x^{a}$，$a=\log_2 3$。）
+
+\subsection{S5\quad 不等式与最值}
+
+\noindent\textbf{S5.1}\quad 答案：最大值 $3$（在 $x=-2$ 与 $x=-1$ 处），最小值 $-1$（在 $x=1$ 与 $x=2$ 处）。
+
+$f'(x)=3x^{2}-3=3(x-1)(x+1)$。$f'>0$ 在 $(-\infty,-1)\cup(1,+\infty)$，$f'<0$ 在 $(-1,1)$。
+
+候选点：端点 $-2,2$ 与驻点 $\pm1$。
+\[
+f(-2)=-8+6+1=-1,\quad f(2)=8-6+1=3,\quad f(-1)=-1+3+1=3,\quad f(1)=1-3+1=-1.
+\]
+故最大 $3$，最小 $-1$。
+
+\medskip
+\noindent\textbf{S5.2}\quad 答案：令 $g(x)=\ln(1+x)-\dfrac{x}{1+x}$，$g'(x)=\dfrac{x}{(1+x)^{2}}>0$，$g(0)=0$。
+\key{单调性法：\textbf{构造差值函数}，证它单调且在某个已知点取 $0$，结论立刻出来。这是最快的证法。}
+
+$g'(x)=\dfrac{1}{1+x}-\dfrac{1}{(1+x)^{2}}=\dfrac{x}{(1+x)^{2}}>0\ (x>0)$，$g(0)=0$，故 $g(x)>0$，即 $\ln(1+x)>\dfrac{x}{1+x}$。
+
+\medskip
+\noindent\textbf{S5.3}\quad 答案：令 $h(x)=\ee^{x}-ex$，$h'(x)=\ee^{x}-e$，$h''=\ee^{x}>0$，$h'(1)=0$，$h(1)=0$。
+\key{凹凸性法：\textbf{先求驻点，再看凹凸性判极大极小}。$h''>0$ 说明 $h$ 是凸函数，驻点就是全局最小。}
+
+$h'(x)=\ee^{x}-e$，唯一零点 $x=1$；$h''(x)=\ee^{x}>0$，故 $h$ 在 $\R$ 上严格凸，$x=1$ 是全局最小点，$h(1)=0$。故 $\ee^{x}\geq ex$，等号当且仅当 $x=1$。
+
+\medskip
+\noindent\textbf{S5.4}\quad 答案：交错级数 $\ln(1+x)=x-\dfrac{x^{2}}2+\dfrac{x^{3}}3-\cdots$（$0<x\leq1$）。
+\key{泰勒法的适用范围要写清楚：\textbf{交错级数的结论只在收敛区间内成立}（此处 $0<x\leq1$）。超出范围要用别的工具。}
+
+对 $0<x\leq1$，由 $\ln(1+x)$ 在 $x=0$ 处的泰勒展开（交错级数）：
+\[
+\ln(1+x)=x-\frac{x^{2}}2+\frac{x^{3}}3-\frac{x^{4}}4+\cdots,
+\]
+其部分和交错单调逼近，故截断在第三项时余项为负且绝对值小于下一项，从而
+\[
+\ln(1+x)\leq x-\frac{x^{2}}2+\frac{x^{3}}3.
+\]
+（$x>1$ 时该结论也成立，但要用别的方法，例如对 $\ln(1+x)=\ln x+\ln\left(1+\frac1x\right)$ 分别处理。）
+
+\medskip
+\noindent\textbf{S5.5}\quad 答案：最大值 $\frac1\ee$，在 $x=1$ 处取到。
+
+$f'(x)=\ee^{-x}(1-x)$，$f'>0$ 当 $x<1$，$f'<0$ 当 $x>1$。且 $f(0)=0$，$\lim\limits_{x\to+\infty}f(x)=0$。故最大值 $=\frac1\ee$。
+
+\medskip
+\noindent\textbf{S5.6}\quad 答案：拉格朗日中值定理，$\ln(1+x)-x=-\dfrac{x^{2}}{2\xi}$，$\xi\in(0,x)$。
+\key{这里的中值定理用法要注意：$\xi\in(0,x)$ 意味着 $\xi<x$，所以 $\frac{1}{\xi}>\frac{1}{x}$，\textbf{不能直接得到上界 $\frac{x^{2}}2$}。正确做法是用带余项的泰勒公式，或者对 $\ln(1+x)$ 在 $[0,x]$ 上用中值定理后再积分。}
+
+\textbf{正确做法一（带余项的泰勒）}：$\ln(1+x)=x-\dfrac{x^{2}}{2(1+\xi)^{2}}$，$\xi\in(0,x)$。因 $(1+\xi)^{2}>1$，故 $\abs{\ln(1+x)-x}<\dfrac{x^{2}}2$。
+
+\textbf{正确做法二（两次中值定理）}：对 $f(t)=\ln(1+t)$ 在 $[0,x]$ 上用拉格朗日中值定理：$\ln(1+x)-x=\dfrac{x}{\xi}-x=\dfrac{x-\xi x}{\xi}=\dfrac{x(1-\xi)}{\xi}$（$\xi\in(0,x)$）—— 这条路会绕。
+
+\textbf{推荐做法三（最干净）}：令 $g(x)=\ln(1+x)-x+\dfrac{x^{2}}2$，则 $g'(x)=\dfrac{x^{2}}{1+x}>0$（$x>0$），$g(0)=0$，故 $g(x)>0$，即 $\ln(1+x)>x-\dfrac{x^{2}}2$，再由 $\ln(1+x)<x$ 得 $\abs{\ln(1+x)-x}=x-\ln(1+x)<\dfrac{x^{2}}2$。
+
+（本题的真正考点是：\textbf{看到「$|\ln(1+x)-x|$」先想到泰勒余项，而不是硬套中值定理。}）
+
+\medskip
+\noindent\textbf{S5.7}\quad 答案：取 $F(t)=\ln t$，$G(t)=t$。
+
+柯西中值定理：存在 $\xi\in(a,b)$ 使
+\[
+\frac{\ln b-\ln a}{b-a}=\frac{F'(\xi)}{G'(\xi)}=\frac{1/\xi}{1}=\frac{1}{\xi}.
+\]
+
+\medskip
+\noindent\textbf{S5.8}\quad 答案：$3a^{2}>2b$。
+\key{「有两个不同极值点」$\iff$ $f'=0$ 有两个不同实根 $\iff$ 判别式 $>0$。极值点\textbf{个数}与\textbf{极值点是否为驻点}要分开。}
+
+$f'(x)=3x^{2}-6ax+2b$。它有两个不同实根的充要条件是判别式 $>0$：
+\[
+\Delta=36a^{2}-24b>0\;\Longleftrightarrow\;3a^{2}>2b.
+\]
+（此时两个根都是驻点，故 $f$ 恰有两个极值点。）
+
+\medskip
+\noindent\textbf{S5.9}\quad 答案：令 $g(x)=x-\sin x$，$g'(x)=1-\cos x\geq0$，$g(0)=0$。
+
+$g'(x)=1-\cos x\geq0$ 恒成立，故 $g$ 单调不减；$g(0)=0$，故 $g(x)\geq0$，且 $x>0$ 时 $g'(x)>0$ 不恒为零，于是 $g(x)>0$，即 $\sin x<x$。
+
+\medskip
+\noindent\textbf{S5.10}\quad 答案：上确界 $1$（$x\to\pm\infty$ 时趋于 $1$，但取不到）。
+\key{这题问「最大值」时要小心：$1$ 是\textbf{上确界}不是最大值。答「最大值 $1$」会被扣分，正确说法是「无最大值，上确界为 $1$」。}
+
+$f(x)=\dfrac{x^{2}}{1+x^{2}}=1-\dfrac{1}{1+x^{2}}<1$，且 $\lim\limits_{x\to\pm\infty}f(x)=1$，故 $f$ 没有最大值，$1$ 是上确界（$f(0)=0$ 是最小值）。
+
+\subsection{S6\quad 作图压轴}
+
+\noindent\textbf{S6.1}\quad 答案：奇函数；定义域 $\R$；截距 $(0,0)$；严格增；渐近线 $y=x$。
+\key{$f'(x)=\dfrac{x^{2}(x^{2}+3)}{(x^{2}+1)^{2}}\geq0$，等号只在 $x=0$ 处成立，所以 $x=0$ \textbf{不是极值点}（虽然它是驻点）——$f$ 在 $x=0$ 处穿过 $x$ 轴，是拐点。这正是「驻点非极值」的典型例子。}
+
+定义域 $\R$；$f(-x)=-f(x)$，奇函数；截距 $(0,0)$。
+
+\[
+f'(x)=\frac{3x^{2}(x^{2}+1)-x^{3}\cdot2x}{(x^{2}+1)^{2}}=\frac{x^{2}(x^{2}+3)}{(x^{2}+1)^{2}}\geq0,
+\]
+等号仅在 $x=0$ 处成立，故 $f$ 在 $\R$ 上严格增（$x=0$ 处穿过）。
+
+二阶导：$f''(x)=\dfrac{2x(x^{4}+6x^{2}+1)}{(x^{2}+1)^{3}}$（展开后核对），符号与 $x$ 相同，故 $f$ 在 $(0,+\infty)$ 凸、$(-\infty,0)$ 凹，$x=0$ 是拐点。
+
+渐近线：$\lim\limits_{x\to\infty}\dfrac{f(x)}{x}=\lim\limits_{x\to\infty}\dfrac{x^{2}}{x^{2}+1}=1$，且 $\lim\limits_{x\to\infty}(f(x)-x)=\lim\limits_{x\to\infty}\dfrac{x^{3}}{x^{2}+1}-x=\lim\limits_{x\to\infty}\dfrac{-x}{x^{2}+1}=0$，故斜渐近线 $y=x$。无水平渐近线（$f\to\pm\infty$）。
+
+\medskip
+\noindent\textbf{S6.2}\quad 答案：定义域 $x\neq0$；严格增；无极值；渐近线 $x=0$ 与 $y=x$。
+
+$f'(x)=1+\dfrac{1}{x^{2}}>0$，在 $(-\infty,0)$ 与 $(0,+\infty)$ 上分别严格增。$x\to0^{+}$ 时 $f\to-\infty$，$x\to0^{-}$ 时 $f\to+\infty$，故无极值。
+
+渐近线：$x=0$（竖直），$y=x$（$\lim\limits_{x\to\infty}(f-x)=\lim\limits_{x\to\infty}-\frac1x=0$）。
+
+\medskip
+\noindent\textbf{S6.3}\quad 答案：$x=1$ 处不可导，是尖点极小值（值 $0$）；$x=2$ 处极大值 $\ee^{-2}$；水平渐近线 $y=0$。
+\key{绝对值点要\textbf{分左右算导数}。左导 $-\ee^{-1}$、右导 $\ee^{-1}$，不等，所以不可导；但因为左减右增，$x=1$ 仍是极小值点。这就是「不可导点取极值」。}
+
+$x<1$ 时 $f=(1-x)\ee^{-x}$，$f'=e^{-x}(x-2)<0$（因 $x<1<2$），故在 $(-\infty,1)$ 递减。
+$x>1$ 时 $f=(x-1)\ee^{-x}$，$f'=\ee^{-x}(2-x)$，在 $(1,2)$ 为正、$(2,+\infty)$ 为负。
+
+在 $x=1$：左导 $\lim\limits_{x\to1^-}\ee^{-x}(x-2)=-\ee^{-1}$，右导 $\lim\limits_{x\to1^+}\ee^{-x}(2-x)=\ee^{-1}$，两者不等，故不可导。但函数在 $x=1$ 左侧递减、右侧递增，故 $x=1$ 是极小值点，$f(1)=0$。
+
+极大值：$x=2$ 处 $f(2)=\ee^{-2}$。
+
+渐近线：$x\to+\infty$ 时 $f\to0$，水平渐近线 $y=0$。
+
+\medskip
+\noindent\textbf{S6.4}\quad 答案：极大值 $\frac1\ee$ 在 $x=1$；水平渐近线 $y=0$。
+
+$f'(x)=\ee^{-x}(1-x)$：$x<1$ 时 $>0$，$x>1$ 时 $<0$，故 $x=1$ 是极大值点，$f(1)=\frac1\ee$。$x\to+\infty$ 时 $f\to0$；$x\to-\infty$ 时 $x\ee^{-x}\to-\infty$，无下界。
+
+\medskip
+\noindent\textbf{S6.5}\quad 答案：极小值 $0$ 在 $x=0$；无渐近线。
+
+$f'(x)=\dfrac{2x}{x^{2}+1}$，符号与 $x$ 相同，故 $x=0$ 是极小值点，$f(0)=0$。$x\to\pm\infty$ 时 $f\to+\infty$，函数始终为正故无水平渐近线；也无斜渐近线（$\lim\limits_{x\to\infty}\frac{f(x)}{x}=0$ 且 $f(x)-0\to+\infty$）。
+
+\medskip
+\noindent\textbf{S6.6}\quad 答案：驻点 $0$（极大值 $0$）与 $2$（极小值 $4$）；渐近线 $x=1$ 与 $y=x+1$。
+\key{$\dfrac{x^{2}}{x-1}$ 要先做\textbf{除法变形}：$x^{2}=(x-1)(x+1)+1$，故 $f=x+1+\dfrac{1}{x-1}$。变形后渐近线一眼可见。}
+
+定义域 $x\neq1$。变形：$f=x+1+\dfrac{1}{x-1}$，故斜渐近线 $y=x+1$，竖直渐近线 $x=1$。
+
+$f'(x)=1-\dfrac{1}{(x-1)^{2}}=\dfrac{(x-1)^{2}-1}{(x-1)^{2}}=\dfrac{x(x-2)}{(x-1)^{2}}$。
+在 $(-\infty,0)$ 与 $(2,+\infty)$ 上 $f'>0$，在 $(0,2)$ 上 $f'<0$。故 $x=0$ 是极大值点 $f(0)=0$，$x=2$ 是极小值点 $f(2)=4$。
+
+% ============================================================
+\newpage
+\section{模拟卷 A（18 题 / 100 分 / 120 分钟）}
+
+\begin{keypoint}[用法]
+\textbf{闭卷、掐表 120 分钟、中途不看答案。} 骨架照 2008--2025 真题：选择 $5\times3$ + 填空 $5\times3$ + 第 11 题 8 分 + 计算块 + 应用 + 作图 12 分 + 压轴。
+
+\textbf{验收线}：$\geq70$ 分即可进入「刷真题卷」阶段；$\geq85$ 分说明真题难度已经掌握；$<70$ 分先回册一册二把对应专题补完再考。
+\end{keypoint}
+
+\begin{center}
+\small\setlength{\tabcolsep}{5pt}
+\begin{tabularx}{\linewidth}{c l c l X@{}}
+\toprule
+题号 & 题型 & 分值 & 题号 & 题型\\
+\midrule
+1--5 & 单选题 & $3\times5=15$ & 6--10 & 填空题 $3\times5=15$\\
+11 & 极限定义证明 & 8 & 12--14 & 计算题 $8+10+10=28$\\
+15 & 应用题 & 8 & 16 & 作图（12 分）\\
+17 & 压轴（不等式） & 6 & 18 & 压轴（极限）（6 分）\\
+\midrule
+\multicolumn{4}{l}{\textbf{合计}} & \textbf{18 题 / 100 分}\\
+\bottomrule
+\end{tabularx}
+\end{center}
+
+\begin{enumerate}[label=\textbf{A\arabic*.}]
+  \item （单选）$\displaystyle\lim_{x\to0}\frac{\ee^{2x}-\ee^{-2x}}{x}=$（\quad）
+    \begin{enumerate}[label=(\Alph*),nosep]
+    \item $0$ \item $2$ \item $4$ \item 不存在 \item $+\infty$
+    \end{enumerate}
+  \item （单选）设 $f(x)=\ee^{x}$，则 $f^{(5)}(0)=$（\quad）
+    \begin{enumerate}[label=(\Alph*),nosep]
+    \item $0$ \item $1$ \item $5$ \item $120$ \item $e$
+    \end{enumerate}
+  \item （单选）$\displaystyle\lim_{x\to0}\frac{1-\cos 2x}{x^{2}}=$（\quad）
+    \begin{enumerate}[label=(\Alph*),nosep]
+    \item $1$ \item $2$ \item $4$ \item $0$ \item 不存在
+    \end{enumerate}
+  \item （单选）曲线 $y=\ln(x^{2}+1)$ 在 $x=0$ 处（\quad）
+    \begin{enumerate}[label=(\Alph*),nosep]
+    \item 取极小值 $0$ \item 取极大值 $0$ \item 不是极值 \item 无意义 \item 取极小值 $1$
+    \end{enumerate}
+  \item （单选）设 $f(x)=x^{3}-3x$，则 $f$ 在 $x=2$ 处的值是（\quad）
+    \begin{enumerate}[label=(\Alph*),nosep]
+    \item $-2$ \item $0$ \item $2$ \item $6$ \item $-6$
+    \end{enumerate}
+  \item （填空）设 $y=\frac{x^{2}}{2}$，则 $x=1$ 处的微分 $\D y=$ \underline{\hspace{2.5cm}}
+  \item （填空）设 $f(x)=x^{2}\ee^{x}$，则 $f^{(4)}(0)=$ \underline{\hspace{2.5cm}}
+  \item （填空）$\displaystyle\lim_{x\to+\infty}\left(1+\frac1x\right)^{x}=$ \underline{\hspace{2.5cm}}
+  \item （填空）设 $\begin{cases}x=t^{2},\\ y=t^{3},\end{cases}$ 则 $\dfrac{\D y}{\D x}=$ \underline{\hspace{2.5cm}}
+  \item （填空）设 $f(x)=x\ln x$，则 $f$ 的极小值点为 $x=$ \underline{\hspace{2.5cm}}
+  \item （8 分）证明：$\displaystyle\lim_{x\to0}\frac{\sin x}{x}=1$（要求写出 $\eps$-$\delta$ 定义的完整量词与 $\delta$ 的取法）。
+  \item （8 分）求 $\displaystyle\lim_{x\to0}\frac{x-\sin x}{x^{3}}$。
+  \item （10 分）写出 $f(x)=\sqrt{1+x}$ 的 2 阶麦克劳林展开，并求 $\displaystyle\lim_{x\to0}\frac{\sqrt{1+x}-1-\frac{x}{2}}{x^{2}}$。
+  \item （10 分）设 $x^{2}+y^{2}=2x$，求 $\dfrac{\D y}{\D x}$ 在点 $(1,1)$ 处的值，并求该点处的曲率半径。
+  \item （8 分）设 $f(x)=x^{2}\ln x$（$x>0$），求 $f$ 的极值。
+  \item （12 分）作出 $y=x^{3}-x$ 的图形（写出定义域、对称性、截距、驻点与极值、单调区间、凹凸区间、渐近线）。
+  \item （6 分）证明：当 $x>0$ 时，$\ln(1+x)>\dfrac{x}{1+x}$。
+  \item （6 分）求 $\displaystyle\lim_{x\to0}\frac{\ln(1+x)-x+\frac{x^{2}}{2}}{x^{3}}$。
+\end{enumerate}
+
+\subsection{模拟卷 A 答案}
+
+\begin{center}
+\small\setlength{\tabcolsep}{5pt}
+\begin{tabularx}{\linewidth}{c|p{3.9cm}|X}
+\toprule
+题号 & 答案 & 题号\\
+\midrule
+A1 & C（$4$）& A10 $x=\dfrac{1}{\ee}$\\
+A2 & B（$1$）& A11 见下（$\delta$ 取 $\min\{1,\frac{\eps}{2}\}$ 一类）\\
+A3 & B（$2$）& A12 $\dfrac{1}{6}$\\
+A4 & A（取极小值 $0$）& A13 $1+\frac{x}{2}-\frac{x^{2}}8$；$\lim=-\dfrac{1}{8}$\\
+A5 & C（$2$）& A14 $y'=-1$；曲率半径 $\rho=\dfrac{1+\left(y'\right)^{2}}{\abs{y''}}=\dfrac{2}{\abs{y''}}$，在 $(1,1)$ 处 $y''=-1$，故 $\rho=2$\\
+A6 & $\D y=\D x$ & A15 极小值 $-\dfrac{1}{2\ee}$ 在 $x=\dfrac{1}{2\ee}$（$f'(x)=x(2\ln x+1)$）\\
+A7 & $12$ & A16 见下（作图）\\
+A8 & $\ee$ & A17 见下（单调性法）\\
+A9 & $\dfrac{3t}{2}$ & A18 $\dfrac{1}{3}$\\
+\bottomrule
+\end{tabularx}
+\end{center}
+
+\begin{methodbox}[A 卷关键步骤]
+\begin{enumerate}
+\item A9：$\dfrac{\D y}{\D x}=\dfrac{3t^{2}}{2t}=\dfrac{3t}{2}$（$t\neq0$）。
+\item A13：$\sqrt{1+x}=1+\frac{x}{2}-\frac{x^{2}}8+o(x^{2})$。
+\item A14：$y'=-x/y$，在 $(1,1)$ 处 $y'=-1$；$1+y'^{2}+yy''=0\Rightarrow y''=-2$，故 $\rho=\dfrac{1+1}{2}=2$。
+\item A15：$f'=x(2\ln x+1)$，零点 $x=\frac1{2\ee}$，此处 $f=\frac{1}{2\ee}\cdot\left(-1\right)=-\frac{1}{2\ee}$。\textbf{注意符号}：$f=x^{2}\ln x$ 在 $x<1$ 时为负，$x=\frac1{2\ee}\approx0.184<1$，故这是\textbf{极小}值 $-\frac{1}{2\ee}$。
+\item A16：$f=x^{3}-x$，$f'=3x^{2}-1$，驻点 $\pm\frac1{\sqrt3}$；$x=-\frac1{\sqrt3}$ 处取极大值 $\frac{2\sqrt3}9$，$x=\frac1{\sqrt3}$ 处取极小值 $-\frac{2\sqrt3}9$；奇函数，截距 $(0,0),\ (\pm1,0)$；$f''=6x$，凸区间 $(0,+\infty)$，凹区间 $(-\infty,0)$；无渐近线。
+\item A17：令 $g(x)=\ln(1+x)-\frac{x}{1+x}$，$g'(x)=\frac{x}{(1+x)^{2}}>0$，$g(0)=0$，故 $g(x)>0$。
+\item A18：$\ln(1+x)=x-\frac{x^{2}}2+\frac{x^{3}}3+o(x^{3})$，分子 $=\frac{x^{3}}3+o(x^{3})$。
+\end{enumerate}
+\end{methodbox}
+
+% ============================================================
+\newpage
+\section{模拟卷 B（18 题 / 100 分 / 120 分钟）}
+
+\begin{center}
+\small\setlength{\tabcolsep}{5pt}
+\begin{tabularx}{\linewidth}{c l c l X@{}}
+\toprule
+题号 & 题型 & 分值 & 题号 & 题型\\
+\midrule
+1--5 & 单选题 & $3\times5=15$ & 6--10 & 填空题 $3\times5=15$\\
+11 & 极限定义证明（$M$ 型）& 8 & 12--14 & 计算题 $8+10+10=28$\\
+15 & 应用题 & 8 & 16 & 作图（12 分）\\
+17 & 压轴（不等式） & 6 & 18 & 压轴（极限）（6 分）\\
+\midrule
+\multicolumn{4}{l}{\textbf{合计}} & \textbf{18 题 / 100 分}\\
+\bottomrule
+\end{tabularx}
+\end{center}
+
+\begin{enumerate}[label=\textbf{B\arabic*.}]
+  \item （单选）设 $f(x)=(1+x)^{1/3}$，则 $f'(0)=$（\quad）
+    \begin{enumerate}[label=(\Alph*),nosep]
+    \item $0$ \item $\frac13$ \item $1$ \item $3$ \item 不存在
+    \end{enumerate}
+  \item （单选）$\displaystyle\lim_{x\to0}\frac{\ln(1+x)-x}{x^{2}}=$（\quad）
+    \begin{enumerate}[label=(\Alph*),nosep]
+    \item $-\frac12$ \item $\frac12$ \item $0$ \item $1$ \item 不存在
+    \end{enumerate}
+  \item （单选）设 $f(x)=\sin x$，则 $f^{(5)}(0)=$（\quad）
+    \begin{enumerate}[label=(\Alph*),nosep]
+    \item $0$ \item $1$ \item $-1$ \item $5$ \item $120$
+    \end{enumerate}
+  \item （单选）函数 $y=\ln(1+x^{2})$ 在 $x=0$ 处的导数是（\quad）
+    \begin{enumerate}[label=(\Alph*),nosep]
+    \item $0$ \item $1$ \item $2$ \item 不存在 \item $-\infty$
+    \end{enumerate}
+  \item （单选）设 $f(x)=\frac{x}{1+x^{2}}$，则 $f$ 的最大值为（\quad）
+    \begin{enumerate}[label=(\Alph*),nosep]
+    \item $0$ \item $\frac12$ \item $1$ \item $2$ \item 不存在
+    \end{enumerate}
+  \item （填空）设 $y=\ln(1+x^{2})$，则 $x=0$ 处的微分 $\D y=$ \underline{\hspace{2.5cm}}
+  \item （填空）设 $f(x)=\dfrac{x^{3}}{1+x}$，则 $f^{(3)}(0)=$ \underline{\hspace{2.5cm}}
+  \item （填空）$\displaystyle\lim_{x\to0}\left(1+\tan x\right)^{\frac1x}=$ \underline{\hspace{2.5cm}}
+  \item （填空）设 $\begin{cases}x=\ee^{t},\\ y=\ee^{-t},\end{cases}$ 则 $\dfrac{\D^{2}y}{\D x^{2}}=$ \underline{\hspace{2.5cm}}
+  \item （填空）设 $f(x)=x\arctan x$，则 $f''(0)=$ \underline{\hspace{2.5cm}}
+  \item （8 分）证明：$\displaystyle\lim_{x\to1^{+}}\frac{1}{\ln x}=+\infty$（无穷大 $M$ 型）。
+  \item （8 分）求 $\displaystyle\lim_{x\to0}\frac{\cos x-\ee^{-\frac{x^{2}}{2}}}{x^{4}}$。
+  \item （10 分）求 $\displaystyle\lim_{x\to0}\frac{\ln(\cos x)}{x^{2}}$，并说明它与 $\displaystyle\lim_{x\to0}\frac{1-\cos x}{x^{2}}$ 的关系。
+  \item （10 分）设 $xy=x+y$，求 $\dfrac{\D y}{\D x}$，并判断该曲线的类型。
+  \item （8 分）求 $f(x)=x^{2}-4x+1$ 在 $[0,3]$ 上的最大值与最小值。
+  \item （12 分）作出 $y=\dfrac{x^{2}}{x^{2}-1}$ 的图形（写出定义域、对称性、截距、渐近线、单调区间）。
+  \item （6 分）证明：当 $x>0$ 时，$x-\dfrac{x^{2}}{2}<\ln(1+x)<x$。
+  \item （6 分）求 $\displaystyle\lim_{x\to0}\frac{\ee^{x}-1-x-\frac{x^{2}}{2}}{x^{3}}$。
+\end{enumerate}
+
+\subsection{模拟卷 B 答案}
+
+\begin{center}
+\small\setlength{\tabcolsep}{5pt}
+\begin{tabularx}{\linewidth}{c|p{3.9cm}|X}
+\toprule
+题号 & 答案 & 题号\\
+\midrule
+B1 & B（$\frac13$）& B10 $2$\\
+B2 & A（$-\frac12$）& B11 见下（$M$ 型）\\
+B3 & B（$1$）& B12 $-\dfrac{1}{12}$\\
+B4 & A（$0$）& B13 $-\dfrac{1}{2}$；与 $\dfrac{1-\cos x}{x^{2}}=\frac12$ 的关系：$\ln(\cos x)\sim-\frac{x^{2}}2$，而 $1-\cos x\sim\frac{x^{2}}2$，故两者互为相反数关系（前者系数 $-\frac12$，后者 $\frac12$）\\
+B5 & B（$\frac12$）& B14 $y'=\dfrac{1-y}{x-1}$；双曲线\\
+B6 & $\D y=0$ & B15 最大 $1$（在 $x=0$），最小 $-3$（在 $x=2$）\\
+B7 & $6$ & B16 见下（作图）\\
+B8 & $\ee$ & B17 见下\\
+B9 & $2\ee^{-3t}$ & B18 $\dfrac{1}{6}$\\
+\bottomrule
+\end{tabularx}
+\end{center}
+
+\begin{methodbox}[B 卷关键步骤]
+\begin{enumerate}
+\item B9：$\dfrac{\D y}{\D x}=-\ee^{-2t}$，$\dfrac{\D^{2}y}{\D x^{2}}=\dfrac{2\ee^{-2t}}{\ee^{t}}=2\ee^{-3t}$。
+\item B11：设 $M>0$，取 $\delta$ 使 $1<x<1+\delta$ 且 $\ln x<\frac{1}{M}\cdot\frac{\delta}{1+\delta}$ 之类，则 $\abs{\frac1{\ln x}}>M$。标准写法：由 $\ln x< x-1$，当 $x\downarrow1$ 时 $x-1\to0^{+}$，故 $\frac{1}{\ln x}\to+\infty$。
+\item B12：$\cos x=1-\frac{x^{2}}2+\frac{x^{4}}{24}+o(x^{4})$，$\ee^{-x^{2}/2}=1-\frac{x^{2}}2+\frac{x^{4}}8+o(x^{4})$，分子 $=-\frac{x^{4}}{12}+o(x^{4})$。
+\item B13：$\cos x=1-\frac{x^{2}}2+o(x^{2})$，$\ln(1+u)=u+o(u)$，得 $\ln(\cos x)=-\frac{x^{2}}2+o(x^{2})$。
+\item B14：$xy=x+y\Rightarrow y=\frac{x}{x-1}$（$x\neq1$），即 $y=1+\frac{1}{x-1}$，双曲线，中心 $(1,1)$，渐近线 $x=1$ 与 $y=1$。$y'=-\frac{1}{(x-1)^{2}}=\frac{1-y}{x-1}$。
+\item B15：$f'=2x-4$，驻点 $x=2$。$f(0)=1$，$f(2)=-3$，$f(3)=9-12+1=-2$。故最大 $f(3)=-2$？—— 逐个比较：$f(0)=1$，$f(2)=-3$，$f(3)=-2$，所以最大值 $1$（在 $x=0$），最小值 $-3$（在 $x=2$）。
+\item B16：$y=\frac{x^{2}}{x^{2}-1}$，偶函数；定义域 $x\neq\pm1$；截距 $(0,0)$；渐近线 $x=\pm1$ 与 $y=1$；$f'=\frac{-2x}{(x^{2}-1)^{2}}$，在 $(-\infty,-1)$ 与 $(0,1)$ 上 $<0$、在 $(-1,0)$ 与 $(1,+\infty)$ 上 $>0$。
+\item B17：令 $g_1(x)=x-\frac{x^{2}}2-\ln(1+x)$，$g_1'(x)=-\frac{x^{2}}{1+x}<0$，$g_1(0)=0$，故 $g_1<0$，即 $\ln(1+x)>x-\frac{x^{2}}2$；令 $g_2(x)=\ln(1+x)-x$，$g_2'(x)=-\frac{x}{1+x}<0$，$g_2(0)=0$，故 $g_2<0$，即 $\ln(1+x)<x$。
+\item B18：$\ee^{x}=1+x+\frac{x^{2}}2+\frac{x^{3}}6+o(x^{3})$。
+\end{enumerate}
+\end{methodbox}
+
+\begin{warnbox}[两处容易算错的极值（复核时我各错了一次，已订正）]
+\textbf{A15}：$f(x)=x^{2}\ln x$，$f'=x(2\ln x+1)$，零点 $x=\frac{1}{2\ee}\approx0.184$。此处 \textbf{$f<0$}（因为 $x<1$ 时 $\ln x<0$），所以极小值是 $\left(\frac{1}{2\ee}\right)^{2}\cdot\left(-\frac12\right)=-\frac{1}{2\ee}$，\textbf{不是正的}。容易错在只算了 $x^{2}$ 忘了 $\ln x$ 的符号。
+
+\textbf{B15}：$f(x)=x^{2}-4x+1$ 在 $[0,3]$ 上，$f(0)=1$，$f(2)=-3$，$f(3)=-2$，$f'=2x-4$ 唯一驻点 $x=2$。\textbf{最大值是 $1$（在端点 $x=0$），最小值是 $-3$（在 $x=2$）}。容易错在把端点 $x=0$ 漏掉。
+\end{warnbox}
+
+% ============================================================
+\newpage
+\section{验收线与放弃线}
+
+\begin{warnbox}[验收线]
+\textbf{PASS 标准（三条都达到）}：
+\begin{enumerate}
+\item S1 组 12 题全部能独立写出完整的 $\eps$-$\delta$ / $\eps$-$X$ / $M$ 型证明，\textbf{量词顺序不能错}；
+\item S4 组 8 题能独立完成，\textbf{特别是 S4.6（条件不够要给反例）}；
+\item 模拟卷 A 与 B 各 $\geq70$ 分。
+\end{enumerate}
+\end{warnbox}
+
+\begin{keypoint}[放弃线：什么情况下直接跳过]
+\begin{enumerate}
+\item 时间只剩 2 小时：跳过 S2--S6 与模拟卷，\textbf{只做 S1 的 12 题}（100 分钟）。第 11 题是 17/17 必考，8 分白送，其余都是机动分。
+\item S1 已经稳过：只做 S4（90 分钟），因为 2024-25 的压轴形态变了，中值定理压轴的边际收益在下降。
+\item 模拟卷连着两套低于 70 分：\textbf{停止做新题}，用一份卷子做「逐题回炉」——把失分题的题型对应到册二的具体组别（S1/S2/S3/S4/S5/S6），回炉完再考第三套。
+\end{enumerate}
+\end{keypoint}
+
+\begin{keypoint}[册二与已有材料的分工]
+\begin{enumerate}
+\item \textbf{极限定义证明}：本册 S1 是唯一系统刷第 11 题三形式的地方。已有《讲义\_极限定义证明》给的是\textbf{框架与十道精讲}，本册给的是\textbf{十二道新题按 $6:4:2$ 配比的实战}。框架不够时刷本册，框架已稳就只挑错的形式补。
+\item \textbf{导数与微分}：《讲义\_导数计算专题》给六型例题，本册 S2 给\textbf{真题级变式}（参数二阶导、隐函数二阶导、分段可导）。
+\item \textbf{泰勒}：全部在册一《讲义\_泰勒与压轴强化\_11-08》，本册只在 S2.10、S3 用到泰勒，不重复。
+\item \textbf{压轴}：高难册 H3 组（中值定理构造）+ 本册 S4（抽象函数方程与迭代）\textbf{两条腿都要站}。2024-25 已经证明压轴形态会变。
+\item \textbf{作图}：《讲义\_函数性态与作图》给七步模板与四套 Q17 速查，本册 S6 给\textbf{六道新题的全流程要求}。
+\end{enumerate}
+\end{keypoint}
