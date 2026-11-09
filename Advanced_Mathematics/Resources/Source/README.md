@@ -54,3 +54,32 @@ PYTHONIOENCODING=utf-8 python verify_extra_drill.py        # 11/8 加练册 106 
 - 中文文件名在部分 CI / 云环境需 UTF-8 locale；若编译报 `Missing character`，检查是否使用了 ctex + XeLaTeX（不是 pdflatex）。
 - PDF 文本层会打乱数学公式因子顺序，**核对公式只认 `.tex` 源码或渲染 PNG**，不要用 `pdftotext` / `pymupdf.get_text()` 下结论。
 - 三本讲义与答案册中的「93 项 PASS」即由本目录脚本产出；改动任一数值结论后必须重跑。
+
+## 新讲义模板约定（2026-11-09 起，用户选定 A 方案）
+
+**从下一份新讲义开始，一律复制 `Source/_新讲义起手式_tlnote.tex`，不要再复用本目录旧 `.tex` 的 preamble。**
+
+- 起手式：`\documentclass[11pt,a4paper]{ctexart}` + `\usepackage[color]{tlnote}`（灰度打印换 `[gray]`）+ `\title` / `\author` / `\noteheader` / `\docdate{YYYY-MM-DD}`；**XeLaTeX 两遍**。`tlnote.sty` 由 `D:\Run_Tao\Homework\install.ps1` 装到 TEXMFHOME，`kpsewhich tlnote.sty` 可验证。
+- `tlnote.sty` 已封装 geometry / titlesec / tcolorbox / fancyhdr / hyperref / tikz / pgfplots / enumitem / booktabs / longtable / tabularx / caption / pifont、`keypoint` / `warnbox` / `methodbox` / `notebox` 四个语义盒，以及全部数学简写与页眉页脚。**不要重复 `\usepackage`、不要 `\newtcolorbox`、不要重写页眉页脚。**
+- 禁止重复定义（会报 `already defined` 或静默改正文）：`\abs \ee \D \dd \blank \ans \R \eps \N \Z \ue \dif \ds \floor \norm \key \tagline \kw \yes \no \src \ver \card \rowh \q \Q \qi`。`\blank` 用可选参数 `\blank[1.2cm]`；正文提到命令名写 `\texttt{xxx}`，别裸写带参数宏。
+- 样板成品 `../Downloads/新讲义起手式_tlnote_11-09.pdf`（**1 页 / 3 书签 / 0.065 MB**），仅作版式示范、不含练习题、不计入题池。xelatex 两遍实测零错误、零警告、缺字 0、overfull 0；默认注释掉 `\tableofcontents` 以收在 1 页（书签由 `\section` 生成，不依赖目录），长讲义再取消注释。
+- **存量不迁移**：本目录 11/04–11/09 的 30 份讲义保持 `ctexart` + 手写 preamble；合订本 370 页、阅读包 61 / 74 页、PDF 书签与绝对页码索引全部绑定原排版，重排会连锁破坏。
+
+## 分享版讲义生成链（2026-11-09 新增）
+
+面向「分享给学弟学妹」的完整讲义：`_share_notes.tex`（8 章讲解 + 卷首 + 5 附录）、`verify_share_handout.py`（例题答案复核）、`build_share_handout.py`（装配 + 闸门）、`align_share_bookmarks.py`（书签对齐 + 归档）、`讲义_高数I期中_分享版.tex`（成品源），PDF 在 `../Downloads/讲义_高数I期中_分享版_2026-11-09.pdf`。
+
+**复现顺序**（`PYTHONIOENCODING=utf-8`，解释器用 `/d/anaconda3/python`，它有 sympy / mpmath / pymupdf）：
+
+```bash
+python verify_share_handout.py       # 必须 PASS 82 / FAIL 0
+python build_share_handout.py        # 生成 .tex；内含两道硬闸门，不全绿直接拒绝
+xelatex -interaction=nonstopmode -halt-on-error 讲义_高数I期中_分享版.tex   # 迭代 3 遍
+python align_share_bookmarks.py      # 以 .toc 页码重写书签 → 归档到 Downloads/
+```
+
+- **迭代收敛判据**：同时比较 `.toc` 与 `.out` 的哈希，两者都稳定才停（只看 `.toc` 会让 PDF 书签差 1 页）。
+- **为什么需要对齐书签**：标题被推到页首时 hyperref 把锚点写在前一页，目录页码对、书签差 1。试过 `\usepackage{needspace}` + `\needspace{6\baselineskip}`，书签能修但章末留白明显变差，已撤掉；改用后处理，更省纸也更可控。
+- **longtable 必须写全五段**：`\endfirsthead` / `\endhead` / `\endfoot` / `\endlastfoot` 缺 `\endfoot` 会在表尾多吐一页只有「答案（续）」表头的空白页；另外最后一行不要带 `\\`。
+- **题库来源**：151 题题面与答案由 `_build_compact_handout.py` 的解析器从本目录四册 .tex 提取（`b.SRC = HERE`，不依赖 Homework 原稿），按 `chapter_of()` 归入 8 章；题号保留原册编号。题面含 `&` 的 3 条不转义（在 `\q` 正文里合法），答案列含 `&` / `\\` 时由生成器自动转义。
+- **正文写作约束**：只用 `tlnote.sty` 的命令；正文提到命令名写 `\texttt{xxx}`；表格里 `\rowh` 必须放在 `\\` **之前**；`\cdot` 写进 `\subsection` 时包一层 `\texorpdfstring{$\cdot$}{·}`，否则书签里会消失。
