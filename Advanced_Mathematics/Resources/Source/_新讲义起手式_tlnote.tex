@@ -1,0 +1,100 @@
+% !TeX program = xelatex
+% ============================================================
+%  新讲义起手式 · tlnote v1.0（2026-11-09 起启用，用户选定 A 方案）
+%  新建讲义请复制本文件；不要复制 11/04–11/09 那 30 份旧 .tex 的 preamble。
+%
+%  编译：xelatex 两遍（目录 / 书签 / 交叉引用才完整）
+%        xelatex -interaction=nonstopmode -halt-on-error <本文件>
+%  选项：[color] 克制彩色（默认）｜[gray] 灰度打印
+%  安装：D:\Run_Tao\Homework\install.ps1；kpsewhich tlnote.sty 可验证
+%
+%  ★ 命令契约：tlnote.sty 已提供 geometry / titlesec / tcolorbox /
+%    fancyhdr / hyperref / tikz / pgfplots / enumitem / booktabs /
+%    longtable / tabularx / caption / pifont 及全部页眉页脚与色彩。
+%    本文件【不要】再 \usepackage{geometry}、\usepackage{hyperref}、
+%    \pagestyle{fancy}、\renewcommand{\headrulewidth}{}、
+%    \newtcolorbox{keypoint} 等——重复加载会选项冲突，重复定义会报错。
+%
+%  ★ 禁止重复定义（会报 already defined，或静默改写正文）：
+%    \abs \ee \D \dd \blank \ans \R \eps \N \Z \ue \dif \ds \floor \norm
+%    \key \tagline \kw \yes \no \src \ver \card \rowh \q \Q \qi
+%    其中 \blank 用【可选参数】\blank[1.2cm]，不是 \blank{1.2cm}。
+%
+%  ★ 存量 30 份讲义（11/04–11/09）保持 ctexart + 手写 preamble，不迁移：
+%    合订本 370 页 / 阅读包 61、74 页 / 书签 / 绝对页码索引绑定原排版。
+% ============================================================
+\documentclass[11pt,a4paper]{ctexart}
+\usepackage[color]{tlnote}
+
+\title{新讲义标题}
+\author{陶理}
+\noteheader{高等数学 I · 期中复习}
+\docdate{2026-11-09}          % 固定日期；禁用 \date{\today}
+
+% 取 \@title / \@author / \@date 的别名（用户文档里 @ 不是字母）
+\makeatletter
+\newcommand{\showtitle}{\@title}
+\newcommand{\showauthor}{\@author}
+\newcommand{\showdate}{\@date}
+\makeatother
+
+\begin{document}
+
+\begin{center}
+  {\LARGE\bfseries\color{tlblue}\showtitle\par}
+  \vspace{0.35em}
+  {\normalsize\showauthor\quad\showdate\par}
+\end{center}
+\vspace{-0.3em}
+\noindent{\color{tlrule}\rule{\textwidth}{0.5pt}}
+
+% 长讲义再取消下一行的注释；短讲义保持注释可收在 1 页。
+% 书签由 \section 经 hyperref 生成，不依赖 \tableofcontents。
+% {\small\tableofcontents}
+
+\section{方法卡}
+
+\begin{keypoint}[要点盒]
+层级靠字号与间距，颜色只作辅助；盒子只承载明确语义。
+数学简写直接用包内命令：$\R$、$\Z$、$\abs{x}$、$\D x$、$\dd{y}{x}$、$\eps$、$\ee^{x}$、$\norm{f}$。
+\end{keypoint}
+
+\section{题目与解答}
+
+\qi{例 1}{2024 期中 A 卷 Q3}{求 $\lim\limits_{x\to0}\dfrac{\sin x}{x}$。}
+\begin{solution}
+由重要极限得 $\ans{1}$。填空用可选参数：\blank[1.2cm]。
+\end{solution}
+
+\begin{warnbox}[易错点]
+填空命令 \texttt{blank} 用方括号 \texttt{[1.2cm]}；写成花括号会把长度当正文印出来。
+在正文里提到命令名时写 \texttt{xxx}，不要裸写带参数的宏。
+\key{先定语义，再选命令，不要另起一套宏。}
+\end{warnbox}
+
+\begin{methodbox}[一题多解]
+\begin{subproblem} 夹逼定理。 \end{subproblem}
+\begin{subproblem} 洛必达法则。 \end{subproblem}
+\end{methodbox}
+
+\section{性态表（列表写法）}
+
+\begin{center}
+\begin{tabular}{c|c|c|c}
+\toprule
+区间 & $y'$ & $y''$ & 性态 \\
+\midrule
+\rowh $(-\infty,0)$ & $+$ & $-$ & 增、凸 \\
+\rowh $(0,+\infty)$ & $-$ & $+$ & 减、凹 \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\begin{notebox}[注]
+\yes\ 结论经复核；\no\ 未验证的推断不写进讲义。\src{题型专题 §0}
+\end{notebox}
+
+\ver{xelatex 两遍；缺字 0；本文件仅为版式起手式，不含练习题，不计入题池。}
+\tagline{新建讲义：复制本文件，改标题与 docdate 日期字段，正文直接写，不要重写 preamble。}
+
+\end{document}

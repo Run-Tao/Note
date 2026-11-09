@@ -1,0 +1,155 @@
+% !TeX program = xelatex
+\documentclass[11pt,a4paper]{ctexart}
+\usepackage[margin=2.4cm]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{enumitem}
+\usepackage{array}
+
+\setlength{\parindent}{2em}
+\pagestyle{plain}
+
+% 题目末尾的出处小字
+\newcommand{\src}[1]{\hfill{\footnotesize \text{（#1）}}}
+
+\begin{document}
+
+\begin{center}
+  {\LARGE\bfseries 上海交通大学《高等数学 I（A 类）》}\\[4pt]
+  {\Large\bfseries 期中模拟卷 A（真题重组）}\\[8pt]
+  {\kaishu 闭卷，限时 120 分钟，总分 100 分}
+\end{center}
+
+\vspace{2pt}
+\noindent{\small 本卷共 18 题，全部选自 2008--2019 学年《高等数学》A 类期中真题（各题末尾标注出处学年），题目文字与数字均保持原貌，仅题号按本卷顺序重排。考查范围：函数、极限与连续、导数与微分、高阶导数、微分中值定理、泰勒公式、函数性态与作图。}
+
+\vspace{6pt}
+\noindent\textbf{一、单项选择题（每小题 3 分，共 15 分）}
+
+\begin{enumerate}[label=\textbf{\arabic*.},leftmargin=2.2em,itemsep=6pt]
+
+\item 当 $x\to 0$ 时，与 $\sqrt{\cos x}-1$ 等价的无穷小是\quad（\qquad）
+\[
+\text{(A)}\ \frac{x^{2}}{4};\qquad
+\text{(B)}\ -\frac{x^{2}}{4};\qquad
+\text{(C)}\ \frac{x^{2}}{2};\qquad
+\text{(D)}\ -\frac{x^{2}}{2}.\src{2013--2014\ 学年第 1 题}
+\]
+
+\item 曲线 $y=\dfrac{1}{x}+\ln\bigl(1+e^{x}\bigr)$ 的渐近线的条数为\quad（\qquad）
+\[
+\text{(A)}\ 0\ \text{条};\qquad
+\text{(B)}\ 1\ \text{条};\qquad
+\text{(C)}\ 2\ \text{条};\qquad
+\text{(D)}\ 3\ \text{条}.\src{2010--2011\ 学年第 3 题}
+\]
+
+\item 设数列 $\{a_{n}\}$ 满足 $\displaystyle\lim_{n\to\infty}\frac{a_{n+1}}{a_{n}}=A>0$，则\quad（\qquad）
+\[
+\begin{aligned}
+&\text{(A)}\ \{a_{n}\}\ \text{有界；}\qquad
+&&\text{(B)}\ \{a_{n}\}\ \text{不存在极限；}\\
+&\text{(C)}\ \{a_{n}\}\ \text{自某项起同号；}\qquad
+&&\text{(D)}\ \{a_{n}\}\ \text{自某项起单调。}
+\end{aligned}\src{2013--2014\ 学年第 3 题}
+\]
+
+\item 设函数
+$f(x)=\begin{cases} x^{3}e^{-x}, & x>0,\\[2pt] x, & x\le 0,\end{cases}$
+则 $f(x)$ 在 $x=0$ 处\quad（\qquad）
+\[
+\begin{aligned}
+&\text{(A)}\ \text{可导；}\qquad
+&&\text{(B)}\ \text{连续但不可导；}\\
+&\text{(C)}\ \text{左可导而右不可导；}\qquad
+&&\text{(D)}\ \text{右可导而左不可导。}
+\end{aligned}\src{2009--2010\ 学年第 4 题}
+\]
+
+\item 设定义在 $\mathbf{R}$ 上的奇函数 $f(x)$ 满足：$\forall x\in(0,+\infty)$，$0\le f(x)\le x^{3}$，则在点 $x=0$ 处 $f(x)$\quad（\qquad）
+\[
+\begin{aligned}
+&\text{(A)}\ \text{存在极限但未必连续；}\qquad
+&&\text{(B)}\ \text{连续但未必可导；}\\
+&\text{(C)}\ \text{可导但未必二阶可导；}\qquad
+&&\text{(D)}\ \text{二阶可导。}
+\end{aligned}\src{2018--2019\ 学年第 4 题}
+\]
+
+\end{enumerate}
+
+\noindent\textbf{二、填空题（每小题 3 分，共 15 分）}
+
+\begin{enumerate}[label=\textbf{\arabic*.},leftmargin=2.2em,itemsep=6pt,start=6]
+
+\item 已知定义在 $\mathbf{R}$ 上的函数 $f(x)$ 严格单调增加，$f^{-1}(x)$ 是其反函数。若对于常数 $a$，方程 $f(x)+x=a$ 有解 $x_{1}$，$f^{-1}(x)+x=a$ 有解 $x_{2}$，则 $x_{1}+x_{2}=$\underline{\hspace{2cm}}。\src{2016--2017\ 学年第 6 题}
+
+\item 曲线 $\begin{cases} x=e^{t}\sin 2t,\\ y=e^{t}\cos t \end{cases}$ 在点 $t=0$ 处的切线方程为：\underline{\hspace{3.5cm}}。\src{2011--2012\ 学年第 9 题}
+
+\item 曲线 $r=\cos 2\theta$ 在 $\theta=\dfrac{\pi}{4}$ 处的切线方程为：\underline{\hspace{3.5cm}}。\src{2013--2014\ 学年第 8 题}
+
+\item 已知 $y=e^{x^{2}+2x}$，则 $y^{(10)}(-1)=$\underline{\hspace{3cm}}。\src{2016--2017\ 学年第 9 题}
+
+\item 若 $y=x^{2x}$，则 $dy=$\underline{\hspace{4cm}}。\src{2016--2017\ 学年第 8 题}
+
+\end{enumerate}
+
+\noindent\textbf{三、（本题 8 分）}
+
+\begin{enumerate}[label=\textbf{\arabic*.},leftmargin=2.2em,itemsep=6pt,start=11]
+
+\item 用极限定义验证：$\displaystyle\lim_{x\to\infty}\frac{2x^{2}}{x^{2}-3x+4}=2$。\src{2016--2017\ 学年第 11 题}
+
+\end{enumerate}
+
+\noindent\textbf{四、求极限（每小题 8 分，共 16 分）}
+
+\begin{enumerate}[label=\textbf{\arabic*.},leftmargin=2.2em,itemsep=6pt,start=12]
+
+\item 求极限：$\displaystyle\lim_{x\to\infty}x^{2}\Bigl(a^{\frac{1}{x}}+a^{-\frac{1}{x}}-2\Bigr)$，其中常数 $a>0$。\src{2009--2010\ 学年第 12 题}
+
+\item 计算极限 $\displaystyle\lim_{x\to 0}\frac{(1+x)^{\frac{2}{x}}-e^{2}\sqrt{1+x}}{x}$。\src{2016--2017\ 学年第 12 题}
+
+\end{enumerate}
+
+\noindent\textbf{五、求导数（每小题 8 分，共 16 分）}
+
+\begin{enumerate}[label=\textbf{\arabic*.},leftmargin=2.2em,itemsep=6pt,start=14]
+
+\item 已知 $y=y(x)$ 是由方程 $x^{2}+y^{2}=2xy^{3}$ 所确定的二阶可导函数，求 $y''(1)$。\src{2016--2017\ 学年第 13 题}
+
+\item 设 $y=\dfrac{1}{x^{2}-3x}$，求 $y^{(n)}(1)$（$n$ 为正整数）。\src{2010--2011\ 学年第 15 题}
+
+\end{enumerate}
+
+\noindent\textbf{六、（本题 10 分）}
+
+\begin{enumerate}[label=\textbf{\arabic*.},leftmargin=2.2em,itemsep=6pt,start=16]
+
+\item 从半径为 $R$ 的圆中截去一个扇形，使得当余下部分卷起的漏斗容积最大，那么截去的扇形与圆的面积之比是多少？\src{2015--2016\ 学年第 17 题}
+
+\end{enumerate}
+
+\noindent\textbf{七、（本题 12 分）}
+
+\begin{enumerate}[label=\textbf{\arabic*.},leftmargin=2.2em,itemsep=6pt,start=17]
+
+\item 分析函数 $y=\dfrac{x^{2}}{1+2x}$ 的性态，并作出其简图。
+\[
+\Bigl(\ y'=\frac{2x^{2}+2x}{(1+2x)^{2}},\quad y''=\frac{2}{(1+2x)^{3}}\ \Bigr)\src{2011--2012\ 学年第 17 题}
+\]
+
+\end{enumerate}
+
+\noindent\textbf{八、（本题 8 分）}
+
+\begin{enumerate}[label=\textbf{\arabic*.},leftmargin=2.2em,itemsep=6pt,start=18]
+
+\item 设 $f(x)$ 在 $[0,1]$ 上连续，在 $(0,1)$ 内可导，且 $f(0)=0$，$f(1)=1$。证明：
+\begin{enumerate}[label=(\arabic*),leftmargin=2em]
+  \item 存在不同的 $\alpha,\beta,\gamma\in(0,1)$，使得 $f'(\alpha)+f'(\beta)+f'(\gamma)=3$；
+  \item 存在不同的 $\alpha,\beta,\gamma\in(0,1)$，使得 $\dfrac{1}{f'(\alpha)}+\dfrac{1}{f'(\beta)}+\dfrac{1}{f'(\gamma)}=3$。
+\end{enumerate}\src{2010--2011\ 学年第 18 题}
+
+\end{enumerate}
+
+\end{document}

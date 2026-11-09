@@ -1,0 +1,285 @@
+\documentclass[11pt,a4paper]{ctexart}
+\usepackage{geometry}
+\geometry{left=2.0cm,right=2.0cm,top=1.9cm,bottom=2.0cm}
+\usepackage{amsmath,amssymb}
+\usepackage{longtable,booktabs,array}
+\usepackage{xcolor}
+\usepackage{titlesec}
+\usepackage{fancyhdr}
+\usepackage{hyperref}
+\hypersetup{hidelinks,bookmarksopen=true,bookmarksnumbered=true}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyfoot[C]{\footnotesize\color{gray} 卷首 $\cdot$ 高数 I（A 类）期中完整讲义合订本}
+\renewcommand{\headrulewidth}{0pt}
+\titleformat{\section}{\Large\bfseries}{\thesection}{1em}{}
+\titleformat{\subsection}{\large\bfseries}{\thesubsection}{1em}{}
+\newcommand{\ee}{\mathrm{e}}
+\newcommand{\eps}{\varepsilon}
+\newcommand{\key}[1]{\textbf{#1}}
+\setlength{\parskip}{3pt}
+\begin{document}
+
+% ---------------- 封面 ----------------
+\begin{center}
+\vspace*{1.6cm}
+{\Huge\bfseries 高等数学 I（A 类）}\\[6pt]
+{\Huge\bfseries 期中考试完整讲义}\\[10pt]
+{\Large 合订本 $\cdot$ 2026-11-08 定稿}\\[18pt]
+\rule{0.82\linewidth}{0.6pt}\\[14pt]
+{\large 依据上海交通大学 2008--2025 学年十七套期中真题逐卷核对整理}\\[4pt]
+{\large 覆盖主讲义、九大专题、全部加练题库、四套模拟卷与两份每日阅读包}\\[16pt]
+\end{center}
+
+\begin{center}
+\begin{tabular}{@{}ll@{}}
+\textbf{考试} & 2026-11-11（周三），按 120 分钟准备 \\
+\textbf{全书} & @@TOTAL@@ 页 $\cdot$ 5 编 + 附录 $\cdot$ @@NBOOKS@@ 册原件合订 \\
+\textbf{题量} & 11/8 加练体系 151 题 + 网络对标加练 30 题 = \textbf{181 题}；另含 11/7 加练 72 题、两本练习册 53 题、主讲义十年真题精讲 \\
+\textbf{模拟卷} & 期中模拟卷、A / B / C 三卷（各含题面与答案），A / B 为 11/9、11/10 掐表卷 \\
+\textbf{阅读包} & 11/7 包 74 页、11/8 包 61 页，按原样收录，绝对页码未改 \\
+\textbf{质量闸门} & 13 个 sympy / mpmath 复核脚本全部 PASS，全部答案先锁定后成文 \\
+\textbf{整理人} & 陶理（电子信息与电气工程学院） \\
+\end{tabular}
+\end{center}
+
+\vspace{0.7cm}
+\begin{center}
+\fbox{\parbox{0.86\linewidth}{
+\textbf{一句话用法}：\emph{这是「一份文件」而不是「一本新讲义」}。第一至第四编是讲义正文（系统方法 $\to$ 专题 $\to$ 题库 $\to$ 模拟卷），第五编与附录是执行/掐表原件。翻页请用 PDF 书签（左侧目录已按「编 $\to$ 册 $\to$ 章」三级展开）；页脚的\textbf{合订本页码}是本书唯一连续编号，\textbf{原册页码}用于和单独的册子对照。
+}}
+\end{center}
+
+\vspace{0.6cm}
+\noindent\textcolor{gray}{\footnotesize 版本说明：本合订本只做合订与卷首编纂，不改动任何一册的正文、答案与绝对页码；各单册 PDF 仍独立可用。11/8 的 61 页阅读包内 A3 路线图所写「本 PDF p11--p13」等均指\textbf{该单册自身页码}，不是合订本页码。}
+
+\newpage
+% ---------------- §1 ----------------
+\section{这本合订本是什么、怎么用}
+
+\subsection{为什么合订}
+到 11/8 为止，复习材料分散在 20 多份 PDF 里：主讲义 1 本、专题讲义 6 本、练习与加练 8 本、模拟卷 4 套、每日阅读包 2 份、执行卡 1 份。临考三天在文件之间来回切换会直接吃掉复习时间，因此需要一份\key{自包含、可离线、带层级书签}的完整讲义：打印一次、带走一本、书签直达。
+
+\subsection{五编分工}
+\begin{longtable}{@{}p{2.4cm}p{4.2cm}p{8.4cm}@{}}
+\toprule
+\textbf{编} & \textbf{管什么} & \textbf{什么时候翻} \\
+\midrule
+第一编 & 卷面结构、得分策略、核心方法、十年真题精讲、作业诊断、资料导航 & 需要建立整体框架、查「这题在考什么」；\emph{不做通读} \\
+第二编 & 九大专题的方法与公式：中值定理、函数极限与间断点、极限定义证明、导数计算、函数性态与作图、数列极限与压轴 & 某一类题型不会、需要看方法模板与结论 \\
+第三编 & 8 本练习与加练，含 11/7 与 11/8 全部题目、答案速查与逐题详解 & \textbf{主战场}：闭卷做题、组末对答案、$<80\%$ 回炉 \\
+第四编 & 4 套模拟卷（题面与答案分册） & 11/9 模拟卷 A、11/10 模拟卷 B，各 120 分钟整卷掐表 \\
+第五编 & 11/7、11/8 每日阅读包原件（A 执行卡 + B 按真题页拆分的题面与答案） & 需要按日执行卡手写记录、或按原卷页码打印掐表时 \\
+附录 & 11/8 今晚执行卡（3 页可书写记录表） & 今晚 21:30--23:30 四项任务的打卡页 \\
+\bottomrule
+\end{longtable}
+
+\subsection{三条边界（避免用错）}
+\begin{enumerate}
+\item \key{第五编不是新题}：阅读包 B 段是把前四编的讲义按原卷页码重新排版的练题页，题目已在第一至第三编出现。临考只做前四编，不要把阅读包再刷一遍。
+\item \key{两套真题卷已做过}：2023-24、2024-25 两套真题整卷都已完成，不再当新卷掐表；只做单题回炉。单题结论以本库 sympy 复核为准（2023-24 Q15(2) 正确值 $-\dfrac{13!}{3240}$，官方答案符号有误）。
+\item \key{范围只到导数应用}：Level 4--6 的积分、多元、级数与 ODE 不在期中范围，本合订本未收录，不要翻。
+\end{enumerate}
+
+\subsection{按卡点查书（最短路径）}
+\begin{longtable}{@{}p{4.6cm}p{10.4cm}@{}}
+\toprule
+\textbf{卡在哪一步} & \textbf{翻哪一编、哪一册} \\
+\midrule
+第 11 题量词行写不出 / $\delta$ 放缩方向反 & 第二编《极限定义证明》；第三编《全专题冲顶》S1 A/B/C 三组、《加练\_定义与压轴深化》P1；第三编《网络对标加练》W3 \\
+泰勒展错阶、余项选错、$f^{(n)}(0)$ 求错 & 第三编《泰勒与压轴强化》系统篇（决策卡 / 母函数表 / 三种余项 / 12 条错误）；《加练》P2；《网络对标加练》W2 \\
+作图漏渐近线、凹凸判反、$x=0$ 竖直切线 & 第二编《函数性态与作图》；第三编《全专题冲顶》S6、《加练》P4；《网络对标加练》W5 \\
+中值定理辅助函数构造不出来 & 第二编《微分中值定理专题讲义》；第三编《高难冲顶》H3；《网络对标加练》W5 \\
+隐函数 / 参数方程二阶导、Leibniz 高阶导 & 第二编《导数计算专题》；第三编《全专题冲顶》S2；《网络对标加练》W4 \\
+间断点判型、左右极限分不清 & 第二编《函数极限与间断点》\S4--\S5；《全专题冲顶》S3 \\
+迭代 / 压缩 / 抽象函数方程 & 第二编《数列极限与压轴新题型》；《加练》P3；《网络对标加练》W5 \\
+不知道今天该做哪组 & 附录《今晚执行卡》；第五编 11/8 阅读包 A3 路线图 \\
+\bottomrule
+\end{longtable}
+
+\newpage
+% ---------------- §2 ----------------
+\section{考点全景：十七套真题告诉我们的事}
+
+\subsection{卷面骨架（17 套基本一致）}
+\begin{longtable}{@{}p{5.2cm}p{3.0cm}p{2.2cm}p{4.6cm}@{}}
+\toprule
+\textbf{部分} & \textbf{题量 $\times$ 分值} & \textbf{合计} & \textbf{备注} \\
+\midrule
+选择题 & $5\times3$ & 15 & 概念辨析、无穷小阶、渐近线 \\
+填空题 & $5\times3$ & 15 & 极限、切线、二阶导、$dy$ \\
+第 11 题 & 极限定义证明 & 8 & \textbf{17/17 套必考} \\
+极限计算 + 导数计算大题 & 若干 & 24--34 & 分值近年升到 20 的导数块 \\
+应用题（切线 / 最值 / 不等式） & 若干 & $\approx18$ & 需写定义域与验证 \\
+函数性态作图 & 1 题 & 10--12 & 约 16/17 套，倒数第二题 \\
+压轴证明 & 1 题 & 8 & 中值定理构造 / 泰勒余项 / 不等式 \\
+\bottomrule
+\end{longtable}
+\noindent\textcolor{gray}{\footnotesize 来源：\texttt{Resources/真题考点索引\_2008-2025.md} \S1；十套卷逐年卷面见第一编《高数I期中复习讲义》p3。总分 100、共 18 题；考试时长卷面未印，按 120 分钟准备。2011 级卷缺印刷第 5 页（13--15 题），2012-13 级两大题题量与其他卷不同。}
+
+\subsection{必考清单（优先级 1）}
+\begin{longtable}{@{}p{3.4cm}p{1.8cm}p{3.0cm}p{6.8cm}@{}}
+\toprule
+\textbf{考点} & \textbf{频次} & \textbf{位置} & \textbf{动作} \\
+\midrule
+\textbf{极限定义证明} & \textbf{17/17} & 第 11 题，8 分 & $\eps$-$\delta$ / $\eps$-$X$ / 无穷大 $M$ 型三套量词行各默写一遍 \\
+\textbf{函数性态作图} & $\approx16/17$ & 倒数第二题 & 七步模板练到机械 \\
+\textbf{微分 $dy$} & 近 4 年连出 & 填空 7 / 8 & 求导后写 $dy=f'(x)\,dx$ \\
+\textbf{Leibniz 高阶导} & 每年 & 填空 9 / 10 & 「代点消项」套路 \\
+\bottomrule
+\end{longtable}
+
+\subsection{十年频次前四（十套卷 177 个题次）}
+\begin{longtable}{@{}p{1.0cm}p{6.4cm}p{2.4cm}p{5.2cm}@{}}
+\toprule
+\textbf{排名} & \textbf{考点} & \textbf{次数} & \textbf{位置与分值} \\
+\midrule
+1 & 可导性判定（分段点、绝对值、理论命题） & 12 & 单选 2--5 或填空，3 分 \\
+2 & 反函数、复合与函数方程 & 10 & 单选 / 填空，3 分 \\
+2 & 极限定义证明 & 10（10/10 卷） & 第 11 题，8 分 \\
+2 & 高阶导数（Leibniz / 泰勒系数 / 部分分式） & 10（10/10 卷） & 选择填空或第 15 题，3--8 分 \\
+5 & 函数性态讨论与作图 & 9（9/10 卷） & 倒数第二题，12 分 \\
+\bottomrule
+\end{longtable}
+
+\subsection{三条读表结论}
+\begin{enumerate}
+\item \key{28 分「模板三件套」年年不变}：第 11 题定义证明（8 分）+ 第 12 题极限计算（8 分）+ 倒数第二题函数作图（12 分）。位置、分值、题型十年未变。
+\item \key{第一高频是「可导性判定」}，但只以 3 分小题出现；练成条件反射即可，不必花整块时间。
+\item \key{真压轴只有三类}：Rolle / Lagrange 构造、泰勒余项 + 夹逼、不等式 + 反证。合计约 10\% 题量，是唯一拉差距处。2023-24 起泰勒成为稳定大题（$(1+x)^\alpha$ 麦克劳林 + $f^{(13)}(0)$，8 分）。
+\end{enumerate}
+
+\subsection{高频错误（考前十分钟扫一遍）}
+$f^{(n)}(0)=n!\,[x^n]$ 不要漏乘 $n!$；$(1+x)^\alpha$ 的系数是 $\binom{\alpha}{n}$，求 13 阶导时\textbf{不再}乘 $13!$；$\delta$ 取 $\min\{\delta_1,\eps/k\}$ 而不是只取其一；$M$ 型要取 $X=\ee^{M+1}$ 这类显式下界；极坐标 $0/0$ 型切线斜率必须取极限而不是直接代值；抽象函数方程条件不足时先找反例。完整 12 条见第三编《泰勒与压轴强化》系统篇。
+
+\newpage
+% ---------------- §3 ----------------
+\section{全书目录（页码为合订本连续页码）}
+
+\noindent\textcolor{gray}{\footnotesize 共 @@NBOOKS@@ 册。下表「起--止」为合订本页码；括号内的原册页码印在每页页脚。}
+
+\footnotesize
+\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{0.92}
+\begin{longtable}{@{}p{0.75cm}p{5.3cm}p{1.9cm}p{7.4cm}@{}}
+\toprule
+\textbf{\#} & \textbf{册名} & \textbf{起--止} & \textbf{内容} \\
+\midrule
+\endfirsthead
+\toprule
+\textbf{\#} & \textbf{册名} & \textbf{起--止} & \textbf{内容} \\
+\midrule
+\endhead
+\bottomrule
+\endlastfoot
+@@TOCROWS@@
+\end{longtable}
+\normalsize
+
+\noindent\textcolor{gray}{\footnotesize 目录之外：\texttt{Notes/网上资料与视频清单\_2026-11-08.md} 记录了 11/8 检索到的公开题库、讲义与视频链接及逐条核实状态（MIT OCW 18.01SC、kmath 交大期中卷、LibreTexts、APEX、Paul's 等）；网页公式层存在 OCR 错乱，只能借题型结构，不能照抄。该清单的题面已转化为第三编《网络对标加练》W1--W5 共 30 题。}
+
+\newpage
+% ---------------- §4 ----------------
+\section{临考三天排期与题量口径}
+
+\subsection{已定稿的排期}
+\begin{longtable}{@{}p{2.1cm}p{5.0cm}p{7.9cm}@{}}
+\toprule
+\textbf{时间} & \textbf{做什么} & \textbf{验收产出} \\
+\midrule
+11/8 今晚 & 附录执行卡四项：盘点 10 min $\to$ G3 泰勒限时卷 50 min $\to$ 第 11 题三型 9 题 45 min $\to$ 睡前回忆 15 min & 12 组进度表、限时卷分数、三型量词行、11/9 回炉 3 条 \\
+11/9 & \textbf{模拟卷 A 整卷 120 min 掐表} + 订正；早段顺延 11/8 未完成的组与网络加练 W1--W5（分 5 组） & A 卷得分、与旧卷对比表、错因分类 \\
+11/10 & \textbf{模拟卷 B 整卷 120 min 掐表} + 订正；C 卷只作单题回炉 & B 卷得分、两次模拟对比、放弃线判定 \\
+11/11 考前 & 只看手抄卡：5 张卡 + 证明模板 + 三种量词行；\textbf{不做新题} & 闭卷默写全对 \\
+\bottomrule
+\end{longtable}
+
+\subsection{题量优先，不减量只顺延}
+11/8 执行卡定的是\textbf{全刷 151 题 / 分 12 组}，加上 11/8 晚新增的网络对标加练 30 题，共 \textbf{181 题}。若今晚 120 分钟排不下，做法是\key{总量一题不减，把未完成的整组顺延到 11/9 早段}，而不是删题或压缩两套整卷的订正时间。组末立刻对答案，$<80\%$ 回炉 3 道同型。
+
+\subsection{明确不做}
+通读笔记、Level 4--6（积分 / 多元 / 级数 / ODE）、把 2023-24 与 2024-25 真题当新卷再掐表、C 卷 120 分钟整卷、今晚再出新题。
+
+\newpage
+% ---------------- §5 ----------------
+\section{闭卷默写清单（考前 10 分钟）}
+
+\noindent 以下六张卡要求\textbf{合上书独立写出}。写不出时按右侧页码回炉，不要只看答案。
+
+\begin{longtable}{@{}p{3.2cm}p{8.0cm}p{3.8cm}@{}}
+\toprule
+\textbf{卡} & \textbf{必须写出的内容} & \textbf{回炉位置} \\
+\midrule
+三型量词行 & $\forall\eps>0\ \exists\delta>0$：$0<|x-x_0|<\delta\Rightarrow|f(x)-A|<\eps$；$\forall\eps>0\ \exists X>0$：$x>X\Rightarrow|f(x)-A|<\eps$；$\forall M>0\ \exists\delta$（或 $X$）使 $f(x)>M$ & 第二编《极限定义证明》；第三编《全专题冲顶》S1 \\
+母函数展开 & $\ee^x,\sin x,\cos x,\ln(1+x),(1+x)^\alpha,\dfrac1{1-x},\arctan x$ 的麦克劳林级数与收敛域 & 第三编《泰勒与压轴强化》决策卡 \\
+三种余项 & Peano $o((x-x_0)^n)$、Lagrange $\dfrac{f^{(n+1)}(\xi)}{(n+1)!}(x-x_0)^{n+1}$、积分型余项；估阶时先定阶再定余项 & 第三编《泰勒与压轴强化》系统篇 \\
+作图七步 & 定义域 $\to$ 奇偶 / 周期 $\to$ 截距 $\to$ $y'$ 表（单调、极值） $\to$ $y''$ 表（凹凸、拐点） $\to$ 三类渐近线 $\to$ 关键点描图 & 第二编《函数性态与作图》；第五编 11/8 包 A9 \\
+导数六型 & 隐函数、参数方程（一阶 / 二阶）、幂指对数求导、Leibniz 高阶导、反函数、分段点可导性 & 第二编《导数计算专题》；第三编《全专题冲顶》S2 \\
+中值定理构造 & Rolle 的 $F(x)=\ee^{-kx}f(x)$ 型、Lagrange / Cauchy 的辅助函数、两次 Rolle 的递推构造 & 第二编《微分中值定理专题讲义》\S3--\S4 \\
+\bottomrule
+\end{longtable}
+
+\subsection{三个最容易翻车的量词细节}
+\begin{enumerate}
+\item $\delta$ 必须是\textbf{两个约束的最小值}：先固定邻域 $\delta_1$ 把 $|x-x_0|$ 带来的因子放大成常数 $G$，再取 $\delta=\min\{\delta_1,\eps/G\}$。只写 $\eps/G$ 而不先定 $\delta_1$，放缩链是断的。
+\item $M$ 型（趋于 $+\infty$）要给出\textbf{显式} $X$ 或 $\delta$，例如 $\ln x>M$ 取 $X=\ee^{M+1}$；写「存在 $X$」而不给构造不得分。
+\item 「用定义证极限不存在」要写出\textbf{一个确定的 $\eps_0>0$} 并对任意 $\delta$ 构造出反例点，不能只说「左右极限不等」。
+\end{enumerate}
+
+\newpage
+% ---------------- §6 ----------------
+\section{复核口径、版本状态与免责}
+
+\subsection{答案怎么来的}
+本库所有 11/7、11/8 新编题目一律走\textbf{「先写复核脚本、后写讲义」}：用 sympy / mpmath 把每个答案（含 $\delta$、$X$、余项系数、作图关键点的数值）锁死后才落笔，脚本与讲义同步保存在 \texttt{Homework/\_review/tools/} 与 \texttt{Resources/Source/}。
+
+\begin{longtable}{@{}p{6.6cm}p{2.3cm}p{6.1cm}@{}}
+\toprule
+\textbf{复核脚本} & \textbf{结论} & \textbf{覆盖} \\
+\midrule
+\texttt{verify\_taylor\_drill.py} & PASS 58 / FAIL 0 & 册一 T 组 19 题 + 限时卷 \\
+\texttt{verify\_full\_topics\_drill.py} & PASS 154 / FAIL 0 & 册二 S1--S6 62 题 + 模拟卷 A/B \\
+\texttt{verify\_extra\_drill.py} & PASS 106 / FAIL 0 & 册三 P1--P4 40 题 + 模拟卷 C \\
+\texttt{verify\_web\_drill.py} & PASS 78 / FAIL 0 & 网络对标加练 W1--W5 30 题 \\
+\texttt{verify\_hard\_drill.py} / \texttt{verify\_daily\_drill.py} & PASS 91 / 106 & 11/7 高难 22 题 / 配套加练 50 题 \\
+其余 7 个早期脚本 & 全部 PASS & 间断点全表、限时卷、练习册、补充卷、补强卡等 \\
+\bottomrule
+\end{longtable}
+\noindent\textcolor{gray}{\footnotesize 复核过程实际抓出并订正了 20 余处自写错误（含 2023-24 官方答案符号、C4 可去间断极限、$\delta$ 放缩、$X=\ee^{M+1}$、对数求导漏项等）。结论与官方答案冲突时，以复核脚本为准。}
+
+\subsection{合订的技术边界}
+\begin{itemize}
+\item 各册\textbf{正文未改动}，仅新增本卷首、重建层级书签、加统一页脚。原册内部超链接在合订后不保证跳转正确，请用左侧书签导航。
+\item 第五编两份阅读包 A3 路线图里的「本 PDF p$\dots$」是\textbf{单册绝对页码}，不是合订本页码；掐表打印请直接用 \texttt{每日阅读包\_11-07.pdf} / \texttt{每日阅读包\_11-08.pdf} 单册。
+\item 11/7 的 74 页包在 11/8 的扩容中\textbf{未被改动}；11/8 的 61 页包为 A 10 页 + B 51 页、28 个书签，B 段 51/51 页脚带来源与原页码。
+\item 合订本生成脚本 \texttt{build\_complete\_handout.py} 与卷首模板 \texttt{\_complete\_front\_template.tex} 已同步 \texttt{Resources/Source/}，可随时重跑。
+\item \textbf{已知残留 1 处}：第 73 页《微分中值定理专题讲义》易错清单第 4 条的否定箭头符号在该历史单册中缺字形（该册 \texttt{.tex} 与 PDF 不同步，故未改正文），题意由括号内反例 $f=x^3$ 仍可判定，不影响使用。合订前已把《模拟卷 A》36 处出处标注缺字与《极限定义证明》5 处圈号缺字修复并重新编译，其余页面缺字为 0。
+\end{itemize}
+
+\subsection{当前状态（截至 2026-11-08 22:00）}
+\begin{itemize}
+\item 考试：2026-11-11 周三；2023-24、2024-25 两套真题整卷已做过；旧卷得分与错题号\textbf{全库仍无记录}，不得估算，需补记。
+\item 11/8 12 组的完成进度与各组正确率\textbf{暂无做题记录}，今晚第一项就是补这张表。
+\item Note 仓库本轮及此前新增文件\textbf{尚未提交}，HEAD 停在 \texttt{2b179ee}（数量以 \texttt{git status} 为准）；按约定等你说「提交」再 commit + push。
+\end{itemize}
+
+\subsection{按错因回炉（最后一页速查）}
+\begin{longtable}{@{}p{4.4cm}p{10.6cm}@{}}
+\toprule
+\textbf{错因} & \textbf{回炉动作} \\
+\midrule
+展错阶 / 余项选错 & 第三编《泰勒与压轴强化》系统篇三种余项 $\to$ T1/T2 各重做 2 题 \\
+符号反 / 系数漏 $n!$ & 第三编《加练》P2 高阶导 12 题，先写 $f^{(n)}(0)=n![x^n]$ 再算 \\
+量词行写不全 & 第二编《极限定义证明》$\to$ 第三编《全专题冲顶》S1 三型各 2 题 \\
+$\delta$ / $X$ 构造错 & 第三编《加练》P1 +《网络对标加练》W3，重推放缩链并写出显式下界 \\
+作图漏项 / 凹凸判反 & 第二编《函数性态与作图》七步卡 $\to$ 第三编《全专题冲顶》S6 重画 2 题 \\
+辅助函数构造不出 & 第二编《微分中值定理专题讲义》\S3 万能构造表 $\to$ 第三编《高难冲顶》H3 \\
+\bottomrule
+\end{longtable}
+
+\vfill
+\begin{center}
+\textcolor{gray}{\footnotesize 卷首完 $\cdot$ 正文自第 @@COREBEGIN@@ 页起 $\cdot$ 全书 @@TOTAL@@ 页}
+\end{center}
+
+\end{document}

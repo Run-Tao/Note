@@ -1,0 +1,146 @@
+% !TeX program = xelatex
+\documentclass[11pt,a4paper]{ctexart}
+% 11/8 21:30--23:30 执行卡（按用户「按照初步建议」落地）
+% 不动 61 页阅读包：本卡独立 PDF，A/B 页可打印书写
+\usepackage[a4paper,top=1.8cm,bottom=1.8cm,left=1.8cm,right=1.8cm]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{booktabs,array,longtable}
+\usepackage{enumitem}
+\usepackage[table]{xcolor}
+\usepackage{fancyhdr}
+\usepackage{hyperref}
+\hypersetup{hidelinks,colorlinks=true,linkcolor=blue!50!black}
+\usepackage{titlesec}
+
+\linespread{1.16}
+\setlength{\parskip}{0.14em}
+\setlist[itemize]{itemsep=2pt,topsep=2pt,parsep=0pt,leftmargin=1.6em}
+\titleformat{\section}{\large\bfseries\color{blue!35!black}}{\thesection}{0.5em}{}
+\titlespacing*{\section}{0pt}{1.0ex plus .2ex}{0.5ex}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small 今晚执行卡 · 11/8（周日）· 21:30--23:30}
+\fancyhead[R]{\small 陶理}
+\fancyfoot[C]{\small\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+
+\newcommand{\eps}{\varepsilon}
+\newcommand{\ee}{\mathrm{e}}
+\newcommand{\blank}[1]{\underline{\hspace{#1}}}
+\newcommand{\rowh}{\rule{0pt}{0.52cm}}
+
+\begin{document}
+
+\begin{center}
+{\LARGE\bfseries 今晚执行卡}\\[0.3em]
+{\large 2026-11-08（周日）21:30 -- 23:30\quad 共 120 分钟}\\[0.4em]
+{\small 按「初步建议」落地；底线 23:30 前睡；今天不做 120 分钟整卷}
+\end{center}
+
+\begin{center}
+\fcolorbox{blue!40!black}{blue!4}{
+\begin{minipage}{0.95\textwidth}
+\vspace{0.3em}
+\textbf{三条硬约束}\quad
+(1) 每组做完\textbf{立刻对答案}，无反馈的重复会把错误一起练熟；
+(2) \textbf{151 题总量不减}，今晚做不完的组整组顺延 11/9 早段；
+(3) 今晚\textbf{不掐整卷}、不通读笔记、不做 Level 4--6（积分/多元/级数与 ODE 不在期中范围）。
+\vspace{0.3em}
+\end{minipage}}
+\end{center}
+
+\section{时间轴（按重要性与紧急程度排序）}
+
+\begin{longtable}{@{}p{2.2cm}p{9.6cm}p{3.4cm}@{}}
+\toprule
+\textbf{时间} & \textbf{动作与材料} & \textbf{产出} \\
+\midrule
+\endfirsthead
+\toprule
+\textbf{时间} & \textbf{动作与材料} & \textbf{产出} \\
+\midrule
+\endhead
+\bottomrule
+\endfoot
+
+\textbf{21:30--21:40} & \textbf{P0-1 进度盘点 + 基线补记（10 min）}：在 p2 表 A 填 12 组已完成到第几组、各组正确率与错题号；表 B 补记 2024-25 旧卷得分/错题号（记不清写「未记录」，\textbf{不估算分数}）。 & 今晚该做哪组的判定 + 11/9 对比表唯一基线 \\[2pt]
+
+\textbf{21:40--22:30} & \textbf{P0-2 册一泰勒限时卷 G3（50 min）}：\texttt{每日阅读包\_11-08.pdf} 的 \textbf{B19}，40 min 闭卷掐表做 12 题 / 36 分，10 min 对 §8 答案，只记题号与错因。验收 $\ge 25/36$；$<20$ 回决策卡重默写。 & 分数 +「展错阶 / 符号反 / 前提漏」三类错误次数 \\[2pt]
+
+\textbf{22:30--23:15} & \textbf{P0-3 第 11 题三型保底（45 min）}：从 \textbf{G4（B20）} 与 \textbf{G9（B28）} 按 $\eps$-$\delta$ / $\eps$-X / M 型各抽 3 题共 9 题，闭卷做、立刻对 \textbf{B23 / B31}。M 型重点自查放缩方向、$\delta=\min\{1/2,1/(2G)\}$、$X=\ee^{M+1}$。 & 三型量词行独立默写 + 9 题正确率 \\[2pt]
+
+\textbf{23:15--23:30} & \textbf{P0-4 睡前回忆（15 min，不做新题）}：5 张手抄卡 + 证明模板卡 + 三种定义量词行；口述今天最卡的一道题的完整思路，讲不顺的记进 p2 表 E。 & 11/9 回炉清单 3 条 + 3 条最大风险 \\[2pt]
+
+\end{longtable}
+
+\noindent\textbf{为什么这样排}：G3 是今晚唯一带时限反馈的训练（11/9 起只剩两套整卷）；第 11 题 17/17 套必考、8 分，且本库在 M 型上已错过 3 次；23:30 是硬底线，睡眠巩固优先于多刷一组。
+
+\section{顺延清单（总量不减，只挪时间）}
+
+今晚 120 min 按 6 min/题 + 组末反馈只容得下约 15--18 题，执行卡 §4「2 小时保 G4+G9+G3」按其自身口径实需约 3.5 h，物理上排不下。因此：
+\begin{itemize}
+\item \textbf{今晚保}：G3 全卷 + G4/G9 各抽 3 题（三型）+ 盘点 + 睡前回忆。
+\item \textbf{整组顺延 11/9 早段}：G1、G2、G5、G6、G7、G8、G10、G11、G12 中未完成的组；\textbf{不跳组、不只看答案}。
+\item 11/9 仍是模拟卷 A 整卷 120 min + 60--75 min 独立订正，11/10 模拟卷 B 同规格；订正时间不得压缩。
+\item 若白天已完成 G1--G8：把 P0-3 换成 \textbf{G9 全 12 题 + G11 抽 4 题 P3}，G3 仍保留，G10/G12 顺延。
+\end{itemize}
+
+\newpage
+\section{记录表（打印后手写，写完拍照/报题号即可）}
+
+\subsection*{表 A · 12 组进度与正确率}
+{\footnotesize
+\begin{longtable}{@{}|c|c|c|c|c|c|c|@{}}
+\hline
+组 & 内容 & 段号 & 题量 & 完成 & 正确率 & 错题号 \\
+\hline
+\endfirsthead
+\hline
+组 & 内容 & 段号 & 题量 & 完成 & 正确率 & 错题号 \\
+\hline
+\endhead
+\hline
+\endfoot
+G1 & T1+T2 展开与系数/余项 & B17 & 9 & \blank{0.5cm} & \blank{0.9cm} & \blank{2.6cm} \rowh \\
+G2 & T3+T4 求导数/应用 & B17 & 10 & \blank{0.5cm} & \blank{0.9cm} & \blank{2.6cm} \rowh \\
+G3 & 册一泰勒限时卷（掐表） & B19 & 12 & \blank{0.5cm} & \blank{0.9cm} & \blank{2.6cm} \rowh \\
+G4 & S1 极限定义证明 & B20 & 12 & \blank{0.5cm} & \blank{0.9cm} & \blank{2.6cm} \rowh \\
+G5 & S2 导数与微分 & B21 & 14 & \blank{0.5cm} & \blank{0.9cm} & \blank{2.6cm} \rowh \\
+G6 & S3 极坐标与间断点 & B21 & 12 & \blank{0.5cm} & \blank{0.9cm} & \blank{2.6cm} \rowh \\
+G7 & S4 新压轴 + S5 前 4 & B22 & 12 & \blank{0.5cm} & \blank{0.9cm} & \blank{2.6cm} \rowh \\
+G8 & S5 后 6 + S6 作图 & B22 & 12 & \blank{0.5cm} & \blank{0.9cm} & \blank{2.6cm} \rowh \\
+G9 & 册三 P1 定义深化 & B28 & 12 & \blank{0.5cm} & \blank{0.9cm} & \blank{2.6cm} \rowh \\
+G10 & 册三 P2 泰勒高阶导 & B29 & 12 & \blank{0.5cm} & \blank{0.9cm} & \blank{2.6cm} \rowh \\
+G11 & 册三 P3+P4 & B30 & 16 & \blank{0.5cm} & \blank{0.9cm} & \blank{2.6cm} \rowh \\
+G12 & 册三模拟卷 C（不掐表） & B32 & 18 & \blank{0.5cm} & \blank{0.9cm} & \blank{2.6cm} \rowh \\
+\hline
+\end{longtable}}
+
+\subsection*{表 B · 旧卷得分补记（11/9 对比表唯一基线）}
+{\small 规则：记不清就写「未记录」，\textbf{不要估算分数}。}\\[2pt]
+2024-25 卷得分 \blank{2.0cm}\quad 错题号 \blank{5.0cm}\quad 记为未记录 \blank{0.8cm}\\[2pt]
+2023-24 卷得分 \blank{2.0cm}\quad 错题号 \blank{5.0cm}\quad 记为未记录 \blank{0.8cm}\\[2pt]
+
+\subsection*{表 C · G3 泰勒限时卷（12 题 / 36 分）}
+得分 \blank{1.6cm} / 36\quad 用时 \blank{1.6cm} min\quad 验收 $\ge 25/36$ \blank{1.0cm}\\[2pt]
+错题号 \blank{6.5cm}\quad 三类错误次数：展错阶 \blank{0.9cm}\ 符号反 \blank{0.9cm}\ 前提漏 \blank{0.9cm}\\[2pt]
+
+\subsection*{表 D · 第 11 题三型 9 题}
+$\eps$-$\delta$ \blank{1.2cm}/3\quad $\eps$-X \blank{1.2cm}/3\quad M 型 \blank{1.2cm}/3\quad 合计 \blank{1.2cm}/9\\[2pt]
+三型量词行独立默写：\blank{0.8cm} / 3\quad M 型放缩方向写反：是 \blank{0.7cm}\ 否 \blank{0.7cm}\\[2pt]
+卡住满 5 min 只查详解「卡点」一行、合上重写；\textbf{看懂不算会}。\\[2pt]
+
+\subsection*{表 E · 睡前回炉清单与风险}
+明天第一件事（最卡的一题） \blank{8.0cm}\\[2pt]
+回炉 1 \blank{8.0cm}\\[2pt]
+回炉 2 \blank{8.0cm}\\[2pt]
+回炉 3 \blank{8.0cm}\\[2pt]
+三条最大风险 1 \blank{7.0cm}\quad 2 \blank{7.0cm}\\[2pt]
+3 \blank{15.0cm}\\[2pt]
+
+\begin{center}
+{\small\color{blue!45!black} 材料唯一入口：\texttt{Resources/Downloads/每日阅读包\_11-08.pdf}（61 页，A 10 + B16--B32）。本卡与《讲义\_网络对标加练\_11-08》是独立补充，不改包内绝对页码。}
+\end{center}
+
+\end{document}

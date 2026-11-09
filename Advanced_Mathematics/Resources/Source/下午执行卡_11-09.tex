@@ -1,0 +1,237 @@
+% !TeX program = xelatex
+\documentclass[11pt,a4paper]{ctexart}
+% 11/9（周一）全日下午满负荷执行卡：用户「整个下午都学数学」
+% 题量优先：把 11/8 顺延的 12 组 + 网络对标 30 题 + 模拟卷 A 全部排进今天
+% 不改 61 页 / 74 页阅读包的绝对页码
+\usepackage[a4paper,top=1.7cm,bottom=1.7cm,left=1.7cm,right=1.7cm]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{booktabs,array,longtable}
+\usepackage{enumitem}
+\usepackage[table]{xcolor}
+\usepackage{fancyhdr}
+\usepackage{hyperref}
+\hypersetup{hidelinks,colorlinks=true,linkcolor=blue!50!black}
+\usepackage{titlesec}
+
+\linespread{1.12}
+\setlength{\parskip}{0.10em}
+\setlist[itemize]{itemsep=1pt,topsep=2pt,parsep=0pt,leftmargin=1.6em}
+\titleformat{\section}{\large\bfseries\color{blue!35!black}}{\thesection}{0.5em}{}
+\titlespacing*{\section}{0pt}{0.9ex plus .2ex}{0.4ex}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small 11/9 全日执行卡 · 13:00--18:30（+ 晚间续接 19:30--23:00）}
+\fancyhead[R]{\small 陶理}
+\fancyfoot[C]{\small\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+
+\newcommand{\eps}{\varepsilon}
+\newcommand{\ee}{\mathrm{e}}
+\newcommand{\blank}[1]{\underline{\hspace{#1}}}
+\newcommand{\rowh}{\rule{0pt}{0.40cm}}
+
+\begin{document}
+
+\begin{center}
+{\LARGE\bfseries 11/9 全日执行卡 · 题量优先}\\[0.3em]
+{\large 2026-11-09（周一，D-2）\quad 下午 13:00--18:30 \ +\ 晚间 19:30--23:00}\\[0.3em]
+{\small 净做题约 500 分钟\quad 今日目标 \textbf{$\geq 150$ 题}\quad 23:30 前睡（硬底线）}
+\end{center}
+
+\begin{center}
+\fcolorbox{blue!40!black}{blue!4}{
+\begin{minipage}{0.95\textwidth}
+\vspace{0.25em}
+\textbf{为什么这份比上一版多 5 倍}\quad 上一版只排了「A 卷 120 min + 订正」，那是 D-2 的\textbf{保底线}，不是全部可练的量。
+今天把 11/8 顺延的 G1--G12、网络对标 W1--W5、模拟卷 A 全卷与订正回炉\textbf{一次性排满}下午与晚间；
+\textbf{总量一题不减}，只把 G12 与模拟卷 B 顺延到 11/10。
+\vspace{0.25em}
+\end{minipage}}
+\end{center}
+
+\section{三条硬约束}
+\begin{itemize}
+\item \textbf{不压缩}：模拟卷 A 的 120 min 闭卷掐表 + 50 min 独立订正，是今天唯一带时限反馈的训练，任何题组都不能挤占。
+\item \textbf{每组立刻对答案}：无反馈的重复会把错误一起练熟。只记题号与错因，正确率 $<80\%$ 的组回对应决策卡重做 3 道同型再往下。
+\item \textbf{不增范围}：不通读 17 篇笔记、不做 Level 4--6（积分 / 多元 / 级数与 ODE 不在期中范围）、不掐第二套整卷（B 卷仍 11/10）。
+\end{itemize}
+
+\section{分层快刷口径（今天能刷完 150 题的关键）}
+\begin{center}
+\begin{tabular}{@{}p{2.0cm}p{2.0cm}p{11.6cm}@{}}
+\toprule
+\textbf{层} & \textbf{单题上限} & \textbf{动作} \\
+\midrule
+A 类 & 2 min & 一眼会：只写关键 2 步 + 结果，立刻对速查表；不写完整过程 \\
+B 类 & 5 min & 定义证明 / 作图七步 / 压轴：完整写出，量词行或七步一步不省 \\
+C 类 & 5 min 标 $\star$ & 卡住满 5 min 只看详解「卡点」一行，\textbf{合上重写}；仍不行记入回炉清单，不硬耗 \\
+\bottomrule
+\end{tabular}
+\end{center}
+\noindent\textbf{组末反馈} 5--8 min：对速查表 $\to$ 填记录表 B $\to$ 决定「进下一组」还是「回炉 3 道同型」。
+\textbf{看懂不算会}，星号题必须在 22:40 的复盘段闭卷重做。平均按 2.5--3 min/题估时；若某组连续两次 $<80\%$，该组当天停，改做决策卡 + 3 道同型。
+
+\section{下午时间轴 13:00--18:30（净 310 min，目标 $\geq 75$ 题）}
+{\small
+\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{1.06}
+\begin{longtable}{@{}p{2.15cm}p{9.55cm}p{3.6cm}@{}}
+\toprule
+\textbf{时间} & \textbf{动作与材料} & \textbf{产出} \\
+\midrule
+\endfirsthead
+\toprule
+\textbf{时间} & \textbf{动作与材料} & \textbf{产出} \\
+\midrule
+\endhead
+\bottomrule
+\endlastfoot
+13:00--13:15 & 盘点 12 组完成度（填记录表 B 左半）、补记 2024-25 旧卷得分与错题号（记不清写「未记录」，\textbf{不要估算}）、把本卡分层口径贴在桌上 & 完成度表 + 对比基线 \\
+13:15--15:15 & \textbf{模拟卷 A 完整掐表 120 min}（18 题）。用单册 \texttt{模拟卷A.pdf}（合订本 p215--220），闭卷、不查答案、不翻精编本；按考场顺序做，卡住先跳 & 完整卷面 + 得分 \\
+15:15--15:25 & 休息，离开座位，不回看卷子 & --- \\
+15:25--16:15 & \textbf{A 卷订正 50 min}：逐题标错因（展错阶 / 符号反 / 前提漏 / 量词 / 作图 / 时间不够）；六类\textbf{各回炉 2 道同型}，从精编本对应章抽（第 2 章定义、第 5 章泰勒、第 7 章作图、第 8 章压轴），共 12 题 & 错因表 + 12 题回炉 \\
+16:15--16:25 & 休息 & --- \\
+16:25--17:25 & \textbf{精做块 (1)}：G1 + G2 = 册一 T 组 19 题（B17 题面 $\to$ B18 速查）。B 类完整写展开阶与余项；顺带把 11/8 晚 G3 限时卷的错题重做 & 19 题 + 组末反馈 \\
+17:25--18:30 & \textbf{快刷块 (1)}：G4（S1 十二题，B20）+ G9（册三 P1 十二题，B28，\textbf{跳过 11/8 晚已做的 9 题}）+ G5（S2 十四题，B21）。合计约 29 题，A 类 2 min / C 类标 $\star$；反馈口 B23 与 B31 & 约 29 题 + 组末反馈 \\
+\end{longtable}
+}
+
+\section{晚间续接 19:30--23:00（净 190 min，目标 $\geq 90$ 题）}
+{\small
+\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{1.06}
+\begin{longtable}{@{}p{2.15cm}p{9.55cm}p{3.6cm}@{}}
+\toprule
+\textbf{时间} & \textbf{动作与材料} & \textbf{产出} \\
+\midrule
+\endfirsthead
+\toprule
+\textbf{时间} & \textbf{动作与材料} & \textbf{产出} \\
+\midrule
+\endhead
+\bottomrule
+\endlastfoot
+19:30--19:50 & \textbf{诊断卷 D1--D12}（\texttt{讲义\_薄弱点定向加练\_11-09.pdf} §0）：20 min 掐表、先做再对答案，只填 6 行「对 / 2 + 错的第一步」；按实测把 $0$--$1/2$ 的模块整组提前到 11/10 第一段 & 实测弱点排序 \\
+19:50--20:40 & \textbf{快刷块 (2)}：G6（S3 十二题）+ G7（S4 八题 + S5 前四题）+ G8（S5 后六题 + S6 作图六题），共 36 题，题面 B21--B22、速查 B23。按 A 类快刷；作图题写全七步、两端渐近线都查。超时则整组顺延 11/10 早段 & 36 题 + 组末反馈 \\
+20:40--20:50 & 休息 & --- \\
+20:50--21:50 & \textbf{精做块 (2)}：G10（册三 P2 十二题，B29）+ G11（P3 十题 + P4 六题，B30），共 28 题。P3.9 必须当场给两个反例；P2.9 用级数逐次代入求隐函数高阶导 & 28 题 + 组末反馈 \\
+21:50--22:40 & \textbf{网络对标 W1--W5 三十题}（\texttt{讲义\_网络对标加练\_11-08.pdf}，5 组各 6 题），按 A 类快刷；组末对册末 30 行答案速查，$<80\%$ 回炉 3 道同型 & 30 题 + 5 组正确率 \\
+22:40--23:00 & \textbf{错题总复盘}：把今天所有 $\star$ 题闭卷重做；三种量词行各默写一遍（$\delta=\min\{1/2,\eps/2\}$、$X=\ee^{M+1}$、$\delta(M)=\min\{1/2,1/(2G)\}$）；整理明天 B 卷的考场时间分配表 & 回炉清单 + 默写卡 \\
+\end{longtable}
+}
+
+\noindent\textbf{今日合计}：A 卷 18 + 订正回炉 12 + 下午题组 48 + 诊断卷 12 + 晚间题组 94 $\approx$ \textbf{184 题}（含 11/8 已做 21 题则覆盖题池约 205 题）。
+\textbf{顺延 11/10}：G12（模拟卷 C 18 题按单题，B32）+ 模拟卷 B 120 min 掐表 + 订正，以及本轮新增 \textbf{84 题薄弱点定向加练}（诊断卷 12 今晚做，六模块 72 题按实测顺序排 11/10 下午/晚间）。题量一题不减，只是换天。
+
+\section{题号 / 页码映射（打印后按段号翻，不跳页）}
+{\footnotesize
+\setlength{\tabcolsep}{2.5pt}
+\renewcommand{\arraystretch}{1.02}
+\begin{longtable}{@{}p{1.15cm}p{4.45cm}p{1.05cm}p{5.15cm}p{3.5cm}@{}}
+\toprule
+\textbf{组} & \textbf{题号范围} & \textbf{题量} & \textbf{题面位置} & \textbf{反馈口} \\
+\midrule
+\endfirsthead
+\toprule
+\textbf{组} & \textbf{题号范围} & \textbf{题量} & \textbf{题面位置} & \textbf{反馈口} \\
+\midrule
+\endhead
+\bottomrule
+\endlastfoot
+G1 & T1.1--T1.5, T2.1--T2.4 & 9 & 阅读包 B17 & B18 速查 \\
+G2 & T3.1--T3.5, T4.1--T4.5 & 10 & 阅读包 B17 & B18 速查 \\
+G3 & 册一泰勒限时卷 12 题 & 12 & 阅读包 B19 & 同册 §8 答案 \\
+G4 & S1.1--S1.12 & 12 & 阅读包 B20 & B23 速查 \\
+G5 & S2.1--S2.14 & 14 & 阅读包 B21 & B23 速查 \\
+G6 & S3.1--S3.12 & 12 & 阅读包 B21 & B23 速查 \\
+G7 & S4.1--S4.8, S5.1--S5.4 & 12 & 阅读包 B22 & B23 速查 \\
+G8 & S5.5--S5.10, S6.1--S6.6 & 12 & 阅读包 B22 & B23 速查 \\
+G9 & P1.1--P1.12 & 12 & 阅读包 B28 & B31 速查 \\
+G10 & P2.1--P2.12 & 12 & 阅读包 B29 & B31 速查 \\
+G11 & P3.1--P3.10, P4.1--P4.6 & 16 & 阅读包 B30 & B31 速查 \\
+G12 & 模拟卷 C 18 题（按单题） & 18 & 阅读包 B32 & 卷末答案表 \\
+W1--W5 & W1.1--W5.6 共 30 题 & 30 & 网络对标加练册 p1--p4 & 册末 30 行速查 \\
+模拟卷 A & 18 题（120 min 掐表） & 18 & 单册 \texttt{模拟卷A.pdf} / 合订本 p215--220 & 卷末答案 \\
+模拟卷 B & 18 题（11/10 掐表） & 18 & 单册 \texttt{模拟卷B.pdf} / 合订本 p221--226 & 卷末答案 \\
+\multicolumn{5}{@{}p{15.3cm}@{}}{\small 方法回炉：\texttt{讲义\_精编本\_11-09.pdf} 22 页 8 章（第 2 章定义 30 题 / 第 5 章泰勒 37 题最厚）；逐题详解：合订本 p162--212。阅读包 A3 路线图的「本 PDF p\ldots」是单册页码，掐表打印请用单册。} \\
+\end{longtable}
+}
+
+\section{记录表 A：模拟卷 A 与订正}
+{\small
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{@{}p{3.4cm}p{3.4cm}p{3.4cm}p{5.1cm}@{}}
+\toprule
+得分 \blank{2.2cm} & 用时 \blank{2.2cm} & 空题数 \blank{2.2cm} & 2024-25 基线 \blank{3.4cm} \\
+\midrule
+\multicolumn{4}{@{}p{15.3cm}@{}}{错因分布：展错阶 \blank{1.4cm}\ 符号反 \blank{1.4cm}\ 前提漏 \blank{1.4cm}\ 量词 \blank{1.4cm}\ 作图 \blank{1.4cm}\ 时间不够 \blank{1.4cm}} \\
+\midrule
+\multicolumn{4}{@{}p{15.3cm}@{}}{失分题号与错因（逐题写）：\blank{11.1cm}} \\
+\midrule
+\multicolumn{4}{@{}p{15.3cm}@{}}{六类各回炉 2 道的题号与结果：\blank{10.2cm}} \\
+\bottomrule
+\end{tabular}
+}
+
+\section{记录表 B：分组进度（每做完一组立刻填）}
+{\footnotesize
+\setlength{\tabcolsep}{2.5pt}
+\renewcommand{\arraystretch}{1.0}
+\begin{longtable}{@{}p{1.15cm}p{1.15cm}p{1.8cm}p{4.4cm}p{3.5cm}p{3.3cm}@{}}
+\toprule
+\textbf{组} & \textbf{题量} & \textbf{正确率} & \textbf{错题号} & \textbf{主要错因} & \textbf{星号回炉题号} \\
+\midrule
+\endfirsthead
+\toprule
+\textbf{组} & \textbf{题量} & \textbf{正确率} & \textbf{错题号} & \textbf{主要错因} & \textbf{星号回炉题号} \\
+\midrule
+\endhead
+\bottomrule
+\endlastfoot
+G1 \rowh & 9 & \blank{1.3cm} & \blank{4.0cm} & \blank{3.1cm} & \blank{2.9cm} \\
+G2 \rowh & 10 & \blank{1.3cm} & \blank{4.0cm} & \blank{3.1cm} & \blank{2.9cm} \\
+G3 \rowh & 12 & \blank{1.3cm} & \blank{4.0cm} & \blank{3.1cm} & \blank{2.9cm} \\
+G4 \rowh & 12 & \blank{1.3cm} & \blank{4.0cm} & \blank{3.1cm} & \blank{2.9cm} \\
+G5 \rowh & 14 & \blank{1.3cm} & \blank{4.0cm} & \blank{3.1cm} & \blank{2.9cm} \\
+G6 \rowh & 12 & \blank{1.3cm} & \blank{4.0cm} & \blank{3.1cm} & \blank{2.9cm} \\
+G7 \rowh & 12 & \blank{1.3cm} & \blank{4.0cm} & \blank{3.1cm} & \blank{2.9cm} \\
+G8 \rowh & 12 & \blank{1.3cm} & \blank{4.0cm} & \blank{3.1cm} & \blank{2.9cm} \\
+G9 \rowh & 12 & \blank{1.3cm} & \blank{4.0cm} & \blank{3.1cm} & \blank{2.9cm} \\
+G10 \rowh & 12 & \blank{1.3cm} & \blank{4.0cm} & \blank{3.1cm} & \blank{2.9cm} \\
+G11 \rowh & 16 & \blank{1.3cm} & \blank{4.0cm} & \blank{3.1cm} & \blank{2.9cm} \\
+G12 \rowh & 18 & \blank{1.3cm} & \blank{4.0cm} & \blank{3.1cm} & \blank{2.9cm} \\
+W1 \rowh & 6 & \blank{1.3cm} & \blank{4.0cm} & \blank{3.1cm} & \blank{2.9cm} \\
+W2 \rowh & 6 & \blank{1.3cm} & \blank{4.0cm} & \blank{3.1cm} & \blank{2.9cm} \\
+W3 \rowh & 6 & \blank{1.3cm} & \blank{4.0cm} & \blank{3.1cm} & \blank{2.9cm} \\
+W4 \rowh & 6 & \blank{1.3cm} & \blank{4.0cm} & \blank{3.1cm} & \blank{2.9cm} \\
+W5 \rowh & 6 & \blank{1.3cm} & \blank{4.0cm} & \blank{3.1cm} & \blank{2.9cm} \\
+\end{longtable}
+}
+
+\section{验收线 / 放弃线 / 加码}
+\begin{itemize}
+\item \textbf{今日验收}：A 卷完整掐表且有得分与逐题错因；下午 $\geq 75$ 题、全天 $\geq 150$ 题；每组正确率 $\geq 80\%$；三种量词行各默写全、M 型不写反；作图七步至少 2 题不看模板；22:40 前把星号题闭卷重做一遍。
+\item \textbf{放弃线（降速不减量，不跳组）}：若某段超时，\textbf{整组顺延 11/10 早段}，不许「只看答案过一遍」；A 卷 120 min 与 50 min 订正\textbf{不压缩}；23:00 停笔、23:30 睡。若某组连续两次 $<80\%$，该组剩余题当天停，改决策卡 + 3 道同型。
+\item \textbf{加码 (1)}：18:30 前完成且状态仍好 $\to$ 晚间 21:50 段\textbf{追加 G12（模拟卷 C 18 题按单题）}，W1--W5 顺延到 22:40 复盘后或 11/10 早段。
+\item \textbf{加码 (2)}：若想今天就把两套整卷都做完 $\to$ 把 \textbf{模拟卷 B 提前到 19:30--21:30}（120 min 掐表），晚间题组顺延 11/10 早段，11/10 只做错题总复盘与考场时间分配表。两套订正时间都不得压缩。
+\item \textbf{已加量}：题池 \textbf{217 $\to$ 301 题}。11/9 12:20 按「先分析薄弱点再出题」新增 \texttt{讲义\_薄弱点定向加练\_11-09.pdf}（诊断卷 12 + 六模块 72 = 84 题，PASS 111 / FAIL 0），诊断卷今晚 19:30 做，72 题排 11/10。诊断依据见 \texttt{Notes/薄弱点诊断\_2026-11-09.md}。
+\end{itemize}
+
+\section{与后面两天的衔接}
+\begin{center}
+{\small
+\begin{tabular}{@{}p{2.0cm}p{10.6cm}p{2.8cm}@{}}
+\toprule
+\textbf{日期} & \textbf{主线} & \textbf{题量} \\
+\midrule
+11/10（D-1） & 早段补完顺延组 + G12（C 卷 18 题按单题）；模拟卷 B 120 min 掐表 + 订正；\textbf{下午/晚间做定向加练 72 题}（按诊断卷实测顺序，A 级模块优先）；只重做 11/8--11/9 标过的错题；出考场时间分配表 & 36 + 72 + 回炉 \\
+11/11 考前 & 只看 5 张手抄卡 + 证明模板卡 + 三种定义量词行 + \textbf{诊断卷错题重做}；不做新题、不掐表 & 0 \\
+\bottomrule
+\end{tabular}
+}
+\end{center}
+
+\vspace{0.3em}
+\noindent{\footnotesize 材料入口：61 页 \texttt{每日阅读包\_11-08.pdf}（B16--B32）$|$ 22 页 \texttt{讲义\_精编本\_11-09.pdf}（方法回炉）$|$ 370 页 \texttt{高数I期中完整讲义\_合订本\_2026-11-08.pdf}（逐题详解 p162--212）$|$ 单册 \texttt{模拟卷A.pdf} / \texttt{模拟卷B.pdf}（掐表）。本卡独立 PDF，不改任何既有包的绝对页码。}
+
+\end{document}

@@ -1,0 +1,815 @@
+\documentclass[11pt,a4paper]{ctexart}
+% ============================================================
+%  高等数学 I（A 类）期中精编讲义 · 2026-11-09
+%  讲解全新撰写；151 题从 11/8 四册已复核讲义按考点重排
+%  复核：verify_compact_handout.py PASS 30 / FAIL 0
+%        + verify_taylor/full_topics/extra/web_drill.py 全 PASS
+%  编译：xelatex 两遍
+% ============================================================
+\usepackage[a4paper,top=2.0cm,bottom=2.0cm,left=2.0cm,right=2.0cm]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools,bm}
+\usepackage{booktabs,array,longtable,tabularx,multicol}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage[most]{tcolorbox}
+\usepackage{fancyhdr}
+\usepackage{titlesec}
+\usepackage{hyperref}
+\hypersetup{hidelinks,bookmarksopen=true,bookmarksnumbered=true,
+  colorlinks=true,linkcolor=blue!50!black}
+
+\linespread{1.16}
+\setlength{\parskip}{0.16em}
+\setlength{\tabcolsep}{4pt}
+\setlist[enumerate]{itemsep=2pt,topsep=3pt,parsep=0pt,leftmargin=1.9em}
+\setlist[itemize]{itemsep=2pt,topsep=3pt,parsep=0pt,leftmargin=1.6em}
+\titleformat{\section}{\Large\bfseries\color{blue!35!black}}{\thesection}{0.6em}{}
+\titleformat{\subsection}{\large\bfseries\color{blue!25!black}}{\thesubsection}{0.5em}{}
+\titlespacing*{\section}{0pt}{1.3ex plus .3ex}{0.7ex}
+\titlespacing*{\subsection}{0pt}{1.0ex plus .2ex}{0.5ex}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small 高数 I 期中精编讲义 $\cdot$ 11/9}
+\fancyhead[R]{\small 陶理}
+\fancyfoot[C]{\small\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\eps}{\varepsilon}
+\newcommand{\abs}[1]{\left\lvert #1\right\rvert}
+\newcommand{\ee}{\mathrm{e}}
+\newcommand{\D}{\mathrm{d}}
+\newcommand{\dd}[2]{\dfrac{\D #1}{\D #2}}
+\newcommand{\q}[2]{\par\medskip\noindent\textbf{#1}\quad #2\par}
+\newcommand{\key}[1]{\par\nopagebreak\noindent{\small\color{red!55!black}\textbf{卡点：}#1}\par}
+\newcommand{\tagline}[1]{\par\nopagebreak\noindent{\small\color{blue!45!black}#1}\par}
+\newcommand{\ans}[1]{\;\boxed{#1}}
+
+\newtcolorbox{keypoint}[1][]{enhanced,breakable,colback=blue!3,colframe=blue!40!black,
+  fonttitle=\bfseries,title={#1},boxrule=0.5pt,arc=1.5mm,
+  left=3mm,right=3mm,top=2mm,bottom=2mm,before skip=4pt,after skip=4pt}
+
+\begin{document}
+
+\begin{center}
+\vspace*{1.0cm}
+{\Huge\bfseries 高等数学 I（A 类）}\\[5pt]
+{\Huge\bfseries 期中考试精编讲义}\\[12pt]
+{\Large 系统讲解 $\cdot$ 151 题 $\cdot$ 章末答案速查}\\[8pt]
+{\large 2026-11-09 定稿 $\cdot$ 考试 11/11 周三}\\[16pt]
+\rule{0.8\linewidth}{0.6pt}\\[12pt]
+\begin{tabular}{@{}ll@{}}
+依据 & 上海交大 2008--2025 十七套高数 A 类期中真题逐卷核对 \\
+题源 & 11/8 四册加练（T 19 + S 62 + P 40 + W 30 = 151 题），答案已全部复核 \\
+用法 & 每章先读方法卡与例题精讲，再闭卷做习题，最后对章末答案速查 \\
+边界 & 不含阅读包、执行卡、模拟卷整卷与逐题详解；掐表请用单册模拟卷 \\
+\end{tabular}
+\end{center}
+\newpage
+\section*{这本讲义是什么}
+\vspace{-2mm}
+{\small 2026-11-09 编。考试 \textbf{11/11 周三}，按 120 分钟准备；依据 2008--2025 十七套交大高数 A 类期中真题逐卷核对整理。}
+
+\begin{center}
+\begin{tabular}{@{}p{3.0cm}p{5.6cm}p{6.6cm}@{}}
+\toprule
+ & \textbf{370 页合订本（11/8）} & \textbf{本精编本（11/9）} \\
+\midrule
+定位 & 全库归档：26 册原件、阅读包、执行卡、逐题详解 & \textbf{临考手边一册}：系统讲解 + 题目 + 答案速查 \\
+讲解决构 & 散在各册，需来回翻 & \textbf{按 8 个考点重写的连贯讲解}，每章先方法卡后习题 \\
+题目 & 181 题 + 11/7 加练 72 题 + 练习册 53 题（含重复页） & \textbf{11/8 体系 151 题一题不减}，按考点重排、无重复 \\
+答案 & 逐题详解分散在各册后半 & 每章末\textbf{一行一题的答案速查}；详解按索引回查合订本 \\
+未收录 & — & 每日阅读包（135 页）、执行卡、模拟卷整卷、逐题详解 \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\subsection*{题号怎么读}
+题号\textbf{保留原册编号}，便于回查详解与错题记录：\texttt{T}＝《泰勒与压轴强化·册一》19 题；\texttt{S}＝《全专题冲顶·册二》62 题；\texttt{P}＝《加练·定义与压轴深化·册三》40 题；\texttt{W}＝《网络对标加练》30 题。合计 \textbf{151 题}，全部已由四个 sympy/mpmath 复核脚本锁定答案（PASS 58 / 154 / 106 / 78，FAIL 全为 0）。
+
+\subsection*{怎么用（三条规矩）}
+\begin{enumerate}
+\item \textbf{先闭卷做，再对答案}：每章习题做完才翻该章末「答案速查」，只记题号与错因，正确率 $<80\%$ 回炉 3 道同型。
+\item \textbf{卡住满 5 分钟}才看合订本逐题详解，位置见附录 C 的「题号前缀 $\to$ 合订本页码」表；看完合上重写一遍，不抄。
+\item \textbf{不替代掐表}：11/9 模拟卷 A、11/10 模拟卷 B 两套 120 分钟整卷按原排期做；本讲义用于方法回炉与单题补强，不占整卷时间。
+\end{enumerate}
+
+\subsection*{范围边界}
+只到导数应用：极限与连续、导数与微分、中值定理、泰勒、函数性态与作图、数列极限与新压轴。\textbf{积分、多元、级数、ODE 不在期中范围}，本讲义不收。2023-24、2024-25 两套真题整卷已做过，不再当新卷掐表，只做单题回炉。
+
+\newpage
+\tableofcontents
+\newpage
+\section{第 1 章 \ 极限计算与无穷小阶}
+\subsection{方法卡：拿到极限题的第一动作}
+
+\textbf{先代入判型，再选工具}——选错工具是考场上最大的时间浪费。
+\[
+\tfrac00,\quad\tfrac{\infty}{\infty},\quad 0\cdot\infty,\quad\infty-\infty,\quad 1^\infty,\quad 0^0,\quad \infty^0 .
+\]
+
+\begin{center}
+\begin{tabular}{@{}p{3.1cm}p{5.1cm}p{7.0cm}@{}}
+\toprule
+\textbf{型} & \textbf{首选工具} & \textbf{前提与陷阱} \\
+\midrule
+$\tfrac00$、$\tfrac{\infty}{\infty}$ & 等价无穷小 / 洛必达 / 泰勒 & 等价无穷小\textbf{只在乘除因子中换}；加减要统一展到第一个非零阶 \\
+$\infty-\infty$ & 通分、有理化、提最高阶 & 根式差先有理化；不要对两项分别取等价 \\
+$1^\infty,\,0^0,\,\infty^0$ & 取对数写成 $\ee^{v\ln u}$ & 捷径 $u^v\to\ee^{\lim v(u-1)}$ 只在 $v(u-1)^2\to0$ 时成立 \\
+和式 / 数列 & 夹逼、裂项、Stirling & $n!\sim\sqrt{2\pi n}(n/\ee)^n$；$\frac1n\sum_k\ln(k/n)\to\int_0^1\ln x\,\D x=-1$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+常用等价（$x\to0$）：$\sin x\sim x$，$\tan x\sim x$，$1-\cos x\sim x^2/2$，$\ln(1+x)\sim x$，$\ee^x-1\sim x$，$(1+x)^\alpha-1\sim\alpha x$，$x-\sin x\sim x^3/6$，$\tan x-x\sim x^3/3$，$\arcsin x-x\sim x^3/6$，$x-\ln(1+x)\sim x^2/2$。
+
+\begin{keypoint}[例题精讲 $\cdot$ 加减必须展到同阶]
+求 $L=\lim\limits_{x\to0}\dfrac{\ee^{x}\sin x-x(1+x)}{x^{3}}$。
+
+\noindent\textbf{解}：$\ee^x\sin x=(1+x+\frac{x^2}{2}+\frac{x^3}{6}+o(x^3))(x-\frac{x^3}{6}+o(x^3))
+=x+x^{2}+\frac{x^{3}}{3}+o(x^{3})$。分子 $=x^{3}/3+o(x^{3})$，故 $L=\boxed{\tfrac13}$。
+\textbf{卡点}：若把 $\ee^x\sin x$ 直接换成 $x$，分子只剩 $-x^2$，阶数就错了；\emph{相减的两项必须展到第一个未被抵消的幂次}。
+\end{keypoint}
+
+\noindent\textbf{四条易错}：(1) 拆项 $\lim(f+g)=\lim f+\lim g$ 要求\textbf{两者极限都存在}，否则先通分；(2) 洛必达每次都要重新验 $\tfrac00$ 或 $\tfrac{\infty}{\infty}$；(3) 幂指函数先取对数，别对底数、指数分别求极限；(4) $1^\infty$ 的 $\ee^{\lim v(u-1)}$ 捷径必须检查 $v(u-1)^2\to0$。
+
+\subsection{真题定位}
+第 12 题极限计算 8 分几乎是固定题（10/10 卷）；无穷小阶与主部出现在单选 1--2（8/10 卷）；$1^\infty$、根式差、含泰勒的 $\tfrac00$ 是三种反复出现的包装。本章 W1 六题按真题上限配制（幂指首项抵消、四阶抵消、抽象函数、双层根式、Stirling、通分高阶）。
+
+\subsection{习题（6 题 $\cdot$ 闭卷做，做完再对答案）}
+\q{W1.1}{求 $\displaystyle\lim_{x\to0}\frac{(1+x)^{3/x}-\ee^3(1-2x)}{x}$。\quad{\footnotesize\color{blue!45!black}[对标交大卷 Q12 幂指首项抵消]}}
+\q{W1.2}{求 $\displaystyle\lim_{x\to0}\frac{\cos x-\ee^{-x^2/2}}{x^4}$。\quad{\footnotesize\color{blue!45!black}[对标 MIT lec9 二阶近似]}}
+\q{W1.3}{设 $f(1)=0$、$f'(1)=2$，求 $\displaystyle\lim_{x\to0}\frac{f(\cos x+x^2)}{x^2}$。\quad{\footnotesize\color{blue!45!black}[对标交大卷 Q11 抽象函数]}}
+\q{W1.4}{求 $\displaystyle\lim_{x\to0}\frac{\sqrt{1+x^2}-\sqrt{1+\sin^2x}}{x^4}$。\quad{\footnotesize\color{blue!45!black}[对标 2023-24 真题复合展开]}}
+\q{W1.5}{求 $\displaystyle\lim_{n\to\infty}\Big(\frac{n!}{n^n}\Big)^{1/n}$（提示：Stirling）。\quad{\footnotesize\color{blue!45!black}[对标交大卷 Q3 数列极限]}}
+\q{W1.6}{求 $\displaystyle\lim_{x\to0}\Big(\frac1{x^2}-\frac1{\sin^2x}\Big)$。\quad{\footnotesize\color{blue!45!black}[对标 2015-16 Q12 通分后高阶]}}
+
+\subsection{答案速查（只核对结论，卡住满 5 min 再回查详解）}
+{\footnotesize
+\begin{longtable}{@{}p{1.5cm}p{13.6cm}@{}}
+\toprule 题号 & 答案 \\ \midrule \endhead
+\bottomrule \endlastfoot
+W1.1 & $\ee^3/2$ \\
+W1.2 & $-1/12$ \\
+W1.3 & $1$ \\
+W1.4 & $1/6$ \\
+W1.5 & $1/\ee$ \\
+W1.6 & $-1/3$ \\
+\end{longtable}}
+
+\bigskip\noindent{\color{blue!35!black}\rule{\linewidth}{0.5pt}}\bigskip
+\section{第 2 章 \ 极限定义证明：三套量词行}
+\subsection{方法卡：三套量词行必须先默写}
+
+\begin{center}
+\begin{tabular}{@{}p{2.7cm}p{12.5cm}@{}}
+\toprule
+\textbf{型} & \textbf{定义（一字不能少）} \\
+\midrule
+$\eps$-$\delta$ & $\forall\eps>0,\ \exists\delta>0$，当 $0<\abs{x-x_0}<\delta$ 时 $\abs{f(x)-A}<\eps$ \\
+$\eps$-$X$ & $\forall\eps>0,\ \exists X>0$，当 $x>X$ 时 $\abs{f(x)-A}<\eps$ \\
+无穷大 $M$ 型 & $\forall M>0,\ \exists X$（或 $\delta$），使 $x>X$ 时 $f(x)>M$ \\
+证不存在 & 取\textbf{一个确定的} $\eps_0>0$，对任意 $\delta$ 构造反例点，使 $\abs{f(x)-A}\ge\eps_0$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\textbf{$\delta$ 两步法}（丢分最多处）：
+\begin{enumerate}
+\item 先定邻域 $\delta_1$（常取 $1$ 或 $1/2$），把含 $x$ 的放大因子\textbf{压成常数} $G$：例如 $x\to1$ 时 $\abs{1+x}<3$，$\abs{x-1}<1\Rightarrow \abs{x+3}>3$ 给出下界。
+\item 再取 $\delta=\min\{\delta_1,\ \eps/G\}$。只写 $\eps/G$ 而不先定 $\delta_1$，放缩链是断的。
+\end{enumerate}
+$M$ 型必须给出\textbf{显式}下界，例如 $\ln x>M$ 取 $X=\ee^{M+1}$；写「存在 $X$」不给构造不得分。
+
+\begin{keypoint}[例题精讲 $\cdot$ $\eps$-$\delta$ 的完整书写]
+用定义证 $\lim\limits_{x\to1}\frac1x=1$。
+
+\noindent\textbf{解}：任给 $\eps>0$。先限 $\abs{x-1}<\frac12$，则 $x>\frac12$，故
+$\abs{\frac1x-1}=\frac{\abs{x-1}}{\abs{x}}<2\abs{x-1}$。
+取 $\delta=\min\{\frac12,\frac{\eps}{2}\}$，当 $0<\abs{x-1}<\delta$ 时 $\abs{\frac1x-1}<2\delta\le\eps$。$\blacksquare$
+\textbf{卡点}：分母 $\abs{x}$ 的\textbf{下界} $1/2$ 必须先由 $\delta_1$ 保证；本题取 $\delta=\eps$ 是错的（放大系数是 2 不是 1）。
+\end{keypoint}
+
+\noindent\textbf{四条易错}：(1) $0<\abs{x-x_0}$ 不能漏（$x\neq x_0$）；(2) 放缩方向反（要上界时写成下界）；(3) $\delta$ 漏取 $\min$；(4) $M$ 型把 $M$ 当成 $\eps$ 写。
+
+\subsection{真题定位}
+第 11 题极限定义证明 \textbf{17/17 套必考、8 分}，是全卷确定性最高的得分点；三种形式（$\eps$-$\delta$ / $\eps$-$X$ / 无穷大 $M$）都要能独立默写。本章 30 题：S1 12 + P1 12 + W3 6，含无理式、振荡因子、对数与指数放缩、含参放缩、证不存在。
+
+\subsection{习题（30 题 $\cdot$ 闭卷做，做完再对答案）}
+\q{P1.1}{用定义证明 $\displaystyle\lim_{x\to 2}\frac{x^{2}-4}{x-2}=4$，并给出 $\delta(\eps)$ 的最简形式。}
+\q{P1.2}{用定义证明 $\displaystyle\lim_{x\to 1}\frac{\sqrt{x+3}-2}{x-1}=\frac{1}{4}$。要求先有理化，再对分母作\emph{区间放缩}。}
+\q{P1.3}{用定义证明 $\displaystyle\lim_{x\to 0}x^{2}\sin\frac{1}{x}=0$，说明 $\delta$ 为什么取 $\sqrt{\eps}$ 量级。}
+\q{P1.4}{用定义证明 $\displaystyle\lim_{x\to 0}x\sin\frac{1}{x}=0$；并回答：P1.3 与 P1.4 的 $\delta(\eps)$ 差在哪里？若把 $x$ 换成 $x^{1/2}$ 还收敛吗？}
+\q{P1.5}{用定义证明 $\displaystyle\lim_{x\to 0}\frac{\ln(1+x)}{x}=1$。提示：对 $\abs{x}\le \frac{1}{2}$ 有 $\abs{\ln(1+x)-x}\le \dfrac{x^{2}}{2(1-\abs{x})}$。}
+\q{P1.6}{用定义证明 $\displaystyle\lim_{x\to 0}\frac{\ee^{x}-1}{x}=1$。提示：Lagrange 余项给 $\abs{\ee^{x}-1-x}\le \frac{\ee}{2}x^{2}$（$\abs{x}\le 1$）。}
+\q{P1.7}{用定义证明 $\displaystyle\lim_{x\to +\infty}\frac{3x^{2}+1}{x^{2}+2}=3$，写出 $X(\eps)$。}
+\q{P1.8}{用定义证明 $\displaystyle\lim_{x\to +\infty}\frac{2x+\sin x}{x+1}=2$。分子振荡，放缩时不能把 $\sin x$ 当常数。}
+\q{P1.9}{用定义证明 $\displaystyle\lim_{x\to +\infty}\frac{\sqrt{x^{2}+1}}{x}=1$，并说明 $x\to -\infty$ 时结论如何变。}
+\q{P1.10}{用定义证明 $\displaystyle\lim_{x\to +\infty}\frac{\ln(1+\ee^{x})}{x}=1$。提示：先写成 $1+\dfrac{\ln(1+\ee^{-x})}{x}$。}
+\q{P1.11}{用定义证明 $\displaystyle\lim_{x\to +\infty}\ln x=+\infty$。注意量词顺序：给 $M$ 找 $X$，且 $X$ 的取法必须让 $\ln X$ \emph{严格大于} $M$。}
+\q{P1.12}{用定义证明 $\displaystyle\lim_{x\to +\infty}\frac{x^{3}}{x^{2}+1}=+\infty$，写出 $X(M)$ 并给出放缩链。}
+\q{S1.1}{证明：$\displaystyle\lim_{x\to0}\frac{\cos x-\ee^{-\frac{x^{2}}{2}}}{x^{2}}=0$。}
+\q{S1.2}{证明：$\displaystyle\lim_{x\to0}\frac{\tan x-x}{x-\sin x}=2$。}
+\q{S1.3}{证明：$\displaystyle\lim_{x\to0}\frac{\sin x-x\cos x}{x^{3}}=\frac13$。}
+\q{S1.4}{证明极限 $\displaystyle\lim_{x\to0}\frac{\ln(1+x)+\frac{x}{2}}{x^{2}}$ \textbf{不存在}。}
+\q{S1.5}{证明：$\displaystyle\lim_{x\to1}\frac{\ee^{x-1}-1}{x-1}=1$。}
+\q{S1.6}{证明：$\displaystyle\lim_{x\to0}\frac{\arcsin x-x}{x^{3}}=\frac16$。}
+\q{S1.7}{证明：$\displaystyle\lim_{x\to+\infty}x^{3}\left(\sin\frac1x-\frac1x\right)=-\frac16$。}
+\q{S1.8}{证明：$\displaystyle\lim_{x\to+\infty}\frac{x^{2}+2x}{x^{2}-3x+1}=1$。}
+\q{S1.9}{证明：$\displaystyle\lim_{x\to+\infty}x^{2}\left(\ee^{\frac1x}-1-\frac1x\right)=\frac12$。}
+\q{S1.10}{证明：$\displaystyle\lim_{x\to-\infty}\frac{x^{2}+1}{x^{2}+3x+1}=1$。}
+\q{S1.11}{证明：$\displaystyle\lim_{x\to0^{+}}\frac{1}{x\ln x}=-\infty$。}
+\q{S1.12}{证明：$\displaystyle\lim_{x\to1^{-}}\frac{\ln(1-x^{2})}{x-1}=+\infty$。}
+\q{W3.1}{用定义证明 $\lim_{x\to2}x^3=8$，写出可用的 $\delta(\eps)$ 并验证。\quad{\footnotesize\color{blue!45!black}[$\eps$-$\delta$；对标 APEX §1.2 习题]}}
+\q{W3.2}{用定义证明 $\lim_{x\to0}\dfrac{\sqrt{1+x}-1}{x}=\dfrac12$，写出可用的 $\delta(\eps)$。\quad{\footnotesize\color{blue!45!black}[$\eps$-$\delta$ + 有理化；对标 2011-12 Q11]}}
+\q{W3.3}{用定义证明 $\lim_{x\to+\infty}\dfrac{3x+\sin x}{x+1}=3$。\quad{\footnotesize\color{blue!45!black}[$\eps$-X + 有界振荡；对标 2019-20 Q11]}}
+\q{W3.4}{用定义证明 $\lim_{x\to+\infty}\dfrac{\ln(1+x)}{x}=0$（提示：$\ln(1+x)\le2\sqrt{x}$，$x\ge1$）。\quad{\footnotesize\color{blue!45!black}[$\eps$-X + 对数放缩；对标 MIT 18.01SC]}}
+\q{W3.5}{用定义证明 $\lim_{x\to0}\dfrac1{|x|(2+|x|)}=\infty$，写出 $\delta(M)$。注意只能写「$|f|\to\infty$」。\quad{\footnotesize\color{blue!45!black}[M 型；对标 2024-25 Q11 放缩陷阱]}}
+\q{W3.6}{用精确定义证明 $\lim_{x\to0}\sin\frac1x$ 不存在（给出两列趋于 0 的点）。\quad{\footnotesize\color{blue!45!black}[定义证「不存在」；对标 LibreTexts 2.5E]}}
+
+\subsection{答案速查（只核对结论，卡住满 5 min 再回查详解）}
+{\footnotesize
+\begin{longtable}{@{}p{1.5cm}p{13.6cm}@{}}
+\toprule 题号 & 答案 \\ \midrule \endhead
+\bottomrule \endlastfoot
+P1.1 & $L=4$；$\abs{f-L}=\abs{x-2}$，取 $\delta=\eps$ \\
+P1.2 & $L=\frac{1}{4}$；有理化后 $f=\frac{1}{\sqrt{x+3}+2}$，先限 $\abs{x-1}<1$ 得 $\abs{f-\frac{1}{4}}\le \frac{\abs{x-1}}{4(\sqrt{3}+2)^{2}}$，取 $\delta=\min(1,8\eps)$ \\
+P1.3 & $L=0$；$\abs{x^{2}\sin(1/x)}\le x^{2}$，取 $\delta=\min(1,\sqrt{\eps})$ \\
+P1.4 & $L=0$；$\abs{x\sin(1/x)}\le \abs{x}$，取 $\delta=\eps$；与 P1.3 差一个平方根；换成 $x^{1/2}\sin(1/x)$ 在 $x\to0^{+}$ 仍收敛于 0 \\
+P1.5 & $L=1$；$\abs{f-1}\le \frac{\abs{x}}{2(1-\abs{x})}\le \abs{x}$（$\abs{x}\le\frac{1}{2}$），取 $\delta=\min(\frac{1}{2},\eps)$ \\
+P1.6 & $L=1$；$\abs{f-1}\le \frac{\ee}{2}\abs{x}$（$\abs{x}\le 1$），取 $\delta=\min(1,\frac{\eps}{2})$ \\
+P1.7 & $L=3$；$\abs{f-3}=\frac{5}{x^{2}+2}$，取 $X=\sqrt{5/\eps}$ \\
+P1.8 & $L=2$；$\abs{f-2}=\frac{\abs{\sin x-2}}{x+1}\le \frac{3}{x+1}$，取 $X=3/\eps$ \\
+P1.9 & $L=1$（$x\to+\infty$）；$\abs{f-1}=\frac{1}{x(\sqrt{x^{2}+1}+x)}\le\frac{1}{2x^{2}}$，取 $X=1/\sqrt{2\eps}$；$x\to-\infty$ 时极限为 $-1$ \\
+P1.10 & $L=1$；$f=1+\frac{\ln(1+\ee^{-x})}{x}\le 1+\frac{\ee^{-x}}{x}$，取 $X=2/\eps$（须 $x>0$） \\
+P1.11 & $+\infty$；取 $X=\ee^{M+1}$（$\ln X=M+1>M$），\textbf{不能取} $X=\ee^{M}$ \\
+P1.12 & $+\infty$；$f=x-\frac{x}{x^{2}+1}\ge \frac{x}{2}$（$x\ge1$），取 $X=2M+2$ \\
+S1.1 & 极限 $0$；$\delta$ 取法：先 $|\cos x-1|\leq\frac{x^{2}}{2}$、$|\ee^{-x^{2}/2}-1|\leq\frac{x^{2}}{2}$，故 $\delta=\min\{1,\sqrt{2\eps}\}$ \\
+S1.2 & 极限 $2$；$\abs{\tan x-x}\leq\frac{x^{3}}{2}$、$\abs{x-\sin x}\geq\frac{x^{3}}{6}$，$\delta$ 由 $\frac{x^{3}}{2x^{3}/6}<\eps$ 定出 \\
+S1.3 & 极限 $\frac13$；由 $\sin x=x-\frac{x^{3}}{6}+o(x^{3})$、$\cos x=1-\frac{x^{2}}{2}+o(x^{2})$ 得分子 $=\frac{x^{3}}{3}+o(x^{3})$ \\
+S1.4 & 左极限 $-\infty$，右极限 $+\infty$，极限不存在 \\
+S1.5 & 极限 $1$；由 $\ee^{t}\geq1+t$ 与连续性得 $\abs{\ee^{t}-1-t}\leq\frac{\ee}{2}t^{2}$（$t$ 充分小时） \\
+S1.6 & 极限 $\frac16$；由 $\arcsin x=x+\frac{x^{3}}{6}+o(x^{3})$ \\
+S1.7 & 极限 $-\frac16$；令 $u=1/x$，用 $\sin u-u=-\frac{u^{3}}{6}+o(u^{3})$ \\
+S1.8 & 极限 $1$；分子分母同除 $x^{2}$，再用 $x>2\eps$ 之类控制 \\
+S1.9 & 极限 $\frac12$；令 $u=1/x$，用 $\ee^{u}-1-u=\frac{u^{2}}{2}+o(u^{2})$ \\
+S1.10 & 极限 $1$；分子分母同除 $x^{2}$，注意 $x\to-\infty$ 时 $x^{2}\to+\infty$ \\
+S1.11 & $-\infty$；取 $M>0$，由 $\ln x<0$ 找 $\delta$ 使 $\abs{\frac{1}{x\ln x}}>M$ \\
+S1.12 & $+\infty$；分子 $\to-\infty$、分母 $\to0^{-}$，比值 $\to+\infty$ \\
+W3.1 & $\delta=\min\{1,\eps/19\}$ \\
+W3.2 & $\delta=\min\{1/2,2\eps\}$ \\
+W3.3 & $X=\max\{1,4/\eps\}$ \\
+W3.4 & $X=\max\{1,4/\eps^2\}$ \\
+W3.5 & $\delta=\min\{\frac12,\frac{2}{5M}\}$ \\
+W3.6 & 不存在 \\
+\end{longtable}}
+
+\bigskip\noindent{\color{blue!35!black}\rule{\linewidth}{0.5pt}}\bigskip
+\section{第 3 章 \ 连续、间断点与极坐标切线}
+\subsection{方法卡：间断点四步与左右极限}
+
+\begin{enumerate}
+\item \textbf{找点}：分母零点、$\tan$ 的极点、分段函数的分界点、$\ln$ 与偶次根的定义域端点。
+\item \textbf{逐点算左右极限}：必须分别算 $f(x_0-0)$ 与 $f(x_0+0)$；含 $\ee^{1/x}$、$\arctan(1/x)$、$\abs{x}/x$、$x^{1/2}\sin(1/x)$ 时左右不同。
+\item \textbf{判型}：第一类（可去：左右相等但不等于函数值；跳跃：左右不等），第二类（无穷、振荡等至少一个单侧极限不存在）。
+\item \textbf{写结论}：说明 $f(x_0)$ 是否有定义、与极限是否相等。
+\end{enumerate}
+
+\begin{center}
+\begin{tabular}{@{}p{4.2cm}p{5.0cm}p{6.0cm}@{}}
+\toprule
+\textbf{典型函数} & \textbf{断在} & \textbf{判型要点} \\
+\midrule
+$\frac{\sin x}{x}$ & $x=0$ & 可去（左右都 $\to1$） \\
+$\ee^{1/x}$ & $x=0$ & 左 $\to0$、右 $\to+\infty$ $\Rightarrow$ 第二类无穷 \\
+$\sin\frac1x$ & $x=0$ & 振荡，第二类 \\
+$\frac{\abs{x}}{x}$、$\arctan\frac1x$ & $x=0$ & 左右极限不等 $\Rightarrow$ 跳跃 \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\noindent\textbf{极坐标切线}：$r=r(\theta)$ 下 $\dfrac{\D y}{\D x}=\dfrac{r'\sin\theta+r\cos\theta}{r'\cos\theta-r\sin\theta}$；出现 $0/0$ 时\textbf{必须取极限}得到切线斜率，不能直接代值。还要检查题目给的 $\theta$ 范围（近 3 年填空连出）。
+
+\begin{keypoint}[例题精讲 $\cdot$ $\ee^{1/x}$ 型]
+设 $f(x)=\dfrac{1}{1+\ee^{1/x}}$，判 $x=0$ 的间断类型。
+
+\noindent\textbf{解}：$x\to0^+$ 时 $\ee^{1/x}\to+\infty$，故 $f\to0$；$x\to0^-$ 时 $\ee^{1/x}\to0$，故 $f\to1$。左右极限都存在但不等，是\textbf{第一类跳跃间断点}。
+\textbf{卡点}：$\ee^{1/x}$ 在 $0$ 两侧的行为完全不同，含它的分式一律分左右算。
+\end{keypoint}
+
+\subsection{真题定位}
+间断点分类 10/17 套（2009-10 填 7、2023-24 选 3、2024-25 选 4 等）；极坐标切线 / $\theta$ 范围近 3 年选择填空连出。本章 S3 12 题。
+
+\subsection{习题（12 题 $\cdot$ 闭卷做，做完再对答案）}
+\q{S3.1}{曲线 $r=1+\cos\theta$，求 $\theta=\dfrac{\pi}{2}$ 处的切线斜率。}
+\q{S3.2}{曲线 $r=\ee^{\theta}$，求 $\theta=0$ 处的切线斜率。}
+\q{S3.3}{曲线 $r=2(1+\cos\theta)$（心形线），求 $\theta=\pi$ 处的切线斜率。}
+\q{S3.4}{求心形线 $r=2(1+\cos\theta)$ 从 $\theta=0$ 到 $\theta=\pi$ 的弧长。}
+\q{S3.5}{曲线 $r=\dfrac{1}{1+\cos\theta}$，求 $r$ 的最小值，并写出它的直角方程与顶点。}
+\q{S3.6}{把 $r=2\cos\theta$ 化为直角方程，并指出它是什么曲线。}
+\q{S3.7}{讨论 $f(x)=\dfrac{x^{2}-1}{x^{2}-3x+2}$ 的间断点，并指出每个间断点的类型。}
+\q{S3.8}{讨论 $f(x)=\arctan\left(x+\dfrac{1}{x}\right)$ 在 $x=0$ 处的间断点类型。}
+\q{S3.9}{讨论 $f(x)=\tan\dfrac{1}{x}$ 在 $x=0$ 处的间断点类型。}
+\q{S3.10}{设 $f(x)=\begin{cases}x\sin\dfrac{1}{x},&x\neq0,\\ 0,&x=0,\end{cases}$ 判断 $f$ 在 $x=0$ 处是否连续。}
+\q{S3.11}{讨论 $f(x)=\ln|x|$ 在 $x=0$ 处的间断点类型。}
+\q{S3.12}{讨论 $f(x)=\sin\dfrac{x}{x-1}$ 在 $x=1$ 处的间断点类型。}
+
+\subsection{答案速查（只核对结论，卡住满 5 min 再回查详解）}
+{\footnotesize
+\begin{longtable}{@{}p{1.5cm}p{13.6cm}@{}}
+\toprule 题号 & 答案 \\ \midrule \endhead
+\bottomrule \endlastfoot
+S3.1 & $k=1$（切线 $y-1=x-\frac{\pi}{2}$） \\
+S3.2 & $k=1$ \\
+S3.3 & $k=0$（$\theta=\pi$ 处 $0/0$，取极限得 $0$） \\
+S3.4 & 弧长 $8$ \\
+S3.5 & $r_{\min}=\frac12$（$\theta=0$）；直角方程 $x^{2}+y^{2}=(1-x)^{2}$；顶点 $(\frac12,0)$，焦点 $(0,0)$，准线 $x=\frac12$ \\
+S3.6 & $x^{2}+y^{2}=2x$，即 $(x-1)^{2}+y^{2}=1$，圆心 $(1,0)$、半径 $1$ \\
+S3.7 & $x=1$ 可去（极限 $-2$）；$x=2$ 无穷间断点 \\
+S3.8 & $x=0$ 跳跃间断点（左 $-\frac\pi2$、右 $\frac\pi2$） \\
+S3.9 & $x=0$ 第二类（振荡）间断点 \\
+S3.10 & 连续（极限 $0$ 等于函数值） \\
+S3.11 & $x=0$ 无穷间断点 \\
+S3.12 & $x=1$ 第二类（振荡）间断点 \\
+\end{longtable}}
+
+\bigskip\noindent{\color{blue!35!black}\rule{\linewidth}{0.5pt}}\bigskip
+\section{第 4 章 \ 导数与微分：六型求导}
+\subsection{方法卡：导数六型与二阶导套路}
+
+\begin{center}
+\begin{tabular}{@{}p{3.2cm}p{11.9cm}@{}}
+\toprule
+\textbf{型} & \textbf{公式 / 套路} \\
+\midrule
+隐函数 & 两边对 $x$ 求导，把 $y$ 看作 $y(x)$；求二阶导时\textbf{再次对 $x$ 求导}，把 $y'$ 代回 \\
+参数方程 & $y'_x=\dfrac{y'_t}{x'_t}$，$y''_{xx}=\dfrac{1}{x'_t}\big(y'_x\big)'_t$（分母的 $x'_t$ 不能漏） \\
+幂指 / 连乘 & 对数求导：$\ln y=\sum\ln f_i\Rightarrow \dfrac{y'}{y}=\sum\dfrac{f_i'}{f_i}$ \\
+Leibniz & $(uv)^{(n)}=\sum_{k=0}^{n}\binom{n}{k}u^{(k)}v^{(n-k)}$；代点\textbf{消项}后常只剩 1--2 项 \\
+反函数 & $\dfrac{\D y}{\D x}=\dfrac{1}{\D x/\D y}$，$\dfrac{\D^2 y}{\D x^2}=-\dfrac{x''(y)}{[x'(y)]^{3}}$ \\
+分段点可导 & 用定义：$f'_-(x_0)=f'_+(x_0)$；$\abs{x}$、$x^{3/2}\sin(1/x^2)$、$\sqrt[3]{x}$ 是三件套 \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\noindent\textbf{微分}题别忘了写 $\D y=f'(x)\,\D x$（近 4 年填空连出）。
+
+\begin{keypoint}[例题精讲 $\cdot$ 隐函数二阶导]
+设 $x^{2}+y^{2}=25$，求点 $(3,4)$ 处的 $y''$。
+
+\noindent\textbf{解}：一阶 $2x+2yy'=0\Rightarrow y'=-x/y=-3/4$。再对 $x$ 求导：
+$2+2\big[(y')^{2}+yy''\big]=0\Rightarrow y''=-\dfrac{1+(y')^{2}}{y}
+=-\dfrac{1+9/16}{4}=\boxed{-\dfrac{25}{64}}$。
+\textbf{卡点}：不能直接把 $y'=-3/4$ 当常数求导；$y'$ 是 $x$ 的函数。
+\end{keypoint}
+
+\subsection{真题定位}
+导数块近年由 16 分升到 20 分：参数方程二阶导、隐函数二阶导、分段可导求参数；Leibniz 高阶导每年填空 9/10。本章 S2 14 + W4 6 = 20 题。
+
+\subsection{习题（20 题 $\cdot$ 闭卷做，做完再对答案）}
+\q{S2.1}{设 $\begin{cases}x=t+\ee^{t},\\ y=t-\ee^{t},\end{cases}$ 求 $\dfrac{\D y}{\D x}$ 与 $\dfrac{\D^{2}y}{\D x^{2}}$ 在 $t=0$ 处的值。}
+\q{S2.2}{设 $\begin{cases}x=t^{2}+t,\\ y=t^{2}-t,\end{cases}$ 求 $\dfrac{\D y}{\D x}$ 与 $\dfrac{\D^{2}y}{\D x^{2}}$ 在 $t=0$ 处的值。}
+\q{S2.3}{设 $\ee^{y}+xy=\ee$，求 $\dfrac{\D^{2}y}{\D x^{2}}$ 在点 $(0,1)$ 处的值。}
+\q{S2.4}{设 $x^{2}+y^{2}=6x$，求 $\dfrac{\D^{2}y}{\D x^{2}}$ 在点 $(3,3)$ 处的值。}
+\q{S2.5}{设 $f(x)=\begin{cases}\ln(1+x),&x<0,\\ ax+b,&x\geq0,\end{cases}$ 若 $f$ 在 $x=0$ 处可导，求 $a,b$。}
+\q{S2.6}{设 $f(x)=\ln(1+\ee^{x})$，求 $f''(0)$。}
+\q{S2.7}{设 $f(x)=x^{2}\ee^{x}$，求 $f^{(4)}(0)$，并用「$4!\times$ $x^{4}$ 系数」复核。}
+\q{S2.8}{设 $f(x)=x^{3}\sin x$，求 $f^{(4)}(0)$ 与 $f^{(5)}(0)$。}
+\q{S2.9}{设 $f(x)=\dfrac{x}{1+x}$，求 $f^{(3)}(0)$。}
+\q{S2.10}{设 $f(x)=\ee^{x^{2}}$，求 $f''(0)$。}
+\q{S2.11}{设 $y=x\ee^{x}$，写出 $x=1$ 处的微分 $\D y$。}
+\q{S2.12}{设 $y=\ln(x^{2}+1)$，写出 $x=1$ 处的微分 $\D y$。}
+\q{S2.13}{设 $x^{2}+y^{2}=25$，求在点 $(3,4)$ 处的微分 $\D y$。}
+\q{S2.14}{设 $f(x)=x^{2}\sin\frac1x$（$x\neq0$），$f(0)=0$。求 $f'(0)$。}
+\q{W4.1}{设 $3f(2x)-f(1-2x)=4x-2$ 对一切 $x$ 成立，求 $f(x)$。\quad{\footnotesize\color{blue!45!black}[对标交大卷 Q6 函数方程]}}
+\q{W4.2}{设 $y=x+\ln(1+x)$，其反函数为 $x=f(y)$，求 $f'(0)$ 与 $f''(0)$。\quad{\footnotesize\color{blue!45!black}[对标交大卷 Q13 反函数二阶导]}}
+\q{W4.3}{设 $y=y(x)$ 由 $x\ee^{y}+y\ee^{x}=0$、$y(0)=0$ 确定，求 $y'(0)$ 与 $y''(0)$。\quad{\footnotesize\color{blue!45!black}[对标交大卷 Q12 隐函数二阶导]}}
+\q{W4.4}{求曲线 $r=\sin2\theta$ 在 $\theta=\pi/6$ 处的切线斜率（$0/0$ 情形须取极限）。\quad{\footnotesize\color{blue!45!black}[对标 2024-25 Q8 极坐标切线]}}
+\q{W4.5}{设 $f(x)=\begin{cases}\dfrac{\sin x}{x},&x>0\\[2pt] ax^2+bx+c,&x\le0\end{cases}$ 二阶可导，求 $a,b,c$ 及 $f''(0)$。\quad{\footnotesize\color{blue!45!black}[对标交大卷 Q13 分段二阶可导]}}
+\q{W4.6}{设 $x=t^2-1,\ y=t^3+t$，求 $\left.\dfrac{\D^2y}{\D x^2}\right|_{t=1}$。\quad{\footnotesize\color{blue!45!black}[对标交大卷 Q8 参数方程]}}
+
+\subsection{答案速查（只核对结论，卡住满 5 min 再回查详解）}
+{\footnotesize
+\begin{longtable}{@{}p{1.5cm}p{13.6cm}@{}}
+\toprule 题号 & 答案 \\ \midrule \endhead
+\bottomrule \endlastfoot
+S2.1 & $\dfrac{\D y}{\D x}\big|_{0}=0$；$\dfrac{\D^{2}y}{\D x^{2}}\big|_{0}=-\dfrac{1}{4}$ \\
+S2.2 & $\dfrac{\D y}{\D x}\big|_{0}=-1$；$\dfrac{\D^{2}y}{\D x^{2}}\big|_{0}=4$ \\
+S2.3 & $\dfrac{\D^{2}y}{\D x^{2}}\big|_{(0,1)}=\dfrac{1}{\ee^{2}}$ \\
+S2.4 & $\dfrac{\D^{2}y}{\D x^{2}}\big|_{(3,3)}=-\dfrac{1}{3}$ \\
+S2.5 & $b=0$，$a=1$ \\
+S2.6 & $f''(0)=\dfrac{1}{4}$ \\
+S2.7 & $f^{(4)}(0)=12$ \\
+S2.8 & $f^{(4)}(0)=24$，$f^{(5)}(0)=0$ \\
+S2.9 & $f^{(3)}(0)=6$ \\
+S2.10 & $f''(0)=2$ \\
+S2.11 & $\D y=2\ee\,\D x$ \\
+S2.12 & $\D y=\D x$ \\
+S2.13 & $\D y=-\dfrac{3}{4}\,\D x$ \\
+S2.14 & $f'(0)=0$ \\
+W4.1 & $f(x)=\frac x2-\frac34$ \\
+W4.2 & $f'(0)=\frac12,\ f''(0)=\frac18$ \\
+W4.3 & $y'(0)=-1,\ y''(0)=4$ \\
+W4.4 & $\frac{5\sqrt3}{3}$ \\
+W4.5 & $a=-\frac16,\ b=0,\ c=1$；$f''(0)=-\frac13$ \\
+W4.6 & $\frac12$ \\
+\end{longtable}}
+
+\bigskip\noindent{\color{blue!35!black}\rule{\linewidth}{0.5pt}}\bigskip
+\section{第 5 章 \ 泰勒公式与高阶导数}
+\subsection{方法卡：泰勒的决策与工具}
+
+\textbf{母函数表（闭卷默写）}：
+\[
+\ee^{x}=\sum_{n\ge0}\frac{x^{n}}{n!},\quad
+\sin x=\sum_{n\ge0}\frac{(-1)^{n}x^{2n+1}}{(2n+1)!},\quad
+\cos x=\sum_{n\ge0}\frac{(-1)^{n}x^{2n}}{(2n)!},
+\]
+\[
+\ln(1+x)=\sum_{n\ge1}\frac{(-1)^{n-1}x^{n}}{n},\qquad
+(1+x)^{\alpha}=1+\sum_{n\ge1}\binom{\alpha}{n}x^{n},
+\]
+\[
+\frac1{1-x}=\sum_{n\ge0}x^{n},\qquad
+\arctan x=\sum_{n\ge0}\frac{(-1)^{n}x^{2n+1}}{2n+1}.
+\]
+
+\textbf{三种余项}：Peano $o((x-x_0)^n)$ 用于求极限与估阶；Lagrange $\frac{f^{(n+1)}(\xi)}{(n+1)!}(x-x_0)^{n+1}$ 用于证明与误差界；积分型余项 $\frac1{n!}\int_{x_0}^{x}(x-t)^{n}f^{(n+1)}(t)\D t$ 用于需要积分表达的证明。\textbf{先定阶，再定余项}：分母是 $x^k$ 就展到 $x^k$，差一个二次项就要展到二阶。
+
+\textbf{求高阶导的通用套路}：若 $f(x)=\sum a_n x^{n}$，则
+\[
+f^{(n)}(0)=n!\,[x^{n}]f(x)=n!\,a_n .
+\]
+而 $(1+x)^{\alpha}$ 的 $n$ 阶导在 $0$ 处是 $\alpha(\alpha-1)\cdots(\alpha-n+1)$——\textbf{不要再乘一次 $n!$}（$\binom{\alpha}{n}$ 已含分母 $n!$）。
+
+\begin{keypoint}[例题精讲 $\cdot$ 系数与导数的换算]
+设 $f(x)=(1+x)^{1/3}$，求 $f'''(0)$。
+
+\noindent\textbf{解}：$[x^{3}]f=\binom{1/3}{3}=\frac{(1/3)(-2/3)(-5/3)}{6}=\frac{5}{81}$，故 $f'''(0)=3!\cdot\frac{5}{81}=\boxed{\frac{10}{27}}$；也等于 $\frac13(-\frac23)(-\frac53)$。
+\textbf{卡点}：两种算法必须一致；漏乘 $3!$ 或多乘 $3!$ 都是本库复核抓出过的真实错误。
+\end{keypoint}
+
+\noindent\textbf{与洛必达的分工}：洛必达每求一次导要重验型，遇到 $\ee^{x}\sin x$、复合根式、幂指时越导越繁；泰勒一次展开到所需阶即可。含参极限先判主导项再定阶。
+
+\noindent\textbf{十二条高频错误里最要命的五条}：(1) 漏乘/多乘 $n!$；(2) $(1+x)^\alpha$ 系数符号写反；(3) 展开阶数不够得出 $0$；(4) Peano 余项写成 $O(x^{n})$ 却用于证明不等式（需要 Lagrange 的 $\xi$）；(5) 把 $\ln(1+x)$ 的 $x^2$ 项符号写成正。
+
+\subsection{真题定位}
+2023-24 起泰勒成稳定大题：$(1+x)^\alpha$ 麦克劳林 + 求 $f^{(13)}(0)$（8 分）；2024-25 用 Taylor 求 $f''(0)$；高阶导 10/10 卷出现。本章 \textbf{37 题}：T1--T4 19 + P2 12 + W2 6，是全本最厚的一章，按你的「泰勒要熟悉」配足。
+
+\subsection{习题（37 题 $\cdot$ 闭卷做，做完再对答案）}
+\q{P2.1}{求 $f(x)=x^{2}\ln(1+x)$ 的 Maclaurin 展开中 $x^{7}$ 的系数。}
+\q{P2.2}{求 $f(x)=\dfrac{\arctan x}{x}$ 的 Maclaurin 展开中 $x^{6}$ 的系数。}
+\q{P2.3}{设 $f(x)=x^{3}\cos x$，求 $f^{(10)}(0)$ 与 $f^{(11)}(0)$。}
+\q{P2.4}{求 $\displaystyle\lim_{x\to 0}\frac{\cos x-1+\frac{x^{2}}{2}-\frac{x^{4}}{24}}{x^{6}}$。}
+\q{P2.5}{用 Lagrange 余项证明：当 $\abs{x}\le 1$ 时 $\abs{\sin x-x+\frac{x^{3}}{6}}\le \frac{\abs{x}^{5}}{120}$；并说明为什么 Peano 余项\emph{不能}给出这个上界。}
+\q{P2.6}{求 $\displaystyle\lim_{x\to 0}\frac{(1+x)^{1/x}-\ee\left(1-\frac{x}{2}\right)}{x^{2}}$。}
+\q{P2.7}{求 $\displaystyle\lim_{x\to 0}\frac{\tan x-\sin x}{x^{3}}$。}
+\q{P2.8}{设 $f(x)=(1+x)^{\alpha}$，求 $f^{(9)}(0)$，并说明答案中\emph{为什么没有} $9!$。}
+\q{P2.9}{设 $y=y(x)$ 由 $y=x\ee^{y}$ 在 $x=0$ 附近确定，求 $y'''(0)$。提示：用级数逐次代入（Lagrange 反演）。}
+\q{P2.10}{求 $\displaystyle\lim_{n\to\infty}n^{3}\left(\ln\left(1+\frac{1}{n}\right)-\frac{1}{n}+\frac{1}{2n^{2}}\right)$。}
+\q{P2.11}{用 Taylor 公式证明：当 $x>0$ 时 $\ee^{x}>1+x+\dfrac{x^{2}}{2}+\dfrac{x^{3}}{6}$。}
+\q{P2.12}{求 $\displaystyle\lim_{x\to 0}\frac{x-\ln(1+x)-\frac{x^{2}}{2}}{x^{3}}$。}
+\q{T1.1}{写出 $f(x)=\ee^{\sin x}$ 的 3 阶麦克劳林展开（到 $x^{3}$）。}
+\q{T1.2}{写出 $f(x)=(1+x)^{1/3}$ 的 4 阶麦克劳林展开。}
+\q{T1.3}{写出 $f(x)=\sqrt{1+2x}$ 的 4 阶麦克劳林展开。}
+\q{T1.4}{写出 $f(x)=\ln(1+\ee^{x})$ 的 3 阶麦克劳林展开。}
+\q{T1.5}{写出 $f(x)=\ee^{x^{2}}\cos x$ 的 4 阶麦克劳林展开。}
+\q{T2.1}{求 $\displaystyle\lim_{x\to0}\frac{\sqrt{1+x}-1-\frac{x}{2}+\frac{x^{2}}{8}}{x^{3}}$。}
+\q{T2.2}{求 $\displaystyle\lim_{x\to0}\frac{\sin x-x+\frac{x^{3}}{6}-\frac{x^{5}}{120}}{x^{7}}$。}
+\q{T2.3}{求 $\displaystyle\lim_{x\to0}\frac{\ln(\cos x)+\frac{x^{2}}{2}}{x^{4}}$。}
+\q{T2.4}{求 $\displaystyle\lim_{x\to0}\frac{\arctan x-x+\frac{x^{3}}{3}-\frac{x^{5}}{5}}{x^{7}}$。}
+\q{T3.1}{设 $\alpha$ 为常数，$f(x)=(1+x)^{\alpha}$。求 $f^{(13)}(0)$ 的表达式，并求 $\displaystyle\lim_{x\to0}\frac{(1+x)^{\alpha}-1-\alpha x}{x^{2}}$。}
+\q{T3.2}{设 $f(x)=x\ee^{x^{2}}$。求 $f^{(5)}(0)$。}
+\q{T3.3}{设 $f(x)=\ee^{\sin x}$。求 $f^{(3)}(0)$。}
+\q{T3.4}{设 $f(x)=\ee^{x}\cos x$。求 $f^{(4)}(0)$。}
+\q{T3.5}{设 $x=t+t^{2}$，$y=t-t^{3}$（$t$ 为参数）。求 $\dfrac{\D y}{\D x}$ 与 $\dfrac{\D^{2}y}{\D x^{2}}$ 在 $t=0$ 处的值，并用泰勒法复核。}
+\q{T4.1}{证明：当 $x>0$ 时，$\ln(1+x)>x-\dfrac{x^{2}}{2}$。}
+\q{T4.2}{证明：当 $x>0$ 时，$\sin x>x-\dfrac{x^{3}}{6}$。}
+\q{T4.3}{设 $f(x)=x^{3}\ee^{-x}$（$x>0$）。求 $f$ 的极大值。}
+\q{T4.4}{求 $x\to+\infty$ 时 $(1+\frac1x)^{x}$ 的渐近展开到 $\dfrac{1}{x^{2}}$ 项，并据此计算 $\displaystyle\lim_{x\to+\infty}\left[\left(1+\frac1x\right)^{x}-\ee+\frac{\ee}{2x}\right]x^{2}$。}
+\q{T4.5}{设 $y$ 由方程 $\ee^{y}+y=x$ 唯一确定。求 $\dfrac{\D y}{\D x}$ 与 $\dfrac{\D^{2}y}{\D x^{2}}$ 在 $x=1$ 处的值。}
+\q{W2.1}{设 $f(x)=(1+x)^{1/3}$，求 $f^{(9)}(0)$（写成连乘积与化简分数）。\quad{\footnotesize\color{blue!45!black}[对标 2023-24 Q15 $(1+x)^\alpha$ 通项]}}
+\q{W2.2}{设 $f(x)=\ee^x\sin x$，求 $f^{(9)}(0)$，并给出 $f^{(n)}(0)$ 的通项。\quad{\footnotesize\color{blue!45!black}[对标交大卷 Q9 $\ee^x\sin x$ 七阶导]}}
+\q{W2.3}{设 $y=(1+x^2)^{\arctan x}$，求 $y'(1)$。\quad{\footnotesize\color{blue!45!black}[对标交大卷 Q10 对数求导]}}
+\q{W2.4}{记 $P_n(x)=\sum_{k=0}^{n}(-1)^k\dfrac{x^{2k}}{(2k)!}$（$n$ 为非负整数），求
+$\displaystyle\left.\frac{\D^{2n+1}}{\D x^{2n+1}}\big[P_n(x)\sin x\big]\right|_{x=0}$。\quad{\footnotesize\color{blue!45!black}[对标交大卷 Q14 压轴·截断多项式]}}
+\q{W2.5}{设 $y=y(x)$ 由 $y=x\ee^{y}$、$y(0)=0$ 确定，用形式幂级数求 $y'''(0)$。\quad{\footnotesize\color{blue!45!black}[对标册三 P2.9 隐函数级数]}}
+\q{W2.6}{求 $\displaystyle\lim_{x\to0}\frac{\ln(1+x)-x+x^2/2}{x^3}$；并证明 $x\in[0,1]$ 时
+$\ee^x-1-x-\frac{x^2}{2}\le\frac{\ee x^3}{6}$。说明 $x<0$ 时该不等式是否仍成立。\quad{\footnotesize\color{blue!45!black}[对标 MIT lec14 余项口径]}}
+
+\subsection{答案速查（只核对结论，卡住满 5 min 再回查详解）}
+{\footnotesize
+\begin{longtable}{@{}p{1.5cm}p{13.6cm}@{}}
+\toprule 题号 & 答案 \\ \midrule \endhead
+\bottomrule \endlastfoot
+P2.1 & $\frac{1}{5}$ \\
+P2.2 & $-\frac{1}{7}$ \\
+P2.3 & $f^{(10)}(0)=0$，$f^{(11)}(0)=990$ \\
+P2.4 & $-\frac{1}{720}$ \\
+P2.5 & 成立；Peano 只给 $o(x^{4})$ 的\emph{阶}，不给常数上界 \\
+P2.6 & $\frac{11\ee}{24}$ \\
+P2.7 & $\frac{1}{2}$ \\
+P2.8 & $\alpha(\alpha-1)\cdots(\alpha-8)$（无 $9!$） \\
+P2.9 & $y'''(0)=9$（$[x^{3}]=\frac{3}{2}$） \\
+P2.10 & $\frac{1}{3}$（残留项是 $\frac{1}{3n^{3}}$，故乘 $n^{3}$） \\
+P2.11 & 成立；$\ee^{x}=1+x+\frac{x^{2}}{2}+\frac{x^{3}}{6}+\frac{\ee^{\xi}}{24}x^{4}>1+x+\frac{x^{2}}{2}+\frac{x^{3}}{6}$ \\
+P2.12 & $-\frac{1}{3}$ \\
+T1.1 & $1+x+\dfrac{x^{2}}{2}+0\cdot x^{3}$（$x^{3}$ 项系数恰为 $0$） \\
+T1.2 & $1+\dfrac{x}{3}-\dfrac{x^{2}}{9}+\dfrac{5x^{3}}{81}-\dfrac{10x^{4}}{243}$ \\
+T1.3 & $1+x-\dfrac{x^{2}}{2}+\dfrac{x^{3}}{2}-\dfrac{5x^{4}}{8}$ \\
+T1.4 & $\ln 2+\dfrac{x}{2}+\dfrac{x^{2}}{8}+0\cdot x^{3}$（$x^{3}$ 项系数恰为 $0$） \\
+T1.5 & $1+\dfrac{x^{2}}{2}+\dfrac{x^{4}}{24}$ \\
+T2.1 & $\dfrac1{16}$ \\
+T2.2 & $-\dfrac1{5040}$ \\
+T2.3 & $-\dfrac1{12}$ \\
+T2.4 & $-\dfrac17$ \\
+T3.1 & $f^{(13)}(0)=\alpha(\alpha-1)(\alpha-2)\cdots(\alpha-12)$；$\lim=\dfrac{\alpha(\alpha-1)}{2}$ \\
+T3.2 & $60$ \\
+T3.3 & $0$ \\
+T3.4 & $-4$ \\
+T3.5 & $\dfrac{\D y}{\D x}\big|_{t=0}=1$，$\dfrac{\D^{2}y}{\D x^{2}}\big|_{t=0}=-2$ \\
+T4.1 & 证$g(x)=\ln(1+x)-x+\frac{x^{2}}{2}$，$g'(x)=\frac{x^{2}}{1+x}>0$，$g(0)=0$ \\
+T4.2 & 证$g(x)=\sin x-x+\frac{x^{3}}{6}$，$g'(x)=\cos x-1+\frac{x^{2}}{2}\ge0$，$g(0)=0$ \\
+T4.3 & 极大值 $27\ee^{-3}$，在 $x=3$ 处取到 \\
+T4.4 & $(1+\frac1x)^{x}=\ee\left(1-\frac{1}{2x}+\frac{11}{24x^{2}}+o(x^{-2})\right)$；$\lim=\dfrac{11\ee}{24}$ \\
+T4.5 & $y'(1)=\dfrac12$，$y''(1)=-\dfrac18$ \\
+W2.1 & $\prod_{k=0}^{8}(\frac13-k)=\frac{96342400}{19683}$ \\
+W2.2 & $16$；$f^{(n)}(0)=2^{n/2}\sin\frac{n\pi}{4}$ \\
+W2.3 & $2^{\pi/4}\big(\frac\pi4+\frac{\ln2}{2}\big)$ \\
+W2.4 & $(-4)^n$ \\
+W2.5 & $9$ \\
+W2.6 & $1/3$；Lagrange 余项成立 \\
+\end{longtable}}
+
+\bigskip\noindent{\color{blue!35!black}\rule{\linewidth}{0.5pt}}\bigskip
+\section{第 6 章 \ 中值定理、不等式与最值}
+\subsection{方法卡：中值定理的构造与不等式}
+
+\begin{center}
+\begin{tabular}{@{}p{4.0cm}p{11.1cm}@{}}
+\toprule
+\textbf{结论形态} & \textbf{构造的辅助函数} \\
+\midrule
+$f'(\xi)+\lambda f(\xi)=0$ & $F(x)=\ee^{\lambda x}f(x)$（指数因子） \\
+$f'(\xi)=k$ & $F(x)=f(x)-kx$，两端点值相等后用 Rolle \\
+含 $f''(\xi)$ & 对 $f'$ 用 Rolle，或\textbf{两次 Rolle} 先造两个一阶点 \\
+$\frac{f(b)-f(a)}{g(b)-g(a)}=\frac{f'(\xi)}{g'(\xi)}$ & 直接用 Cauchy，别把两个 Lagrange 相除（$\xi$ 一般不同） \\
+$\abs{f'}\le k\abs{f}$ 型 & 乘 $\ee^{\pm kx}$ 造单调函数 \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\textbf{答题骨架}（写条件句就有分）：「由 $f$ 在 $[a,b]$ 连续、$(a,b)$ 可导，且 $F(a)=F(b)$，由 Rolle 定理存在 $\xi\in(a,b)$ 使 $F'(\xi)=0$」，再展开 $F'$ 得到结论。务必\textbf{验证 $F(a)=F(b)$} 并写出计算，不能写「显然」。
+
+\begin{keypoint}[例题精讲 $\cdot$ Lagrange 证不等式]
+设 $0<a<b$，证 $\dfrac{b-a}{b}<\ln\dfrac{b}{a}<\dfrac{b-a}{a}$。
+
+\noindent\textbf{解}：对 $f(x)=\ln x$ 在 $[a,b]$ 用 Lagrange：$\ln b-\ln a=\frac{1}{\xi}(b-a)$，$\xi\in(a,b)$。由 $a<\xi<b$ 得 $\frac1b<\frac1\xi<\frac1a$，乘正数 $b-a$ 即得。$\blacksquare$
+\textbf{卡点}：放缩用的是 \textbf{$\xi$ 的范围} $(a,b)$，不是 $x$ 的范围；上下界弄反是最常见失分。
+\end{keypoint}
+
+\noindent\textbf{不等式三板斧}：单调性（构造 $F$ 并判 $F'$ 符号）、中值定理（把差换成 $f'(\xi)$ 再放缩）、凸性 / 切线放缩。压轴里「两次 Rolle」常给出 $\xi^{2}f''(\xi)+4\xi f'(\xi)+2f(\xi)=0$ 这类二阶结论。
+
+\subsection{真题定位}
+压轴证明 8 分基本是 Rolle / Lagrange / Cauchy 构造，2010-18、2012-18、2017-18、2020-18 都是同类；不等式与最值 10 题在本章及 S5。本章收 S5 10 题与 W5 中的 Rolle / 两次 Rolle / Lagrange 不等式 3 题。
+
+\subsection{习题（13 题 $\cdot$ 闭卷做，做完再对答案）}
+\q{S5.1}{求 $f(x)=x^{3}-3x+1$ 在闭区间 $[-2,2]$ 上的最大值与最小值。}
+\q{S5.2}{用\textbf{单调性}证明：当 $x>0$ 时，$\dfrac{x}{1+x}<\ln(1+x)$。}
+\q{S5.3}{用\textbf{凹凸性}证明：对一切 $x\in\R$，$\ee^{x}\geq ex$。}
+\q{S5.4}{用\textbf{泰勒}证明：当 $x>0$ 时，$\ln(1+x)\leq x-\dfrac{x^{2}}{2}+\dfrac{x^{3}}{3}$。}
+\q{S5.5}{求 $f(x)=x\ee^{-x}$ 在 $[0,+\infty)$ 上的最大值。}
+\q{S5.6}{用\textbf{中值定理}证明：当 $x>0$ 时，$\abs{\ln(1+x)-x}<\dfrac{x^{2}}{2}$。}
+\q{S5.7}{设 $a,b>0$，用柯西中值定理证明：存在 $\xi\in(a,b)$ 使 $\dfrac{\ln b-\ln a}{b-a}=\dfrac{1}{\xi}$。}
+\q{S5.8}{设 $f(x)=x^{3}-3ax^{2}+2bx$（$a,b$ 为常数）。求 $f$ 有两个不同极值点的充要条件。}
+\q{S5.9}{证明：当 $x>0$ 时，$\sin x<x$。}
+\q{S5.10}{求 $f(x)=\dfrac{x^{2}}{1+x^{2}}$ 在 $\R$ 上的最大值。}
+\q{W5.2}{设 $f$ 在 $[0,1]$ 连续、$(0,1)$ 可导，且 $f(0)=f(1)=0$。证明存在 $\eta\in(0,1)$ 使 $\eta f'(\eta)+2f(\eta)=0$。\quad{\footnotesize\color{blue!45!black}[对标交大卷 Q18(1) 中值点]}}
+\q{W5.3}{设 $f$ 在 $[0,1]$ 上二阶可导且 $f(0)=f(1)=0$。证明存在 $\xi\in(0,1)$ 使
+$\xi^2f''(\xi)+4\xi f'(\xi)+2f(\xi)=0$。\quad{\footnotesize\color{blue!45!black}[对标交大卷 Q18(2) 二阶压轴]}}
+\q{W5.6}{证明 $x\in[0,1]$ 时 $\ee^x\ge1+x+\dfrac{x^2}{2}$；再判断 $x<0$ 时是否仍成立，给出理由或反例。\quad{\footnotesize\color{blue!45!black}[对标 MIT lec14 MVT and Inequalities]}}
+
+\subsection{答案速查（只核对结论，卡住满 5 min 再回查详解）}
+{\footnotesize
+\begin{longtable}{@{}p{1.5cm}p{13.6cm}@{}}
+\toprule 题号 & 答案 \\ \midrule \endhead
+\bottomrule \endlastfoot
+S5.1 & 最大值 $3$（在 $x=-2$ 与 $x=-1$ 处），最小值 $-1$（在 $x=1$ 与 $x=2$ 处） \\
+S5.2 & 令 $g(x)=\ln(1+x)-\frac{x}{1+x}$，$g'(x)=\frac{x}{(1+x)^{2}}>0$，$g(0)=0$ \\
+S5.3 & $h(x)=\ee^{x}-ex$，$h'(x)=\ee^{x}-e$，$h''=\ee^{x}>0$，$h'(1)=0$，$h(1)=0$ \\
+S5.4 & 交错级数 $\ln(1+x)=x-\frac{x^{2}}2+\frac{x^{3}}3-\cdots$（$0<x\leq1$） \\
+S5.5 & 最大值 $\frac1\ee$，在 $x=1$ 处取到 \\
+S5.6 & 拉格朗日中值定理：$\ln(1+x)-x=\frac{-x^{2}}{2\xi}$，$\xi\in(0,x)$，故 $\abs{\cdot}=\frac{x^{2}}{2\xi}<\frac{x^{2}}{2}$（因 $\xi>x$ 时不成立，须用 $\xi\in(0,x)$ 且 $x>0$ 时 $\frac{1}{\xi}>\frac1x$ —— 反向） \\
+S5.7 & 取 $F=\ln x$，$G=x$，柯西中值定理 $\dfrac{\ln b-\ln a}{b-a}=\dfrac{1}{\xi}$ \\
+S5.8 & $f'=3x^{2}-6ax+2b$，两不同实根 $\iff 36a^{2}-24b>0$，即 $3a^{2}>2b$ \\
+S5.9 & 令 $g(x)=x-\sin x$，$g'(x)=1-\cos x\geq0$，$g(0)=0$ \\
+S5.10 & 上确界 $1$（$x\to\pm\infty$ 时趋于 $1$，但不取到） \\
+W5.2 & 构造 $F=x^2f$ \\
+W5.3 & 构造 $F=x^2f$，两次 Rolle \\
+W5.6 & $x\in[0,1]$ 成立；$x<0$ 不成立 \\
+\end{longtable}}
+
+\bigskip\noindent{\color{blue!35!black}\rule{\linewidth}{0.5pt}}\bigskip
+\section{第 7 章 \ 函数性态与作图七步}
+\subsection{方法卡：作图七步（练到机械）}
+
+\begin{enumerate}
+\item \textbf{定义域}：分母零点、根式、对数；同时写出奇偶性与周期性（可只看半边）。
+\item \textbf{截距}：与坐标轴交点；$x=0$ 处若不可导要单独标\textbf{竖直切线}。
+\item \textbf{$y'$ 表}：求 $y'$，解 $y'=0$ 与不可导点，列表给出单调区间与极值。
+\item \textbf{$y''$ 表}：解 $y''=0$，给出凹凸区间与拐点（注意 $y''$ 不存在的点也可能是拐点）。
+\item \textbf{渐近线三查}：竖直（分母零点处单侧极限）、水平（$x\to\pm\infty$）、斜（$y=ax+b$，$a=\lim y/x$，$b=\lim(y-ax)$）；\textbf{两端渐近线可以不同}。
+\item \textbf{关键点}：极值点、拐点、截距、竖直切线点的坐标；$x=0$ 型要取极限判斜率。
+\item \textbf{描图}：先画渐近线，再按 $y'$ / $y''$ 表连成曲线，标出关键点。
+\end{enumerate}
+
+\begin{keypoint}[例题精讲 $\cdot$ 斜渐近线与驻点]
+作出 $y=\dfrac{x^{2}}{x-1}$ 的草图并写出关键结论。
+
+\noindent\textbf{解}：$y=x+1+\frac{1}{x-1}$，故 $x=1$ 是竖直渐近线、$y=x+1$ 是\textbf{斜渐近线}。
+$y'=\frac{x(x-2)}{(x-1)^{2}}$，驻点 $x=0$（极大，$y=0$）与 $x=2$（极小，$y=4$）。
+$y''=\frac{2}{(x-1)^{3}}$，故 $x<1$ 凸向上、$x>1$ 凸向下，无拐点。
+\textbf{卡点}：漏斜渐近线、把 $x=1$ 当成拐点，是这道 12 分题最常见的两处失分。
+\end{keypoint}
+
+\subsection{真题定位}
+函数性态与作图约 16/17 套、倒数第二题 10--12 分，是 28 分「模板三件套」里分值最高的一块；$x\ee^{1/x}$、$\sqrt[3]{x/(x-1)}$ 等曾考「$x=0$ 不可导但要判竖直切线」。本章 S6 6 + P4 6 + W5.1 = 13 题。
+
+\subsection{习题（13 题 $\cdot$ 闭卷做，做完再对答案）}
+\q{P4.1}{$f(x)=\dfrac{x^{2}}{x-1}$，按七步作全图。}
+\q{P4.2}{$f(x)=x\ee^{1/x}$，按七步作全图，特别注意 $x\to 0^{+}$ 与 $x\to 0^{-}$。}
+\q{P4.3}{$f(x)=\dfrac{\sqrt{x^{2}+1}}{x}$，按七步作全图。}
+\q{P4.4}{$f(x)=\dfrac{x^{3}}{x^{2}-1}$，按七步作全图。}
+\q{P4.5}{$f(x)=x-2\arctan x$，按七步作全图。}
+\q{P4.6}{$f(x)=\dfrac{x^{2}-1}{x^{2}+1}$，按七步作全图。}
+\q{S6.1}{作出 $y=\dfrac{x^{3}}{x^{2}+1}$ 的图形，写出定义域、对称性、截距、驻点、极值、凹凸区间与渐近线。}
+\q{S6.2}{作出 $y=x-\dfrac{1}{x}$ 的图形，写出定义域、单调区间、极值与渐近线。}
+\q{S6.3}{作出 $y=\abs{x-1}\ee^{-x}$ 的图形，指出 $x=1$ 处的间断点性质与极值，并求其余极值与渐近线。}
+\q{S6.4}{作出 $y=x\ee^{-x}$ 的图形，写出极值、单调区间与渐近线。}
+\q{S6.5}{作出 $y=\ln(x^{2}+1)$ 的图形，写出极值、单调区间与渐近线。}
+\q{S6.6}{作出 $y=\dfrac{x^{2}}{x-1}$ 的图形，写出驻点、极值、单调区间与渐近线。}
+\q{W5.1}{按七步全面讨论 $y=\dfrac{x^2}{x-1}$ 的性态并作图：定义域、奇偶与周期、$y'$ 与 $y''$、单调与极值、凹凸与拐点、\textbf{三类渐近线两端都查}、关键点列表。\quad{\footnotesize\color{blue!45!black}[对标交大卷 Q16 作图大题，10--12 分]}}
+
+\subsection{答案速查（只核对结论，卡住满 5 min 再回查详解）}
+{\footnotesize
+\begin{longtable}{@{}p{1.5cm}p{13.6cm}@{}}
+\toprule 题号 & 答案 \\ \midrule \endhead
+\bottomrule \endlastfoot
+P4.1 & 定义域 $x\neq1$；垂直 $x=1$（左 $-\infty$ / 右 $+\infty$）；斜渐近线 $y=x+1$；$f'=\frac{x(x-2)}{(x-1)^{2}}$ \\
+P4.2 & 垂直 $x=0$（右 $+\infty$ / 左 $0$）；斜渐近线 $y=x+1$；$x\to0^{-}$ 时 $f\to 0$ \\
+P4.3 & 垂直 $x=0$（右 $+\infty$ / 左 $-\infty$）；水平渐近线 $y=1$（右）与 $y=-1$（左） \\
+P4.4 & 奇函数；垂直 $x=\pm1$；斜渐近线 $y=x$；$x\to1^{+}$ 为 $+\infty$ \\
+P4.5 & 斜渐近线 $y=x-\pi$（右）与 $y=x+\pi$（左）；无垂直渐近线 \\
+P4.6 & 偶函数；水平渐近线 $y=1$；最小值 $f(0)=-1$，无垂直渐近线 \\
+S6.1 & 奇函数；定义域 $\R$；截距 $(0,0)$；$f'=\frac{x^{2}(x^{2}+3)}{(x^{2}+1)^{2}}\geq0$ 严格增（$x\neq0$ 时 $>0$）；$f(0)=0$ 既是极小也是拐点（驻点非极值类型的边界）；渐近线 $y=x$；无水平渐近线 \\
+S6.2 & 定义域 $x\neq0$；$f'=1+\frac1{x^{2}}>0$ 严格增；$x\to0^{+}$ 时 $f\to-\infty$，$x\to0^{-}$ 时 $f\to+\infty$；渐近线 $x=0$ 与 $y=x$；无极值 \\
+S6.3 & $x=1$ 处不可导（左导 $-\ee^{-1}$、右导 $\ee^{-1}$），是尖点极小值，值 $0$；$x=2$ 处极大值 $\ee^{-2}$；水平渐近线 $y=0$ \\
+S6.4 & $f'=\ee^{-x}(1-x)$，极大值 $\frac1\ee$ 在 $x=1$；$x\to-\infty$ 时 $f\to-\infty$；水平渐近线 $y=0$ \\
+S6.5 & $f'=\frac{2x}{x^{2}+1}$，极小值 $0$ 在 $x=0$；$x\to\pm\infty$ 时 $f\to+\infty$；无水平渐近线、无斜渐近线 \\
+S6.6 & $f=x+1+\frac1{x-1}$；定义域 $x\neq1$；$f'=\frac{x(x-2)}{(x-1)^{2}}$，驻点 $0$（极大值 $0$）与 $2$（极小值 $4$）；渐近线 $x=1$ 与 $y=x+1$ \\
+W5.1 & $y'=\frac{x(x-2)}{(x-1)^2},\ y''=\frac2{(x-1)^3}$ \\
+\end{longtable}}
+
+\bigskip\noindent{\color{blue!35!black}\rule{\linewidth}{0.5pt}}\bigskip
+\section{第 8 章 \ 新压轴：函数方程、迭代与数列}
+\subsection{方法卡：新压轴的四条思路}
+
+\begin{enumerate}
+\item \textbf{抽象函数方程先问「条件够不够」}：若结论需要连续性 / 可导性而题设没给，先找反例（如 $f(x)=x^{2}\sin(1/x^{2})$、狄利克雷型），再谈证明；本库多次在这类题上翻车。
+\item \textbf{递推数列三步}：作差 $a_{n+1}-a_{n}$ 判单调 $\to$ 找不动点 $L$ 与 $a_1$ 的大小关系 $\to$ 单调有界得收敛、对递推式两边取极限解 $L$。
+\item \textbf{压缩映射}：若能写 $\abs{a_{n+1}-a_{n}}\le q\abs{a_{n}-a_{n-1}}$（$0<q<1$），则收敛且误差 $\le\frac{q^{n}}{1-q}\abs{a_1-a_0}$；常数要算准（如 $3-2\sqrt2$）。
+\item \textbf{迭代渐近}：对 $a_{n+1}=f(a_n)$ 且 $f(0)=0,\ f'(0)=1$ 的情形，设 $a_n\sim c/n$，代入 $a_{n+1}-a_n\sim -c/n^{2}$ 反解 $c$；本库 W5.5 用 6000 次高精度迭代验得 $\lim n a_n=2$。
+\end{enumerate}
+
+\noindent\textbf{夹逼与和式}：分母同阶但各项不同时\textbf{整体放缩}，不要逐项取极限；裂项写成 $\frac1a-\frac1b$ 再求和；$n!$ 与 $n^n$ 同现时用 Stirling 或取对数求和，别把 $\big(\frac{n!}{n^n}\big)^{1/n}$ 当成 $\frac{a_{n+1}}{a_n}$ 直接套比值法。
+
+\begin{keypoint}[例题精讲 $\cdot$ 条件不足给反例]
+设 $f$ 在 $\R$ 上满足 $f(x+y)=f(x)+f(y)$。问：能否断言 $f(x)=cx$？
+
+\noindent\textbf{解}：\textbf{不能}。Cauchy 方程在没有「连续 / 单调 / 局部有界 / 可测」任一附加条件时存在非线性解（用 Hamel 基构造）。加上「$f$ 在一点连续」或「$f$ 在某区间有界」才可推出 $f(x)=cx$。
+\textbf{卡点}：题目条件不足时，写反例或指出缺条件就是满分答案；硬证会掉进陷阱。
+\end{keypoint}
+
+\subsection{真题定位}
+递推数列 6/10 卷，夹逼 / 和式极限 5/10 卷；2023 起「新压轴」常把函数方程、迭代、隐函数级数混在一起。本章 S4 8 + P3 10 + W5.4 / W5.5 = 20 题。
+
+\subsection{习题（20 题 $\cdot$ 闭卷做，做完再对答案）}
+\q{P3.1}{设 $f$ 在 $\R$ 上连续，$f(x+y)=f(x)+f(y)$，$f(1)=3$。求 $f(x)$ 与 $f(\sqrt{2})$，并写出「连续性用在哪一步」。}
+\q{P3.2}{设 $f$ 连续，$f(x+y)=f(x)f(y)$，$f'(0)=2$。求 $f''(1)$。}
+\q{P3.3}{设 $f$ 在 $(0,+\infty)$ 连续，$f(xy)=f(x)+f(y)$，$f(\ee)=1$。求 $f'(\ee)$。}
+\q{P3.4}{设 $f$ 连续且 $f(x+y)+f(x-y)=2f(x)+2f(y)$，$f(1)=2$。求 $f(3)$。}
+\q{P3.5}{$x_{0}=2$，$x_{n+1}=\dfrac{1}{2}\left(x_{n}+\dfrac{2}{x_{n}}\right)$。求 $x_{1},x_{2}$ 与 $\lim x_{n}$，并证明收敛。}
+\q{P3.6}{$x_{n+1}=\cos x_{n}$。证明 $\{x_{n}\}$ 收敛并给出不动点的数值（Dottie 数，保留 6 位）。}
+\q{P3.7}{$x_{n+1}=1+\dfrac{1}{1+x_{n}}$。求不动点，并判断迭代是否收敛。}
+\q{P3.8}{$f(x)=\dfrac{x+3}{4}$，$x_{n+1}=f(x_{n})$。验证压缩映射条件，求不动点与 $n$ 步后的误差表达式。}
+\q{P3.9}{\textbf{条件不足题}：设 $f$ 连续，$f(x+1)=f(x)+2$，$f(0)=0$。问 $f\left(\frac{1}{2}\right)$ 是否被唯一确定？若不能，给出两个满足条件但取值不同的 $f$。}
+\q{P3.10}{设 $f$ 连续，$f(x+y)=f(x)+f(y)+xy$，$f(1)=1$。求 $f(2)$。}
+\q{S4.1}{设 $x_{1}=2$，$x_{n+1}=\dfrac{x_{n}+\dfrac{2}{x_{n}}}{2}$。证明 $(x_{n})$ 收敛，并求 $\lim\limits_{n\to\infty}x_{n}$。}
+\q{S4.2}{设 $x_{1}=1$，$x_{n+1}=\dfrac{1+x_{n}}{x_{n}}$。证明 $(x_{n})$ 收敛，并求 $\lim\limits_{n\to\infty}x_{n}$；再讨论 $y_{1}=1$，$y_{n+1}=y_{n}+\dfrac{1}{y_{n}}$ 的情形。}
+\q{S4.3}{设 $f(x)=\dfrac{x+\dfrac{2}{x}}{2}$，$x\in[1,2]$。证明 $f$ 是压缩映射（给出 Lipschitz 常数），并说明迭代法的收敛性。}
+\q{S4.4}{设 $f$ 在 $\R$ 上连续且满足 $f(x+y)=f(x)f(y)$，$f(1)=2$。求 $f(x)$。}
+\q{S4.5}{设 $x_{1}=0$，$x_{n+1}=\dfrac{1}{2+x_{n}}$。证明 $(x_{n})$ 收敛，并求 $\lim\limits_{n\to\infty}x_{n}$。}
+\q{S4.6}{设 $f$ 在 $\R$ 上连续且满足 $f(x+1)=f(x)+1$，$f(0)=0$。证明 $f(x)=x$ 对一切 $x$ 成立是否必然（若不必然，给出反例）。}
+\q{S4.7}{设 $x_{1}=1$，$x_{n+1}=\cos x_{n}$。证明 $(x_{n})$ 收敛，并求其极限的近似值（精确到小数点后 6 位）。}
+\q{S4.8}{设 $f$ 在 $(0,+\infty)$ 上连续且满足 $f(x)f(y)=f(xy)$，$f(1)=1$，$f(2)=3$。求 $f(4)$。}
+\q{W5.4}{设 $f$ 在 $\R$ 上连续，且 $f(x+y)=f(x)+f(y)+xy(x+y)$、$f(1)=1$。求 $f(x)$ 并说明解唯一。\quad{\footnotesize\color{blue!45!black}[对标 2024-25 Q18 抽象函数方程]}}
+\q{W5.5}{设 $a_1=1,\ a_{n+1}=\ln(1+a_n)$。证明 $a_n>0$ 且严格递减、$\lim a_n=0$，并求 $\lim_{n\to\infty}n a_n$。\quad{\footnotesize\color{blue!45!black}[对标交大卷 Q4 + 册三 P3 迭代]}}
+
+\subsection{答案速查（只核对结论，卡住满 5 min 再回查详解）}
+{\footnotesize
+\begin{longtable}{@{}p{1.5cm}p{13.6cm}@{}}
+\toprule 题号 & 答案 \\ \midrule \endhead
+\bottomrule \endlastfoot
+P3.1 & $f(x)=3x$，$f(\sqrt{2})=3\sqrt{2}$；连续性用于把 $g(q)=cq$ 从有理数延到 $\R$ \\
+P3.2 & $f(x)=\ee^{2x}$，$f''(1)=4\ee^{2}$ \\
+P3.3 & $f(x)=\ln x$，$f'(\ee)=\frac{1}{\ee}$ \\
+P3.4 & $f(x)=2x^{2}$，$f(3)=18$ \\
+P3.5 & $x_{1}=\frac{3}{2}$，$x_{2}=\frac{17}{12}$，$\lim x_{n}=\sqrt{2}$ \\
+P3.6 & 收敛于 $0.739085$（Dottie 数） \\
+P3.7 & 不动点 $\sqrt{2}$；迭代收敛（$\abs{f'(\sqrt{2})}=3-2\sqrt{2}<1$） \\
+P3.8 & $\abs{f'}=\frac{1}{4}<1$，不动点 $1$，$x_{n}-1=\frac{x_{0}-1}{4^{n}}$ \\
+P3.9 & \textbf{不唯一}：$f_{A}(x)=2x$ 给 $f(\frac{1}{2})=1$；$f_{B}(x)=2x+\cos 2\pi x-1$ 给 $f(\frac{1}{2})=-1$ \\
+P3.10 & $f(x)=\frac{x^{2}}{2}+\frac{x}{2}$，$f(2)=3$ \\
+S4.1 & 极限 $\sqrt2$；证法：$x_{n}\geq\sqrt2$ 且 $x_{n+1}\leq x_{n}$，单调有界 \\
+S4.2 & 极限 $\frac{1+\sqrt5}{2}$（黄金比例）；对照：$y_{n+1}=y_{n}+\frac1{y_{n}}$ 发散到 $+\infty$ \\
+S4.3 & $f'(x)=\frac{x^{2}-2}{2x^{2}}$，$\max_{[1,2]}\abs{f'}=\frac12<1$，是压缩映射 \\
+S4.4 & $f(x)=2^{x}$ \\
+S4.5 & 极限 $\sqrt2-1$ \\
+S4.6 & \textbf{不必然}。反例：$f(x)=x+p(x)$，$p$ 为任意 $1$-周期连续函数且 $p(0)=0$ \\
+S4.7 & 极限 $\approx0.739085$（Dottie 数），是方程 $\cos x=x$ 的唯一根 \\
+S4.8 & $f(4)=f(2\cdot2)=f(2)^{2}=9$ \\
+W5.4 & $f(x)=\frac{x^3}{3}+\frac{2x}{3}$ \\
+W5.5 & $\lim a_n=0$；$\lim n a_n=2$ \\
+\end{longtable}}
+
+\newpage
+\newpage
+\section*{附录 A $\cdot$ 考前 30 分钟速查卡}
+{\footnotesize
+\begin{longtable}{@{}p{3.0cm}p{12.2cm}@{}}
+\toprule
+\textbf{卡} & \textbf{必须闭卷写出} \\
+\midrule
+三型量词行 & $\eps$-$\delta$ / $\eps$-$X$ / $M$ 型三套定义；证不存在要给定 $\eps_0$ 并构造反例点 \\
+$\delta$ 两步法 & 先定 $\delta_1$ 把放大因子压成常数 $G$，再取 $\delta=\min\{\delta_1,\eps/G\}$；$M$ 型给显式 $X=\ee^{M+1}$ \\
+母函数表 & $\ee^x,\sin x,\cos x,\ln(1+x),(1+x)^\alpha,\frac1{1-x},\arctan x$ 的展开与收敛域 \\
+三种余项 & Peano（求极限）/ Lagrange（证明、误差界）/ 积分型；$f^{(n)}(0)=n![x^n]$ \\
+导数六型 & 隐函数、参数方程一二阶、对数求导、Leibniz、反函数、分段点可导定义 \\
+作图七步 & 定义域 $\to$ 奇偶 $\to$ 截距 $\to$ $y'$ 表 $\to$ $y''$ 表 $\to$ 三类渐近线 $\to$ 描图 \\
+中值构造 & $\ee^{\lambda x}f(x)$ 型、$f(x)-kx$ 型、两次 Rolle、Cauchy 不能拆成两个 Lagrange \\
+\bottomrule
+\end{longtable}}
+
+\section*{附录 B $\cdot$ 17 套真题必考清单}
+{\footnotesize
+\begin{longtable}{@{}p{3.4cm}p{2.1cm}p{3.0cm}p{6.7cm}@{}}
+\toprule
+\textbf{考点} & \textbf{频次} & \textbf{位置 / 分值} & \textbf{本讲义对应章} \\
+\midrule
+极限定义证明 & \textbf{17/17} & 第 11 题，8 分 & 第 2 章（30 题） \\
+函数性态作图 & $\approx16/17$ & 倒数第二题，10--12 分 & 第 7 章（13 题） \\
+微分 $\D y$ & 近 4 年连出 & 填空 7 / 8，3 分 & 第 4 章 \\
+Leibniz 高阶导 & 每年 & 填空 9 / 10，3 分 & 第 4、5 章 \\
+泰勒公式 & 2023-24 起稳定大题 & 8 分 & 第 5 章（37 题） \\
+间断点分类 & 10/17 & 选择 / 填空，3 分 & 第 3 章 \\
+数列极限 / 夹逼 & 6/10、5/10 & 选择填空 & 第 8 章 \\
+中值定理压轴 & 8 分固定 & 最后一题 & 第 6 章 \\
+\bottomrule
+\end{longtable}}
+\noindent{\footnotesize 卷面骨架：选择 $5\times3$ + 填空 $5\times3$ + 第 11 题 8 分 + 极限 / 导数大题约 24--34 分 + 应用约 18 分 + 作图 10--12 分 + 压轴 8 分 = 100 分、18 题，120 分钟。}
+
+\section*{附录 C $\cdot$ 详解回炉索引（合订本页码）}
+{\footnotesize
+\begin{longtable}{@{}p{2.1cm}p{4.0cm}p{3.0cm}p{6.1cm}@{}}
+\toprule
+\textbf{题号前缀} & \textbf{原册} & \textbf{合订本页码} & \textbf{详解位置} \\
+\midrule
+\texttt{T} & 泰勒与压轴强化·册一 & p157--169 & p162--169（§8 逐题详解） \\
+\texttt{S} & 全专题冲顶·册二 & p170--193 & p178--193（§9 逐题详解） \\
+\texttt{P} & 加练·定义与压轴深化·册三 & p194--205 & p199--205（逐题详解） \\
+\texttt{W} & 网络对标加练 & p206--212 & p210--212（逐题详解） \\
+\midrule
+错因 & 回炉动作 & & \\
+展错阶 / 余项选错 & 第 5 章方法卡 + T1 / T2 各重做 2 题 & & \\
+符号反 / 漏 $n!$ & 第 5 章例题 + P2 高阶导 12 题 & & \\
+量词行不全 / $\delta$ 错 & 第 2 章方法卡 + P1 + W3 各 2 题 & & \\
+作图漏项 / 凹凸判反 & 第 7 章七步卡 + S6 重画 2 题 & & \\
+辅助函数构造不出 & 第 6 章构造表 + W5.2 / W5.3 & & \\
+\bottomrule
+\end{longtable}}
+
+\section*{附录 D $\cdot$ 11/9--11/11 排期（不因本讲义改变）}
+{\footnotesize
+\begin{longtable}{@{}p{2.1cm}p{6.0cm}p{7.1cm}@{}}
+\toprule
+\textbf{时间} & \textbf{做什么} & \textbf{产出} \\
+\midrule
+11/9（今天） & 模拟卷 A 整卷 120 min 掐表 + 订正；早段顺延 11/8 未完成组与 W1--W5 & A 卷得分、错因分类、两次模拟对比基线 \\
+11/10 & 模拟卷 B 整卷 120 min 掐表 + 订正；C 卷只作单题回炉 & B 卷得分、放弃线判定 \\
+11/11 考前 & 只看附录 A 速查卡与手抄卡，\textbf{不做新题} & 闭卷默写全对 \\
+\bottomrule
+\end{longtable}}
+\noindent{\footnotesize 2023-24、2024-25 两套真题整卷已做过，不再掐表；旧卷得分与错题号全库仍无记录，需补记，不得估算。}
+
+\end{document}
