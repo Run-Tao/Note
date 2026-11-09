@@ -1,0 +1,365 @@
+% 精编本讲解正文（按 %%FRONT%% / %%CH1%%–%%CH8%% / %%BACK%% 切分，由 _build_compact_handout.py 装配）
+% 约定：只写「系统讲解 + 方法卡 + 例题精讲」，题目与答案速查由脚本从四册源讲义注入。
+
+%%FRONT%%
+\section*{这本讲义是什么}
+\vspace{-2mm}
+{\small 2026-11-09 编。考试 \textbf{11/11 周三}，按 120 分钟准备；依据 2008--2025 十七套交大高数 A 类期中真题逐卷核对整理。}
+
+\begin{center}
+\begin{tabular}{@{}p{3.0cm}p{5.6cm}p{6.6cm}@{}}
+\toprule
+ & \textbf{370 页合订本（11/8）} & \textbf{本精编本（11/9）} \\
+\midrule
+定位 & 全库归档：26 册原件、阅读包、执行卡、逐题详解 & \textbf{临考手边一册}：系统讲解 + 题目 + 答案速查 \\
+讲解决构 & 散在各册，需来回翻 & \textbf{按 8 个考点重写的连贯讲解}，每章先方法卡后习题 \\
+题目 & 181 题 + 11/7 加练 72 题 + 练习册 53 题（含重复页） & \textbf{11/8 体系 151 题一题不减}，按考点重排、无重复 \\
+答案 & 逐题详解分散在各册后半 & 每章末\textbf{一行一题的答案速查}；详解按索引回查合订本 \\
+未收录 & — & 每日阅读包（135 页）、执行卡、模拟卷整卷、逐题详解 \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\subsection*{题号怎么读}
+题号\textbf{保留原册编号}，便于回查详解与错题记录：\texttt{T}＝《泰勒与压轴强化·册一》19 题；\texttt{S}＝《全专题冲顶·册二》62 题；\texttt{P}＝《加练·定义与压轴深化·册三》40 题；\texttt{W}＝《网络对标加练》30 题。合计 \textbf{151 题}，全部已由四个 sympy/mpmath 复核脚本锁定答案（PASS 58 / 154 / 106 / 78，FAIL 全为 0）。
+
+\subsection*{怎么用（三条规矩）}
+\begin{enumerate}
+\item \textbf{先闭卷做，再对答案}：每章习题做完才翻该章末「答案速查」，只记题号与错因，正确率 $<80\%$ 回炉 3 道同型。
+\item \textbf{卡住满 5 分钟}才看合订本逐题详解，位置见附录 C 的「题号前缀 $\to$ 合订本页码」表；看完合上重写一遍，不抄。
+\item \textbf{不替代掐表}：11/9 模拟卷 A、11/10 模拟卷 B 两套 120 分钟整卷按原排期做；本讲义用于方法回炉与单题补强，不占整卷时间。
+\end{enumerate}
+
+\subsection*{范围边界}
+只到导数应用：极限与连续、导数与微分、中值定理、泰勒、函数性态与作图、数列极限与新压轴。\textbf{积分、多元、级数、ODE 不在期中范围}，本讲义不收。2023-24、2024-25 两套真题整卷已做过，不再当新卷掐表，只做单题回炉。
+
+\newpage
+\tableofcontents
+\newpage
+
+%%CH1%%
+\subsection{方法卡：拿到极限题的第一动作}
+
+\textbf{先代入判型，再选工具}——选错工具是考场上最大的时间浪费。
+\[
+\tfrac00,\quad\tfrac{\infty}{\infty},\quad 0\cdot\infty,\quad\infty-\infty,\quad 1^\infty,\quad 0^0,\quad \infty^0 .
+\]
+
+\begin{center}
+\begin{tabular}{@{}p{3.1cm}p{5.1cm}p{7.0cm}@{}}
+\toprule
+\textbf{型} & \textbf{首选工具} & \textbf{前提与陷阱} \\
+\midrule
+$\tfrac00$、$\tfrac{\infty}{\infty}$ & 等价无穷小 / 洛必达 / 泰勒 & 等价无穷小\textbf{只在乘除因子中换}；加减要统一展到第一个非零阶 \\
+$\infty-\infty$ & 通分、有理化、提最高阶 & 根式差先有理化；不要对两项分别取等价 \\
+$1^\infty,\,0^0,\,\infty^0$ & 取对数写成 $\ee^{v\ln u}$ & 捷径 $u^v\to\ee^{\lim v(u-1)}$ 只在 $v(u-1)^2\to0$ 时成立 \\
+和式 / 数列 & 夹逼、裂项、Stirling & $n!\sim\sqrt{2\pi n}(n/\ee)^n$；$\frac1n\sum_k\ln(k/n)\to\int_0^1\ln x\,\D x=-1$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+常用等价（$x\to0$）：$\sin x\sim x$，$\tan x\sim x$，$1-\cos x\sim x^2/2$，$\ln(1+x)\sim x$，$\ee^x-1\sim x$，$(1+x)^\alpha-1\sim\alpha x$，$x-\sin x\sim x^3/6$，$\tan x-x\sim x^3/3$，$\arcsin x-x\sim x^3/6$，$x-\ln(1+x)\sim x^2/2$。
+
+\begin{keypoint}[例题精讲 $\cdot$ 加减必须展到同阶]
+求 $L=\lim\limits_{x\to0}\dfrac{\ee^{x}\sin x-x(1+x)}{x^{3}}$。
+
+\noindent\textbf{解}：$\ee^x\sin x=(1+x+\frac{x^2}{2}+\frac{x^3}{6}+o(x^3))(x-\frac{x^3}{6}+o(x^3))
+=x+x^{2}+\frac{x^{3}}{3}+o(x^{3})$。分子 $=x^{3}/3+o(x^{3})$，故 $L=\boxed{\tfrac13}$。
+\textbf{卡点}：若把 $\ee^x\sin x$ 直接换成 $x$，分子只剩 $-x^2$，阶数就错了；\emph{相减的两项必须展到第一个未被抵消的幂次}。
+\end{keypoint}
+
+\noindent\textbf{四条易错}：(1) 拆项 $\lim(f+g)=\lim f+\lim g$ 要求\textbf{两者极限都存在}，否则先通分；(2) 洛必达每次都要重新验 $\tfrac00$ 或 $\tfrac{\infty}{\infty}$；(3) 幂指函数先取对数，别对底数、指数分别求极限；(4) $1^\infty$ 的 $\ee^{\lim v(u-1)}$ 捷径必须检查 $v(u-1)^2\to0$。
+
+\subsection{真题定位}
+第 12 题极限计算 8 分几乎是固定题（10/10 卷）；无穷小阶与主部出现在单选 1--2（8/10 卷）；$1^\infty$、根式差、含泰勒的 $\tfrac00$ 是三种反复出现的包装。本章 W1 六题按真题上限配制（幂指首项抵消、四阶抵消、抽象函数、双层根式、Stirling、通分高阶）。
+
+%%CH2%%
+\subsection{方法卡：三套量词行必须先默写}
+
+\begin{center}
+\begin{tabular}{@{}p{2.7cm}p{12.5cm}@{}}
+\toprule
+\textbf{型} & \textbf{定义（一字不能少）} \\
+\midrule
+$\eps$-$\delta$ & $\forall\eps>0,\ \exists\delta>0$，当 $0<\abs{x-x_0}<\delta$ 时 $\abs{f(x)-A}<\eps$ \\
+$\eps$-$X$ & $\forall\eps>0,\ \exists X>0$，当 $x>X$ 时 $\abs{f(x)-A}<\eps$ \\
+无穷大 $M$ 型 & $\forall M>0,\ \exists X$（或 $\delta$），使 $x>X$ 时 $f(x)>M$ \\
+证不存在 & 取\textbf{一个确定的} $\eps_0>0$，对任意 $\delta$ 构造反例点，使 $\abs{f(x)-A}\ge\eps_0$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\textbf{$\delta$ 两步法}（丢分最多处）：
+\begin{enumerate}
+\item 先定邻域 $\delta_1$（常取 $1$ 或 $1/2$），把含 $x$ 的放大因子\textbf{压成常数} $G$：例如 $x\to1$ 时 $\abs{1+x}<3$，$\abs{x-1}<1\Rightarrow \abs{x+3}>3$ 给出下界。
+\item 再取 $\delta=\min\{\delta_1,\ \eps/G\}$。只写 $\eps/G$ 而不先定 $\delta_1$，放缩链是断的。
+\end{enumerate}
+$M$ 型必须给出\textbf{显式}下界，例如 $\ln x>M$ 取 $X=\ee^{M+1}$；写「存在 $X$」不给构造不得分。
+
+\begin{keypoint}[例题精讲 $\cdot$ $\eps$-$\delta$ 的完整书写]
+用定义证 $\lim\limits_{x\to1}\frac1x=1$。
+
+\noindent\textbf{解}：任给 $\eps>0$。先限 $\abs{x-1}<\frac12$，则 $x>\frac12$，故
+$\abs{\frac1x-1}=\frac{\abs{x-1}}{\abs{x}}<2\abs{x-1}$。
+取 $\delta=\min\{\frac12,\frac{\eps}{2}\}$，当 $0<\abs{x-1}<\delta$ 时 $\abs{\frac1x-1}<2\delta\le\eps$。$\blacksquare$
+\textbf{卡点}：分母 $\abs{x}$ 的\textbf{下界} $1/2$ 必须先由 $\delta_1$ 保证；本题取 $\delta=\eps$ 是错的（放大系数是 2 不是 1）。
+\end{keypoint}
+
+\noindent\textbf{四条易错}：(1) $0<\abs{x-x_0}$ 不能漏（$x\neq x_0$）；(2) 放缩方向反（要上界时写成下界）；(3) $\delta$ 漏取 $\min$；(4) $M$ 型把 $M$ 当成 $\eps$ 写。
+
+\subsection{真题定位}
+第 11 题极限定义证明 \textbf{17/17 套必考、8 分}，是全卷确定性最高的得分点；三种形式（$\eps$-$\delta$ / $\eps$-$X$ / 无穷大 $M$）都要能独立默写。本章 30 题：S1 12 + P1 12 + W3 6，含无理式、振荡因子、对数与指数放缩、含参放缩、证不存在。
+
+%%CH3%%
+\subsection{方法卡：间断点四步与左右极限}
+
+\begin{enumerate}
+\item \textbf{找点}：分母零点、$\tan$ 的极点、分段函数的分界点、$\ln$ 与偶次根的定义域端点。
+\item \textbf{逐点算左右极限}：必须分别算 $f(x_0-0)$ 与 $f(x_0+0)$；含 $\ee^{1/x}$、$\arctan(1/x)$、$\abs{x}/x$、$x^{1/2}\sin(1/x)$ 时左右不同。
+\item \textbf{判型}：第一类（可去：左右相等但不等于函数值；跳跃：左右不等），第二类（无穷、振荡等至少一个单侧极限不存在）。
+\item \textbf{写结论}：说明 $f(x_0)$ 是否有定义、与极限是否相等。
+\end{enumerate}
+
+\begin{center}
+\begin{tabular}{@{}p{4.2cm}p{5.0cm}p{6.0cm}@{}}
+\toprule
+\textbf{典型函数} & \textbf{断在} & \textbf{判型要点} \\
+\midrule
+$\frac{\sin x}{x}$ & $x=0$ & 可去（左右都 $\to1$） \\
+$\ee^{1/x}$ & $x=0$ & 左 $\to0$、右 $\to+\infty$ $\Rightarrow$ 第二类无穷 \\
+$\sin\frac1x$ & $x=0$ & 振荡，第二类 \\
+$\frac{\abs{x}}{x}$、$\arctan\frac1x$ & $x=0$ & 左右极限不等 $\Rightarrow$ 跳跃 \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\noindent\textbf{极坐标切线}：$r=r(\theta)$ 下 $\dfrac{\D y}{\D x}=\dfrac{r'\sin\theta+r\cos\theta}{r'\cos\theta-r\sin\theta}$；出现 $0/0$ 时\textbf{必须取极限}得到切线斜率，不能直接代值。还要检查题目给的 $\theta$ 范围（近 3 年填空连出）。
+
+\begin{keypoint}[例题精讲 $\cdot$ $\ee^{1/x}$ 型]
+设 $f(x)=\dfrac{1}{1+\ee^{1/x}}$，判 $x=0$ 的间断类型。
+
+\noindent\textbf{解}：$x\to0^+$ 时 $\ee^{1/x}\to+\infty$，故 $f\to0$；$x\to0^-$ 时 $\ee^{1/x}\to0$，故 $f\to1$。左右极限都存在但不等，是\textbf{第一类跳跃间断点}。
+\textbf{卡点}：$\ee^{1/x}$ 在 $0$ 两侧的行为完全不同，含它的分式一律分左右算。
+\end{keypoint}
+
+\subsection{真题定位}
+间断点分类 10/17 套（2009-10 填 7、2023-24 选 3、2024-25 选 4 等）；极坐标切线 / $\theta$ 范围近 3 年选择填空连出。本章 S3 12 题。
+
+%%CH4%%
+\subsection{方法卡：导数六型与二阶导套路}
+
+\begin{center}
+\begin{tabular}{@{}p{3.2cm}p{11.9cm}@{}}
+\toprule
+\textbf{型} & \textbf{公式 / 套路} \\
+\midrule
+隐函数 & 两边对 $x$ 求导，把 $y$ 看作 $y(x)$；求二阶导时\textbf{再次对 $x$ 求导}，把 $y'$ 代回 \\
+参数方程 & $y'_x=\dfrac{y'_t}{x'_t}$，$y''_{xx}=\dfrac{1}{x'_t}\big(y'_x\big)'_t$（分母的 $x'_t$ 不能漏） \\
+幂指 / 连乘 & 对数求导：$\ln y=\sum\ln f_i\Rightarrow \dfrac{y'}{y}=\sum\dfrac{f_i'}{f_i}$ \\
+Leibniz & $(uv)^{(n)}=\sum_{k=0}^{n}\binom{n}{k}u^{(k)}v^{(n-k)}$；代点\textbf{消项}后常只剩 1--2 项 \\
+反函数 & $\dfrac{\D y}{\D x}=\dfrac{1}{\D x/\D y}$，$\dfrac{\D^2 y}{\D x^2}=-\dfrac{x''(y)}{[x'(y)]^{3}}$ \\
+分段点可导 & 用定义：$f'_-(x_0)=f'_+(x_0)$；$\abs{x}$、$x^{3/2}\sin(1/x^2)$、$\sqrt[3]{x}$ 是三件套 \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\noindent\textbf{微分}题别忘了写 $\D y=f'(x)\,\D x$（近 4 年填空连出）。
+
+\begin{keypoint}[例题精讲 $\cdot$ 隐函数二阶导]
+设 $x^{2}+y^{2}=25$，求点 $(3,4)$ 处的 $y''$。
+
+\noindent\textbf{解}：一阶 $2x+2yy'=0\Rightarrow y'=-x/y=-3/4$。再对 $x$ 求导：
+$2+2\big[(y')^{2}+yy''\big]=0\Rightarrow y''=-\dfrac{1+(y')^{2}}{y}
+=-\dfrac{1+9/16}{4}=\boxed{-\dfrac{25}{64}}$。
+\textbf{卡点}：不能直接把 $y'=-3/4$ 当常数求导；$y'$ 是 $x$ 的函数。
+\end{keypoint}
+
+\subsection{真题定位}
+导数块近年由 16 分升到 20 分：参数方程二阶导、隐函数二阶导、分段可导求参数；Leibniz 高阶导每年填空 9/10。本章 S2 14 + W4 6 = 20 题。
+
+%%CH5%%
+\subsection{方法卡：泰勒的决策与工具}
+
+\textbf{母函数表（闭卷默写）}：
+\[
+\ee^{x}=\sum_{n\ge0}\frac{x^{n}}{n!},\quad
+\sin x=\sum_{n\ge0}\frac{(-1)^{n}x^{2n+1}}{(2n+1)!},\quad
+\cos x=\sum_{n\ge0}\frac{(-1)^{n}x^{2n}}{(2n)!},
+\]
+\[
+\ln(1+x)=\sum_{n\ge1}\frac{(-1)^{n-1}x^{n}}{n},\qquad
+(1+x)^{\alpha}=1+\sum_{n\ge1}\binom{\alpha}{n}x^{n},
+\]
+\[
+\frac1{1-x}=\sum_{n\ge0}x^{n},\qquad
+\arctan x=\sum_{n\ge0}\frac{(-1)^{n}x^{2n+1}}{2n+1}.
+\]
+
+\textbf{三种余项}：Peano $o((x-x_0)^n)$ 用于求极限与估阶；Lagrange $\frac{f^{(n+1)}(\xi)}{(n+1)!}(x-x_0)^{n+1}$ 用于证明与误差界；积分型余项 $\frac1{n!}\int_{x_0}^{x}(x-t)^{n}f^{(n+1)}(t)\D t$ 用于需要积分表达的证明。\textbf{先定阶，再定余项}：分母是 $x^k$ 就展到 $x^k$，差一个二次项就要展到二阶。
+
+\textbf{求高阶导的通用套路}：若 $f(x)=\sum a_n x^{n}$，则
+\[
+f^{(n)}(0)=n!\,[x^{n}]f(x)=n!\,a_n .
+\]
+而 $(1+x)^{\alpha}$ 的 $n$ 阶导在 $0$ 处是 $\alpha(\alpha-1)\cdots(\alpha-n+1)$——\textbf{不要再乘一次 $n!$}（$\binom{\alpha}{n}$ 已含分母 $n!$）。
+
+\begin{keypoint}[例题精讲 $\cdot$ 系数与导数的换算]
+设 $f(x)=(1+x)^{1/3}$，求 $f'''(0)$。
+
+\noindent\textbf{解}：$[x^{3}]f=\binom{1/3}{3}=\frac{(1/3)(-2/3)(-5/3)}{6}=\frac{5}{81}$，故 $f'''(0)=3!\cdot\frac{5}{81}=\boxed{\frac{10}{27}}$；也等于 $\frac13(-\frac23)(-\frac53)$。
+\textbf{卡点}：两种算法必须一致；漏乘 $3!$ 或多乘 $3!$ 都是本库复核抓出过的真实错误。
+\end{keypoint}
+
+\noindent\textbf{与洛必达的分工}：洛必达每求一次导要重验型，遇到 $\ee^{x}\sin x$、复合根式、幂指时越导越繁；泰勒一次展开到所需阶即可。含参极限先判主导项再定阶。
+
+\noindent\textbf{十二条高频错误里最要命的五条}：(1) 漏乘/多乘 $n!$；(2) $(1+x)^\alpha$ 系数符号写反；(3) 展开阶数不够得出 $0$；(4) Peano 余项写成 $O(x^{n})$ 却用于证明不等式（需要 Lagrange 的 $\xi$）；(5) 把 $\ln(1+x)$ 的 $x^2$ 项符号写成正。
+
+\subsection{真题定位}
+2023-24 起泰勒成稳定大题：$(1+x)^\alpha$ 麦克劳林 + 求 $f^{(13)}(0)$（8 分）；2024-25 用 Taylor 求 $f''(0)$；高阶导 10/10 卷出现。本章 \textbf{37 题}：T1--T4 19 + P2 12 + W2 6，是全本最厚的一章，按你的「泰勒要熟悉」配足。
+
+%%CH6%%
+\subsection{方法卡：中值定理的构造与不等式}
+
+\begin{center}
+\begin{tabular}{@{}p{4.0cm}p{11.1cm}@{}}
+\toprule
+\textbf{结论形态} & \textbf{构造的辅助函数} \\
+\midrule
+$f'(\xi)+\lambda f(\xi)=0$ & $F(x)=\ee^{\lambda x}f(x)$（指数因子） \\
+$f'(\xi)=k$ & $F(x)=f(x)-kx$，两端点值相等后用 Rolle \\
+含 $f''(\xi)$ & 对 $f'$ 用 Rolle，或\textbf{两次 Rolle} 先造两个一阶点 \\
+$\frac{f(b)-f(a)}{g(b)-g(a)}=\frac{f'(\xi)}{g'(\xi)}$ & 直接用 Cauchy，别把两个 Lagrange 相除（$\xi$ 一般不同） \\
+$\abs{f'}\le k\abs{f}$ 型 & 乘 $\ee^{\pm kx}$ 造单调函数 \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\textbf{答题骨架}（写条件句就有分）：「由 $f$ 在 $[a,b]$ 连续、$(a,b)$ 可导，且 $F(a)=F(b)$，由 Rolle 定理存在 $\xi\in(a,b)$ 使 $F'(\xi)=0$」，再展开 $F'$ 得到结论。务必\textbf{验证 $F(a)=F(b)$} 并写出计算，不能写「显然」。
+
+\begin{keypoint}[例题精讲 $\cdot$ Lagrange 证不等式]
+设 $0<a<b$，证 $\dfrac{b-a}{b}<\ln\dfrac{b}{a}<\dfrac{b-a}{a}$。
+
+\noindent\textbf{解}：对 $f(x)=\ln x$ 在 $[a,b]$ 用 Lagrange：$\ln b-\ln a=\frac{1}{\xi}(b-a)$，$\xi\in(a,b)$。由 $a<\xi<b$ 得 $\frac1b<\frac1\xi<\frac1a$，乘正数 $b-a$ 即得。$\blacksquare$
+\textbf{卡点}：放缩用的是 \textbf{$\xi$ 的范围} $(a,b)$，不是 $x$ 的范围；上下界弄反是最常见失分。
+\end{keypoint}
+
+\noindent\textbf{不等式三板斧}：单调性（构造 $F$ 并判 $F'$ 符号）、中值定理（把差换成 $f'(\xi)$ 再放缩）、凸性 / 切线放缩。压轴里「两次 Rolle」常给出 $\xi^{2}f''(\xi)+4\xi f'(\xi)+2f(\xi)=0$ 这类二阶结论。
+
+\subsection{真题定位}
+压轴证明 8 分基本是 Rolle / Lagrange / Cauchy 构造，2010-18、2012-18、2017-18、2020-18 都是同类；不等式与最值 10 题在本章及 S5。本章收 S5 10 题与 W5 中的 Rolle / 两次 Rolle / Lagrange 不等式 3 题。
+
+%%CH7%%
+\subsection{方法卡：作图七步（练到机械）}
+
+\begin{enumerate}
+\item \textbf{定义域}：分母零点、根式、对数；同时写出奇偶性与周期性（可只看半边）。
+\item \textbf{截距}：与坐标轴交点；$x=0$ 处若不可导要单独标\textbf{竖直切线}。
+\item \textbf{$y'$ 表}：求 $y'$，解 $y'=0$ 与不可导点，列表给出单调区间与极值。
+\item \textbf{$y''$ 表}：解 $y''=0$，给出凹凸区间与拐点（注意 $y''$ 不存在的点也可能是拐点）。
+\item \textbf{渐近线三查}：竖直（分母零点处单侧极限）、水平（$x\to\pm\infty$）、斜（$y=ax+b$，$a=\lim y/x$，$b=\lim(y-ax)$）；\textbf{两端渐近线可以不同}。
+\item \textbf{关键点}：极值点、拐点、截距、竖直切线点的坐标；$x=0$ 型要取极限判斜率。
+\item \textbf{描图}：先画渐近线，再按 $y'$ / $y''$ 表连成曲线，标出关键点。
+\end{enumerate}
+
+\begin{keypoint}[例题精讲 $\cdot$ 斜渐近线与驻点]
+作出 $y=\dfrac{x^{2}}{x-1}$ 的草图并写出关键结论。
+
+\noindent\textbf{解}：$y=x+1+\frac{1}{x-1}$，故 $x=1$ 是竖直渐近线、$y=x+1$ 是\textbf{斜渐近线}。
+$y'=\frac{x(x-2)}{(x-1)^{2}}$，驻点 $x=0$（极大，$y=0$）与 $x=2$（极小，$y=4$）。
+$y''=\frac{2}{(x-1)^{3}}$，故 $x<1$ 凸向上、$x>1$ 凸向下，无拐点。
+\textbf{卡点}：漏斜渐近线、把 $x=1$ 当成拐点，是这道 12 分题最常见的两处失分。
+\end{keypoint}
+
+\subsection{真题定位}
+函数性态与作图约 16/17 套、倒数第二题 10--12 分，是 28 分「模板三件套」里分值最高的一块；$x\ee^{1/x}$、$\sqrt[3]{x/(x-1)}$ 等曾考「$x=0$ 不可导但要判竖直切线」。本章 S6 6 + P4 6 + W5.1 = 13 题。
+
+%%CH8%%
+\subsection{方法卡：新压轴的四条思路}
+
+\begin{enumerate}
+\item \textbf{抽象函数方程先问「条件够不够」}：若结论需要连续性 / 可导性而题设没给，先找反例（如 $f(x)=x^{2}\sin(1/x^{2})$、狄利克雷型），再谈证明；本库多次在这类题上翻车。
+\item \textbf{递推数列三步}：作差 $a_{n+1}-a_{n}$ 判单调 $\to$ 找不动点 $L$ 与 $a_1$ 的大小关系 $\to$ 单调有界得收敛、对递推式两边取极限解 $L$。
+\item \textbf{压缩映射}：若能写 $\abs{a_{n+1}-a_{n}}\le q\abs{a_{n}-a_{n-1}}$（$0<q<1$），则收敛且误差 $\le\frac{q^{n}}{1-q}\abs{a_1-a_0}$；常数要算准（如 $3-2\sqrt2$）。
+\item \textbf{迭代渐近}：对 $a_{n+1}=f(a_n)$ 且 $f(0)=0,\ f'(0)=1$ 的情形，设 $a_n\sim c/n$，代入 $a_{n+1}-a_n\sim -c/n^{2}$ 反解 $c$；本库 W5.5 用 6000 次高精度迭代验得 $\lim n a_n=2$。
+\end{enumerate}
+
+\noindent\textbf{夹逼与和式}：分母同阶但各项不同时\textbf{整体放缩}，不要逐项取极限；裂项写成 $\frac1a-\frac1b$ 再求和；$n!$ 与 $n^n$ 同现时用 Stirling 或取对数求和，别把 $\big(\frac{n!}{n^n}\big)^{1/n}$ 当成 $\frac{a_{n+1}}{a_n}$ 直接套比值法。
+
+\begin{keypoint}[例题精讲 $\cdot$ 条件不足给反例]
+设 $f$ 在 $\R$ 上满足 $f(x+y)=f(x)+f(y)$。问：能否断言 $f(x)=cx$？
+
+\noindent\textbf{解}：\textbf{不能}。Cauchy 方程在没有「连续 / 单调 / 局部有界 / 可测」任一附加条件时存在非线性解（用 Hamel 基构造）。加上「$f$ 在一点连续」或「$f$ 在某区间有界」才可推出 $f(x)=cx$。
+\textbf{卡点}：题目条件不足时，写反例或指出缺条件就是满分答案；硬证会掉进陷阱。
+\end{keypoint}
+
+\subsection{真题定位}
+递推数列 6/10 卷，夹逼 / 和式极限 5/10 卷；2023 起「新压轴」常把函数方程、迭代、隐函数级数混在一起。本章 S4 8 + P3 10 + W5.4 / W5.5 = 20 题。
+
+%%BACK%%
+\newpage
+\section*{附录 A $\cdot$ 考前 30 分钟速查卡}
+{\footnotesize
+\begin{longtable}{@{}p{3.0cm}p{12.2cm}@{}}
+\toprule
+\textbf{卡} & \textbf{必须闭卷写出} \\
+\midrule
+三型量词行 & $\eps$-$\delta$ / $\eps$-$X$ / $M$ 型三套定义；证不存在要给定 $\eps_0$ 并构造反例点 \\
+$\delta$ 两步法 & 先定 $\delta_1$ 把放大因子压成常数 $G$，再取 $\delta=\min\{\delta_1,\eps/G\}$；$M$ 型给显式 $X=\ee^{M+1}$ \\
+母函数表 & $\ee^x,\sin x,\cos x,\ln(1+x),(1+x)^\alpha,\frac1{1-x},\arctan x$ 的展开与收敛域 \\
+三种余项 & Peano（求极限）/ Lagrange（证明、误差界）/ 积分型；$f^{(n)}(0)=n![x^n]$ \\
+导数六型 & 隐函数、参数方程一二阶、对数求导、Leibniz、反函数、分段点可导定义 \\
+作图七步 & 定义域 $\to$ 奇偶 $\to$ 截距 $\to$ $y'$ 表 $\to$ $y''$ 表 $\to$ 三类渐近线 $\to$ 描图 \\
+中值构造 & $\ee^{\lambda x}f(x)$ 型、$f(x)-kx$ 型、两次 Rolle、Cauchy 不能拆成两个 Lagrange \\
+\bottomrule
+\end{longtable}}
+
+\section*{附录 B $\cdot$ 17 套真题必考清单}
+{\footnotesize
+\begin{longtable}{@{}p{3.4cm}p{2.1cm}p{3.0cm}p{6.7cm}@{}}
+\toprule
+\textbf{考点} & \textbf{频次} & \textbf{位置 / 分值} & \textbf{本讲义对应章} \\
+\midrule
+极限定义证明 & \textbf{17/17} & 第 11 题，8 分 & 第 2 章（30 题） \\
+函数性态作图 & $\approx16/17$ & 倒数第二题，10--12 分 & 第 7 章（13 题） \\
+微分 $\D y$ & 近 4 年连出 & 填空 7 / 8，3 分 & 第 4 章 \\
+Leibniz 高阶导 & 每年 & 填空 9 / 10，3 分 & 第 4、5 章 \\
+泰勒公式 & 2023-24 起稳定大题 & 8 分 & 第 5 章（37 题） \\
+间断点分类 & 10/17 & 选择 / 填空，3 分 & 第 3 章 \\
+数列极限 / 夹逼 & 6/10、5/10 & 选择填空 & 第 8 章 \\
+中值定理压轴 & 8 分固定 & 最后一题 & 第 6 章 \\
+\bottomrule
+\end{longtable}}
+\noindent{\footnotesize 卷面骨架：选择 $5\times3$ + 填空 $5\times3$ + 第 11 题 8 分 + 极限 / 导数大题约 24--34 分 + 应用约 18 分 + 作图 10--12 分 + 压轴 8 分 = 100 分、18 题，120 分钟。}
+
+\section*{附录 C $\cdot$ 详解回炉索引（合订本页码）}
+{\footnotesize
+\begin{longtable}{@{}p{2.1cm}p{4.0cm}p{3.0cm}p{6.1cm}@{}}
+\toprule
+\textbf{题号前缀} & \textbf{原册} & \textbf{合订本页码} & \textbf{详解位置} \\
+\midrule
+\texttt{T} & 泰勒与压轴强化·册一 & p157--169 & p162--169（§8 逐题详解） \\
+\texttt{S} & 全专题冲顶·册二 & p170--193 & p178--193（§9 逐题详解） \\
+\texttt{P} & 加练·定义与压轴深化·册三 & p194--205 & p199--205（逐题详解） \\
+\texttt{W} & 网络对标加练 & p206--212 & p210--212（逐题详解） \\
+\midrule
+错因 & 回炉动作 & & \\
+展错阶 / 余项选错 & 第 5 章方法卡 + T1 / T2 各重做 2 题 & & \\
+符号反 / 漏 $n!$ & 第 5 章例题 + P2 高阶导 12 题 & & \\
+量词行不全 / $\delta$ 错 & 第 2 章方法卡 + P1 + W3 各 2 题 & & \\
+作图漏项 / 凹凸判反 & 第 7 章七步卡 + S6 重画 2 题 & & \\
+辅助函数构造不出 & 第 6 章构造表 + W5.2 / W5.3 & & \\
+\bottomrule
+\end{longtable}}
+
+\section*{附录 D $\cdot$ 11/9--11/11 排期（不因本讲义改变）}
+{\footnotesize
+\begin{longtable}{@{}p{2.1cm}p{6.0cm}p{7.1cm}@{}}
+\toprule
+\textbf{时间} & \textbf{做什么} & \textbf{产出} \\
+\midrule
+11/9（今天） & 模拟卷 A 整卷 120 min 掐表 + 订正；早段顺延 11/8 未完成组与 W1--W5 & A 卷得分、错因分类、两次模拟对比基线 \\
+11/10 & 模拟卷 B 整卷 120 min 掐表 + 订正；C 卷只作单题回炉 & B 卷得分、放弃线判定 \\
+11/11 考前 & 只看附录 A 速查卡与手抄卡，\textbf{不做新题} & 闭卷默写全对 \\
+\bottomrule
+\end{longtable}}
+\noindent{\footnotesize 2023-24、2024-25 两套真题整卷已做过，不再掐表；旧卷得分与错题号全库仍无记录，需补记，不得估算。}
