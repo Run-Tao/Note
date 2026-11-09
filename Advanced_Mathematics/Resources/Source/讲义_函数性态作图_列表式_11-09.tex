@@ -1,0 +1,332 @@
+% !TeX program = xelatex
+% 函数性态与作图 · 列表式讲义（模板；表格由 verify_graph_tables.py 注入）
+\documentclass[11pt,a4paper]{ctexart}
+\usepackage[a4paper,top=2.2cm,bottom=2.2cm,left=2.0cm,right=2.0cm]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools,bm}
+\usepackage{booktabs,array,longtable,tabularx,multicol}
+\usepackage{graphicx}
+\usepackage{enumitem}
+\usepackage[most]{tcolorbox}
+\usepackage{fancyhdr}
+\usepackage{hyperref}
+\hypersetup{hidelinks,colorlinks=true,linkcolor=blue!50!black}
+\usepackage{titlesec}
+
+\linespread{1.24}
+\setlength{\parskip}{0.2em}
+\setlist[enumerate]{itemsep=2pt,topsep=3pt,parsep=0pt,leftmargin=1.9em}
+\setlist[itemize]{itemsep=2pt,topsep=3pt,parsep=0pt,leftmargin=1.6em}
+\titleformat{\section}{\Large\bfseries\color{blue!35!black}}{\thesection}{0.6em}{}
+\titleformat{\subsection}{\large\bfseries\color{blue!25!black}}{\thesubsection}{0.5em}{}
+\titlespacing*{\section}{0pt}{1.5ex plus .3ex}{0.9ex}
+\titlespacing*{\subsection}{0pt}{1.1ex plus .2ex}{0.6ex}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small 函数性态与作图 · 列表式讲义}
+\fancyhead[R]{\small 陶理}
+\fancyfoot[C]{\small\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+
+\newcommand{\ee}{\mathrm{e}}
+\newcommand{\D}{\mathrm{d}}
+\newcommand{\abs}[1]{\left\lvert #1\right\rvert}
+\newcommand{\blank}[1]{\underline{\hspace{#1}}}
+
+\newtcolorbox{keypoint}[1][]{enhanced,breakable,colback=blue!3,colframe=blue!40!black,
+  fonttitle=\bfseries,title={#1},boxrule=0.5pt,arc=1.5mm,
+  left=3mm,right=3mm,top=2mm,bottom=2mm,before skip=4pt,after skip=4pt}
+\newtcolorbox{warnbox}[1][]{enhanced,breakable,colback=red!3,colframe=red!50!black,
+  fonttitle=\bfseries,title={#1},boxrule=0.5pt,arc=1.5mm,
+  left=3mm,right=3mm,top=2mm,bottom=2mm,before skip=4pt,after skip=4pt}
+\newtcolorbox{methodbox}[1][]{enhanced,breakable,colback=green!3!white,colframe=green!35!black,
+  fonttitle=\bfseries,title={#1},boxrule=0.5pt,arc=1.5mm,
+  left=3mm,right=3mm,top=2mm,bottom=2mm,before skip=4pt,after skip=4pt}
+
+\begin{document}
+
+\begin{center}
+  {\LARGE\bfseries 函数性态与作图 · 列表式讲义}\\[4pt]
+  {\large 上海交大《高等数学 I（A 类）》期中复习}\\[4pt]
+  {\small 陶理\quad 2026-11-09\quad 按七步第 6 步「列表」的写法补全}
+\end{center}
+
+\begin{keypoint}[这一册解决什么]
+原《讲义\_函数性态与作图.pdf》只在例 4.1 画过一次性态列表，其余 7 道题都写成「(6) 分点 \ldots 列表」一句话。而笔记 \texttt{函数性态与作图\_题型专题.md} 把「列表」列为\textbf{给分点}：12 分题必须写全「区间 / $y'$ 符号 / 升降 / $y''$ 符号 / 凹凸」五行，只画图不给表要扣分。
+
+本册把 \textbf{6 道例题 + 2 道限时卷共 8 张列表全部补齐}，全篇按清单式写法组织；所有 $y'$、$y''$、驻点、拐点、渐近线与逐区间符号由 \texttt{verify\_graph\_tables.py} 用 sympy 复核后直接生成表格，不是手抄。
+\end{keypoint}
+
+\section{列表的写法（唯一标准）}
+
+\begin{enumerate}[label=\textbf{(\arabic*)},leftmargin=2.1em]
+\item \textbf{固定五行}：$x$（分点与区间交替）／$y'$ 符号／$y$ 升降／$y''$ 符号／凹凸。五行缺一扣分。
+\item \textbf{分点四类}：$f$ 的无定义点、$f'=0$ 的驻点、$f'$ 不存在的不可导点、$f''=0$ 或 $f''$ 不存在的拐点候选。\textbf{四类合并排序}后逐个写进表头，区间被无定义点切断时必须分段。
+\item \textbf{四种记号}：$+$、$-$、$0$、不存在。分点处 $y'$、$y''$ 若为无穷大，写「不存在」，不要写 $\infty$。
+\item \textbf{凹凸口径}（同济）：$y''>0$ 记「凹」，$y''<0$ 记「凸」。拐点必须左右变号，$f''=0$ 不变号不算（$x^4$ 反例）。
+\item \textbf{升降行}由 $y'$ 符号直接读：$+\to\nearrow$，$-\to\searrow$；驻点处写「极大 / 极小 + 函数值」，无定义点写「无定义」，拐点写「拐点」。
+\item \textbf{作图行不在表里}：先画渐近线，再描极值点、拐点、与坐标轴交点，最后按表连线。
+\end{enumerate}
+
+\noindent\textbf{可直接抄到考卷的空白模板}（按实际分点数增删列）：
+
+\begin{center}
+\footnotesize\setlength{\tabcolsep}{4pt}
+\begin{tabular}{@{}c|ccccccc@{}}
+$x$ & $(-\infty,a)$ & $a$ & $(a,b)$ & $b$ & $(b,c)$ & $c$ & $(c,+\infty)$ \\
+\hline
+$y'$ & & & & & & & \\
+$y$ & & & & & & & \\
+$y''$ & & & & & & & \\
+凹凸 & & & & & & & \\
+\end{tabular}
+\end{center}
+
+\begin{warnbox}[卷面附了 $y',y''$ 时]
+直接从第 4 步进列表，\textbf{不要回头重算导数}；省下的时间全部给渐近线两端与列表。2021-22、2023-24、2009-10 三套 Q17 都附了导数。
+\end{warnbox}
+
+\section{七步到列表的映射（清单）}
+
+\begin{enumerate}[label=\textbf{第 \arabic* 步},leftmargin=2.6em]
+\item 定义域（\textbf{含不可导点}）$\to$ 产生表头的「无定义点 / 边界」列。
+\item 奇偶 / 周期 $\to$ 只做一半区间，另一半由对称性补；表仍要写全。
+\item 渐近线（垂直 / 水平 / 斜，\textbf{两端分别求}）$\to$ 作图时的参考线，表中无定义列写「无定义」。
+\item $f'\to$ 产生 $y'$ 符号行与升降行、极值列。
+\item $f''\to$ 产生 $y''$ 符号行与凹凸行、拐点列。
+\item \textbf{合并 4、5 的分点写列表} $\to$ 本册 8 张表。
+\item 作图（标极值点、拐点、交点、渐近线）。
+\end{enumerate}
+
+\section{渐近线三查（清单）}
+
+\begin{enumerate}[label=\textbf{(\alph*)},leftmargin=2.1em]
+\item \textbf{垂直}：找无定义点 $x_0$，看单侧 $\lim f=\pm\infty$；\textbf{只在一侧发散也要写}（$x\ee^{1/x}$ 的 $x=0$ 仅右侧）。
+\item \textbf{水平}：$\lim_{x\to+\infty}f=b$ 与 $\lim_{x\to-\infty}f=b$ \textbf{各查一次}；$x^2\ee^{-x}$ 只有右端有 $y=0$。
+\item \textbf{斜}：$k=\lim\dfrac{f}{x},\ b=\lim(f-kx)$，两端各查。有理函数直接做多项式除法读多项式部分（$y=x+1+\frac1{x-1}\Rightarrow y=x+1$）。
+\item \textbf{「无斜」写出理由}：$f\sim x^2$ 时 $f/x\to\infty$，判「无水平也无斜」；但垂直渐近线仍可能存在。
+\end{enumerate}
+
+\section{六道例题 · 完整列表}
+
+\subsection{例 1 $y=\dfrac{x^2}{x-1}$（卷面附 $y',y''$）}
+
+\begin{itemize}[label=$\bullet$,leftmargin=1.5em]
+\item 分点：$0$（极大）、$1$（无定义）、$2$（极小）；定义域 $x\ne1$，非奇非偶。
+\item 渐近线：垂直 $x=1$（左 $-\infty$ / 右 $+\infty$）；斜 $y=x+1$ 两端；无水平。
+\item $y''=\dfrac{2}{(x-1)^3}$ 在定义域内不为零，$x=1$ 不在定义域 $\Rightarrow$ \textbf{无拐点}。
+\end{itemize}
+
+\begin{center}
+\footnotesize\setlength{\tabcolsep}{1.5pt}
+\begin{tabular}{@{}c|ccccccc@{}}
+$x$ & $(-\infty,0)$ & $0$ & $(0,1)$ & $1$ & $(1,2)$ & $2$ & $(2,+\infty)$ \\
+\hline
+$y'$ & $+$ & $0$ & $-$ & 不存在 & $-$ & $0$ & $+$ \\
+$y$ & $\nearrow$ & 极大 $0$ & $\searrow$ & 无定义 & $\searrow$ & 极小 $4$ & $\nearrow$ \\
+$y''$ & $-$ & $-$ & $-$ & 不存在 & $+$ & $+$ & $+$ \\
+凹凸 & 凸 & 凸 & 凸 & —— & 凹 & 凹 & 凹 \\
+\end{tabular}
+\end{center}
+
+\noindent\textbf{卡点}：无定义点 $x=1$ 把区间切成两段，两侧 $y''$ 异号但都不在定义域，不能合并成一个凹凸区间。
+
+\subsection{例 2 $y=x^2\ee^{-x}$（两端渐近线不同）}
+
+\begin{itemize}[label=$\bullet$,leftmargin=1.5em]
+\item 分点：$0$（极小）、$2-\sqrt2$ 与 $2+\sqrt2$（拐点）、$2$（极大 $4/\ee^2$）。
+\item 渐近线：水平 $y=0$ \textbf{仅右端}；$x\to-\infty$ 时 $y\to+\infty$ 且 $y/x\to-\infty$，无斜。
+\item $y''=(x^2-4x+2)\ee^{-x}$ 有\textbf{两个}零点，别只写一个。
+\end{itemize}
+
+\begin{center}
+\footnotesize\setlength{\tabcolsep}{1.5pt}
+\begin{tabular}{@{}c|ccccccccc@{}}
+$x$ & $(-\infty,0)$ & $0$ & $(0,2-\sqrt2)$ & $2-\sqrt2$ & $(2-\sqrt2,2)$ & $2$ & $(2,2+\sqrt2)$ & $2+\sqrt2$ & $(2+\sqrt2,+\infty)$ \\
+\hline
+$y'$ & $-$ & $0$ & $+$ & $+$ & $+$ & $0$ & $-$ & $-$ & $-$ \\
+$y$ & $\searrow$ & 极小 $0$ & $\nearrow$ & 拐点 & $\nearrow$ & 极大 $4/\ee^2$ & $\searrow$ & 拐点 & $\searrow$ \\
+$y''$ & $+$ & $+$ & $+$ & $0$ & $-$ & $-$ & $-$ & $0$ & $+$ \\
+凹凸 & 凹 & 凹 & 凹 & 拐点 & 凸 & 凸 & 凸 & 拐点 & 凹 \\
+\end{tabular}
+\end{center}
+
+\subsection{例 3 $y=\dfrac{\ln x}{x}$（定义域只有一侧）}
+
+\begin{itemize}[label=$\bullet$,leftmargin=1.5em]
+\item 分点：$0^+$（边界）、$\ee$（极大 $1/\ee$）、$\ee^{3/2}$（拐点）。定义域 $x>0$，左端根本不存在。
+\item 渐近线：垂直 $x=0$（$x\to0^+$ 时 $y\to-\infty$）；水平 $y=0$ 右端；无斜。
+\item $y''=\dfrac{2\ln x-3}{x^3}$，与 $x$ 轴交于 $x=1$。
+\end{itemize}
+
+\begin{center}
+\footnotesize\setlength{\tabcolsep}{1.5pt}
+\begin{tabular}{@{}c|cccccc@{}}
+$x$ & $0^+$ & $(0^+,\ee)$ & $\ee$ & $(\ee,\ee^{3/2})$ & $\ee^{3/2}$ & $(\ee^{3/2},+\infty)$ \\
+\hline
+$y'$ & — & $+$ & $0$ & $-$ & $-$ & $-$ \\
+$y$ & $-\infty$ & $\nearrow$ & 极大 $1/\ee$ & $\searrow$ & 拐点 & $\searrow$ \\
+$y''$ & — & $-$ & $-$ & $-$ & $0$ & $+$ \\
+凹凸 & — & 凸 & 凸 & 凸 & 拐点 & 凹 \\
+\end{tabular}
+\end{center}
+
+\subsection{例 4 $y=\dfrac{x}{x^2-1}$（无驻点但有拐点）}
+
+\begin{itemize}[label=$\bullet$,leftmargin=1.5em]
+\item 分点：$-1$、$1$（无定义）、$0$（拐点 $(0,0)$）；奇函数。
+\item 渐近线：垂直 $x=\pm1$；水平 $y=0$ 两端；无斜。
+\item $y'=-\dfrac{x^2+1}{(x^2-1)^2}<0$ 恒负，\textbf{三个区间各自递减、无极值}；$y''$ 在 $x=\pm1$ 处也变号，但这两点不在定义域。
+\end{itemize}
+
+\begin{center}
+\footnotesize\setlength{\tabcolsep}{1.5pt}
+\begin{tabular}{@{}c|ccccccc@{}}
+$x$ & $(-\infty,-1)$ & $-1$ & $(-1,0)$ & $0$ & $(0,1)$ & $1$ & $(1,+\infty)$ \\
+\hline
+$y'$ & $-$ & 不存在 & $-$ & $-$ & $-$ & 不存在 & $-$ \\
+$y$ & $\searrow$ & 无定义 & $\searrow$ & 拐点 $(0,0)$ & $\searrow$ & 无定义 & $\searrow$ \\
+$y''$ & $-$ & 不存在 & $+$ & $0$ & $-$ & 不存在 & $+$ \\
+凹凸 & 凸 & —— & 凹 & 拐点 & 凸 & —— & 凹 \\
+\end{tabular}
+\end{center}
+
+\subsection{例 5 $y=x+\dfrac1x$（斜渐近线 + 极值）}
+
+\begin{itemize}[label=$\bullet$,leftmargin=1.5em]
+\item 分点：$-1$（极大 $-2$）、$0$（无定义）、$1$（极小 $2$）；奇函数。
+\item 渐近线：垂直 $x=0$；斜 $y=x$ 两端（$k=1,b=0$）；无水平。
+\item $y''=2/x^3$ 在定义域内不为零，\textbf{无拐点}；$x<0$ 凸、$x>0$ 凹。
+\end{itemize}
+
+\begin{center}
+\footnotesize\setlength{\tabcolsep}{1.5pt}
+\begin{tabular}{@{}c|ccccccc@{}}
+$x$ & $(-\infty,-1)$ & $-1$ & $(-1,0)$ & $0$ & $(0,1)$ & $1$ & $(1,+\infty)$ \\
+\hline
+$y'$ & $+$ & $0$ & $-$ & 不存在 & $-$ & $0$ & $+$ \\
+$y$ & $\nearrow$ & 极大 $-2$ & $\searrow$ & 无定义 & $\searrow$ & 极小 $2$ & $\nearrow$ \\
+$y''$ & $-$ & $-$ & $-$ & 不存在 & $+$ & $+$ & $+$ \\
+凹凸 & 凸 & 凸 & 凸 & —— & 凹 & 凹 & 凹 \\
+\end{tabular}
+\end{center}
+
+\subsection{例 6 $y=\dfrac{x^3}{x^2+1}$（有理函数的多项式部分）}
+
+\begin{itemize}[label=$\bullet$,leftmargin=1.5em]
+\item 分点：$-\sqrt3$、$0$、$\sqrt3$（\textbf{三个拐点}）；奇函数。
+\item 渐近线：$y=x-\dfrac{x}{x^2+1}\Rightarrow$ 斜 $y=x$ 两端；无垂直无水平。
+\item $y'=\dfrac{x^2(x^2+3)}{(x^2+1)^2}\ge0$，$x=0$ 处 $y'=0$ 但\textbf{不变号，不是极值}，全区间递增。
+\end{itemize}
+
+\begin{center}
+\footnotesize\setlength{\tabcolsep}{1.5pt}
+\begin{tabular}{@{}c|ccccccc@{}}
+$x$ & $(-\infty,-\sqrt3)$ & $-\sqrt3$ & $(-\sqrt3,0)$ & $0$ & $(0,\sqrt3)$ & $\sqrt3$ & $(\sqrt3,+\infty)$ \\
+\hline
+$y'$ & $+$ & $+$ & $+$ & $0$ & $+$ & $+$ & $+$ \\
+$y$ & $\nearrow$ & 拐点 & $\nearrow$ & 非极值（拐点） & $\nearrow$ & 拐点 & $\nearrow$ \\
+$y''$ & $+$ & $0$ & $-$ & $0$ & $+$ & $0$ & $-$ \\
+凹凸 & 凹 & 拐点 & 凸 & 拐点 & 凹 & 拐点 & 凸 \\
+\end{tabular}
+\end{center}
+
+\section{限时卷两题 · 标准列表答案（30 分钟 / 24 分）}
+
+\subsection{L1 $y=\dfrac{(x-1)^2}{x+1}=x-3+\dfrac4{x+1}$}
+
+\begin{itemize}[label=$\bullet$,leftmargin=1.5em]
+\item 分点：$-3$（极大 $-8$）、$-1$（无定义）、$1$（极小 $0$）。
+\item 渐近线：垂直 $x=-1$；斜 $y=x-3$ 两端；无水平。$y''=8/(x+1)^3$ 无零点，\textbf{无拐点}。
+\item 作图：先画 $x=-1$ 与 $y=x-3$，标 $(-3,-8)$、$(1,0)$、与 $y$ 轴交点 $(0,1)$。
+\end{itemize}
+
+\begin{center}
+\footnotesize\setlength{\tabcolsep}{1.5pt}
+\begin{tabular}{@{}c|ccccccc@{}}
+$x$ & $(-\infty,-3)$ & $-3$ & $(-3,-1)$ & $-1$ & $(-1,1)$ & $1$ & $(1,+\infty)$ \\
+\hline
+$y'$ & $+$ & $0$ & $-$ & 不存在 & $-$ & $0$ & $+$ \\
+$y$ & $\nearrow$ & 极大 $-8$ & $\searrow$ & 无定义 & $\searrow$ & 极小 $0$ & $\nearrow$ \\
+$y''$ & $-$ & $-$ & $-$ & 不存在 & $+$ & $+$ & $+$ \\
+凹凸 & 凸 & 凸 & 凸 & —— & 凹 & 凹 & 凹 \\
+\end{tabular}
+\end{center}
+
+\subsection{L2 $y=x\ee^{-x^2/2}$}
+
+\begin{itemize}[label=$\bullet$,leftmargin=1.5em]
+\item 分点：$-\sqrt3,-1,0,1,\sqrt3$；奇函数，\textbf{三个拐点}。
+\item 渐近线：水平 $y=0$ \textbf{两端}；$y/x=\ee^{-x^2/2}\to0$，无斜。
+\item 极值：$x=-1$ 极小 $-\ee^{-1/2}$、$x=1$ 极大 $\ee^{-1/2}$。
+\item 作图：标原点、两极值点、三拐点与两端水平渐近线。
+\end{itemize}
+
+\begin{center}
+\footnotesize\setlength{\tabcolsep}{1.5pt}
+\begin{tabular}{@{}c|ccccccccccc@{}}
+$x$ & $(-\infty,-\sqrt3)$ & $-\sqrt3$ & $(-\sqrt3,-1)$ & $-1$ & $(-1,0)$ & $0$ & $(0,1)$ & $1$ & $(1,\sqrt3)$ & $\sqrt3$ & $(\sqrt3,+\infty)$ \\
+\hline
+$y'$ & $-$ & $-$ & $-$ & $0$ & $+$ & $+$ & $+$ & $0$ & $-$ & $-$ & $-$ \\
+$y$ & $\searrow$ & 拐点 & $\searrow$ & 极小 & $\nearrow$ & 拐点 & $\nearrow$ & 极大 & $\searrow$ & 拐点 & $\searrow$ \\
+$y''$ & $-$ & $0$ & $+$ & $+$ & $+$ & $0$ & $-$ & $-$ & $-$ & $0$ & $+$ \\
+凹凸 & 凸 & 拐点 & 凹 & 凹 & 凹 & 拐点 & 凸 & 凸 & 凸 & 拐点 & 凹 \\
+\end{tabular}
+\end{center}
+
+\begin{warnbox}[验收线]
+两题合计 $\ge 18/24$ 且\textbf{两题列表各不少于 5 行}为达标。未达标按错因回炉：漏一端渐近线 $\to$ 例 2；把 $x=-1$ 当拐点 $\to$ L1；漏不可导点 $\to$ 笔记 \S 0 第 5 条。
+\end{warnbox}
+
+\section{四套真题 Q17 速查（列表式）}
+
+\begin{center}
+\footnotesize\setlength{\tabcolsep}{3pt}
+\begin{tabular}{@{}p{2.0cm}p{3.5cm}p{4.5cm}p{5.0cm}@{}}
+\toprule
+卷 / 分值 & 函数 & 渐近线（两端都查） & 关键点 \\
+\midrule
+2021-22 p2 / 12 分 & $x^2-2x+\frac2{x-1}$ & 垂直 $x=1$；\textbf{无水平无斜}（$y/x\to\infty$） & 极小 $x=2,y=2$；拐点 $x=1-\sqrt[3]2$；附 $y',y''$ \\
+2022-23 p3 / 12 分 & $\sqrt[3]{\frac{x}{x-1}}$ & 垂直 $x=1$；水平 $y=1$ 两端 & \textbf{无驻点}；$x=0$ 是竖直切线 / 不可导点 \\
+2023-24 p4 / 10 分 & $\left(\frac{1+x}{1-x}\right)^4$ & 垂直 $x=1$；水平 $y=1$ 两端 & 附 $y',y''$；同卷 Q16 分段可导求 $a,b$ \\
+2009-10 p2 / 12 分 & $x\ee^{1/x}$ & 垂直 $x=0$ \textbf{仅右侧}；斜 $y=x+1$ 两端 & 驻点 $x=1$；$x=0$ 不可导 \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\noindent\textbf{四卷共通的列表分点规则}：先列无定义点，再列驻点，最后列拐点候选；2022-23 的 $x=0$ 属于「不可导点」，必须单列且\textbf{不能当驻点}。
+
+\section{十二条高频错误（清单）}
+
+\begin{enumerate}[label=\arabic*.,leftmargin=2em]
+\item 渐近线只算 $x\to+\infty$ 一端；
+\item 二次增长硬凑斜渐近线（$f/x\to\infty$ 时应判「无斜」）；
+\item 把函数值当成左右极限；
+\item 只找 $f'=0$，漏 $f'$ 不存在的点；
+\item 把竖直切线当驻点；
+\item $f''=0$ 直接判拐点（须左右变号，$x^4$ 反例）；
+\item 漏 $f''$ 不存在的拐点候选；
+\item 区间被无定义点切断却没分段列表；
+\item 列表少于 5 行或缺 $y''$ 符号行；
+\item 卷面给了 $y',y''$ 还回头重算；
+\item 图不标渐近线与坐标轴交点；
+\item 两端凹凸性不同却合并成一个区间。
+\end{enumerate}
+
+\noindent\textbf{错因到回炉}：漏一端渐近线 $\to$ 例 2、例 3；不可导点漏列 $\to$ 例 4、2022-23 Q17；列表写不全 $\to$ 按 \S 1 空白模板抄例 1 一遍；极值拐点混淆 $\to$ 例 6（$y'=0$ 但非极值）；时间超 25 分钟 $\to$ 只做例 1（附导数），练「从第 4 步开始」。
+
+\section{验收清单（闭卷打勾）}
+
+\begin{itemize}[label=$\square$,leftmargin=2em]
+\item 能默出七步，并说出第 6 步列表的固定五行；
+\item 两道题不看答案写全七步，列表各 $\ge 5$ 行；
+\item 渐近线两端都查，「无斜」写出 $f/x\to\infty$ 的理由；
+\item 不可导点在第 1 步单列，且没当驻点；
+\item 能默出四套 Q17 的渐近线结论；
+\item 单题 $\le 25$ 分钟，两题合计 $\ge 18/24$。
+\end{itemize}
+
+\vspace{0.6em}
+\noindent{\footnotesize 配套：\texttt{函数性态与作图\_题型专题.md}（默写卡 / 错因回炉）、\texttt{D-5\_作图七步与导数保温.md}（真题答案骨架）、\texttt{讲义\_函数性态与作图.pdf}（题面与限时卷原件）、\texttt{讲义\_薄弱点定向加练\_11-09.pdf} 的 M1 模块（作图 14 题）。七步权威出处为 \texttt{学习进度与复习方案.md} \S 5-D。}
+
+\end{document}
