@@ -42,6 +42,17 @@
 - **Blondel, V. D., Guillaume, J.-L., Lambiotte, R., & Lefebvre, E. (2008). Fast unfolding of communities in large networks.** *J. Stat. Mech.* P10008 — 入门，英文，Louvain 算法（Day63 对照方法，networkx 实现即此）（**仅在线**）状态：待读
 - **Traag, V. A., Waltman, L., & van Eck, N. J. (2019). From Louvain to Leiden.** *Scientific Reports* 9:5233 — 进阶，英文，Louvain 的连通性缺陷与 Leiden 修正（可开放获取，但本次未下载）（**仅在线**）状态：待读
 
+## 双层规划 / 主从决策（Level 4, 8）
+
+- **Bard, J. F., & Dempe, S. (2023). *Bilevel Optimization: Foundations and Recent Advances*.** arXiv:2303.00024 — 进阶，英文，**双层规划最完整的现代综述**：KKT 替换、值函数方法、罚函数、信赖域算法与「乐观/悲观」解的定义，Day72 的「下层必须重新 argmin」「写成加权多目标就退化成单层」两句结论的直接依据。**已下载**：`Downloads/Bard-Bilevel-Optimization-Foundations-and-Recent-Advances-2023.pdf`（2.0 MB，自检 `%PDF-` 头 + `%%EOF` 尾完整，页树 21 页）状态：在读
+- **Stackelberg, H. von (1934). *Marktform und Gleichgewicht*.** Springer — 进阶，德文，**主从博弈的原始文献**（市场形式与均衡），双层规划的思想起点（**仅在线**，书籍，无稳定电子版）状态：待读
+- **Candler, W., & Townsley, R. (1982). A linear two-level programming problem.** *Computers & Operations Research* 9(1):59–76 — 进阶，英文，最早把双层线性规划写成可解形式的论文之一，「下层最优解不唯一时上层怎么办」的问题从这篇开始（Elsevier，付费）（**仅在线**）状态：待读
+- **Dempe, S. (2002). *Foundations of Bilevel Programming*.** Kluwer — 进阶，英文，双层规划的系统教材（KKT 替换的适用条件与反例）（**仅在线**，书籍）状态：待读
+- **Colson, B., Marcotte, P., & Savard, G. (2007). An overview of bilevel optimization.** *Annals of Operations Research* 153:235–256 — 入门，英文，**最适合第一次读双层规划的综述**（分类清楚、算法清单短小）（Springer，付费）（**仅在线**）状态：待读
+
+> ⚠️ 说明：2026-11-09 备课时宿主外网出口极慢（arXiv 首次 25 s 超时 375 KB、续传 90 s 拿 1.49 MB，第三次 `-C -` 续传才拿全 2.0 MB），
+> 只成功下载 Bard–Dempe 2023 一篇；Stackelberg 1934 / Candler–Townsley 1982 / Dempe 2002 / Colson 2007 **均仅在线**，如实登记。
+
 ## 元启发式 / 调度（Level 5–6）
 
 - **Glover, F. (1986). Future paths for integer programming and links to artificial intelligence.** *Computers & Operations Research* 13(5):533–549；及 Glover (1989/1990) Tabu Search 系列（*ORSA Journal on Computing*） — 进阶，英文，**禁忌搜索（Tabu Search）的奠基论文**，是 Day42 理论的直接来源（Elsevier/INFORMS，付费/需机构访问）（**仅在线**）状态：待读

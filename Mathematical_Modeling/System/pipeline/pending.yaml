@@ -1,8 +1,8 @@
 version: 1
-updated: 2026-11-07
+updated: 2026-11-09
 items:
   - dir: 2026-W45_math_g-001
-    status: approved
+    status: failed
     gap: G-001
     created: 2026-11-07T21:35:26+0800
     approved_at: 2026-11-07T21:35:40+0800
