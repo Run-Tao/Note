@@ -1,0 +1,24 @@
+{
+  "checked_at": "2026-11-10T06:00:00+0800",
+  "runs_total": 7,
+  "verified": 7,
+  "running": 0,
+  "failed": 0,
+  "disk_used_pct": 42.2,
+  "mem_available_pct": 40.7,
+  "warnings": [],
+  "info": [
+    "experiments/2026-W45_math_g-001 骨架待补全（跳过证据检查）",
+    "experiments/2026-W45_paper_g-002 骨架待补全（跳过证据检查）",
+    "experiments/2026-W45_prediction_lr_arima 证据齐备",
+    "experiments/2026-W46_evaluation_ahp_ewm 证据齐备",
+    "experiments/2026-W46_optimization_lp_ilp 证据齐备",
+    "benchmarks/2026-11_B1_coldchain 证据齐备",
+    "2026-W46_evaluation_ahp_ewm: 数据来源已标注（模拟/合成）",
+    "2026-W45_math_g-001: 数据来源已标注（真实）",
+    "2026-W46_optimization_lp_ilp: 数据来源已标注（模拟/合成）",
+    "2026-W45_prediction_lr_arima: 数据来源已标注（真实）",
+    "solver_output: 数据来源已标注（模拟/合成）"
+  ],
+  "status": "healthy"
+}
