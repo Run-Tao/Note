@@ -1,0 +1,181 @@
+\documentclass[11pt,UTF8]{ctexart}
+\usepackage[color]{tlnote}
+\usepackage{needspace}
+
+\begin{document}
+
+\noindent{\LARGE\bfseries 泰勒展开全表}\hfill{\small 高数 I 期中 · 考前速查}
+
+\noindent{\small\color{gray} 交大 2008--2025 十七套命题范围内的全部常见展开 \quad$\mid$\quad 2026-11-11 用}
+
+\vspace{2pt}\hrule\vspace{8pt}
+
+\noindent{\footnotesize 本表所有系数由 \texttt{sympy} 独立展开逐项比对生成（\textbf{45 项 PASS / 0 FAIL}），脚本 \texttt{Source/\_build\_taylor\_full.py}。展开式本身不会写错，犯错的永远是「展到几阶」和「忘乘 $n!$」。}
+
+\noindent{\footnotesize\color{gray} 用法：先背 §2 九个核心；考场上遇到不认识的函数，回 §3--§5 找「能不能套」；要 $f^{(n)}(0)$ 直接查 §7，不要逐阶求导。本表独立 PDF，不改任何既有包绝对页码。}
+
+\section{四条铁律}
+
+\begin{keypoint}[展到几阶、用哪种余项、怎么反求]
+\begin{enumerate}[leftmargin=1.7em,itemsep=3pt]
+\item \textbf{展到几阶：看分母的最低次。} 分母是 $x^{3}$ 就展到 $x^{3}$，分母是 $x^{4}$ 就展到 $x^{4}$；若分子展开后低次项\textbf{抵消}，要展到「抵消后剩下的最低次」为止——这是最常错的一步。
+\item \textbf{两种余项分工。} \textbf{Peano} $o((x-x_0)^n)$ 只用于\textbf{求极限}（保证阶数够就行）；\textbf{Lagrange} $\dfrac{f^{(n+1)}(\xi)}{(n+1)!}(x-x_0)^{n+1}$ 用于\textbf{证不等式、估误差}（要定号）。
+\item \textbf{系数反求。} $f^{(n)}(0)=n!\,[x^{n}]$ —— 括号里的系数乘上 $n!$ 才是导数值，漏乘 $n!$ 是填空最典型的失分点。
+\item \textbf{复合代入。} 把内层\textbf{整体}代进外层，只保留到需要的阶；内层是偶函数（如 $x^{2}$、$\cos x$）时，外层只出偶次项，能省一半计算。
+\end{enumerate}
+\end{keypoint}
+
+\section{\texorpdfstring{核心九个（必背，$x\to0$）}{核心九个（必背，x 趋于 0）}}
+
+\begin{center}
+\renewcommand{\arraystretch}{1.32}
+\begin{tabular}{@{}l@{\hspace{10pt}}l@{}}
+\toprule
+\textbf{展开式} & \textbf{成立范围} \\
+\midrule
+$\ee^{x}=1+x+\frac{1}{2}x^{2}+\frac{1}{6}x^{3}+\frac{1}{24}x^{4}+\frac{1}{120}x^{5}+\cdots$ & {\footnotesize $x\in\R$} \\
+$\sin x=x-\frac{1}{6}x^{3}+\frac{1}{120}x^{5}-\frac{1}{5040}x^{7}+\cdots$ & {\footnotesize $x\in\R$} \\
+$\cos x=1-\frac{1}{2}x^{2}+\frac{1}{24}x^{4}-\frac{1}{720}x^{6}+\cdots$ & {\footnotesize $x\in\R$} \\
+$\tan x=x+\frac{1}{3}x^{3}+\frac{2}{15}x^{5}+\frac{17}{315}x^{7}+\cdots$ & {\footnotesize $\abs{x}<\frac{\pi}{2}$} \\
+$\arcsin x=x+\frac{1}{6}x^{3}+\frac{3}{40}x^{5}+\frac{5}{112}x^{7}+\cdots$ & {\footnotesize $\abs{x}<1$} \\
+$\arctan x=x-\frac{1}{3}x^{3}+\frac{1}{5}x^{5}-\frac{1}{7}x^{7}+\frac{1}{9}x^{9}+\cdots$ & {\footnotesize $\abs{x}\le1$} \\
+$\ln(1+x)=x-\frac{1}{2}x^{2}+\frac{1}{3}x^{3}-\frac{1}{4}x^{4}+\frac{1}{5}x^{5}+\cdots$ & {\footnotesize $-1<x\le1$} \\
+$\ln(1-x)=-x-\frac{1}{2}x^{2}-\frac{1}{3}x^{3}-\frac{1}{4}x^{4}-\frac{1}{5}x^{5}+\cdots$ & {\footnotesize $-1\le x<1$} \\
+$\frac{1}{1-x}=1+x+x^{2}+x^{3}+x^{4}+\cdots$ & {\footnotesize $\abs{x}<1$} \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\needspace{6\baselineskip}
+\section{\texorpdfstring{幂函数族（把 $\alpha$ 代进去）}{幂函数族（把 alpha 代进去）}}
+
+\noindent{\footnotesize 幂函数通式：$(1+x)^{\alpha}=1+\alpha x+\dfrac{\alpha(\alpha-1)}{2!}x^{2}+\dfrac{\alpha(\alpha-1)(\alpha-2)}{3!}x^{3}+\cdots\ (\abs{x}<1)$，$\alpha$ 为任意实数；系数就是「下降阶乘除以阶乘」，即 $\mathrm{C}_{\alpha}^{n}$。下面八个都是它的特例。}
+
+\noindent{\footnotesize 考场上直接调用，不必重推；注意 $\dfrac{1}{1+x^{2}}$ 只有偶次项（它是 $\arctan x$ 的导数）。}
+
+\begin{center}
+\renewcommand{\arraystretch}{1.32}
+\begin{tabular}{@{}l@{\hspace{10pt}}l@{}}
+\toprule
+\textbf{展开式} & \textbf{成立范围} \\
+\midrule
+$\frac{1}{1+x}=1-x+x^{2}-x^{3}+x^{4}+\cdots$ & {\footnotesize $\abs{x}<1$} \\
+$\frac{1}{(1+x)^{2}}=1-2x+3x^{2}-4x^{3}+5x^{4}+\cdots$ & {\footnotesize $\abs{x}<1$} \\
+$\frac{1}{(1-x)^{2}}=1+2x+3x^{2}+4x^{3}+5x^{4}+\cdots$ & {\footnotesize $\abs{x}<1$} \\
+$\sqrt{1+x}=1+\frac{1}{2}x-\frac{1}{8}x^{2}+\frac{1}{16}x^{3}-\frac{5}{128}x^{4}+\cdots$ & {\footnotesize $\abs{x}\le1$} \\
+$\frac{1}{\sqrt{1+x}}=1-\frac{1}{2}x+\frac{3}{8}x^{2}-\frac{5}{16}x^{3}+\frac{35}{128}x^{4}+\cdots$ & {\footnotesize $-1<x\le1$} \\
+$\sqrt[3]{1+x}=1+\frac{1}{3}x-\frac{1}{9}x^{2}+\frac{5}{81}x^{3}-\frac{10}{243}x^{4}+\cdots$ & {\footnotesize $\abs{x}<1$} \\
+$\frac{1}{1+x^{2}}=1-x^{2}+x^{4}-x^{6}+\cdots$ & {\footnotesize $\abs{x}\le1$} \\
+$\frac{1}{\sqrt{1-x}}=1+\frac{1}{2}x+\frac{3}{8}x^{2}+\frac{5}{16}x^{3}+\cdots$ & {\footnotesize $\abs{x}<1$} \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\section{指数、对数与双曲}
+
+\noindent{\footnotesize $a^{x}=\ee^{x\ln a}$，把 $x\ln a$ 当成整体代进 $\ee^{u}$ 即可；$\log_{a}(1+x)=\dfrac{1}{\ln a}\ln(1+x)$。双曲函数与 $\sin/\cos$ 只差符号：$\sinh$ 全是正号，$\cosh$ 与 $\cos$ 相同，$\tanh$ 与 $\tan$ 交错符号。}
+
+\begin{center}
+\renewcommand{\arraystretch}{1.32}
+\begin{tabular}{@{}l@{\hspace{10pt}}l@{}}
+\toprule
+\textbf{展开式} & \textbf{成立范围} \\
+\midrule
+$2^{x}=1+\ln2\,x+\frac{\ln^{2}2}{2}x^{2}+\frac{\ln^{3}2}{6}x^{3}+\cdots$ & {\footnotesize $x\in\R$} \\
+$\lg(1+x)=\frac{1}{\ln10}\left(x-\frac{x^{2}}{2}+\frac{x^{3}}{3}-\cdots\right)$ & {\footnotesize $-1<x\le1$} \\
+$\sinh x=x+\frac{1}{6}x^{3}+\frac{1}{120}x^{5}+\frac{1}{5040}x^{7}+\cdots$ & {\footnotesize $x\in\R$} \\
+$\cosh x=1+\frac{1}{2}x^{2}+\frac{1}{24}x^{4}+\frac{1}{720}x^{6}+\cdots$ & {\footnotesize $x\in\R$} \\
+$\tanh x=x-\frac{1}{3}x^{3}+\frac{2}{15}x^{5}-\frac{17}{315}x^{7}+\cdots$ & {\footnotesize $\abs{x}<\frac{\pi}{2}$} \\
+$\arsinh x=x-\frac{1}{6}x^{3}+\frac{3}{40}x^{5}-\frac{5}{112}x^{7}+\cdots$ & {\footnotesize $\abs{x}\le1$} \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\needspace{8\baselineskip}
+\section{复合代入型（考场直接代，不必重推）}
+
+\noindent{\footnotesize 做法固定：把内层展开\textbf{整体}代入外层展开式，再按 $x$ 的幂次合并、只留到够用的阶。下面九个是十七套真题里出现过或可直接套用的组合，背下来能省 3--5 分钟。}
+
+\begin{center}
+\renewcommand{\arraystretch}{1.32}
+\begin{tabular}{@{}l@{\hspace{10pt}}l@{}}
+\toprule
+\textbf{展开式} & \textbf{成立范围} \\
+\midrule
+$\ee^{-x^{2}}=1-x^{2}+\frac{1}{2}x^{4}-\frac{1}{6}x^{6}+\cdots$ & {\footnotesize $x\in\R$} \\
+$\ee^{\sin x}=1+x+\frac{1}{2}x^{2}-\frac{1}{8}x^{4}-\frac{1}{15}x^{5}-\frac{1}{240}x^{6}+\cdots$ & {\footnotesize $x\in\R$} \\
+$\sin(x^{2})=x^{2}-\frac{1}{6}x^{6}+\cdots$ & {\footnotesize $x\in\R$} \\
+$\ln(1+x^{2})=x^{2}-\frac{1}{2}x^{4}+\frac{1}{3}x^{6}+\cdots$ & {\footnotesize $\abs{x}\le1$} \\
+$\sqrt{1+x^{2}}=1+\frac{1}{2}x^{2}-\frac{1}{8}x^{4}+\frac{1}{16}x^{6}+\cdots$ & {\footnotesize $\abs{x}\le1$} \\
+$\frac{\sin x}{x}=1-\frac{1}{6}x^{2}+\frac{1}{120}x^{4}-\frac{1}{5040}x^{6}+\cdots$ & {\footnotesize $x\ne0$} \\
+$\tan x-\sin x=\frac{1}{2}x^{3}+\frac{1}{8}x^{5}+\frac{13}{240}x^{7}+\cdots$ & {\footnotesize $\abs{x}<\frac{\pi}{2}$} \\
+$\arcsin x-\arctan x=\frac{1}{2}x^{3}-\frac{1}{8}x^{5}+\frac{3}{16}x^{7}+\cdots$ & {\footnotesize $\abs{x}<1$} \\
+$\frac{x}{1-x^{2}}=x+x^{3}+x^{5}+x^{7}+\cdots$ & {\footnotesize $\abs{x}<1$} \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\noindent{\footnotesize 其中两行是「等价无穷小的精确版」：$\tan x-\sin x\sim\dfrac{x^{3}}{2}$、$\arcsin x-\arctan x\sim\dfrac{x^{3}}{2}$，遇到 $\dfrac{\tan x-\sin x}{x^{3}}$ 型极限可直接写答案 $=\dfrac{1}{2}$。}
+
+\section{\texorpdfstring{$x_0\ne0$ 的泰勒（换元退回麦克劳林）}{非零展开点的泰勒（换元退回麦克劳林）}}
+
+\noindent{\footnotesize 看到 $x\to1$、$x\to4$ 就先令 $t=x-x_0$，把函数写成 $t$ 的函数再展开；答案里的 $t$ 再换回 $(x-x_0)$。\textbf{切记每一项都是 $(x-x_0)$ 的幂，不是 $x$ 的幂。}}
+
+\begin{center}
+\renewcommand{\arraystretch}{1.32}
+\begin{tabular}{@{}l@{\hspace{10pt}}l@{}}
+\toprule
+\textbf{展开式} & \textbf{成立范围} \\
+\midrule
+$\ee^{x}=\ee\left[1+(x-1)+\frac{(x-1)^{2}}{2}+\frac{(x-1)^{3}}{6}+\cdots\right]$ & {\footnotesize $x\in\R$} \\
+$\ln x=(x-1)-\frac{1}{2}(x-1)^{2}+\frac{1}{3}(x-1)^{3}-\frac{1}{4}(x-1)^{4}+\cdots$ & {\footnotesize $0<x\le2$} \\
+$\sqrt{x}=2+\frac{1}{4}(x-4)-\frac{1}{64}(x-4)^{2}+\frac{1}{512}(x-4)^{3}+\cdots$ & {\footnotesize $x>0$} \\
+$\frac{1}{x}=1-(x-1)+(x-1)^{2}-(x-1)^{3}+\cdots$ & {\footnotesize $0<x<2$} \\
+$\sin x=1-\frac{1}{2}\left(x-\frac{\pi}{2}\right)^{2}+\frac{1}{24}\left(x-\frac{\pi}{2}\right)^{4}+\cdots$ & {\footnotesize $x\in\R$} \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\noindent{\footnotesize 三种考法：① 直接给函数求展开（如上表）；② 给出 $f(x_0)$、$f^{\prime}(x_0)$、$f^{\prime\prime}(x_0)$ 反写展开式；③ 求 $\lim_{x\to x_0}$ 型极限，先令 $t=x-x_0$ 化成 $t\to0$。三种都只做一个动作：\textbf{换元}。}
+
+\needspace{9\baselineskip}
+\section{\texorpdfstring{反求 $f^{(n)}(0)$：八个直接查}{反求 f 的 n 阶导数：八个直接查}}
+
+\noindent{\footnotesize 方法只有一句：\textbf{先展开，再乘 $n!$}。下面每一行都已用 $\mathrm{d}^{n}f/\mathrm{d}x^{n}\big|_{x=0}$ 逐阶验过（$n\le7$）。}
+
+\begin{center}
+\renewcommand{\arraystretch}{1.35}
+\begin{tabular}{@{}p{2.5cm}p{6.9cm}p{4.6cm}@{}}
+\toprule
+\textbf{$f(x)$} & \textbf{$f^{(n)}(0)$} & \textbf{前三项} \\
+\midrule
+$x^{2}\ee^{x}$ & $n(n-1)$ & $x^{2}+x^{3}+\frac{x^{4}}{2}+\cdots$ \\[1pt]
+$\frac{1}{1-x}$ & $n!$ & $1+x+x^{2}+\cdots$ \\[1pt]
+$\ee^{-x^{2}}$ & $\begin{cases}\frac{(-1)^{n/2}\,n!}{(n/2)!}, & n\ \text{偶}\\[2pt] 0, & n\ \text{奇}\end{cases}$ & $1-x^{2}+\frac{x^{4}}{2}-\cdots$ \\[1pt]
+$\arctan x$ & $\begin{cases}(-1)^{(n-1)/2}(n-1)!, & n\ \text{奇}\\[2pt] 0, & n\ \text{偶}\end{cases}$ & $x-\frac{x^{3}}{3}+\frac{x^{5}}{5}-\cdots$ \\[1pt]
+$\frac{\sin x}{x}$ & $\begin{cases}\frac{(-1)^{n/2}}{n+1}, & n\ \text{偶}\\[2pt] 0, & n\ \text{奇}\end{cases}$ & $1-\frac{x^{2}}{6}+\frac{x^{4}}{120}-\cdots$ \\[1pt]
+$\frac{\ln(1+x)}{x}$ & $\frac{(-1)^{n}n!}{n+1}$ & $1-\frac{x}{2}+\frac{x^{2}}{3}-\cdots$ \\[1pt]
+$\cos\sqrt{x}$ & $\frac{(-1)^{n}n!}{(2n)!}$ & $1-\frac{x}{2}+\frac{x^{2}}{24}-\cdots$ \\[1pt]
+$\frac{x}{1-x^{2}}$ & $\begin{cases}n!, & n\ \text{奇}\\[2pt] 0, & n\ \text{偶}\end{cases}$ & $x+x^{3}+x^{5}+\cdots$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\noindent{\footnotesize $\cos\sqrt{x}$ 这行最易错：$x$ 的幂次是 $k$ 不是 $2k$，$[x^{n}]=\frac{(-1)^{n}}{(2n)!}$，乘 $n!$ 后分母仍是 $(2n)!$，别把 $n!$ 当成 $(2n)!$。}
+
+\section{六个陷阱}
+
+\begin{warnbox}[改卷时最常扣分的地方]
+\begin{enumerate}[leftmargin=1.7em,itemsep=2pt]
+\item \textbf{阶数不够。} $\lim_{x\to0}\frac{\sin x-x\cos x}{x^{3}}$：只展一阶（$\sin x\approx x$、$\cos x\approx1$）分子算得 $0$，误判极限为 $0$；实际要展到 $x^{3}$，$\sin x$ 与 $x\cos x$ 的 $x^{3}$ 项分别是 $-\frac{1}{6}$ 与 $-\frac{1}{2}$，相减得 $\frac{x^{3}}{3}$，故极限为 $\frac{1}{3}$。
+\item \textbf{漏乘 $n!$。} $[x^{5}]$ 是系数，$f^{(5)}(0)=5!\cdot[x^{5}]$。
+\item \textbf{非零 $x_0$ 忘换元。} $\ln x$ 在 $x=1$ 处展开，答案里必须是 $(x-1)$ 的幂；直接写 $x-\frac{x^{2}}{2}+\cdots$ 全错。
+\item \textbf{内层高次项没跟上。} $\sqrt{1+x^{2}}=1+\frac{x^{2}}{2}-\frac{x^{4}}{8}+\cdots$：一次项把 $x$ 换成 $x^{2}$ 恰好对；$x^{4}$ 项要按 $\alpha=\frac{1}{2}$ 的 $\frac{\alpha(\alpha-1)}{2}(x^{2})^{2}$ 算，得 $-\frac{x^{4}}{8}$，照抄 $\sqrt{1+x}$ 的 $+\frac{x^{2}}{8}$ 就会连符号一起错。
+\item \textbf{把收敛域当成成立条件。} 求极限时 $x\to0$，任何收敛域都成立；但「用泰勒估 $\ln2$」时必须确认 $x=1$ 在收敛域边界上是否可用（$\ln(1+x)$ 在 $x=1$ 收敛）。
+\item \textbf{只算不写。} 大题用泰勒必须先写「由带有 Peano 余项的泰勒公式」，再写展开式，最后取极限；只写结果不给分。
+\end{enumerate}
+\end{warnbox}
+
+\noindent{\footnotesize\color{gray} 配套：考前知识点清单 7 页（判据·默写自测）$\mid$ 精编本 22 页（讲解）$\mid$ 薄弱点网络题源 48 题 $\mid$ 合订本 370 页（查详解）。}
+
+\end{document}

@@ -1,0 +1,360 @@
+\documentclass[UTF8,11pt]{ctexart}
+\usepackage[color]{tlnote}
+\usepackage{needspace}
+
+\newcommand{\cb}{\raisebox{0.15ex}{\fbox{\rule{0pt}{1.05ex}\rule{1.05ex}{0pt}}}}
+
+\begin{document}
+
+\noindent{\LARGE\bfseries 高数 I 期中 $\cdot$ 考前知识点总清单}
+\vspace{2pt}
+
+\noindent{\small 2026-11-11（周三）$\mid$ 100 分 / 18 题 / 120 分钟 $\mid$ 依据 2008--2025 十七套交大 A 类真题逐卷核对}
+
+\vspace{4pt}
+\noindent{\footnotesize\color{gray} 本册只做一件事：把要背的定义、条件、公式、判据和陷阱压到一张表里。全部公式已用 sympy 逐条复核。\par
+\noindent{\footnotesize\color{gray} 系统讲解看精编本，题目看题源册；本册用于\textbf{通读 + 闭卷默写}，复核脚本在同目录 \texttt{Source/}。}}
+
+\vspace{6pt}
+\begin{keypoint}[怎么用（三句话）]
+\begin{enumerate}[leftmargin=1.6em,itemsep=1pt]
+\item 今晚（11/10）睡前通读第 1--6 页一遍，只标不熟项；\textbf{不做新题}。
+\item 明早进考场前只看最后一页：14 项默写自测，打勾即过，卡住的回对应小节。
+\item 考场上先花 60 秒把 §2.3「未定式决策表」和 §7.3「作图七步」默在草稿纸角上。
+\end{enumerate}
+\end{keypoint}
+
+\section{试卷骨架与时间分配}
+
+\begin{center}
+\renewcommand{\arraystretch}{1.2}
+\begin{tabular}{@{}p{1.6cm}p{3.6cm}p{1.8cm}p{1.9cm}p{5.9cm}@{}}
+\toprule
+\textbf{题位} & \textbf{题型} & \textbf{分值} & \textbf{建议用时} & \textbf{拿分动作} \\
+\midrule
+1--5 & 选择 & 15 & 12 min & 逐点分左右算；能代特殊值就代 \\
+6--10 & 填空 & 15 & 13 min & 微分题写完 $\D y$ 别只写导数 \\
+11 & 极限定义证明 & 8 & 10 min & 套三型模板，$\delta$/$X$ 显式给出 \\
+12--13 & 极限 + 导数计算 & 24--34 & 32 min & 判型 $\to$ 选工具 $\to$ 一步一验 \\
+14--15 & 应用（切线/最值/不等式） & 约 18 & 18 min & 先写定义域与目标函数 \\
+16 & 函数性态作图 & 10--12 & 22 min & 七步 + 两张表，图与表配套 \\
+17--18 & 压轴证明 & 8 & 8 min & 写得出几步写几步，构造不出就停 \\
+— & 检查 & — & 5 min & 只查符号、端点、定义域 \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\noindent{\footnotesize 合计 120 min。选择填空超 30 min 必须弃题前进；作图 22 min 是硬预算，它每年 10--12 分且套路固定。}
+
+\begin{center}
+\footnotesize
+\renewcommand{\arraystretch}{1.1}
+\begin{tabular}{@{}p{3.8cm}p{2.3cm}p{4.3cm}p{4.3cm}@{}}
+\toprule
+\textbf{考点} & \textbf{频次} & \textbf{位置 / 分值} & \textbf{本册小节} \\
+\midrule
+极限定义证明 & \textbf{17/17} & 第 11 题，8 & §2.1 \\
+函数性态作图 & 约 16/17 & 倒数第二题，10--12 & §7.3 \\
+导数计算块 & 16 $\to$ 20 分 & 大题 & §4.2--4.4 \\
+泰勒 / $f^{(n)}(0)$ & 2023 起稳定 & 大题，8 分 & §6 \\
+间断点分类 & 10/17 & 选择 / 填空，3 & §3.2 \\
+微分 $\D y$ & 近 4 年连出 & 填空 7/8，3 & §4.4 \\
+Leibniz 高阶导 & 每年 & 填空 9/10，3 & §4.2 \\
+数列极限 / 夹逼 & 6/10、5/10 & 选择 / 填空 & §8 \\
+中值定理压轴 & 多数年份 & 最后一题，8 & §5 \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\section{极限}
+
+\subsection{三型量词行：只记骨架}
+
+\begin{center}
+\renewcommand{\arraystretch}{1.25}
+\begin{tabular}{@{}p{2.5cm}p{6.0cm}p{6.2cm}@{}}
+\toprule
+\textbf{型} & \textbf{必须写出的开头} & \textbf{收尾必须出现} \\
+\midrule
+$\eps$-$\delta$ & 任给 $\eps>0$，取 $\delta=\min\{\delta_1,\ \eps/G\}$ & 当 $0<\abs{x-x_0}<\delta$ 时 $\abs{f(x)-A}<\eps$ \\
+$\eps$-$X$ & 任给 $\eps>0$，取 $X=\max\{x_1,\ h(\eps)\}$ & 当 $\abs{x}>X$（或 $x>X$）时 $\abs{f(x)-A}<\eps$ \\
+$M$ 型 & 任给 $M>0$，取 $\delta=g(M)^{-1}$ & 当 $0<\abs{x-x_0}<\delta$ 时 $f(x)>M$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\noindent{\footnotesize 三步法：先定 $\delta_1$（如 $1$ 或 $\abs{x_0}/2$）把放大因子压成常数 $G$，再取 $\delta=\min\{\delta_1,\eps/G\}$。$\delta$ 里\textbf{不许含 $x$}；$M$ 型不许用「任意小 $\eps$」。证极限不存在：给定 $\eps_0$，构造两列点极限不同。}
+
+\noindent{\footnotesize 轮换分布：$\eps$-$\delta$ 8 套、$\eps$-$X$ 6 套、$M$ 型 3 套（2009-10、2015-16、2024-25）。三种都要会写，别只练 $x\to0$。}
+
+\subsection{\texorpdfstring{等价无穷小表（$x\to0$）}{等价无穷小表（x 趋于 0）}}
+
+\begin{center}
+\renewcommand{\arraystretch}{1.3}
+\begin{tabular}{@{}llll@{}}
+\toprule
+$\sin x\sim x$ & $\tan x\sim x$ & $\arcsin x\sim x$ & $\arctan x\sim x$ \\
+$1-\cos x\sim \dfrac{x^2}{2}$ & $\ln(1+x)\sim x$ & $\ee^x-1\sim x$ & $a^x-1\sim x\ln a$ \\
+$(1+x)^\alpha-1\sim \alpha x$ & $x-\sin x\sim \dfrac{x^3}{6}$ & $\tan x-x\sim \dfrac{x^3}{3}$ & $\tan x-\sin x\sim \dfrac{x^3}{2}$ \\
+$x-\ln(1+x)\sim \dfrac{x^2}{2}$ & $\arcsin x-x\sim \dfrac{x^3}{6}$ & $x-\arctan x\sim \dfrac{x^3}{3}$ & $\ee^x-1-x\sim \dfrac{x^2}{2}$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\begin{warnbox}[换的边界]
+等价无穷小\textbf{只在乘除因子中整体替换}。加减结构必须先把各项展到\textbf{同一非零阶}再合并；主部相消说明阶不够，退回去加一阶（这是考场上第一大失分点）。
+\end{warnbox}
+
+\subsection{未定式决策表}
+
+\begin{center}
+\renewcommand{\arraystretch}{1.2}
+\begin{tabular}{@{}p{3.0cm}p{5.0cm}p{7.0cm}@{}}
+\toprule
+\textbf{型} & \textbf{首选} & \textbf{前提 / 陷阱} \\
+\midrule
+$\frac00,\ \frac{\infty}{\infty}$ & 等价无穷小 $\to$ 洛必达 $\to$ 泰勒 & 洛必达三条件：$\frac00$ 或 $\frac{\infty}{\infty}$、导数比极限\textbf{存在或为 $\infty$}、邻域内 $g'\ne0$ \\
+$0\cdot\infty$ & 下放一项成 $\frac00$ 或 $\frac{\infty}{\infty}$ & 选「求导后变简单」的那一项下放 \\
+$\infty-\infty$ & 通分 / 有理化 / 提最高阶 & 根式差先有理化；不要对两项分别取等价 \\
+$1^\infty,0^0,\infty^0$ & 取对数 $u^v=\ee^{v\ln u}$ & 捷径 $u^v\to\ee^{\lim v(u-1)}$ 只在 $v(u-1)^2\to0$ 时成立 \\
+和式 / 数列 & 夹逼、裂项、定积分定义 & $\frac1n\sum\ln\frac{k}{n}\to\int_0^1\ln x\,\D x=-1$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\noindent{\footnotesize 两个重要极限：$\lim_{x\to0}\frac{\sin x}{x}=1$，$\lim_{x\to\infty}(1+\frac1x)^x=\ee$（推广：$\lim(1+u)^{1/u}=\ee$，$u\to0$）。存在准则：夹逼、单调有界（数列）、左右极限相等（$x\to x_0$）。}
+
+\needspace{4\baselineskip}
+\section{连续与间断}
+\subsection{连续性}
+
+\noindent{\footnotesize $f$ 在 $x_0$ 连续 $\iff \lim_{x\to x_0}f(x)=f(x_0)$ $\iff$ 左极限 $=$ 右极限 $=f(x_0)$。闭区间连续三定理：有界性、最值性、介值（零点）定理 —— 压轴题常靠「介值 + 单调」证唯一根。}
+
+\subsection{间断点四类判据}
+
+\begin{center}
+\renewcommand{\arraystretch}{1.2}
+\begin{tabular}{@{}p{2.4cm}p{5.3cm}p{7.3cm}@{}}
+\toprule
+\textbf{类型} & \textbf{判据} & \textbf{典型函数与考点} \\
+\midrule
+可去（一类） & 左右极限存在且相等，但 $\ne f(x_0)$ 或无定义 & $\frac{\sin x}{x}$ 在 $0$；补定义即连续 \\
+跳跃（一类） & 左右极限都存在但\textbf{不等} & $\arctan\frac1x$ 在 $0$（$-\frac\pi2$ / $\frac\pi2$）、$[x]$、$\sgn x$ \\
+无穷（二类） & 至少一侧极限为 $\infty$ & $\frac1x$、$\ee^{1/x}$（右 $\infty$ 左 $0$）\\
+振荡（二类） & 极限不存在且不趋于 $\infty$ & $\sin\frac1x$ 在 $0$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\begin{warnbox}[找间断点四步]
+① 找\textbf{无定义点}（分母零点、$\ln$ 的 $0$、根号负数）$\to$ ② 找\textbf{分段点}（易漏）$\to$ ③ 每点\textbf{分左右}算极限 $\to$ ④ 按表判型。$\arctan\frac1x$、$\ee^{1/x}$、$\frac{\abs{x}}{x}$ 必须分左右，只算一侧必错。
+\end{warnbox}
+
+\section{导数与微分}
+
+\subsection{定义与可导性}
+
+\noindent{\footnotesize $f'(x_0)=\lim_{\Delta x\to0}\frac{f(x_0+\Delta x)-f(x_0)}{\Delta x}$（三种等价写法：$\Delta x$、$h$、$x\to x_0$ 形式）。\textbf{可导 $\Rightarrow$ 连续，反之不成立}（$\abs{x}$ 在 $0$）。分段点、$\abs{\cdot}$、$\max/\min$ 的尖点，一律\textbf{用定义}求，不许代公式。}
+
+\subsection{六型求导要点}
+
+\begin{center}
+\renewcommand{\arraystretch}{1.2}
+\begin{tabular}{@{}p{2.2cm}p{6.9cm}p{5.8cm}@{}}
+\toprule
+\textbf{型} & \textbf{核心式子} & \textbf{陷阱} \\
+\midrule
+复合 & 链式逐层，别漏内层 & 展开阶数/系数漏乘内层导数 \\
+隐函数 & 两边对 $x$ 求导，$y$ 视为 $y(x)$ & 二阶导\textbf{必须代回}一阶结果，不留 $y'$ \\
+参数方程 & $\dfrac{\D y}{\D x}=\dfrac{y'_t}{x'_t}$；$\dfrac{\D^2y}{\D x^2}=\dfrac{y''_tx'_t-y'_tx''_t}{(x'_t)^3}$ & 二阶导\textbf{再除一次} $x'_t$（漏除是高频错） \\
+对数求导 & 取 $\ln$ 后求导 & 幂指函数 $u^v$、多因子连乘 \\
+高阶 & Leibniz：$(uv)^{(n)}=\sum_{k=0}^{n}\mathrm{C}_n^k\,u^{(k)}v^{(n-k)}$ & 只留不消失项（$u=x^2$ 时 $k\le2$）\\
+反函数 & $\dfrac{\D x}{\D y}=\dfrac{1}{y'}$；$\dfrac{\D^2x}{\D y^2}=-\dfrac{y''}{(y')^3}$ & 求完把点换回 $y$ 的表达 \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\noindent{\footnotesize 例（填空常考）：$(x^2\ee^x)^{(n)}=\ee^x[x^2+2nx+n(n-1)]$，已验 $n=1,2,3,5$。}
+
+\subsection{参数方程与极坐标切线}
+
+\noindent{\footnotesize 极坐标 $r=r(\theta)$ 看成参数方程 $x=r\cos\theta,\ y=r\sin\theta$，于是
+\[
+\frac{\D y}{\D x}=\frac{r'\sin\theta+r\cos\theta}{r'\cos\theta-r\sin\theta}.
+\]
+考点三连：① 求某 $\theta_0$ 处斜率；② 求\textbf{水平/竖直}切线（分别令分子 $=0$、分母 $=0$）；③ 切线方程写成 $y-y_0=k(x-x_0)$。\textbf{必写 $\theta$ 的取值范围}（如 $0\le\theta\le2\pi$），漏范围扣分。}
+
+\subsection{微分}
+
+\noindent{\footnotesize $\D y=f'(x)\D x$，$\left.\D y\right|_{x_0}=f'(x_0)\D x$。一阶微分形式不变性：无论 $x$ 是自变量还是中间变量，$\D y=f'(u)\D u$ 都成立（二阶不具备）。填空若问「微分」而只写了导数，0 分。}
+
+\section{中值定理}
+
+\begin{center}
+\renewcommand{\arraystretch}{1.2}
+\begin{tabular}{@{}p{2.2cm}p{5.3cm}p{7.3cm}@{}}
+\toprule
+\textbf{定理} & \textbf{条件（缺一不可）} & \textbf{结论 / 用途} \\
+\midrule
+Fermat & 内部点取极值且可导 & $f'(\xi)=0$（为 Rolle 铺垫）\\
+Rolle & $[a,b]$ 连续、$(a,b)$ 可导、$f(a)=f(b)$ & $\exists\xi,\ f'(\xi)=0$；证根的存在/唯一 \\
+Lagrange & 连续 + 可导 & $f(b)-f(a)=f'(\xi)(b-a)$；证不等式、估界 \\
+Cauchy & 两函数连续可导，$g'\ne0$ & $\dfrac{f(b)-f(a)}{g(b)-g(a)}=\dfrac{f'(\xi)}{g'(\xi)}$；\textbf{不可}拆成两个 Lagrange \\
+Taylor & $n+1$ 阶可导 & $f(x)=\sum\frac{f^{(k)}(x_0)}{k!}(x-x_0)^k+R_n$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\noindent{\footnotesize 辅助函数构造表：结论含 $f'+\lambda f$ $\to$ 乘 $\ee^{\lambda x}$；含 $f'-k$ $\to$ $f(x)-kx$；含 $\xi f'+f$ $\to$ $xf(x)$；含 $\frac{f'g-fg'}{g^2}$ $\to$ $\frac{f}{g}$；要两次 Rolle $\to$ 先造 $F$ 使 $F(a)=F(b)$，再说明两个区间不重叠。}
+
+\section{泰勒公式}
+
+\noindent{\footnotesize 两种余项分工明确：\textbf{Peano} $o((x-x_0)^n)$ 用于\textbf{求极限}（只需展开到够用的阶）；\textbf{Lagrange} $\frac{f^{(n+1)}(\xi)}{(n+1)!}(x-x_0)^{n+1}$ 用于\textbf{证明与误差估计}。系数反求：$f^{(n)}(0)=n!\,[x^n]$，别忘乘 $n!$。}
+
+\begin{center}
+\renewcommand{\arraystretch}{1.3}
+\begin{tabular}{@{}ll@{}}
+\toprule
+$\ee^x=1+x+\dfrac{x^2}{2}+\dfrac{x^3}{6}+\dfrac{x^4}{24}+\dfrac{x^5}{120}+\cdots$ & $\sin x=x-\dfrac{x^3}{6}+\dfrac{x^5}{120}-\cdots$ \\
+$\cos x=1-\dfrac{x^2}{2}+\dfrac{x^4}{24}-\cdots$ & $\ln(1+x)=x-\dfrac{x^2}{2}+\dfrac{x^3}{3}-\dfrac{x^4}{4}+\cdots$ \\
+\multicolumn{2}{@{}l@{}}{$(1+x)^\alpha=1+\alpha x+\frac{\alpha(\alpha-1)}{2}x^2+\frac{\alpha(\alpha-1)(\alpha-2)}{6}x^3+\cdots$} \\
+$\arctan x=x-\dfrac{x^3}{3}+\dfrac{x^5}{5}-\cdots$ & $\dfrac{1}{1-x}=1+x+x^2+\cdots\ (\abs{x}<1)$ \\
+$\tan x=x+\dfrac{x^3}{3}+\dfrac{2x^5}{15}+\cdots$ & $\sqrt{1+x}=1+\frac{x}{2}-\frac{x^2}{8}+\frac{x^3}{16}-\cdots$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\noindent{\footnotesize 三条用法：① 求极限时「上下同阶」——分母 $x^3$ 就展到 $x^3$；② 求 $f^{(n)}(0)$ 用展开系数反求，比逐阶求导快；③ 证不等式用 Lagrange 余项定号。复合函数展开必须\textbf{代到内层}（如 $\ee^{x^2}$ 把 $x^2$ 整体代入）。}
+
+\section{导数应用}
+
+\subsection{单调、极值、凹凸、拐点}
+
+\begin{center}
+\renewcommand{\arraystretch}{1.2}
+\begin{tabular}{@{}p{2.6cm}p{6.0cm}p{6.2cm}@{}}
+\toprule
+\textbf{判据} & \textbf{条件} & \textbf{结论} \\
+\midrule
+单调 & $f'>0$（$<0$）于区间 & 严格增（减）；分界点即极值嫌疑点 \\
+极值① & $f'$ 在 $x_0$ 两侧\textbf{变号} & 左 $+$ 右 $-$ 为极大，反之极小 \\
+极值② & $f'(x_0)=0$ 且 $f''(x_0)\ne0$ & $f''<0$ 极大，$f''>0$ 极小（$=0$ 时失效）\\
+凹凸 & $f''>0$（$<0$） & 曲线下凸（凹向上）/ 上凸；切线在曲线下方 / 上方 \\
+拐点 & $f''$ 在 $x_0$ 两侧\textbf{变号}，且 $x_0$ 在定义域内 & 只是候选点：$f''=0$ 不变号则不是拐点 \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\subsection{渐近线四查}
+
+\noindent{\footnotesize ① 垂直：$\lim_{x\to x_0^\pm}f(x)=\infty$ $\Rightarrow$ $x=x_0$；② 水平：$\lim_{x\to+\infty}f(x)=b$ 与 $\lim_{x\to-\infty}f(x)=b$ \textbf{分别}算，可能一侧有一条另一侧没有；③ 斜：$k=\lim_{x\to\infty}\frac{f(x)}{x}$，$b=\lim_{x\to\infty}[f(x)-kx]$，两侧分别求（$k$ 不同则是两条）；④ 无渐近线也要写「无」，别空着。}
+
+\subsection{作图七步（22 min 硬预算）}
+
+\begin{center}
+\renewcommand{\arraystretch}{1.15}
+\begin{tabular}{@{}p{0.9cm}p{3.0cm}p{10.7cm}@{}}
+\toprule
+\textbf{步} & \textbf{动作} & \textbf{必须落到卷面} \\
+\midrule
+1 & 定义域 & 分母 $\ne0$、$\ln$ 内 $>0$、根号内 $\ge0$；写出区间 \\
+2 & 奇偶 / 周期 & 对称性可省一半工作，写一句结论 \\
+3 & 截距 & 令 $x=0$、$y=0$，写坐标 \\
+4 & $y'$ 与单调表 & 驻点、不可导点排序，\textbf{列表}写 $\nearrow/\searrow$ \\
+5 & $y''$ 与凹凸表 & 拐点候选、凹凸区间，\textbf{列表}写 $\smile/\frown$ \\
+6 & 渐近线 & 垂直 / 水平 / 斜，三类都查，数值写清 \\
+7 & 描图 & 标出极值点、拐点、渐近线，曲线过这些点 \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\begin{warnbox}[作图给分点]
+两张表（$y'$、$y''$）就是给分点，\textbf{表与图缺一不可}。常见扣分：漏定义域、把不在定义域的点标成拐点、水平渐近线只算一侧、图不过已求出的极值点。
+\end{warnbox}
+
+\subsection{最值与不等式}
+
+\noindent{\footnotesize 闭区间最值：比较\textbf{驻点 + 导数不存在点 + 两端点}的函数值，四类一个都不能漏。不等式证明三法：① 单调性（移项造 $F$，证 $F'\gtrless0$）；② 最值（证 $\min F\ge0$）；③ Lagrange / Taylor 余项（含 $\xi$ 的界）。}
+
+\section{数列极限四法}
+
+\begin{center}
+\renewcommand{\arraystretch}{1.2}
+\begin{tabular}{@{}p{2.6cm}p{5.6cm}p{6.4cm}@{}}
+\toprule
+\textbf{方法} & \textbf{适用信号} & \textbf{关键动作} \\
+\midrule
+夹逼 & 和式、$n$ 项和、含 $n!$ & 放大/缩小到同一极限；分母统一取最大最小 \\
+单调有界 & 递推 $a_{n+1}=f(a_n)$ & 归纳证单调（作差或作商）+ 有界，再令 $n\to\infty$ 解方程 \\
+压缩映射 & 邻项距离按固定比例收缩 & 先猜 $A$（不动点），再验 $\abs{a_{n+1}-A}\le q\abs{a_n-A}$，$0<q<1$ \\
+定积分定义 & $\frac1n\sum f(\frac{k}{n})$ & 化成 $\int_0^1f$；先提 $\frac1n$ 因子 \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\noindent{\footnotesize 递推数列必写「先证有界再证单调」（顺序反了不严谨）；用单调有界求出的极限必须\textbf{代回递推式验算}。抽象函数方程型压轴：先代特殊值（$x=y=0$、$y=-x$）提结构，再用连续性取极限。}
+
+\section{十五条高频错误（逐条自查）}
+
+\begin{enumerate}[leftmargin=1.8em,itemsep=1pt]
+\footnotesize
+\item 加减结构里逐项用等价无穷小，主部相消后得出 $0$。
+\item 洛必达不验 $\frac00/\frac{\infty}{\infty}$，或导数比极限不存在仍硬用。
+\item $1^\infty$ 把底数、指数分别取极限得到 $1$。
+\item $\delta(\eps)$ 里含 $x$，或放缩方向写反。
+\item $M$ 型用「任意小 $\eps$」而不是「任意大 $M$」。
+\item 找间断点只看分母零点，漏分段点；$\arctan\frac1x$、$\ee^{1/x}$ 不分左右。
+\item 分段点求导直接代公式，不用定义。
+\item 参数方程二阶导漏除 $x'(t)$；隐函数二阶导忘代回 $y'$。
+\item 泰勒展开阶数不够；复合展开漏内层高次项；$f^{(n)}(0)$ 忘乘 $n!$。
+\item Rolle 不验「闭连续 / 开可导 / 端点相等」；两次 Rolle 不说明区间不重叠。
+\item 闭区间最值漏端点或漏导数不存在的点。
+\item 作图不列表；把不在定义域的点标成拐点；水平渐近线只算一侧。
+\item 极坐标题不写 $\theta$ 范围；参数题不写 $t$ 范围。
+\item 求「微分」只写导数，漏 $\D x$。
+\item 不等式证明只写「显然」，不指明所用定理与区间。
+\end{enumerate}
+
+\vspace{2pt}
+\noindent{\footnotesize\raggedright\textbf{考场止损三条：}卡 5 分钟就走（选择 3 分钟先猜后标）$\mid$ 不会也写开头（量词行、作图七步表先落纸）$\mid$ 留 5 分钟只查三件事——符号（负号、$n!$、$\D x$）、端点（闭区间最值）、定义域。\par}
+
+\newpage
+\section*{附：闭卷默写自测（明早进考场前逐项打勾）}
+\addcontentsline{toc}{section}{附：闭卷默写自测}
+
+\noindent{\footnotesize 规则：合上本册，先在白纸写，写完再对照。14 项全过才算「保温完成」；任何一项卡住，回对应小节看 3 分钟，不重做整章。}
+
+\vspace{4pt}
+\begin{center}
+\renewcommand{\arraystretch}{1.55}
+\begin{tabular}{@{}p{0.7cm}p{9.6cm}p{2.6cm}p{1.6cm}@{}}
+\toprule
+ & \textbf{默写内容} & \textbf{对应} & \textbf{过} \\
+\midrule
+1 & $\eps$-$\delta$ 完整定义 + 取 $\delta=\min\{\delta_1,\eps/G\}$ 的两步法 & §2.1 & \cb \\
+2 & $\eps$-$X$ 与 $M$ 型各写一遍（含「任给」与「当……时」） & §2.1 & \cb \\
+3 & 等价无穷小 12 条（含 $x-\sin x$、$\tan x-x$、$x-\ln(1+x)$） & §2.2 & \cb \\
+4 & 七种未定式各写一个首选工具 & §2.3 & \cb \\
+5 & 间断点四类判据 + $\arctan\frac1x$ 在 $0$ 的左右极限 & §3.2 & \cb \\
+6 & 参数方程二阶导公式；极坐标斜率公式 & §4.2--4.3 & \cb \\
+7 & Leibniz 公式 + $(x^2\ee^x)^{(n)}$ 的结果 & §4.2 & \cb \\
+8 & $\D y=f'(x)\D x$ 与一阶形式不变性（一句话） & §4.4 & \cb \\
+9 & 四定理（Fermat / Rolle / Lagrange / Cauchy）条件 + 三种辅助函数构造 & §5 & \cb \\
+10 & 麦克劳林 8 个展开（写到 $x^5$ 或 $x^4$） & §6 & \cb \\
+11 & Peano 与 Lagrange 余项的分工；$f^{(n)}(0)=n![x^n]$ & §6 & \cb \\
+12 & 作图七步 + 三类渐近线的算法 & §7.2--7.3 & \cb \\
+13 & 闭区间最值要比较的四类点；不等式三法 & §7.4 & \cb \\
+14 & 数列极限四法各一句适用信号 & §8 & \cb \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\vspace{6pt}
+\begin{keypoint}[11/11 当天时间线]
+06:50 起床 $\to$ 07:10--07:40 只看本页默写 $\to$ 07:40--08:10 早餐（不碰新题）$\to$ 考前 20 min 把 §2.3 决策表与 §7.3 七步默到草稿纸 $\to$ 进场。\textbf{全程不做新题}：今天做题只会增加焦虑，不会增加分数。
+\end{keypoint}
+
+\vspace{4pt}
+\noindent{\footnotesize\color{gray} 材料入口：本册（知识点）$\mid$ 精编本 22 页（讲解 + 151 题）$\mid$ 分享版 31 页 $\mid$ 作图列表式 5 页 $\mid$ 定向加练 84 题 $\mid$ 网络题源 48 题 $\mid$ 合订本 370 页（仅查详解）。本册独立 PDF，不改既有包页码；公式由 \texttt{\_verify\_review\_sheet.py} 复核（sympy 73 项全 PASS），频次取自《真题考点索引 2008--2025》。}
+
+\end{document}
