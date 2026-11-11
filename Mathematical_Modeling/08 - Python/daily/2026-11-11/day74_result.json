@@ -1,0 +1,460 @@
+{
+  "base_value": 0.0,
+  "bound": 0.6321,
+  "site_cover": {
+    "甲站": [
+      "上坪村",
+      "石桥村",
+      "柳湾村"
+    ],
+    "乙站": [
+      "柳湾村",
+      "谷口村"
+    ],
+    "丙站": [
+      "云岭村",
+      "坳上村"
+    ],
+    "丁站": [
+      "河湾村",
+      "桥头村"
+    ]
+  },
+  "site_cost": {
+    "甲站": 30.0,
+    "乙站": 26.0,
+    "丙站": 10.0,
+    "丁站": 26.0
+  },
+  "budget": 36,
+  "k_curve": [
+    {
+      "K": 1,
+      "greedy": 29.9,
+      "exact": 29.9,
+      "ratio": 1.0
+    },
+    {
+      "K": 2,
+      "greedy": 52.0,
+      "exact": 52.0,
+      "ratio": 1.0
+    },
+    {
+      "K": 3,
+      "greedy": 69.55,
+      "exact": 69.55,
+      "ratio": 1.0
+    },
+    {
+      "K": 4,
+      "greedy": 78.13,
+      "exact": 78.13,
+      "ratio": 1.0
+    }
+  ],
+  "main": {
+    "exact": {
+      "S": [
+        "丁站",
+        "丙站"
+      ],
+      "value": 39.65,
+      "cost": 36.0
+    },
+    "greedy": {
+      "S": [
+        "甲站"
+      ],
+      "value": 29.9,
+      "spent": 30.0,
+      "ratio": 0.7541,
+      "steps": [
+        {
+          "pick": "甲站",
+          "marginal": 29.9,
+          "spent": 30.0,
+          "value": 29.9
+        }
+      ]
+    },
+    "density": {
+      "S": [
+        "丙站",
+        "丁站"
+      ],
+      "value": 39.65,
+      "spent": 36.0,
+      "ratio": 1.0
+    },
+    "local_search": {
+      "S": [
+        "甲站"
+      ],
+      "value": 29.9,
+      "iter": 0
+    }
+  },
+  "scan": [
+    {
+      "B": 10,
+      "exact": 22.1,
+      "exact_S": [
+        "丙站"
+      ],
+      "exact_cost": 10.0,
+      "value_greedy": 22.1,
+      "greedy_S": [
+        "丙站"
+      ],
+      "greedy_spent": 10.0,
+      "ratio": 1.0,
+      "value_density": 22.1,
+      "density_S": [
+        "丙站"
+      ],
+      "density_ratio": 1.0
+    },
+    {
+      "B": 16,
+      "exact": 22.1,
+      "exact_S": [
+        "丙站"
+      ],
+      "exact_cost": 10.0,
+      "value_greedy": 22.1,
+      "greedy_S": [
+        "丙站"
+      ],
+      "greedy_spent": 10.0,
+      "ratio": 1.0,
+      "value_density": 22.1,
+      "density_S": [
+        "丙站"
+      ],
+      "density_ratio": 1.0
+    },
+    {
+      "B": 22,
+      "exact": 22.1,
+      "exact_S": [
+        "丙站"
+      ],
+      "exact_cost": 10.0,
+      "value_greedy": 22.1,
+      "greedy_S": [
+        "丙站"
+      ],
+      "greedy_spent": 10.0,
+      "ratio": 1.0,
+      "value_density": 22.1,
+      "density_S": [
+        "丙站"
+      ],
+      "density_ratio": 1.0
+    },
+    {
+      "B": 28,
+      "exact": 22.1,
+      "exact_S": [
+        "丙站"
+      ],
+      "exact_cost": 10.0,
+      "value_greedy": 22.1,
+      "greedy_S": [
+        "丙站"
+      ],
+      "greedy_spent": 10.0,
+      "ratio": 1.0,
+      "value_density": 22.1,
+      "density_S": [
+        "丙站"
+      ],
+      "density_ratio": 1.0
+    },
+    {
+      "B": 30,
+      "exact": 29.9,
+      "exact_S": [
+        "甲站"
+      ],
+      "exact_cost": 30.0,
+      "value_greedy": 29.9,
+      "greedy_S": [
+        "甲站"
+      ],
+      "greedy_spent": 30.0,
+      "ratio": 1.0,
+      "value_density": 22.1,
+      "density_S": [
+        "丙站"
+      ],
+      "density_ratio": 0.7391
+    },
+    {
+      "B": 36,
+      "exact": 39.65,
+      "exact_S": [
+        "丁站",
+        "丙站"
+      ],
+      "exact_cost": 36.0,
+      "value_greedy": 29.9,
+      "greedy_S": [
+        "甲站"
+      ],
+      "greedy_spent": 30.0,
+      "ratio": 0.7541,
+      "value_density": 39.65,
+      "density_S": [
+        "丙站",
+        "丁站"
+      ],
+      "density_ratio": 1.0
+    },
+    {
+      "B": 40,
+      "exact": 52.0,
+      "exact_S": [
+        "丙站",
+        "甲站"
+      ],
+      "exact_cost": 40.0,
+      "value_greedy": 52.0,
+      "greedy_S": [
+        "甲站",
+        "丙站"
+      ],
+      "greedy_spent": 40.0,
+      "ratio": 1.0,
+      "value_density": 52.0,
+      "density_S": [
+        "丙站",
+        "甲站"
+      ],
+      "density_ratio": 1.0
+    },
+    {
+      "B": 48,
+      "exact": 52.0,
+      "exact_S": [
+        "丙站",
+        "甲站"
+      ],
+      "exact_cost": 40.0,
+      "value_greedy": 52.0,
+      "greedy_S": [
+        "甲站",
+        "丙站"
+      ],
+      "greedy_spent": 40.0,
+      "ratio": 1.0,
+      "value_density": 52.0,
+      "density_S": [
+        "丙站",
+        "甲站"
+      ],
+      "density_ratio": 1.0
+    },
+    {
+      "B": 56,
+      "exact": 52.0,
+      "exact_S": [
+        "丙站",
+        "甲站"
+      ],
+      "exact_cost": 40.0,
+      "value_greedy": 52.0,
+      "greedy_S": [
+        "甲站",
+        "丙站"
+      ],
+      "greedy_spent": 40.0,
+      "ratio": 1.0,
+      "value_density": 52.0,
+      "density_S": [
+        "丙站",
+        "甲站"
+      ],
+      "density_ratio": 1.0
+    },
+    {
+      "B": 60,
+      "exact": 52.0,
+      "exact_S": [
+        "丙站",
+        "甲站"
+      ],
+      "exact_cost": 40.0,
+      "value_greedy": 52.0,
+      "greedy_S": [
+        "甲站",
+        "丙站"
+      ],
+      "greedy_spent": 40.0,
+      "ratio": 1.0,
+      "value_density": 52.0,
+      "density_S": [
+        "丙站",
+        "甲站"
+      ],
+      "density_ratio": 1.0
+    },
+    {
+      "B": 66,
+      "exact": 69.55,
+      "exact_S": [
+        "丁站",
+        "丙站",
+        "甲站"
+      ],
+      "exact_cost": 66.0,
+      "value_greedy": 69.55,
+      "greedy_S": [
+        "甲站",
+        "丙站",
+        "丁站"
+      ],
+      "greedy_spent": 66.0,
+      "ratio": 1.0,
+      "value_density": 69.55,
+      "density_S": [
+        "丙站",
+        "甲站",
+        "丁站"
+      ],
+      "density_ratio": 1.0
+    },
+    {
+      "B": 78,
+      "exact": 69.55,
+      "exact_S": [
+        "丁站",
+        "丙站",
+        "甲站"
+      ],
+      "exact_cost": 66.0,
+      "value_greedy": 69.55,
+      "greedy_S": [
+        "甲站",
+        "丙站",
+        "丁站"
+      ],
+      "greedy_spent": 66.0,
+      "ratio": 1.0,
+      "value_density": 69.55,
+      "density_S": [
+        "丙站",
+        "甲站",
+        "丁站"
+      ],
+      "density_ratio": 1.0
+    }
+  ],
+  "speed": [
+    {
+      "流速": 0.4,
+      "门槛km": 0.6,
+      "覆盖边": 9,
+      "可保护对象": 8
+    },
+    {
+      "流速": 0.6,
+      "门槛km": 0.9,
+      "覆盖边": 9,
+      "可保护对象": 8
+    },
+    {
+      "流速": 0.8,
+      "门槛km": 1.2,
+      "覆盖边": 9,
+      "可保护对象": 8
+    },
+    {
+      "流速": 1.0,
+      "门槛km": 1.5,
+      "覆盖边": 8,
+      "可保护对象": 7
+    },
+    {
+      "流速": 1.2,
+      "门槛km": 1.8,
+      "覆盖边": 8,
+      "可保护对象": 7
+    },
+    {
+      "流速": 1.6,
+      "门槛km": 2.4,
+      "覆盖边": 5,
+      "可保护对象": 5
+    }
+  ],
+  "corr": [
+    {
+      "rho": 0.0,
+      "best1": 46.0,
+      "best2": 80.0,
+      "gain_of_2nd": 34.0
+    },
+    {
+      "rho": 0.1,
+      "best1": 41.4,
+      "best2": 72.0,
+      "gain_of_2nd": 30.6
+    },
+    {
+      "rho": 0.2,
+      "best1": 36.8,
+      "best2": 64.0,
+      "gain_of_2nd": 27.2
+    },
+    {
+      "rho": 0.35,
+      "best1": 29.9,
+      "best2": 52.0,
+      "gain_of_2nd": 22.1
+    },
+    {
+      "rho": 0.5,
+      "best1": 23.0,
+      "best2": 40.0,
+      "gain_of_2nd": 17.0
+    },
+    {
+      "rho": 0.7,
+      "best1": 13.8,
+      "best2": 24.0,
+      "gain_of_2nd": 10.2
+    },
+    {
+      "rho": 0.9,
+      "best1": 4.6,
+      "best2": 8.0,
+      "gain_of_2nd": 3.4
+    }
+  ],
+  "submodularity": {
+    "checked": 2731,
+    "violations": 0
+  },
+  "layers_main": {
+    "上坪村": 0,
+    "石桥村": 0,
+    "柳湾村": 0,
+    "谷口村": 0,
+    "云岭村": 1,
+    "坳上村": 1,
+    "河湾村": 1,
+    "桥头村": 1
+  },
+  "layers_greedy": {
+    "上坪村": 1,
+    "石桥村": 1,
+    "柳湾村": 1,
+    "谷口村": 0,
+    "云岭村": 0,
+    "坳上村": 0,
+    "河湾村": 0,
+    "桥头村": 0
+  }
+}
