@@ -1,0 +1,42 @@
+{
+  "n": 20,
+  "edges": 45,
+  "total_km": 177.0,
+  "opt": 146.0,
+  "opt_full_enum": 146.0,
+  "ls_single": {
+    "mean": 137.05,
+    "min": 116.0,
+    "max": 146.0,
+    "hit_rate": 0.087,
+    "mean_flips": 6.43
+  },
+  "ls_1000": 146.0,
+  "sdp_value": 149.49,
+  "sdp_gap": 0.0239,
+  "sdp_dual_bound": 177.0,
+  "gw": {
+    "best": 146.0,
+    "mean": 139.11,
+    "worst": 118.0,
+    "frac_ge_0878opt": 0.862
+  },
+  "round_principal": 146.0,
+  "round_principal_fixed": 146.0,
+  "gw_best_fixed": 146.0,
+  "half_slack": {
+    "ls": -230.0,
+    "gw": -230.0,
+    "opt": -230.0
+  },
+  "single_start_scan": {
+    "trials": 400,
+    "mean_ratio": 0.9591,
+    "median_ratio": 0.9689,
+    "worst_ratio": 0.787,
+    "worst_opt": 169.0,
+    "worst_best_of_400": 169.0,
+    "worst_gw_100": 1.0,
+    "worst_sdp": 169.0
+  }
+}
