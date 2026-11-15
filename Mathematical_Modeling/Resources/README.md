@@ -162,3 +162,12 @@
 - **Baptiste, P. (1999). Polynomial time algorithms for minimizing the weighted number of late jobs on a single machine with equal processing times.** *Journal of Scheduling* 2:245–252 — 进阶，英文，同工时 $1|p_j=p|\sum w_jU_j$ 可化为区间调度多项式求解，是 Day68 §八「下一步」入口（Springer，**仅在线**）状态：待读
 
 > ⚠️ 说明：2026-11-05 备课时未检索下载（时间全部用于实例校准与静默 bug 定位），上述三条**均仅在线**登记，如实说明。
+
+## 目标系数灵敏度 / Wendell 容忍度（Level 4 · LP 灵敏度，Day79）
+
+- **Wendell, R. E. (1985). The tolerance approach to sensitivity analysis in linear programming.** *Management Science* 31(5):564–578 — 进阶，英文，容忍度法的原始出处（INFORMS，付费）（**仅在线**）状态：待读
+- **Klimova, M., & Rudloff, B. (2015). Robust sensitivity analysis of the optimal value of linear programming.** arXiv:1509.04682 — 进阶，英文，**已下载** PDF（34 页，≈503 KB，`%%EOF` 自检完整），把「允许扰动集合」从盒子推广到一般凸集/范数球，正是 Day79 §八-1「盒子换成加权盒子」的理论出处；也顺带把「参数规划（沿一个方向）」与「容忍度（邻域内所有方向）」的关系讲清 → `Resources/Downloads/Klimova-Rudloff-Robust-Sensitivity-Analysis-Optimal-Value-LP-2015.pdf` 状态：待读
+- **Bradley, S. P., Hax, A. C., & Magnanti, T. L. (1977). *Applied Mathematical Programming*, Ch.3 §3.6.** Addison-Wesley — 入门，英文，100% 法则的标准教科书出处（**仅在线**）状态：待读
+- **Rios, E. Y., et al. (2013). A survey on sensitivity analysis in linear programming.** （**仅在线**）状态：待读
+
+> ⚠️ 说明：2026-11-15 备课时宿主机外网**部分可达**——arXiv PDF 1509.04682 下载成功（**已下载 1 篇**，首次尝试拿到 1 页的 arXiv 元数据缓存版，已丢弃重下并核对 34 页）；INFORMS / Management Science 正文不可达，Wendell (1985) 等**仅在线**。
