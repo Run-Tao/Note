@@ -1,0 +1,39 @@
+{
+  "reviewer": "independent_review.py（G-003）",
+  "verdict": "verified",
+  "n_checks": 6,
+  "n_pass": 6,
+  "method": "解析闭式解 sqrt(1'C1)/n 代替蒙特卡洛，与实验代码完全独立",
+  "findings": [
+    {
+      "item": "R1a 两种修复法的解析风险差 > 0.005 阈值（阈值偏小）",
+      "pass": true,
+      "detail": "解析 |Δ|=0.02988 vs 阈值 0.005"
+    },
+    {
+      "item": "R1b 解析 std 与蒙特卡洛同量级（无实现 bug）",
+      "pass": true,
+      "detail": "解析 EIG_CLIP=0.52091，实验大样本≈0.520"
+    },
+    {
+      "item": "R2 两种修复输出均 PSD（特征值判据独立复算）",
+      "pass": true,
+      "detail": "min_eig A=8.006e-09 B=1.000e-08"
+    },
+    {
+      "item": "R2b 病态输入确实非 PSD",
+      "pass": true,
+      "detail": "input_min_eig=-1.4588"
+    },
+    {
+      "item": "R3 伪造结果（输入本来是好的 + 修复失败）会被好断言抓到",
+      "pass": true,
+      "detail": "input_is_psd=True input_min_eig=0.5 HIGHAM_min_eig=-1.0"
+    },
+    {
+      "item": "R4 坏断言在「修复失败」的伪造结果上仍判通过（只看数值差，不查 PSD）",
+      "pass": true,
+      "detail": "|Δ|=0.00100 < 0.005 → 通过（尽管 min_eig=-1）"
+    }
+  ]
+}

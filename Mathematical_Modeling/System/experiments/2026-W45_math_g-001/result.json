@@ -770,7 +770,7 @@
     {
       "name": "独立基线与输入的差异最大（失真最严重）",
       "pass": true,
-      "detail": "fro_to_input=4.589"
+      "detail": "indep=4.589 vs 其它max=2.723"
     },
     {
       "name": "真实相关矩阵 PSD",
@@ -780,8 +780,8 @@
     {
       "name": "模拟仅由相关矩阵生成，未使用真实收益序列",
       "pass": true,
-      "detail": "见 main() portfolio_metrics 调用"
+      "detail": "signature_ok=True 换种子后 std 相对差=0.33%（应<5%）"
     }
   ],
-  "fingerprint": "02f6ed70db7d6691"
+  "fingerprint": "576c54086a2f8467"
 }

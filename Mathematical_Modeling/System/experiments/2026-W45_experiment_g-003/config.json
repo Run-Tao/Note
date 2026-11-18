@@ -1,0 +1,16 @@
+{
+  "task_id": "weekly-2026-W45-g-003",
+  "title": "2026-W45 每周比较：断言设计反模式 — 自证断言 vs 公平性断言的实测代价",
+  "created_by": "manual（G-003 retest 补建，原骨架缺失）",
+  "target_gap": "G-003",
+  "gap_knowledge_point": "断言设计反模式 — 不能预设谁该赢, 只能检验设计公平性/数据性质",
+  "experiment": {
+    "seed": 20261118,
+    "n_repeat": 5,
+    "models_to_compare": ["BAD_ASSERT(预设胜负)", "GOOD_ASSERT(四类公平性模板)"],
+    "metrics": ["flip_rate_over_seeds", "detect_power_on_broken_result", "diagnosability"],
+    "data": "合成 ring+chord 病态相关矩阵（n=10, rho=0.9），非观测数据；本实验审计断言设计而非数据结论",
+    "notes": "核心问题不是'哪个修复法更好'，而是'断言写成谁该赢会造成什么可测后果'"
+  },
+  "status": "pending_review"
+}

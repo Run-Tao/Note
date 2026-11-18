@@ -55,7 +55,15 @@ items:
     plan: 断言四类模板写入 System/README.md §3, 已落地
     due: 2026-11-15
     status: in_progress
-    retest: null
+    retest: "同一实验换 3 个种子断言结论须一致；且能抓到伪造结果"
+    retest_log:
+      - date: 2026-11-18
+        task_id: weekly-2026-W45-g-003
+        result: verified
+        finding: "四类模板有效：好断言 10/10 稳定（4/4 全过），且能抓伪造结果；坏断言（固定阈值 0.005）小样本 5 次翻转 1 次、对伪造结果仍放行"
+        new_issue: "「已落地」≠「已执行」：全库无人按模板写断言的实验未审计；固定数字阈值断言需加来源说明"
+        action: "已通过一次；B2 再通过 1 次即可降级"
+        passed_rounds: 1
 
   - id: G-004
     priority: P2

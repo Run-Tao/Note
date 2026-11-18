@@ -1,0 +1,484 @@
+{
+  "task_id": "weekly-2026-W45-g-003",
+  "target_gap": "G-003",
+  "config": {
+    "seed": 20261118,
+    "n_repeat": 5,
+    "models_to_compare": [
+      "BAD_ASSERT(预设胜负)",
+      "GOOD_ASSERT(四类公平性模板)"
+    ],
+    "metrics": [
+      "flip_rate_over_seeds",
+      "detect_power_on_broken_result",
+      "diagnosability"
+    ],
+    "data": "合成 ring+chord 病态相关矩阵（n=10, rho=0.9），非观测数据；本实验审计断言设计而非数据结论",
+    "notes": "核心问题不是'哪个修复法更好'，而是'断言写成谁该赢会造成什么可测后果'"
+  },
+  "data": {
+    "source": "合成 ring+chord 病态相关矩阵（n=10, rho=0.9）+ 多元正态模拟",
+    "is_simulated": true,
+    "note": "本实验审计的是断言设计而非数据结论；合成输入足够，且已明确标记"
+  },
+  "scenario_big": [
+    {
+      "seed": 20261118,
+      "n_sim": 100000,
+      "eig_clip_std": 0.5200226141957541,
+      "higham_std": 0.5511425117806339,
+      "bad": [
+        {
+          "name": "两种修复法的风险差 < 0.005（拍脑袋阈值 = 可复现）",
+          "pass": false,
+          "detail": "|Δ|=0.03112（阈值 0.005，不随 n 缩放）"
+        }
+      ],
+      "good": [
+        {
+          "name": "①前提：输入矩阵确实非 PSD（实验才有意义）",
+          "pass": true,
+          "detail": "input_min_eig=-1.4588"
+        },
+        {
+          "name": "②可定义：两种修复输出均为 PSD（这是修复的定义）",
+          "pass": true,
+          "detail": "{'EIG_CLIP': 8e-09, 'HIGHAM': 1e-08}"
+        },
+        {
+          "name": "③数据性质：组合风险为正且量级在 (1e-6, 10) 内",
+          "pass": true,
+          "detail": "{'EIG_CLIP': 0.52, 'HIGHAM': 0.5511}"
+        },
+        {
+          "name": "④失效可观测：病态输入能被 min_eig 判据识别",
+          "pass": true,
+          "detail": "-1.4588"
+        }
+      ]
+    },
+    {
+      "seed": 20261119,
+      "n_sim": 100000,
+      "eig_clip_std": 0.5195022012513214,
+      "higham_std": 0.54956834426602,
+      "bad": [
+        {
+          "name": "两种修复法的风险差 < 0.005（拍脑袋阈值 = 可复现）",
+          "pass": false,
+          "detail": "|Δ|=0.03007（阈值 0.005，不随 n 缩放）"
+        }
+      ],
+      "good": [
+        {
+          "name": "①前提：输入矩阵确实非 PSD（实验才有意义）",
+          "pass": true,
+          "detail": "input_min_eig=-1.4588"
+        },
+        {
+          "name": "②可定义：两种修复输出均为 PSD（这是修复的定义）",
+          "pass": true,
+          "detail": "{'EIG_CLIP': 8e-09, 'HIGHAM': 1e-08}"
+        },
+        {
+          "name": "③数据性质：组合风险为正且量级在 (1e-6, 10) 内",
+          "pass": true,
+          "detail": "{'EIG_CLIP': 0.5195, 'HIGHAM': 0.5496}"
+        },
+        {
+          "name": "④失效可观测：病态输入能被 min_eig 判据识别",
+          "pass": true,
+          "detail": "-1.4588"
+        }
+      ]
+    },
+    {
+      "seed": 20261120,
+      "n_sim": 100000,
+      "eig_clip_std": 0.5211855312213788,
+      "higham_std": 0.5544656666442329,
+      "bad": [
+        {
+          "name": "两种修复法的风险差 < 0.005（拍脑袋阈值 = 可复现）",
+          "pass": false,
+          "detail": "|Δ|=0.03328（阈值 0.005，不随 n 缩放）"
+        }
+      ],
+      "good": [
+        {
+          "name": "①前提：输入矩阵确实非 PSD（实验才有意义）",
+          "pass": true,
+          "detail": "input_min_eig=-1.4588"
+        },
+        {
+          "name": "②可定义：两种修复输出均为 PSD（这是修复的定义）",
+          "pass": true,
+          "detail": "{'EIG_CLIP': 8e-09, 'HIGHAM': 1e-08}"
+        },
+        {
+          "name": "③数据性质：组合风险为正且量级在 (1e-6, 10) 内",
+          "pass": true,
+          "detail": "{'EIG_CLIP': 0.5212, 'HIGHAM': 0.5545}"
+        },
+        {
+          "name": "④失效可观测：病态输入能被 min_eig 判据识别",
+          "pass": true,
+          "detail": "-1.4588"
+        }
+      ]
+    },
+    {
+      "seed": 20261121,
+      "n_sim": 100000,
+      "eig_clip_std": 0.5202392112855813,
+      "higham_std": 0.5500491845815698,
+      "bad": [
+        {
+          "name": "两种修复法的风险差 < 0.005（拍脑袋阈值 = 可复现）",
+          "pass": false,
+          "detail": "|Δ|=0.02981（阈值 0.005，不随 n 缩放）"
+        }
+      ],
+      "good": [
+        {
+          "name": "①前提：输入矩阵确实非 PSD（实验才有意义）",
+          "pass": true,
+          "detail": "input_min_eig=-1.4588"
+        },
+        {
+          "name": "②可定义：两种修复输出均为 PSD（这是修复的定义）",
+          "pass": true,
+          "detail": "{'EIG_CLIP': 8e-09, 'HIGHAM': 1e-08}"
+        },
+        {
+          "name": "③数据性质：组合风险为正且量级在 (1e-6, 10) 内",
+          "pass": true,
+          "detail": "{'EIG_CLIP': 0.5202, 'HIGHAM': 0.55}"
+        },
+        {
+          "name": "④失效可观测：病态输入能被 min_eig 判据识别",
+          "pass": true,
+          "detail": "-1.4588"
+        }
+      ]
+    },
+    {
+      "seed": 20261122,
+      "n_sim": 100000,
+      "eig_clip_std": 0.5217915590303324,
+      "higham_std": 0.5503517521804482,
+      "bad": [
+        {
+          "name": "两种修复法的风险差 < 0.005（拍脑袋阈值 = 可复现）",
+          "pass": false,
+          "detail": "|Δ|=0.02856（阈值 0.005，不随 n 缩放）"
+        }
+      ],
+      "good": [
+        {
+          "name": "①前提：输入矩阵确实非 PSD（实验才有意义）",
+          "pass": true,
+          "detail": "input_min_eig=-1.4588"
+        },
+        {
+          "name": "②可定义：两种修复输出均为 PSD（这是修复的定义）",
+          "pass": true,
+          "detail": "{'EIG_CLIP': 8e-09, 'HIGHAM': 1e-08}"
+        },
+        {
+          "name": "③数据性质：组合风险为正且量级在 (1e-6, 10) 内",
+          "pass": true,
+          "detail": "{'EIG_CLIP': 0.5218, 'HIGHAM': 0.5504}"
+        },
+        {
+          "name": "④失效可观测：病态输入能被 min_eig 判据识别",
+          "pass": true,
+          "detail": "-1.4588"
+        }
+      ]
+    }
+  ],
+  "scenario_small": [
+    {
+      "seed": 20261218,
+      "n_sim": 2000,
+      "eig_clip_std": 0.5213506717639101,
+      "higham_std": 0.550228010533785,
+      "bad": [
+        {
+          "name": "两种修复法的风险差 < 0.005（拍脑袋阈值 = 可复现）",
+          "pass": false,
+          "detail": "|Δ|=0.02888（阈值 0.005，不随 n 缩放）"
+        }
+      ],
+      "good": [
+        {
+          "name": "①前提：输入矩阵确实非 PSD（实验才有意义）",
+          "pass": true,
+          "detail": "input_min_eig=-1.4588"
+        },
+        {
+          "name": "②可定义：两种修复输出均为 PSD（这是修复的定义）",
+          "pass": true,
+          "detail": "{'EIG_CLIP': 8e-09, 'HIGHAM': 1e-08}"
+        },
+        {
+          "name": "③数据性质：组合风险为正且量级在 (1e-6, 10) 内",
+          "pass": true,
+          "detail": "{'EIG_CLIP': 0.5214, 'HIGHAM': 0.5502}"
+        },
+        {
+          "name": "④失效可观测：病态输入能被 min_eig 判据识别",
+          "pass": true,
+          "detail": "-1.4588"
+        }
+      ]
+    },
+    {
+      "seed": 20261219,
+      "n_sim": 2000,
+      "eig_clip_std": 0.5293356948604655,
+      "higham_std": 0.5466172581626776,
+      "bad": [
+        {
+          "name": "两种修复法的风险差 < 0.005（拍脑袋阈值 = 可复现）",
+          "pass": false,
+          "detail": "|Δ|=0.01728（阈值 0.005，不随 n 缩放）"
+        }
+      ],
+      "good": [
+        {
+          "name": "①前提：输入矩阵确实非 PSD（实验才有意义）",
+          "pass": true,
+          "detail": "input_min_eig=-1.4588"
+        },
+        {
+          "name": "②可定义：两种修复输出均为 PSD（这是修复的定义）",
+          "pass": true,
+          "detail": "{'EIG_CLIP': 8e-09, 'HIGHAM': 1e-08}"
+        },
+        {
+          "name": "③数据性质：组合风险为正且量级在 (1e-6, 10) 内",
+          "pass": true,
+          "detail": "{'EIG_CLIP': 0.5293, 'HIGHAM': 0.5466}"
+        },
+        {
+          "name": "④失效可观测：病态输入能被 min_eig 判据识别",
+          "pass": true,
+          "detail": "-1.4588"
+        }
+      ]
+    },
+    {
+      "seed": 20261220,
+      "n_sim": 2000,
+      "eig_clip_std": 0.5293853930185413,
+      "higham_std": 0.5439694076766945,
+      "bad": [
+        {
+          "name": "两种修复法的风险差 < 0.005（拍脑袋阈值 = 可复现）",
+          "pass": false,
+          "detail": "|Δ|=0.01458（阈值 0.005，不随 n 缩放）"
+        }
+      ],
+      "good": [
+        {
+          "name": "①前提：输入矩阵确实非 PSD（实验才有意义）",
+          "pass": true,
+          "detail": "input_min_eig=-1.4588"
+        },
+        {
+          "name": "②可定义：两种修复输出均为 PSD（这是修复的定义）",
+          "pass": true,
+          "detail": "{'EIG_CLIP': 8e-09, 'HIGHAM': 1e-08}"
+        },
+        {
+          "name": "③数据性质：组合风险为正且量级在 (1e-6, 10) 内",
+          "pass": true,
+          "detail": "{'EIG_CLIP': 0.5294, 'HIGHAM': 0.544}"
+        },
+        {
+          "name": "④失效可观测：病态输入能被 min_eig 判据识别",
+          "pass": true,
+          "detail": "-1.4588"
+        }
+      ]
+    },
+    {
+      "seed": 20261221,
+      "n_sim": 2000,
+      "eig_clip_std": 0.5325978698178968,
+      "higham_std": 0.5590099058220633,
+      "bad": [
+        {
+          "name": "两种修复法的风险差 < 0.005（拍脑袋阈值 = 可复现）",
+          "pass": false,
+          "detail": "|Δ|=0.02641（阈值 0.005，不随 n 缩放）"
+        }
+      ],
+      "good": [
+        {
+          "name": "①前提：输入矩阵确实非 PSD（实验才有意义）",
+          "pass": true,
+          "detail": "input_min_eig=-1.4588"
+        },
+        {
+          "name": "②可定义：两种修复输出均为 PSD（这是修复的定义）",
+          "pass": true,
+          "detail": "{'EIG_CLIP': 8e-09, 'HIGHAM': 1e-08}"
+        },
+        {
+          "name": "③数据性质：组合风险为正且量级在 (1e-6, 10) 内",
+          "pass": true,
+          "detail": "{'EIG_CLIP': 0.5326, 'HIGHAM': 0.559}"
+        },
+        {
+          "name": "④失效可观测：病态输入能被 min_eig 判据识别",
+          "pass": true,
+          "detail": "-1.4588"
+        }
+      ]
+    },
+    {
+      "seed": 20261222,
+      "n_sim": 2000,
+      "eig_clip_std": 0.5277531330020148,
+      "higham_std": 0.5299369975332199,
+      "bad": [
+        {
+          "name": "两种修复法的风险差 < 0.005（拍脑袋阈值 = 可复现）",
+          "pass": true,
+          "detail": "|Δ|=0.00218（阈值 0.005，不随 n 缩放）"
+        }
+      ],
+      "good": [
+        {
+          "name": "①前提：输入矩阵确实非 PSD（实验才有意义）",
+          "pass": true,
+          "detail": "input_min_eig=-1.4588"
+        },
+        {
+          "name": "②可定义：两种修复输出均为 PSD（这是修复的定义）",
+          "pass": true,
+          "detail": "{'EIG_CLIP': 8e-09, 'HIGHAM': 1e-08}"
+        },
+        {
+          "name": "③数据性质：组合风险为正且量级在 (1e-6, 10) 内",
+          "pass": true,
+          "detail": "{'EIG_CLIP': 0.5278, 'HIGHAM': 0.5299}"
+        },
+        {
+          "name": "④失效可观测：病态输入能被 min_eig 判据识别",
+          "pass": true,
+          "detail": "-1.4588"
+        }
+      ]
+    }
+  ],
+  "summary": {
+    "n_repeat": 5,
+    "bad_flags_big": [
+      false,
+      false,
+      false,
+      false,
+      false
+    ],
+    "good_flags_big": [
+      true,
+      true,
+      true,
+      true,
+      true
+    ],
+    "bad_flags_small": [
+      false,
+      false,
+      false,
+      false,
+      true
+    ],
+    "good_flags_small": [
+      true,
+      true,
+      true,
+      true,
+      true
+    ],
+    "higham_over_eigclip_big": [
+      1.05984,
+      1.05787,
+      1.06385,
+      1.0573,
+      1.05473
+    ],
+    "higham_over_eigclip_small": [
+      1.05539,
+      1.03265,
+      1.02755,
+      1.04959,
+      1.00414
+    ],
+    "flip_rate_bad_small": 0.2,
+    "flip_rate_good_small": 0.0
+  },
+  "broken_input_test": {
+    "bad_assertions": [
+      {
+        "name": "两种修复法的风险差 < 0.005（拍脑袋阈值 = 可复现）",
+        "pass": true,
+        "detail": "|Δ|=0.00100（阈值 0.005，不随 n 缩放）"
+      }
+    ],
+    "good_assertions": [
+      {
+        "name": "①前提：输入矩阵确实非 PSD（实验才有意义）",
+        "pass": false,
+        "detail": "input_min_eig=0.5000"
+      },
+      {
+        "name": "②可定义：两种修复输出均为 PSD（这是修复的定义）",
+        "pass": false,
+        "detail": "{'EIG_CLIP': 8e-09, 'HIGHAM': -1.0}"
+      },
+      {
+        "name": "③数据性质：组合风险为正且量级在 (1e-6, 10) 内",
+        "pass": true,
+        "detail": "{'EIG_CLIP': 0.52, 'HIGHAM': 0.521}"
+      },
+      {
+        "name": "④失效可观测：病态输入能被 min_eig 判据识别",
+        "pass": false,
+        "detail": "0.5000"
+      }
+    ]
+  },
+  "checks": [
+    {
+      "check": "P1a 坏断言结论会翻转（大样本 vs 小样本不一致）",
+      "pass": true,
+      "detail": "大=[False, False, False, False, False] 小=[False, False, False, False, True]"
+    },
+    {
+      "check": "P1b 好断言在所有情形下结论稳定",
+      "pass": true,
+      "detail": "大=[True, True, True, True, True] 小=[True, True, True, True, True]"
+    },
+    {
+      "check": "P1c 坏断言的成败只由固定阈值决定（与样本量无关）",
+      "pass": true,
+      "detail": "大通过 0/5，小通过 1/5"
+    },
+    {
+      "check": "P3a 结果被做坏时，好断言能抓出来",
+      "pass": true,
+      "detail": "[('①前提：输入矩阵', False), ('②可定义：两种修', False), ('③数据性质：组合', True), ('④失效可观测：病', False)]"
+    },
+    {
+      "check": "P3b 修复被伪造为失败时，坏断言仍判通过（它不查 PSD）",
+      "pass": true,
+      "detail": "[('两种修复法的风险', True)]"
+    }
+  ],
+  "fingerprint": "7c1c00fd41cc8e42"
+}

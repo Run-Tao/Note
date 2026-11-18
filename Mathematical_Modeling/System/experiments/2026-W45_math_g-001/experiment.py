@@ -31,7 +31,8 @@ SEED = CFG["seed"]
 def load_returns() -> tuple[np.ndarray, list[str], dict]:
     import csv
     p = HERE / "data" / "raw.csv"
-    rows = list(csv.DictReader(p.open(encoding="utf-8")))
+    with p.open(encoding="utf-8") as fh:
+        rows = list(csv.DictReader(fh))
     assets = [c for c in rows[0] if c != "date"]
     X = np.array([[float(r[a]) for a in assets] for r in rows])
     meta = json.loads((HERE / "data" / "META.json").read_text(encoding="utf-8"))
@@ -283,16 +284,27 @@ def main() -> int:
     # A3: 所有"修复"方法输出必须真的 PSD（这是修复的定义）
     assertions.append({"name": "所有修复方法输出均为 PSD", "pass": all(q["psd"] for q in q2),
                        "detail": str({q["method"]: round(q["min_eig"], 8) for q in q2})})
-    # A4: 独立近似（基线）一定 PSD，作为"最安全但最失真"的对照
+    # A4: 独立基线是"最安全但最失真"的对照 —— 这里真的比一遍，不写死 True
+    #     （G-003 教训：断言写成 pass=True 就是自证，不是验证）
     indep = next(q for q in q2 if q["method"] == "INDEP_BASELINE")
-    assertions.append({"name": "独立基线与输入的差异最大（失真最严重）", "pass": True,
-                       "detail": f"fro_to_input={indep['fro_to_input']:.3f}"})
+    others_fro = {q["method"]: q["fro_to_input"] for q in q2 if q["method"] != "INDEP_BASELINE"}
+    a4_ok = indep["fro_to_input"] >= max(others_fro.values()) - 1e-12
+    assertions.append({"name": "独立基线与输入的差异最大（失真最严重）", "pass": bool(a4_ok),
+                       "detail": f"indep={indep['fro_to_input']:.3f} vs 其它max="
+                                 f"{max(others_fro.values()):.3f}"})
     # A5: 真实相关矩阵必须 PSD（真实数据永远给合法矩阵）
     assertions.append({"name": "真实相关矩阵 PSD", "pass": out["real_min_eig"] >= -1e-9,
                        "detail": f"min_eig={out['real_min_eig']:.6f}"})
-    # A6: 无数据泄漏（模拟只用相关矩阵，不用真实收益路径）
-    assertions.append({"name": "模拟仅由相关矩阵生成，未使用真实收益序列", "pass": True,
-                       "detail": "见 main() portfolio_metrics 调用"})
+    # A6: 无数据泄漏 —— 真检查：portfolio_metrics 只接受 C（相关矩阵），不接受收益路径
+    #     判据：用同一 C、不同随机种子模拟，均值应≈0 且 std 稳定（说明没吃到真实收益的特定路径）
+    import inspect
+    sig_ok = "C" in inspect.signature(portfolio_metrics).parameters
+    m_a = portfolio_metrics(fix_eig_clip(C_bad), w, 50_000, np.random.default_rng(1))
+    m_b = portfolio_metrics(fix_eig_clip(C_bad), w, 50_000, np.random.default_rng(2))
+    rel_gap = abs(m_a["portfolio_std"] - m_b["portfolio_std"]) / max(m_a["portfolio_std"], 1e-12)
+    a6_ok = bool(sig_ok and rel_gap < 0.05)
+    assertions.append({"name": "模拟仅由相关矩阵生成，未使用真实收益序列", "pass": a6_ok,
+                       "detail": f"signature_ok={sig_ok} 换种子后 std 相对差={rel_gap:.2%}（应<5%）"})
     out["assertions"] = assertions
 
     out["env"] = snapshot(HERE, seed=SEED, data_files=[HERE / "data" / "raw.csv"], config=CFG)
@@ -308,7 +320,8 @@ def main() -> int:
         print("Q2 spread:", {k: round(v, 3) for k, v in out["q2_metric_spread_ratio"].items()})
     print("assertions:", sum(a["pass"] for a in assertions), "/", len(assertions))
     print("fingerprint:", out["fingerprint"])
-    return 0
+    # README §3：断言失败退出码必须为 1（原版恒 return 0，断言形同虚设）
+    return 0 if all(a["pass"] for a in assertions) else 1
 
 
 if __name__ == "__main__":
