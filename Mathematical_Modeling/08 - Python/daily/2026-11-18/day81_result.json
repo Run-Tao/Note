@@ -1,0 +1,120 @@
+{
+  "n_nodes": 13,
+  "n_vehicles": 3,
+  "cap_baskets": 150.0,
+  "total_baskets": 190.0,
+  "day80_route_on_tw": {
+    "dist": 100.3689,
+    "late": 58.5635,
+    "cap_viol": 0.0,
+    "feasible": false
+  },
+  "base_scan_split": {
+    "dist": 87.3461,
+    "late": 107.5842,
+    "cost": 441.8772
+  },
+  "methods": {
+    "sa": {
+      "dist": 87.6375,
+      "late": 0.0,
+      "cap_viol": 0.0,
+      "cost": 87.6375,
+      "feasible": true
+    },
+    "descent": {
+      "dist": 96.7516,
+      "late": 0.0,
+      "cap_viol": 0.0,
+      "cost": 96.7516,
+      "feasible": true
+    },
+    "tabu": {
+      "dist": 117.1764,
+      "late": 0.0,
+      "cap_viol": 0.0,
+      "cost": 117.1764,
+      "feasible": true
+    },
+    "restart_desc": {
+      "dist": 91.7794,
+      "late": 0.0,
+      "cap_viol": 0.0,
+      "cost": 91.7794,
+      "feasible": true
+    }
+  },
+  "w_late_sweep": {
+    "0.0": {
+      "dist": 85.479,
+      "late": 39.801,
+      "feasible": true
+    },
+    "0.5": {
+      "dist": 91.779,
+      "late": 0.0,
+      "feasible": true
+    },
+    "1.0": {
+      "dist": 93.832,
+      "late": 0.0,
+      "feasible": true
+    },
+    "3.0": {
+      "dist": 91.779,
+      "late": 0.0,
+      "feasible": true
+    },
+    "10.0": {
+      "dist": 91.319,
+      "late": 0.0,
+      "feasible": true
+    },
+    "30.0": {
+      "dist": 91.319,
+      "late": 0.0,
+      "feasible": true
+    },
+    "100.0": {
+      "dist": 91.319,
+      "late": 0.0,
+      "feasible": true
+    }
+  },
+  "no_tw_dist": 79.3168,
+  "with_tw_dist": 87.6375,
+  "tw_cost_pct": 10.4905,
+  "tight_tw": {
+    "dist": 91.7794,
+    "late": 0.0,
+    "feasible": true
+  },
+  "best_plan": {
+    "routes": [
+      [
+        "梅溪",
+        "双桥",
+        "冷水",
+        "新塘",
+        "石坳"
+      ],
+      [
+        "黄泥",
+        "竹山",
+        "榕树脚",
+        "枫林坳",
+        "白水",
+        "太平桥",
+        "南坪"
+      ]
+    ],
+    "loads": [
+      87.0,
+      103.0
+    ],
+    "route_dist": [
+      46.981,
+      40.657
+    ]
+  }
+}
