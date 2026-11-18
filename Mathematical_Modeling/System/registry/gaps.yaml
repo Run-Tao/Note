@@ -35,6 +35,14 @@ items:
     due: 2026-11-15
     status: in_progress
     retest: "B2 连续 2 次 0 违规即降级"
+    retest_log:
+      - date: 2026-11-18
+        task_id: weekly-2026-W45-g-002
+        result: verified
+        finding: "检测器有效性 2/2（篡改全抓）、白名单内误伤 0、边界与声明一致（|Δ|=1.0 即拦）"
+        new_issue: "作用域不全：论文 10 个成本数字中 7 个（模拟分位数 3 + 乘数扫描 4）不在白名单内 → 假阳性率 70%"
+        action: "待扩展 evaluate.py 白名单为递归抽取所有 cost 键；在此之前 retest 仍按 0/2 计"
+        passed_rounds: 0
 
   - id: G-003
     priority: P1

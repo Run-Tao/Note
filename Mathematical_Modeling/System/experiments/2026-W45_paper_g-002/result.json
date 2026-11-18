@@ -1,0 +1,181 @@
+{
+  "data": {
+    "source": "benchmarks/2026-11_B1_coldchain/solver_output/{result.json,paper.md}",
+    "is_simulated": false,
+    "n_stated_in_paper": 2,
+    "stated_values": [
+      15682.2,
+      17542.3
+    ],
+    "legal_costs": {
+      "deterministic": 15682.2,
+      "split_service": 15682.2,
+      "chance_constrained": 17542.3
+    }
+  },
+  "rule": {
+    "tol": 1.0,
+    "regex": "(\\d{4,6}\\.\\d{1,2})\\s*元/周",
+    "note": "复刻 evaluate.py 第 137-141 行的 critical 规则，独立实现"
+  },
+  "baseline": {
+    "n_stated": 2,
+    "n_hits": 0,
+    "hits": []
+  },
+  "mutation_results": [
+    {
+      "index": 0,
+      "original": 15682.2,
+      "mutated": 15732.2,
+      "detected": true,
+      "n_hits": 1
+    },
+    {
+      "index": 1,
+      "original": 17542.3,
+      "mutated": 17592.3,
+      "detected": true,
+      "n_hits": 1
+    }
+  ],
+  "boundary_results": [
+    {
+      "delta": 0.0,
+      "label": "完全相同",
+      "probe_value": 15682.2,
+      "flagged": false,
+      "expected_flagged_by_rule": false
+    },
+    {
+      "delta": 0.99,
+      "label": "容差内",
+      "probe_value": 15683.19,
+      "flagged": false,
+      "expected_flagged_by_rule": false
+    },
+    {
+      "delta": 1.0,
+      "label": "恰好=容差",
+      "probe_value": 15683.2,
+      "flagged": true,
+      "expected_flagged_by_rule": true
+    },
+    {
+      "delta": 1.01,
+      "label": "刚越界",
+      "probe_value": 15683.21,
+      "flagged": true,
+      "expected_flagged_by_rule": true
+    }
+  ],
+  "scope_coverage": [
+    {
+      "scope": "deterministic",
+      "value": 15682.2,
+      "accepted": true
+    },
+    {
+      "scope": "split_service",
+      "value": 15682.2,
+      "accepted": true
+    },
+    {
+      "scope": "chance_constrained",
+      "value": 17542.3,
+      "accepted": true
+    }
+  ],
+  "fabricated_test": {
+    "value": 9999.99,
+    "flagged": true
+  },
+  "checks": [
+    {
+      "check": "篡改后的数字 100% 被 detect（工具不是摆设）",
+      "pass": true,
+      "detail": "2/2 detected"
+    },
+    {
+      "check": "未篡改论文零误伤（工具不制造噪声）",
+      "pass": true,
+      "detail": "hits=[]"
+    },
+    {
+      "check": "容差边界行为与规则声明一致（|Δ|<1.0 放行，≥1.0 拦截）",
+      "pass": true,
+      "detail": "[(0.0, False), (0.99, False), (1.0, True), (1.01, True)]"
+    },
+    {
+      "check": "三个口径（deterministic / split / chance）全部被认定为合法",
+      "pass": true,
+      "detail": "[('deterministic', True), ('split_service', True), ('chance_constrained', True)]"
+    },
+    {
+      "check": "B1 之外的编造数字被拦截",
+      "pass": true,
+      "detail": "hits=[9999.99]"
+    }
+  ],
+  "task_id": "weekly-2026-W45-g-002",
+  "target_gap": "G-002",
+  "config": {
+    "seed": 20261107,
+    "models_to_compare": [
+      "LP",
+      "MLR",
+      "RIDGE"
+    ],
+    "metrics": [
+      "TODO"
+    ],
+    "notes": "骨架，需人工补全 data/metrics/断言"
+  },
+  "env": {
+    "captured_at": "2026-11-18T15:44:18+0800",
+    "python": "3.12.3",
+    "executable": "/home/ubuntu/Note/.venv/bin/python",
+    "platform": "Linux-6.8.0-124-generic-x86_64-with-glibc2.39",
+    "cpu_count": 2,
+    "packages": {
+      "numpy": "2.5.2",
+      "scipy": "1.18.1",
+      "pandas": "3.0.5",
+      "scikit-learn": null,
+      "matplotlib": "3.11.1",
+      "networkx": "3.7",
+      "statsmodels": null,
+      "ortools": "9.15.6755",
+      "highspy": "unknown",
+      "numba": "0.68.0"
+    },
+    "seed": 20261107,
+    "git_commit": "df782b4",
+    "config": {
+      "seed": 20261107,
+      "models_to_compare": [
+        "LP",
+        "MLR",
+        "RIDGE"
+      ],
+      "metrics": [
+        "TODO"
+      ],
+      "notes": "骨架，需人工补全 data/metrics/断言"
+    },
+    "data": [
+      {
+        "path": "/home/ubuntu/Note/Mathematical_Modeling/System/benchmarks/2026-11_B1_coldchain/solver_output/result.json",
+        "sha256": "ce17e97aed8cc548000cde886c7a99b427170d56c9d38a65d1b3e46962dec576"
+      },
+      {
+        "path": "/home/ubuntu/Note/Mathematical_Modeling/System/benchmarks/2026-11_B1_coldchain/solver_output/paper.md",
+        "sha256": "92e6aaa14f6cf28d19800b85d58bf47da0fb708368be6c7f416e20023336d5aa"
+      }
+    ],
+    "extra": {
+      "audited_scope": "evaluate.py critical 规则（成本数字可追溯）"
+    }
+  },
+  "fingerprint": "3893c376de67bbe9"
+}

@@ -1,0 +1,39 @@
+{
+  "reviewer": "independent_review.py（G-002）",
+  "verdict": "verified",
+  "n_checks": 6,
+  "n_pass": 6,
+  "findings": [
+    {
+      "item": "R2a 白名单内数字零误伤（真·零误伤）",
+      "pass": true,
+      "detail": "未追溯且不属已知合法表=[]"
+    },
+    {
+      "item": "R2b 作用域外用数已被识别并归类",
+      "pass": true,
+      "detail": "作用域外 7 个：模拟分位数 [15694.88, 15753.69, 16063.37] / 乘数扫描 [17989.89, 20297.59, 23374.51, 31066.82]"
+    },
+    {
+      "item": "R2c 独立扫描到全部 10 个成本数字",
+      "pass": true,
+      "detail": "n=10"
+    },
+    {
+      "item": "R1 篡改 +50 元必被拦",
+      "pass": true,
+      "detail": "全部拦下"
+    },
+    {
+      "item": "R3 容差边界（<1.0 放行 / >=1.0 拦截）",
+      "pass": true,
+      "detail": "[(0.0, False, False), (0.99, False, False), (1.0, True, True), (1.01, True, True)]"
+    },
+    {
+      "item": "R4 编造数字被拦",
+      "pass": true,
+      "detail": "9999.99"
+    }
+  ],
+  "note": "不 import experiment.py；直接读 benchmarks/2026-11_B1_coldchain/solver_output/"
+}
