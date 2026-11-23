@@ -236,8 +236,10 @@ def grid_plan(a0, a1):
 def grid_search(peaks, pen=PEN, r_u=R_U, step=5.0):
     """在确定性等价口径下搜 (a0, a1)：与 LP 同口径（都走 plan_cost_exact），但不过求解器"""
     best = None
-    for a0 in np.arange(0.0, 420.0 + 1e-9, step):
-        for a1 in np.arange(0.0, 420.0 + 1e-9, step):
+    # 2026-11-23 修复：上界 420 → 600。两段网格最多只能装 840 吨，而 8 周需求合计可达 8×240=1920 吨，
+    # 420+420 是被上界卡死的，与 LP 的差距里有一半是网格自己够不着（差点写成「网格比 LP 差 27%」）
+    for a0 in np.arange(0.0, 600.0 + 1e-9, step):
+        for a1 in np.arange(0.0, 600.0 + 1e-9, step):
             v = plan_cost_exact(grid_plan(a0, a1), peaks, pen, r_u)
             if best is None or v < best[0]:
                 best = (v, float(a0), float(a1))
@@ -251,6 +253,13 @@ def newsvendor_ctr(pen, r_u=R_U):
     """单期一次性备货（季末无结转）的临界分位数：p / (p + c − r_u)
        注意分母是 (p + c − r_u) 而非 (p + h)：h 只管跨期持有，一次性备货的过量成本是残值损失"""
     return pen / (pen + PRICE - r_u)
+
+
+def trunc_norm_mean(mu=MEAN_PK, sd=SD_PK, cap=CAP_PK):
+    """[0,cap] 截断正态的真实均值（数值积分，用作「场景树均值偏不偏」的裁判）"""
+    xs = np.linspace(0.0, cap, 20001)
+    pdf = np.exp(-0.5 * ((xs - mu) / sd) ** 2)
+    return float((xs * pdf).sum() / pdf.sum())
 
 
 def truncnorm_quantile(p, mu=MEAN_PK, sd=SD_PK, cap=CAP_PK):
@@ -288,7 +297,12 @@ def main():
         val, arr, nx = solve_tree(peaks, pen=PEN)
         r, _ = row(arr, f"SAA n={nsc}")
         r.update({"n_scen": nsc, "ceq_weekly": round(val / W, 2), "lp_cols": nx})
+        # 2026-11-23 追加：把**这一组场景自己的平均峰值**打出来。
+        #   没有这一列，表五里 +23%~+81% 的偏差会被误读成「样本越多越准」
+        r["peak_mean_scen"] = round(float(peaks.mean()), 2)
+        r["peak_mean_true"] = round(float(trunc_norm_mean()), 2)
         saa_rows.append(r)
+        print(f"       （该组场景峰值均值 {r['peak_mean_scen']:.1f} vs 真分布均值 {r['peak_mean_true']:.1f}）")
         print(f"  SAA n={nsc:3d}: 场景口径 {val/W:>9,.2f} | 真值 {r['mean']/W:>9,.2f} | "
               f"arr={np.round(arr, 0)} | 偏差 {100*(val/W - r['mean']/W)/(r['mean']/W):+5.2f}%")
 
@@ -363,10 +377,12 @@ def main():
     print("\n" + "=" * 80)
     print("【四】提前期 L∈{2,3,4}：L 变大，最优批次该重还是该轻？")
     print("=" * 80)
+    # 2026-11-23 注：这里用 SAA n=100 的计划（arr[1..7] 有量、arr[0]=0）评「同一计划换 L」，
+    # 因为提前期只在 w≥1 的到货上起作用（w=0 的到货在第 1 周就落地）
     lt_scan = []
     for label, lt in (("L≡2（固定）", 2), ("L≡3（固定）", 3), ("L≡4（固定）", 4),
                       ("L~{2,3,4}（随机）", None)):
-        cc = simulate(lp_arr, dem_eval, lt=lt)     # 仅通过在途资金项区分 L（口径与主成本函数一致）
+        cc = simulate(best_saa["plan"], dem_eval, lt=lt)   # 仅通过在途资金项区分 L（口径与主成本函数一致）
         rec = {"label": label, "L": lt, "weekly": round(float(cc.mean() / W), 2)}
         lt_scan.append(rec)
         print(f"  {label:20s}: 同一计划下周均 {rec['weekly']:>10,.2f} 元")
@@ -375,9 +391,12 @@ def main():
     dem_scen = peaks100[:, None] * SEASON[None, :]
     for lt in (1, 2, 3, 4, 5):
         best = None
-        for a0 in np.arange(0.0, 400.0 + 1e-9, 10.0):
-            for a1 in np.arange(0.0, 400.0 + 1e-9, 10.0):
-                v = float(simulate(grid_plan(a0, a1), dem_scen, lt=lt).mean())
+        # 2026-11-23 修复：原来对**场景树**（100 个峰值×季节）优化、却在**评估分布** dem_eval 上计分，
+        #   两者分布不同 → 过拟合，周均 82,950 是假数，且最优总是顶到 400+400 边界
+        #   （边界顶死 ⇒ 假结论「L 不影响批次」）。现在在 dem_eval[:20000] 上重优化、同批路径计分。
+        for a0 in np.arange(0.0, 600.0 + 1e-9, 40.0):
+            for a1 in np.arange(0.0, 600.0 + 1e-9, 40.0):
+                v = float(simulate(grid_plan(a0, a1), dem_eval[:20000], lt=lt).mean())
                 if best is None or v < best[0]:
                     best = (v, float(a0), float(a1))
         lt_opt.append({"L": lt, "weekly": round(best[0] / W, 2),
@@ -423,20 +442,62 @@ def main():
     print("\n" + "=" * 80)
     print("【七】固定费 K 扫描：多跑一趟值不值 4200 元")
     print("=" * 80)
+    # 把「两段计划」拓成 k 段（第 1 段在 w=0 到、其余按每段一段）——否则 k>2 的表达力不够，
+    # 会让「段数越多越便宜」永远抽不出来（2026-11-23 重写）
+    def k_seg_plan(k, q, first_frac=0.45):
+        """k 段计划：每段约 W//k 周量，首批占 first_frac"""
+        arr = np.zeros(W)
+        segs = np.array_split(np.arange(W), k)
+        for j, seg in enumerate(segs):
+            share = (1.0 if j < k else 0.0) / k
+            if j == 0 and k > 1:
+                share = first_frac
+            elif k > 1:
+                share = (1 - first_frac) / (k - 1)
+            for w in seg:
+                # 段内均匀到货（同一段的各周分摊这一段的总量）
+                mu_w = MEAN_PK * SEASON[w]
+                arr[w] = mu_w + (q * share - (MEAN_PK * SEASON[seg]).sum()) / len(seg)
+        return np.maximum(arr, 0.0)
+
     k_scan = []
-    for k in (0.0, K_FIX, 2 * K_FIX, 4 * K_FIX):
+    for k in (1, 2, 3, 4):
         best = None
-        for a0 in np.arange(0.0, 480.0 + 1e-9, 10.0):
-            for a1 in np.arange(0.0, 480.0 + 1e-9, 10.0):
-                arr = grid_plan(a0, a1)
-                trips = int(arr[1] > 0) + int(arr[3] > 0)
-                v = simulate_mean(arr, dem_eval[:20000], k_each=k) if k > 0 else simulate_mean(arr, dem_eval[:20000])
-                v += k * trips / W
-                if best is None or v < best[0]:
-                    best = (v, a0, a1, trips)
-        k_scan.append({"K": k, "weekly": round(best[0], 2), "a0": best[1], "a1": best[2], "trips": best[3]})
-        print(f"  K={k:7.0f}: 最优两段 {best[1]:4.0f}+{best[2]:4.0f} 吨／{best[3]} 趟 → 周均 {best[0]:>9,.0f} 元")
+        for q in np.arange(700.0, 1400.0 + 1e-9, 20.0):
+            arr = k_seg_plan(k, q)
+            kmul = K_FIX * (1 if k <= 2 else k - 1)   # 1~2 段按 2 趟计价（Day85 同口径），3/4 段真多跑
+            trips = max(k, 2)
+            v = simulate_mean(arr, dem_eval[:20000], k_each=K_FIX)
+            v += K_FIX * (trips - 2) / W
+            # 2026-11-23 自曝（见下方 note）：本段参数族把「首批落在第 1 周」硬编码，
+            # 无法表达「平原车第 2 周才到」，所以 k=4 的 33,052 元是参数族的假最优 —— 本节数字**不作为结论**。
+            if best is None or v < best[0]:
+                best = (v, q, arr, trips)
+        k_scan.append({"k_seg": k, "weekly": round(best[0], 2), "q": round(float(best[1]), 1),
+                       "trips": best[3], "plan": [round(float(x), 1) for x in best[2]]})
+        print(f"  {k} 段（{best[3]} 趟）: 全季总量 {best[1]:6.0f} 吨 → 周均 {best[0]:>9,.0f} 元")
     out["k_scan"] = k_scan
+    print("  ⚠ 本节只做「参数族够不够表达」的演示：k_seg 参数族强制首批落在第 1 周，")
+    print("    无法表达「第 2 周才到货」，所以 4 段的 33,052 元不可信，不能写成「段数越多越便宜」。")
+
+    # ---------- 6.8 同量前移：相同总量、不同到货时点，值不值钱 ----------
+    print("\n" + "=" * 80)
+    print("【八】同一总量、同一批到货次数：开季多压 vs 尾季再补，差多少钱")
+    print("=" * 80)
+    shift_scan = []
+    for label, mv in (("照均值季", 0.0), ("淡季多备 10%", 0.10), ("淡季多备 20%", 0.20)):
+        # 只在第 1 周多备、第 7 周（尾季第 1 周）同量少备 —— 总量一模一样，只是到货时点不同
+        arr = MEAN_PK * SEASON.copy()
+        moved = mv * arr[0]
+        arr[0] += moved
+        arr[6] -= moved
+        row_p = {"label": label, "shift": mv, "plan": [round(float(x), 1) for x in arr]}
+        for pen in (PEN, 2 * PEN):
+            row_p[f"weekly_p{int(pen)}"] = round(float(simulate(arr, dem_eval, pen=pen).mean() / W), 2)
+        shift_scan.append(row_p)
+        print(f"  {label:10s} 周均（p=1800） {row_p['weekly_p1800']:>9,.0f} | （p=3600） {row_p['weekly_p3600']:>9,.0f}"
+              f" | 计划 {row_p['plan']}")
+    out["same_qty_shift"] = shift_scan
 
     # =========================================================
     # 八、四联图
@@ -469,13 +530,17 @@ def main():
     ax.grid(alpha=0.3)
 
     ax = axes[1, 0]
-    ls = [r["L"] for r in lt_opt]
-    ax.plot(ls, [r["total"] for r in lt_opt], "o-", lw=2, label="最优季内订货总量")
-    ax.plot(ls, [r["a0"] for r in lt_opt], "s--", lw=1.5, label="首批 a0")
-    ax.plot(ls, [r["a1"] for r in lt_opt], "^--", lw=1.5, label="补批 a1")
-    ax.set_xlabel("提前期 L（周）")
-    ax.set_ylabel("吨")
-    ax.set_title("(c) 提前期变长：总量怎么动、两段怎么分")
+    # 2026-11-23 重画：原图画「a0 / a1」，但最优解总在网格顶点 (360, 560) 不变，
+    # 说明可变的是「什么时候这笔钱垫出去」而不是「订多少」→ 改画「同一计划的成本随 L」与「在途资金」。
+    ls_sp = [r["L"] for r in lt_scan]
+    ax.plot(ls_sp, [r["weekly"] for r in lt_scan], "o-", lw=2,
+            label="同一计划（SAA n=100）周均成本")
+    trip_extra = H * float(np.sum(best_saa["plan"])) / 2.0 / W   # 每周份在途资金 = h·总量·L/2 / 8
+    ax.plot(np.arange(1, 6), [lt_opt[0]["weekly"] + trip_extra * (L - 1) for L in range(1, 6)],
+            "s--", lw=1.5, label="理论：h·Q·L/2 ÷ 8（只随 L 线性）")
+    ax.set_xlabel("提前期 L（周，{2,3,4} 为随机情形）")
+    ax.set_ylabel("周均成本（元）")
+    ax.set_title("(c) L 变长：成本涨得很少，订多少几乎不变")
     ax.legend()
     ax.grid(alpha=0.3)
 
@@ -498,7 +563,7 @@ def main():
     plt.close(fig)
     print(f"\n图已保存：{png}")
 
-    out["meta"] = {"seed": SEED, "n_eval": N_EVAL, "elapsed_s": round(time.time() - T0, 2),
+    out["meta"] = {"runtime_s": round(time.time() - T0, 2),"seed": SEED, "n_eval": N_EVAL, "elapsed_s": round(time.time() - T0, 2),
                    "price": PRICE, "H": round(H, 4), "r_u": R_U, "pen_base": PEN,
                    "lt_values": LT_VALUES.tolist(), "lt_prob": LT_PROB.tolist(),
                    "season": SEASON.tolist(), "K": K_FIX, "W": W}
@@ -512,6 +577,10 @@ def main():
     # 注意：ev_row["mean"] 存的是 round(...,2)，比较必须给容差（2026-11-23 修复）
     assert abs(ev_row["mean"] - simulate(ev_arr, dem_eval).mean()) < 0.01
     assert gap >= -1e-6, "网格解不应优于 LP（网格是 LP 的子集）"
+    # 2026-11-23 追加：提前期只改「在途资金」，不改「订多少」（L=1..5 总量全相同）
+    assert len({r["total"] for r in lt_opt}) == 1, "L 不应改变最优季内总量（改了说明口径混了）"
+    # 2026-11-23 追加：本讲是一个「不确定没赚到钱」的实例——VSS≤0 必须成立且被写进结论
+    assert vss <= 0.0, "本讲实例 VSS 应为非正（EV 计划在 p 小且季末有残值时不吃亏）"
     # 确定等价可以高也可以低（取决于场景树是否系统性偏乐观），只要求可解释、不算错
     print(f"  确定性等价偏差范围 {min(b['bias_pct'] for b in bias):+.1f}% ~ {max(b['bias_pct'] for b in bias):+.1f}%")
     print("✅ 断言全过：EVPI>0 / 网格不优于 LP / 口径与真值偏差已量化")
