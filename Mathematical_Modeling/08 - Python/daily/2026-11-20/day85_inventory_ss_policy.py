@@ -302,8 +302,10 @@ def main():
     res["service"] = dict(beta=beta, alpha=r_fin["alpha"], T=T_best, s=s_best,
                           naive_s=S_ana, naive_cost=r_naive["cost"], opt_cost=boxed[0])
 
-    res["runtime_s"] = time.time() - t0
-    print(f"\n用时 {res['runtime_s']:.1f} s")
+    # runtime 不落盘：写入 result.json 会让每次复跑都弄脏工作区（"跑一次脏一次"，
+    # 2026-11-15 起连续 7 天被日报点名）。只打印、只写 runtime.txt，json 保持逐次可复现。
+    runtime_s = time.time() - t0
+    print(f"\n用时 {runtime_s:.1f} s")
 
     # ================= 图 =================
     fig, ax = plt.subplots(2, 2, figsize=(14, 9.6))
@@ -345,6 +347,8 @@ def main():
     with open(__file__.replace(".py", "_result.json"), "w", encoding="utf-8") as f:
         json.dump(res, f, ensure_ascii=False, indent=2)
     print("结果已保存：", __file__.replace(".py", "_result.json"))
+    with open(__file__.replace(".py", "_runtime.txt"), "w", encoding="utf-8") as f:
+        f.write(f"{runtime_s:.1f}\n")
     return res
 
 

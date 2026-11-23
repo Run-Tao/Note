@@ -1,0 +1,20 @@
+{
+  "task_id": "weekly-2026-W48-g-004",
+  "title": "2026-W48 每周比较：退化情形验证 — 并列最优/多解集合比对, 不能只比一个解",
+  "created_by": "generate_weekly.py",
+  "target_gap": "G-004",
+  "gap_knowledge_point": "退化情形验证 — 并列最优/多解集合比对, 不能只比一个解",
+  "experiment": {
+    "seed": 20261107,
+    "models_to_compare": [
+      "LP",
+      "MLR",
+      "RIDGE"
+    ],
+    "metrics": [
+      "TODO"
+    ],
+    "notes": "骨架，需人工补全 data/metrics/断言"
+  },
+  "status": "pending_review"
+}

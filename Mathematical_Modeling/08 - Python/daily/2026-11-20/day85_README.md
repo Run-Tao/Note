@@ -115,3 +115,18 @@ cd /home/ubuntu/Note && ./.venv/bin/python -W error \
 
 > **三讲的 $S^*$ 都在 227 附近，但 $s$ 从 Day18 的 210 变到本讲 270，不是谁错了，是口径不同。**
 > 同一张表里比数字之前，先确认三件事：是否同口径、是否同分布、是否同单位。
+
+## 复现规范（2026-11-22 起）
+
+`result.json` **不包含 `runtime_s`** —— 每次复跑的耗时写进同目录 `day85_inventory_ss_policy_runtime.txt`。
+理由：耗时是环境量不是结果量，写进 json 会让「复跑一次、工作区脏一次」，进而让人不敢复跑；
+而「不敢复跑」是本库最该避免的状态（Day78 已实证 62.81→42.78，本讲 99.68→76.00）。
+
+复现命令（在仓库根）：
+
+```bash
+./.venv/bin/python "Mathematical_Modeling/08 - Python/daily/2026-11-20/day85_inventory_ss_policy.py"
+```
+
+2026-11-22 周报独立复跑：退出码 0、76.0 s、`-W error` 零告警；
+**除 `runtime_s` 外 7 个顶层键逐位一致**（`newsboy` / `K_scan` 8 档 / `bounded_vs_normal` / `ww` / `box` / `service`）。

@@ -1,0 +1,45 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+subject : mathematical-modeling
+level   : L4 随机优化（两阶段随机规划 · SAA 样本均值近似 · 随机库存） / L5 算法（HiGHS LP · 场景树 · 蒙特卡洛评估）
+anchor  : 前接 Day85（n 期库存 (s,S) 与报童临界分位数——那一讲的需求**每期独立同分布**、提前期固定 1 周）、
+          Day28（两阶段随机规划与 SAA——那一讲只有**一次**补货决策）、
+          Day29（CVaR 风险厌恶）、Day38（Benders 分解）、Day57（蒙特卡洛 / DES 评估）。
+          本讲把 Day85 的「提前期固定」放宽为**提前期随机**，并把 Day28 的「一期」拉成「一季 8 周」。
+goal    : 一个问题——「春耕季的肥，是开季一次备足，还是每周按预测补？」
+          ① 用**场景树 + LP** 求两阶段随机规划（决策规则：订货量按「周」定，不随需求实现走），
+             策略是「每周订满当周预测」的确定型计划；
+          ② 用 10 万条独立路径**评估**每个方案（场景树的确定性等价 ≠ 真值，必须模拟）；
+          ③ 口径三兄弟：EV（按期望需求一次算） / SAA（场景树） / PI（事后全知），
+             量出 **VSS = SAA − EV** 与 **EVPI = EV − PI**；
+          ④ K 扫描：**提前期随机**推进到底该多备，还是少备？—— 结论由「缺货罚贵不贵」决定。
+
+决策场景：云溪县农资公司 2027 年春耕「0 号复合肥」县级中心仓（同一家仓、同一批货，接 Day85）。
+          8 周一个订货季（淡 2 周 → 旺 4 周 → 尾 2 周，季节因子 0.75/0.75/1.25×4/0.92×2）；
+          旺季周需求上限 240 吨（全县耕地硬上限），旺季均值 120 吨、sd 49 吨，用**截断正态**（与 Day85 的三角分布并列，见 §局限）；
+          提前期 L ~ {1, 2, 3} 周（1 周 50% / 2 周 30% / 3 周 20%，平原车 / 山区车 / 阴雨塌方）；
+          季末剩余半价处理（1400 元/吨）。
+
+运行：cd /home/ubuntu/Note && ./.venv/bin/python -W error \\
+      "Mathematical_Modeling/08 - Python/daily/2026-11-22/day86_two_stage_stochastic_inventory.py"
+
+约定（全篇统一，否则数字互相打架）：
+  * 单价 c = 2800 元/吨；周持有 h = c × 20% ÷ 52 = 10.7692 元/吨·周（按**卖到手的量**计提，未售出的另有滞销成本）
+  * 缺货罚 p（季中补货差价 + 渠道信誉）：基准 1800，教学段扫描到 9000
+  * 提前期 L 在**每次订货时**独立抽；「订了还没到」的量**不占库存**，但会到
+  * 两阶段：第 1 阶段 = 「订多少」这个规则（不随需求实现走）；第 2 阶段 = 需求实现后「卖多少、缺多少」
+"""
+
+import json
+import os
+import time
+
+import numpy as np
+import matplotlib
+
+matplotlib.use("Agg")
+import matplotlib.pyplot as plt
+from matplotlib import font_manager
+from scipy.optimize import linprog
+
