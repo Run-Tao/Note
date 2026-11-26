@@ -5,7 +5,7 @@
 # status: open | in_progress | fixed | regressed | wontfix
 
 version: 3
-updated: 2026-11-07
+updated: 2026-11-25
 source: benchmark-2026-11-B1 + weekly-2026-W45
 
 items:
@@ -75,8 +75,10 @@ items:
     impact: 可能把正确的等价解判为错误
     plan: 优化类测试评分增加并列最优项
     due: 2026-12-15
-    status: open
+    status: in_progress
     retest: null
+    note: "2026-11-25 归位：本条的专项实验 2026-W48_modeling_g-004（experiments/2026-W48_modeling_g-004，created 11-23 06:10）此前只登记在 pipeline/pending.yaml 与本目录 monthly 台账，gaps.yaml 无对应条目（台账 updated 停 11-07，早于实验创建）→ 属孤儿条目，无法按「retest 通过才关闭」的流程关闭。本次补齐登记，状态改为 in_progress（骨架 experiment.py 仍 NotImplementedError）；**注意实验主题偏窄**：骨架只覆盖「并列最优/多解集合比对」，而本 gap 的知识点是「退化情形验证」全族，选题成立但覆盖面需在补全时说明"
+
 
   - id: G-005
     priority: P2
