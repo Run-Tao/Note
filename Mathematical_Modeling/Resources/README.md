@@ -171,3 +171,13 @@
 - **Rios, E. Y., et al. (2013). A survey on sensitivity analysis in linear programming.** （**仅在线**）状态：待读
 
 > ⚠️ 说明：2026-11-15 备课时宿主机外网**部分可达**——arXiv PDF 1509.04682 下载成功（**已下载 1 篇**，首次尝试拿到 1 页的 arXiv 元数据缓存版，已丢弃重下并核对 34 页）；INFORMS / Management Science 正文不可达，Wendell (1985) 等**仅在线**。
+
+## 层次聚类定 k / Gap statistic / FCM 隶属度（Level 8 · 聚类，Day88）
+
+- **Tibshirani, R., Walther, G., & Hastie, T. (2001). Estimating the number of clusters in a data set via the gap statistic.** *JRSS-B* 63(2):411–423 — 进阶，英文，Gap statistic 的原始出处，正是 Day88「未做」清单第一条（Gap vs jump 正面比较）的判据来源；官方 PDF 在 Stanford 站点，本轮**不可达（多次 000/超时）**（**仅在线**）状态：待读
+- **Yue, S., Wang, X., & Yue, C. (2011). A comparison of Gap statistic definitions with and without logarithm function.** arXiv:1103.4767 — 进阶，英文，**已下载** PDF（388 KB，`%%EOF` 自检完整），把 Gap 的两种写法（$\log W$ 与 $W$）放一起比较并给出适用条件——**直接回答 Day88 里一个没写的隐患**：「紧致度尺子用 $W$ 还是 $\log W$」会改变 $\mathrm{Gap}(k)$ 的方差齐性假设 → `Resources/Downloads/Yue-Comparison-of-Gap-Statistic-Definitions-With-and-Without-Logarithm-arXiv1103.4767.pdf` 状态：待读
+- **Data-driven estimation of the number of clusters in hierarchical clustering** (arXiv:1608.04700) — 进阶，英文，**已下载** PDF（393 KB，`%%EOF` 自检完整），专讲**层次聚类树上的**定 k（不是平铺划分），对应 Day88 §三「jump 判据只一把尺子」；给出基于整棵 dendrogram 的替代统计量 → `Resources/Downloads/Data-driven-Estimation-of-Number-of-Clusters-in-Hierarchical-Clustering-arXiv1608.04700.pdf` 状态：待读
+- **Hathaway, R. J., & Bezdek, J. C. (1994). NERF c-means: Non-Euclidean relational fuzzy clustering.** *Pattern Recognition* 27(3):429–437 — 进阶，英文，**关系型 FCM 退化陷阱的原始出处**（Day88 踩坑 ① $U\equiv1/c$ 的理论根源）；Elsevier 付费（**仅在线**）状态：待读
+- **Hennig, C. (2007). Cluster-wise assessment of cluster stability.** *Computational Statistics & Data Analysis* 52(1):258–271 — 进阶，英文，Day88 §九 bootstrap 稳定性 0.919/0.829/0.746 的方法学出处，且**正是「按结果筛样本」反模式的对照**（它要求每个簇各自评估，而非全局 ARI）（**仅在线**）状态：待读
+
+> ⚠️ 说明：2026-11-27 补登（本段对应 2026-11-26 的 Day88；当日 `Teaching_Plan.md` 已如实记录「文献本轮未下载 PDF」，本条为事后补做）。arXiv 两篇**下载成功并核对 `%%EOF`**；首次下载两份均为截断文件（有 `%PDF` 头但无 `%%EOF`），已丢弃重下 —— **教训：PDF 下载必须验 `%%EOF`，只看 HTTP=200 与文件大小会被骗**。Tibshirani/Elsevier 正文不可达，均**仅在线**。
