@@ -17,3 +17,5 @@
 {"ts": "2026-11-18T15:44:19+0800", "id": "weekly-2026-W45-g-002", "state": "verified", "msg": "run_task.py 全流程通过", "owner_pid": 3539326, "kind": "weekly-run"}
 {"ts": "2026-11-18T15:47:58+0800", "kind": "weekly-run", "id": "weekly-2026-W45-g-003", "state": "running", "note": "2026-W45_experiment_g-003", "owner_pid": 3540535}
 {"ts": "2026-11-18T15:48:00+0800", "id": "weekly-2026-W45-g-003", "state": "verified", "msg": "run_task.py 全流程通过", "owner_pid": 3540555, "kind": "weekly-run"}
+{"ts": "2026-11-28T23:03:58+0800", "kind": "weekly-run", "id": "weekly-2026-W48-g-004", "state": "running", "note": "2026-W48_modeling_g-004", "owner_pid": 2756220}
+{"ts": "2026-11-28T23:03:59+0800", "id": "weekly-2026-W48-g-004", "state": "verified", "msg": "run_task.py 全流程通过", "owner_pid": 2756237, "kind": "weekly-run"}

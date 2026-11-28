@@ -172,6 +172,20 @@
 
 > ⚠️ 说明：2026-11-15 备课时宿主机外网**部分可达**——arXiv PDF 1509.04682 下载成功（**已下载 1 篇**，首次尝试拿到 1 页的 arXiv 元数据缓存版，已丢弃重下并核对 34 页）；INFORMS / Management Science 正文不可达，Wendell (1985) 等**仅在线**。
 
+## 未被索引的已下载 PDF（2026-11-28 对账发现）
+
+> 2026-11-27 报告 §7.2① 提出「README 写『已下载』21 条 vs 实际 19 份 PDF，差 2 条」。
+> **本期逐条对账，结论与昨天的判断相反，必须更正**：
+> - README 里 **带完整路径的 `已下载` 条目 = 16 条**（另 5 处「已下载」是说明性文字，不是条目）；
+> - `Downloads/` 实际 PDF **19 份**（不含 `.gitkeep`）；
+> - ⇒ **不是「登记了却没下」，而是「下了却没登记」**：多出来的 **3 份** 如下，本期补登。
+
+- **Braun, G., Pokutta, S., et al. (2017). *Frank-Wolfe Tutorial*.** arXiv 教程 — 进阶，英文，**已下载**（905 KB，`%%EOF` 自检通过），Frank-Wolfe / 条件梯度法的入门推导，与本库 LP/凸优化系列（Day3/Day5/Day76 附近）互补 → `Resources/Downloads/Braun-Pokutta-2017-Frank-Wolfe-Tutorial.pdf` 状态：待读（**索引创建于 2026-11-13 备课，当日未登记，本期补**）
+- **Braun, G., Pokutta, S., et al. (2022). *Conditional Gradient Methods: A Survey*.** arXiv 综述 — 进阶，英文，**已下载**（995 KB，`%%EOF` 自检通过），条件梯度法的现代综述（含投影自由、线性收敛变体），与上一篇配对 → `Resources/Downloads/Braun-Pokutta-2022-Conditional-Gradient-Methods-Survey.pdf` 状态：待读（**同上，11-13 未登记，本期补**）
+- **Level 0 - Modeling Thinking** — 入门，中文/英文混合讲义，**已下载**（2.0 MB），数学建模思维入门，是 [[Learning_Roadmap]] Level 0 的配套读物（MOC 第 17 行与 `Learning_Roadmap.md` 第 44 行均已引用该笔记，但**本 README 从未登记过这份 PDF**）→ `Resources/Downloads/Level 0 - Modeling Thinking.pdf` 状态：待读
+
+> ⚠️ **对账方法（可复用）**：`grep -o "Downloads/[^\`]*" README.md | sort -u` 与 `ls Downloads/*.pdf | xargs -n1 basename` 做差集，**双向**都比一遍 —— 只看一个方向会把「下了没登记」误判成「登记了没下」。
+
 ## 层次聚类定 k / Gap statistic / FCM 隶属度（Level 8 · 聚类，Day88）
 
 - **Tibshirani, R., Walther, G., & Hastie, T. (2001). Estimating the number of clusters in a data set via the gap statistic.** *JRSS-B* 63(2):411–423 — 进阶，英文，Gap statistic 的原始出处，正是 Day88「未做」清单第一条（Gap vs jump 正面比较）的判据来源；官方 PDF 在 Stanford 站点，本轮**不可达（多次 000/超时）**（**仅在线**）状态：待读

@@ -81,7 +81,14 @@ def main() -> int:
                 except Exception:
                     pass
             if skeleton:
-                info.append(f"{base}/{sub.name} 骨架待补全（跳过证据检查）")
+                # 2026-11-28 口径变更：骨架目录**跳过证据检查**这件事本身必须计 warning。
+                # 原实现记 info（warnings 永远为空 → health 永远 healthy），连续 4 期日报指出
+                # 「4 个骨架跳过检查却零告警」；跳过检查 = 证据未验证，不能算健康。
+                reason = ""
+                plan = sub / "PLAN.md"
+                if plan.exists():
+                    reason = "：" + plan.read_text(encoding="utf-8").splitlines()[0][:60]
+                warns.append(f"{base}/{sub.name} 骨架待补全（跳过证据检查）{reason}")
                 continue
             have = {f.name for f in sub.iterdir() if f.is_file()}
             so = sub / "solver_output"

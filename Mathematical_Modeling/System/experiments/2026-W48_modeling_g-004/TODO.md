@@ -2,8 +2,14 @@
 
 攻击短板：**G-004** 退化情形验证 — 并列最优/多解集合比对, 不能只比一个解
 
-- [ ] 确定数据来源（真实优先）
-- [ ] 实现 experiment.py 的 build_data / run_experiment
-- [ ] 写 independent_review.py（不同实现路径复核）
-- [ ] 断言只检验设计公平性
-- [ ] 跑 run_task.py weekly 2026-W48_modeling_g-004
+- [x] 确定数据来源（模拟/合成：配对同价背包实例，参数见 data/README.md）
+- [x] 实现 experiment.py 的 build_data / run_experiment
+- [x] 写 independent_review.py（不同实现路径复核：product 穷举 + 解析特例，13/13）
+- [x] 断言只检验设计公平性（8 条：构造成立/族可行性/漏放>0/集合全放行/反例…）
+- [x] 跑 run_task.py weekly 2026-W48_modeling_g-004 → **verified**（2026-11-28 23:03）
+
+## 未覆盖（2026-11-28 如实登记）
+
+- n 大时的多解枚举（no-good cut / 迭代加割）未实现 → 本结论只对可穷举实例验证
+- 未把「族比对」口径回灌到 benchmarks/2026-11_B1 的评审脚本（不在本仓库）
+- 「近似同价」（业务容差 0.1%）未做，需命题方定口径

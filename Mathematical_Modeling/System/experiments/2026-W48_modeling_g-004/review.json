@@ -1,0 +1,72 @@
+{
+  "reviewer": "independent_review.py（不复用被测代码：product 穷举 + 解析特例 + 指纹复算）",
+  "passed": 13,
+  "total": 13,
+  "findings": [
+    {
+      "item": "R1 独立穷举（product+手算）最优值与族与 result.json 完全一致",
+      "pass": true,
+      "detail": "best=39 n=4 vs json 39/4"
+    },
+    {
+      "item": "R2 族大小 = 2^对数 这个假说被证伪（实测值更小）—— 退化族的形状取决于容量几何",
+      "pass": true,
+      "detail": "实测 4 ≠ 2^3=8"
+    },
+    {
+      "item": "R2b 族内每个解都恰好每对取一个（退化来源=配对同价，可验证的结构）",
+      "pass": true,
+      "detail": "4 个解"
+    },
+    {
+      "item": "R3 族内每解手算可行且同价",
+      "pass": true,
+      "detail": "4 个"
+    },
+    {
+      "item": "R4 以 base 单解为参照时，族内其余解被判不符的个数 > 0",
+      "pass": true,
+      "detail": "3/3"
+    },
+    {
+      "item": "R5 解析特例（v=w，cap=13）：最优值=13 且族大小 ≥2（退化可被独立造出）",
+      "pass": true,
+      "detail": "best=13 family=8"
+    },
+    {
+      "item": "R6 eps=1e-09 时族大小不变（结论对判分容差不敏感）",
+      "pass": true,
+      "detail": "4"
+    },
+    {
+      "item": "R6 eps=1e-06 时族大小不变（结论对判分容差不敏感）",
+      "pass": true,
+      "detail": "4"
+    },
+    {
+      "item": "R6 eps=0.001 时族大小不变（结论对判分容差不敏感）",
+      "pass": true,
+      "detail": "4"
+    },
+    {
+      "item": "R7 非退化对照：扰动量互不相同时族稳定=1（退化可被破坏、对照成立）",
+      "pass": true,
+      "detail": "[{'step': 1, 'family_size': 1}, {'step': 2, 'family_size': 1}, {'step': 3, 'family_size': 1}, {'step': 4, 'family_size': 1}, {'step': 5, 'family_size': 1}, {'step': 7, 'family_size': 1}]"
+    },
+    {
+      "item": "R8 数据来源已声明为模拟/合成",
+      "pass": true,
+      "detail": "模拟/合成：0-1 背包退化实例，参数见 config.json seed 与 "
+    },
+    {
+      "item": "R9 experiment 断言全过且覆盖 >=8 条设计公平性检查",
+      "pass": true,
+      "detail": "8/8"
+    },
+    {
+      "item": "R10 指纹的适用边界：不能让「从 json 反算指纹」通过（指纹只用于同进程/同对象复跑比对）",
+      "pass": true,
+      "detail": "recomputed=e0754394c6a94a72 stored=3d498d4a4ceabaef → 不可反算，符合预期"
+    }
+  ]
+}

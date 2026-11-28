@@ -6,15 +6,16 @@
   "gap_knowledge_point": "退化情形验证 — 并列最优/多解集合比对, 不能只比一个解",
   "experiment": {
     "seed": 20261107,
-    "models_to_compare": [
-      "LP",
-      "MLR",
-      "RIDGE"
-    ],
+    "models_to_compare": [],
     "metrics": [
-      "TODO"
+      "n_opt（同价最优解个数）",
+      "n_family_wrongly_rejected（单解基准下族内被误判数）",
+      "set_vs_single_pass_rate（集合口径 vs 单解口径放行率）",
+      "aux_under_ties_spread（同价解上辅助指标的假差异幅度）",
+      "counterexample_family_sizes（容量放宽 / 破坏配对后的族大小）"
     ],
-    "notes": "骨架，需人工补全 data/metrics/断言"
+    "notes": "退化情形实例（0-1 背包配对同价）+ 判分口径对比：单解基准 vs 集合比对；数据为模拟/合成，见 data/README.md",
+    "data_source": "simulated"
   },
-  "status": "pending_review"
+  "status": "done"
 }

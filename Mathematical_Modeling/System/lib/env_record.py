@@ -94,9 +94,11 @@ def result_fingerprint(obj) -> str:
     """对结果 dict 做稳定哈希：用于复跑一致性校验（忽略耗时字段）。"""
     def strip(o):
         if isinstance(o, dict):
+            # 2026-11-28 修：原实现假设 key 一定是 str，遇到 mask 这类整型 key 直接崩
+            # （AttributeError: 'int' object has no attribute 'lower'）→ 指纹功能对含整型键的结果完全不可用
             return {k: strip(v) for k, v in o.items()
-                    if not any(t in k.lower() for t in ("time", "runtime", "elapsed", "seed_used",
-                                                       "captured_at", "fingerprint", "ts", "timing"))}
+                    if not any(t in str(k).lower() for t in ("time", "runtime", "elapsed", "seed_used",
+                                                             "captured_at", "fingerprint", "ts", "timing"))}
         if isinstance(o, list):
             return [strip(v) for v in o]
         if isinstance(o, float):

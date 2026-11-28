@@ -1,0 +1,256 @@
+{
+  "inst": {
+    "items": [
+      {
+        "id": "P0",
+        "w": 7,
+        "v": 16
+      },
+      {
+        "id": "P1",
+        "w": 7,
+        "v": 16
+      },
+      {
+        "id": "P2",
+        "w": 11,
+        "v": 7
+      },
+      {
+        "id": "P3",
+        "w": 11,
+        "v": 7
+      },
+      {
+        "id": "P4",
+        "w": 12,
+        "v": 7
+      },
+      {
+        "id": "P5",
+        "w": 12,
+        "v": 7
+      }
+    ],
+    "capacity": 30,
+    "pairs": [
+      [
+        0,
+        1
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        4,
+        5
+      ]
+    ],
+    "n": 6
+  },
+  "opt_value": 39,
+  "opt_family": [
+    7,
+    11,
+    19,
+    35
+  ],
+  "n_opt": 4,
+  "q1_single_scoring": {
+    "n_candidates": 36,
+    "n_equivalent_correct": 4,
+    "n_family_wrongly_rejected": 3,
+    "hamming_to_base": {
+      "7": 0,
+      "11": 2,
+      "19": 2,
+      "35": 2
+    }
+  },
+  "q2_set_vs_single": [
+    {
+      "mask": 7,
+      "hamming_to_base": 0,
+      "single_vs_base_only": true,
+      "set_vs_base_only": true,
+      "set_vs_full_family": true
+    },
+    {
+      "mask": 11,
+      "hamming_to_base": 2,
+      "single_vs_base_only": false,
+      "set_vs_base_only": false,
+      "set_vs_full_family": true
+    },
+    {
+      "mask": 19,
+      "hamming_to_base": 2,
+      "single_vs_base_only": false,
+      "set_vs_base_only": false,
+      "set_vs_full_family": true
+    },
+    {
+      "mask": 35,
+      "hamming_to_base": 2,
+      "single_vs_base_only": false,
+      "set_vs_base_only": false,
+      "set_vs_full_family": true
+    }
+  ],
+  "q2b_same_value": {
+    "n_same_value_in_feasible": 4,
+    "equals_opt_family": true
+  },
+  "q3_aux_under_ties": {
+    "n_selected": 0,
+    "weighted_sum": 1.8000000000000007,
+    "first_item_included": 0
+  },
+  "q3_aux_raw": {
+    "7": {
+      "n_selected": 3,
+      "weighted_sum": 10.0,
+      "first_item_included": 1
+    },
+    "11": {
+      "n_selected": 3,
+      "weighted_sum": 9.0,
+      "first_item_included": 1
+    },
+    "19": {
+      "n_selected": 3,
+      "weighted_sum": 8.5,
+      "first_item_included": 1
+    },
+    "35": {
+      "n_selected": 3,
+      "weighted_sum": 8.2,
+      "first_item_included": 1
+    }
+  },
+  "q3b_early_stop": [
+    {
+      "k_submitted": 1,
+      "single_correct": 1,
+      "set_covered": true
+    },
+    {
+      "k_submitted": 2,
+      "single_correct": 2,
+      "set_covered": true
+    },
+    {
+      "k_submitted": 3,
+      "single_correct": 3,
+      "set_covered": true
+    },
+    {
+      "k_submitted": 4,
+      "single_correct": 4,
+      "set_covered": true
+    }
+  ],
+  "q4_counterexamples": {
+    "cap_relaxed_family_size": 5,
+    "pair_broken_family_size": 1,
+    "typo_cap_in": 30,
+    "typo_cap_out": 37
+  },
+  "assertions": [
+    {
+      "name": "A1 构造成立：存在 >1 个同价最优解（否则本实验无意义）",
+      "pass": true,
+      "detail": "n_opt=4"
+    },
+    {
+      "name": "A2 族内每个解都真可行（不是靠放宽容量造出来的）",
+      "pass": true,
+      "detail": "cap=30"
+    },
+    {
+      "name": "A3 单解基准判分对「族内但非基准」的解漏放 > 0（这正是 B1 事故的机理）",
+      "pass": true,
+      "detail": "wrongly=3/3"
+    },
+    {
+      "name": "A4 集合比对（基准=完整族）对族内任一解全部放行；**基准只给单解时集合比对退化成单解比对**",
+      "pass": true,
+      "detail": "full=4/4  base_only=1/4"
+    },
+    {
+      "name": "A5 反例 1：容量放宽一个单位后族结构发生变化（说明退化对参数敏感、可判别）",
+      "pass": true,
+      "detail": "4->5"
+    },
+    {
+      "name": "A6 反例 2：破坏全部配对价值后族缩为 1（成功造出非退化对照）",
+      "pass": true,
+      "detail": "n_opt=1"
+    },
+    {
+      "name": "A7 判分容差 1e-9 下「同价」为精确相等（不靠 eps 蒙）",
+      "pass": true,
+      "detail": "tol=1e-9"
+    },
+    {
+      "name": "A8 tie-break 假差异确实存在（辅助指标在族内并非唯一）",
+      "pass": true,
+      "detail": "range=1.8000000000000007"
+    }
+  ],
+  "data_note": "模拟/合成：0-1 背包退化实例，参数见 config.json seed 与 build_instance，可完全重造",
+  "task_id": "weekly-2026-W48-g-004",
+  "config": {
+    "seed": 20261107,
+    "models_to_compare": [],
+    "metrics": [
+      "n_opt（同价最优解个数）",
+      "n_family_wrongly_rejected（单解基准下族内被误判数）",
+      "set_vs_single_pass_rate（集合口径 vs 单解口径放行率）",
+      "aux_under_ties_spread（同价解上辅助指标的假差异幅度）",
+      "counterexample_family_sizes（容量放宽 / 破坏配对后的族大小）"
+    ],
+    "notes": "退化情形实例（0-1 背包配对同价）+ 判分口径对比：单解基准 vs 集合比对；数据为模拟/合成，见 data/README.md",
+    "data_source": "simulated"
+  },
+  "env": {
+    "captured_at": "2026-11-28T23:03:58+0800",
+    "python": "3.12.3",
+    "executable": "/home/ubuntu/Note/.venv/bin/python",
+    "platform": "Linux-6.8.0-124-generic-x86_64-with-glibc2.39",
+    "cpu_count": 2,
+    "packages": {
+      "numpy": "2.5.2",
+      "scipy": "1.18.1",
+      "pandas": "3.0.5",
+      "scikit-learn": null,
+      "matplotlib": "3.11.1",
+      "networkx": "3.7",
+      "statsmodels": null,
+      "ortools": "9.15.6755",
+      "highspy": "unknown",
+      "numba": "0.68.0"
+    },
+    "seed": 20261107,
+    "git_commit": "b9e9c94",
+    "config": {
+      "seed": 20261107,
+      "models_to_compare": [],
+      "metrics": [
+        "n_opt（同价最优解个数）",
+        "n_family_wrongly_rejected（单解基准下族内被误判数）",
+        "set_vs_single_pass_rate（集合口径 vs 单解口径放行率）",
+        "aux_under_ties_spread（同价解上辅助指标的假差异幅度）",
+        "counterexample_family_sizes（容量放宽 / 破坏配对后的族大小）"
+      ],
+      "notes": "退化情形实例（0-1 背包配对同价）+ 判分口径对比：单解基准 vs 集合比对；数据为模拟/合成，见 data/README.md",
+      "data_source": "simulated"
+    },
+    "data": [],
+    "extra": {
+      "data_note": "实例由 seed 生成，重跑 build_instance(seed) 可完全复现；无外部数据文件"
+    }
+  },
+  "fingerprint": "3d498d4a4ceabaef"
+}
